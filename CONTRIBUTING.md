@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in **{{PROJECT_NAME}}**, part of the FelpsXP ecosystem.
+Thanks for your interest in **felpsxp-hub**, part of the FelpsXP ecosystem.
 This guide describes how work flows from idea to `main`.
 
 > Português: o fluxo abaixo vale para todos os repositórios FelpsXP. Documentação

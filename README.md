@@ -1,14 +1,14 @@
-# {{PROJECT_NAME}}
+# felpsxp-hub
 
-> {{PROJECT_DESCRIPTION}}
+> Personal engineering hub and portfolio
 
 **English** · [Português (BR)](README.pt-BR.md)
 
-[![CI](https://github.com/{{OWNER}}/{{PROJECT_NAME}}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{OWNER}}/{{PROJECT_NAME}}/actions/workflows/ci.yml)
+[![CI](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/ci.yml)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-fe5196.svg)](https://www.conventionalcommits.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Part of the **FelpsXP digital ecosystem** · Registry ID: `{{FXP_ID}}`
+Part of the **FelpsXP digital ecosystem** · Registry ID: `FXP-003`
 
 ---
 
@@ -41,8 +41,8 @@ See [Architecture Decision Records](docs/adr/README.md).
 ### Setup
 
 ```bash
-git clone https://github.com/{{OWNER}}/{{PROJECT_NAME}}.git
-cd {{PROJECT_NAME}}
+git clone https://github.com/FelpsSousa/felpsxp-hub.git
+cd felpsxp-hub
 pre-commit install          # installs pre-commit and commit-msg hooks
 cp .env.example .env        # never commit .env
 # <install dependencies>

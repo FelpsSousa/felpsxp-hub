@@ -1,10 +1,10 @@
-# {{PROJECT_NAME}}
+# felpsxp-hub
 
-> {{PROJECT_DESCRIPTION}}
+> Personal engineering hub and portfolio
 
 [English](README.md) · **Português (BR)**
 
-Parte do **ecossistema digital FelpsXP** · ID no registro: `{{FXP_ID}}`
+Parte do **ecossistema digital FelpsXP** · ID no registro: `FXP-003`
 
 ---
 
@@ -23,8 +23,8 @@ Veja os [Architecture Decision Records](docs/adr/README.md) (em inglês).
 ## Como rodar
 
 ```bash
-git clone https://github.com/{{OWNER}}/{{PROJECT_NAME}}.git
-cd {{PROJECT_NAME}}
+git clone https://github.com/FelpsSousa/felpsxp-hub.git
+cd felpsxp-hub
 pre-commit install          # instala os hooks de pre-commit e commit-msg
 cp .env.example .env        # nunca commite o .env
 # <instalar dependências>

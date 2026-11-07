@@ -1,15 +1,15 @@
 # CLAUDE.md
 
-Persistent context for Claude Code in **{{PROJECT_NAME}}**. Read this before any change.
+Persistent context for Claude Code in **felpsxp-hub**. Read this before any change.
 Keep it short and current: update it in the same PR whenever setup, commands or conventions change.
 
 ## Project
 
-- **What:** {{PROJECT_DESCRIPTION}}
-- **Registry ID:** `{{FXP_ID}}` in the FelpsXP master registry (Registro Mestre).
+- **What:** Personal engineering hub and portfolio
+- **Registry ID:** `FXP-003` in the FelpsXP master registry (Registro Mestre).
   Claude Code cannot update the registry; when status, scope or stack changes, say so at the
   end of the session so Felps can sync it.
-- **Owner:** Felipe "Felps" Sousa (@FelpsSousa) · repository owner `{{OWNER}}` (the `felpsxp-hq` org is reserved for later).
+- **Owner:** Felipe "Felps" Sousa (@FelpsSousa) · repository owner `FelpsSousa` (the `felpsxp-hq` org is reserved for later).
 - **Ecosystem:** one module of the FelpsXP digital ecosystem. Modules are independent and
   pluggable, integrating with the shared CORE (auth/IAM, database, API gateway, design system,
   event bus) instead of reimplementing it.

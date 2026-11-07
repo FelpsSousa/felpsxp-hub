@@ -1,7 +1,7 @@
 # Security Policy
 
 Security is a first-class requirement across the FelpsXP ecosystem.
-Thank you for helping keep **{{PROJECT_NAME}}** and its users safe.
+Thank you for helping keep **felpsxp-hub** and its users safe.
 
 ## Supported versions
 
@@ -16,7 +16,7 @@ Thank you for helping keep **{{PROJECT_NAME}}** and its users safe.
 
 Report privately through GitHub:
 **Security → Advisories → Report a vulnerability**
-(`https://github.com/{{OWNER}}/{{PROJECT_NAME}}/security/advisories/new`).
+(`https://github.com/FelpsSousa/felpsxp-hub/security/advisories/new`).
 
 Please include:
 
