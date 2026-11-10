@@ -10,35 +10,62 @@ import { felpsxpFinanceProjectByLocale } from '@/content/projects/felpsxp-financ
 import { felpsxpHubProjectByLocale } from '@/content/projects/felpsxp-hub';
 import { felpsxpPlatformProjectByLocale } from '@/content/projects/felpsxp-platform';
 import { homeNetworkObservabilityProjectByLocale } from '@/content/projects/home-network-observability';
-import type { Project } from '@/content/types';
+import { profileSchema, projectSchema } from '@/content/schemas';
+import type { Localized, Profile, Project } from '@/content/types';
 import type { AppLocale } from '@/i18n/routing';
 import { locales } from '@/i18n/routing';
+import { parseContent } from '@/lib/parse-content';
 
-function projectRecords(locale: AppLocale): Project[] {
-  return [
-    felpsxpHubProjectByLocale[locale],
-    felpsxpPlatformProjectByLocale[locale],
-    felpsxpFinanceProjectByLocale[locale],
-    homeNetworkObservabilityProjectByLocale[locale],
-    felpsxpArchitectureProjectByLocale[locale],
-    beecrowdProblemSolvingProjectByLocale[locale],
-    candidattusProjectByLocale[locale],
-    connexiccoProjectByLocale[locale],
-    exampleTaskflowProjectByLocale[locale],
-    exampleAuroraMetricsProjectByLocale[locale],
-    exampleNimbusInventoryProjectByLocale[locale],
-  ];
+/** Display order of the projects list. */
+const projectSources: Localized<Project>[] = [
+  felpsxpHubProjectByLocale,
+  felpsxpPlatformProjectByLocale,
+  felpsxpFinanceProjectByLocale,
+  homeNetworkObservabilityProjectByLocale,
+  felpsxpArchitectureProjectByLocale,
+  beecrowdProblemSolvingProjectByLocale,
+  candidattusProjectByLocale,
+  connexiccoProjectByLocale,
+  exampleTaskflowProjectByLocale,
+  exampleAuroraMetricsProjectByLocale,
+  exampleNimbusInventoryProjectByLocale,
+];
+
+function byLocale<T>(build: (locale: AppLocale) => T): Localized<T> {
+  return Object.fromEntries(locales.map((locale) => [locale, build(locale)])) as Localized<T>;
 }
 
-export function getProfile(locale: AppLocale) {
-  return profileByLocale[locale];
+// Parsed once, when this module is first imported. Every page reads content
+// through this module, so `next build` fails on a malformed record before
+// any page is generated (ADR-0004).
+const projectsByLocale = byLocale((locale) =>
+  projectSources.map((source, index) =>
+    parseContent(
+      projectSchema,
+      source[locale],
+      `project "${source[locale]?.slug ?? `#${index}`}" (${locale})`,
+    ),
+  ),
+);
+
+const profilesByLocale = byLocale((locale) =>
+  parseContent(profileSchema, profileByLocale[locale], `profile (${locale})`),
+);
+
+export function getProfile(locale: AppLocale): Profile {
+  return profilesByLocale[locale];
 }
 
-export function getPublicProjects(locale: AppLocale) {
-  return projectRecords(locale).filter((project) => project.visibility === 'public');
+/** Every project record for a locale, including unlisted and private ones. */
+export function getAllProjects(locale: AppLocale): Project[] {
+  return projectsByLocale[locale];
 }
 
-export function getProjectBySlug(slug: string, locale: AppLocale) {
+export function getPublicProjects(locale: AppLocale): Project[] {
+  return getAllProjects(locale).filter((project) => project.visibility === 'public');
+}
+
+export function getProjectBySlug(slug: string, locale: AppLocale): Project | undefined {
   return getPublicProjects(locale).find((project) => project.slug === slug);
 }
 
