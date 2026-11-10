@@ -57,7 +57,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <main className="mx-auto flex max-w-2xl flex-col gap-10 px-6 py-20">
       <header className="flex flex-col gap-3">
         {project.isExample && (
-          <span className="w-fit rounded-full border border-amber-400/40 px-2 py-0.5 text-xs text-amber-300">
+          <span className="w-fit rounded-full border border-accent/40 px-2 py-0.5 font-mono text-xs text-accent">
             {t('exampleLabel')}
           </span>
         )}

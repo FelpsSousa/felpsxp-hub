@@ -52,9 +52,9 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
                 </div>
               )}
 
-              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-slate-400">
                 {project.isExample && (
-                  <span className="rounded-full border border-amber-400/40 px-2 py-0.5 text-amber-300">
+                  <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">
                     {t('exampleLabel')}
                   </span>
                 )}
@@ -64,7 +64,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
                 <span className="rounded-full border border-white/10 px-2 py-0.5">
                   {project.difficulty}
                 </span>
-                <span className="rounded-full border border-white/10 px-2 py-0.5">
+                <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">
                   ~{projectXp(project)} XP
                 </span>
               </div>

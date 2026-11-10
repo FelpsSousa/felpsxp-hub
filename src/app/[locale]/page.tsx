@@ -53,7 +53,7 @@ function HomeContent({ profile }: { profile: ReturnType<typeof getProfile> }) {
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {profile.highlightStats.map((stat) => (
             <div key={stat.label} className="rounded-lg border border-white/10 p-4">
-              <dt className="text-2xl font-semibold text-white">{stat.value}</dt>
+              <dt className="font-mono text-2xl font-semibold text-accent">{stat.value}</dt>
               <dd className="mt-1 text-sm text-slate-400">{stat.label}</dd>
             </div>
           ))}
