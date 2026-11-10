@@ -1,5 +1,10 @@
 # Session handoff: felpsxp-hub, 2026-11-10
 
+> **Superseded by [`roadmap.md`](roadmap.md).** Kept as the record of the
+> bootstrap phase. Two points below are out of date: the superseding ADR it
+> asks for was written as ADR-0004 (#10), and the remaining roadmap now lives
+> in `roadmap.md`.
+
 Purpose: let a Claude Code session opened directly in this repo
 (`C:/my codes/felpsxp-hub`) pick up work with full context, without needing
 the `felpsxp-platform` chat or repo anymore for anything related to the hub
