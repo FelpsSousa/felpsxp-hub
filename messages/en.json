@@ -2,5 +2,18 @@
   "home": {
     "focusLabel": "Current focus",
     "statsLabel": "In numbers"
+  },
+  "projects": {
+    "title": "Projects",
+    "lede": "Selected projects that demonstrate ownership, technical reasoning, architecture decisions, and proof of work.",
+    "exampleLabel": "Example",
+    "problemLabel": "Problem",
+    "solutionLabel": "Solution",
+    "architectureHighlightsLabel": "Architecture highlights",
+    "challengesLabel": "Challenges",
+    "responsibilitiesLabel": "Responsibilities",
+    "outcomesLabel": "Outcomes",
+    "learningsLabel": "Learnings",
+    "stackLabel": "Stack"
   }
 }
