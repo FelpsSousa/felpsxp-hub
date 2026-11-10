@@ -39,9 +39,9 @@ security controls.
 ## Block 0: Housekeeping
 
 - [x] Plan and scope recorded in this file.
-- [ ] Ignore generated `AGENTS.md` and `next-env.d.ts`; run `next typegen`
-      before `tsc` so CI keeps type-checking routes.
-- [ ] `pre-commit run --all-files` passes on a clean clone.
+- [x] Ignore generated `AGENTS.md` and `next-env.d.ts`; run `next typegen`
+      before `tsc` so CI keeps type-checking routes (#16).
+- [x] `pre-commit run --all-files` passes on a clean clone.
 
 ## Block 1: Foundation
 
@@ -129,6 +129,29 @@ collection and, most likely, persistence.
 Guardrails: passive observation of Felipe's own infrastructure only; no
 active response against any source; nothing published that identifies an
 individual.
+
+Data tiers, to be formalised in the storage and privacy ADR:
+
+| Tier | Contents | Retention | Visibility |
+| --- | --- | --- | --- |
+| A, raw | Full IP, raw User-Agent, sanitised attack payload | 7 days | Private |
+| B, pseudonymised | Daily-salted HMAC of the IP, network prefix (/24, /48), parsed fields | 90 days | Private |
+| C, aggregated | Counts per hour, path, country, ASN, attack category | Indefinite | Public |
+
+Never public: any IP (hashed or not), raw User-Agent per event, city per
+event, or any combination of attributes that could point to a person. A
+public feed of individual probes is limited to datacenter and hosting
+ASNs.
+
+**Reuse across the ecosystem.** The observatory is meant to cover other
+FelpsXP modules later (FelpsXP News, Finance, and whatever comes next). The
+Hub implements it first, but the security event shape is designed from the
+start as a stable, versioned contract, so the collector can be promoted to
+a CORE service once a second module needs it; that promotion is an
+ecosystem decision and gets its ADR in `felpsxp-architecture`. Modules with
+authenticated users, such as Finance, contribute anonymous attack traffic
+only: the activity of signed-in household members never reaches a public
+view.
 
 ## Block 6: Polish
 
