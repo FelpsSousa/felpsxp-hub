@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import { getProfile } from '@/lib/content';
 import type { AppLocale } from '@/i18n/routing';
 
@@ -8,6 +9,7 @@ type HomePageProps = {
 
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
+  setRequestLocale(locale as AppLocale);
   const profile = getProfile(locale as AppLocale);
 
   return <HomeContent profile={profile} />;
@@ -17,7 +19,7 @@ function HomeContent({ profile }: { profile: ReturnType<typeof getProfile> }) {
   const t = useTranslations('home');
 
   return (
-    <main className="mx-auto flex max-w-2xl flex-col gap-12 px-6 py-20">
+    <div className="mx-auto flex max-w-2xl flex-col gap-12 px-6 py-20">
       <header className="flex flex-col gap-3">
         <h1 className="text-4xl font-semibold text-fg">{profile.displayName}</h1>
         <p className="text-lg text-fg">{profile.title}</p>
@@ -59,6 +61,6 @@ function HomeContent({ profile }: { profile: ReturnType<typeof getProfile> }) {
           ))}
         </dl>
       </section>
-    </main>
+    </div>
   );
 }

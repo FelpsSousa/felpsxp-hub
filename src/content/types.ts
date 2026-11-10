@@ -10,6 +10,7 @@ import type {
   projectStatusSchema,
   projectTypeSchema,
   projectVisibilitySchema,
+  siteSettingsSchema,
   skillDomainSchema,
   surfaceKeySchema,
 } from '@/content/schemas';
@@ -38,3 +39,4 @@ export type ProjectMediaVideo = Extract<ProjectMedia, { kind: 'video' }>;
 export type ProjectMediaAudio = Extract<ProjectMedia, { kind: 'audio' }>;
 export type Project = z.infer<typeof projectSchema>;
 export type Profile = z.infer<typeof profileSchema>;
+export type SiteSettings = z.infer<typeof siteSettingsSchema>;
