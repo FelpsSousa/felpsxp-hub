@@ -87,10 +87,13 @@ happens in this repository, and it changes in the same PR as any change to that.
 - `.github/`: CI, Dependabot, templates, CODEOWNERS
 - `src/app/[locale]/`: routed pages (App Router, `pt`/`en`), root layout lives here
 - `src/i18n/`: `next-intl` routing, request config, navigation helpers
-- `src/middleware.ts`: locale routing middleware
+- `src/proxy.ts`: locale routing (Next.js 16 renamed `middleware.ts` to `proxy.ts`)
+- `src/content/`: structured content as typed TypeScript (`profile`, `projects`); MDX is
+  reserved for `/writing` (ADR-0004)
+- `src/lib/content.ts`: content accessors used by the pages
 - `messages/`: `pt.json` / `en.json` translation strings
-- No database, no auth, no `/studio` in v1 (ADR-0003). Content is typed TS/MDX files,
-  not yet added as of this scaffold.
+- `docs/planning/roadmap.md`: the living plan; tick items there as PRs merge
+- No database, no auth, no `/studio` in v1 (ADR-0003).
 
 ## Do not
 
