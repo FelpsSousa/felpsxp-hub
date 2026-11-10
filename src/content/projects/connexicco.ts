@@ -12,7 +12,6 @@ export const connexiccoProjectByLocale: Localized<Project> = {
     difficulty: 'applied',
     primaryDomain: 'backend',
     secondaryDomains: ['frontend'],
-    isExample: false,
     media: [],
     role: 'Adaptação mobile de toda a plataforma, integração de videoconferência embarcada e participação nas decisões de arquitetura para a customização multi-tenant',
     problem:
@@ -61,7 +60,6 @@ export const connexiccoProjectByLocale: Localized<Project> = {
     difficulty: 'applied',
     primaryDomain: 'backend',
     secondaryDomains: ['frontend'],
-    isExample: false,
     media: [],
     role: 'Mobile adaptation of the entire platform, embedded video-conferencing integration, and participation in architecture decisions for multi-tenant customization',
     problem:

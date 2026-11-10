@@ -17,7 +17,7 @@ const slug = z
 /** A real calendar date in `YYYY-MM-DD` form. */
 const isoDate = z.iso.date();
 
-/** A same-origin asset path such as `/mock-projects/board.png`. */
+/** A same-origin asset path such as `/projects/felpsxp-hub/home.png`. */
 const localPath = z
   .string()
   .regex(/^\/(?!\/)[^\s]*$/, 'must be a same-origin path starting with a single "/"');
@@ -111,11 +111,6 @@ export const projectSchema = z.strictObject({
   difficulty: projectDifficultySchema,
   primaryDomain: skillDomainSchema,
   secondaryDomains: z.array(skillDomainSchema),
-  /**
-   * True only for deliberately fictional demo projects. Drives a visible
-   * "Example" badge; never silently inferred from any other field.
-   */
-  isExample: z.boolean(),
   media: z.array(projectMediaSchema),
   role: text,
   problem: text,

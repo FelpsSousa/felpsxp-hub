@@ -12,7 +12,6 @@ export const candidattusProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'data',
     secondaryDomains: ['backend', 'frontend'],
-    isExample: false,
     media: [],
     role: 'Único desenvolvedor frontend na estruturação inicial da aplicação; depois em time de dois a três frontends, voltando a ser o único responsável pela frente na maior parte do segundo ano',
     problem:
@@ -62,7 +61,6 @@ export const candidattusProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'data',
     secondaryDomains: ['backend', 'frontend'],
-    isExample: false,
     media: [],
     role: 'Sole frontend developer during the application’s initial build-out; later worked within a team of two to three frontends, returning as the sole owner of the frontend for most of the second year',
     problem:

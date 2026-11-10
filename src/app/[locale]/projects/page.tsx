@@ -53,11 +53,6 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
               )}
 
               <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-fg-muted">
-                {project.isExample && (
-                  <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">
-                    {t('exampleLabel')}
-                  </span>
-                )}
                 <span className="rounded-full border border-border px-2 py-0.5">
                   {project.status}
                 </span>

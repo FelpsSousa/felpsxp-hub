@@ -24,8 +24,8 @@ security controls.
 - Public contact goes through `contato@felpsxp.com` (and variations) via
   Cloudflare Email Routing; no personal address in code or content.
 - The contact form is protected by Cloudflare Turnstile (ADR pending).
-- Only projects whose functionality can be proven are listed. Mock
-  `example-*` projects are hidden. Private repositories are described as
+- Only real projects whose functionality can be proven are listed. The
+  fictional `example-*` projects were removed entirely. Private repositories are described as
   case studies, with shareable detail living in the public
   `felpsxp-architecture` repository.
 - `/studio`, sign-in, contact persistence and Watchtower are not carried
@@ -57,8 +57,11 @@ security controls.
 - [ ] Static rendering: `generateStaticParams` for the `[locale]` segment,
       so home and projects are prerendered instead of rendered on demand.
 - [ ] New Vercel project wired to this repository, preview per PR.
-- [ ] Project content review: hide `example-*`, confirm every remaining
-      claim, link or screenshot is verifiable.
+- [x] Remove the fictional `example-*` projects, their mock screenshots and
+      the "Example" badge.
+- [ ] Content review with Felipe: confirm every remaining claim, link and
+      number is verifiable (for instance, the profile's ADR count points to
+      a private repository and is already out of date).
 
 ## Block 2: Pages recruiters read (GL)
 

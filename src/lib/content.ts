@@ -2,9 +2,6 @@ import { profileByLocale } from '@/content/profile/profile';
 import { beecrowdProblemSolvingProjectByLocale } from '@/content/projects/beecrowd-problem-solving';
 import { candidattusProjectByLocale } from '@/content/projects/candidattus';
 import { connexiccoProjectByLocale } from '@/content/projects/connexicco';
-import { exampleAuroraMetricsProjectByLocale } from '@/content/projects/example-aurora-metrics';
-import { exampleNimbusInventoryProjectByLocale } from '@/content/projects/example-nimbus-inventory';
-import { exampleTaskflowProjectByLocale } from '@/content/projects/example-taskflow';
 import { felpsxpArchitectureProjectByLocale } from '@/content/projects/felpsxp-architecture';
 import { felpsxpFinanceProjectByLocale } from '@/content/projects/felpsxp-finance';
 import { felpsxpHubProjectByLocale } from '@/content/projects/felpsxp-hub';
@@ -26,9 +23,6 @@ const projectSources: Localized<Project>[] = [
   beecrowdProblemSolvingProjectByLocale,
   candidattusProjectByLocale,
   connexiccoProjectByLocale,
-  exampleTaskflowProjectByLocale,
-  exampleAuroraMetricsProjectByLocale,
-  exampleNimbusInventoryProjectByLocale,
 ];
 
 function byLocale<T>(build: (locale: AppLocale) => T): Localized<T> {

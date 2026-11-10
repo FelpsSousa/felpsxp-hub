@@ -18,7 +18,6 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'backend',
     secondaryDomains: ['appsec', 'iam', 'frontend'],
-    isExample: false,
     media: [],
     role: 'Arquitetura, backend, cliente, modelagem de domínio e operação em produção',
     problem:
@@ -89,7 +88,6 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'backend',
     secondaryDomains: ['appsec', 'iam', 'frontend'],
-    isExample: false,
     media: [],
     role: 'Architecture, backend, client, domain modelling, and running it in production',
     problem:

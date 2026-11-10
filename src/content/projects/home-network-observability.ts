@@ -12,7 +12,6 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     difficulty: 'applied',
     primaryDomain: 'observability',
     secondaryDomains: ['backend', 'devops-infra'],
-    isExample: false,
     media: [],
     role: 'Arquitetura, backend, frontend e direção do sensor always-on em todo o pipeline',
     problem:
@@ -66,7 +65,6 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     difficulty: 'applied',
     primaryDomain: 'observability',
     secondaryDomains: ['backend', 'devops-infra'],
-    isExample: false,
     media: [],
     role: 'Architecture, backend, frontend, and always-on sensor direction across the full pipeline',
     problem:

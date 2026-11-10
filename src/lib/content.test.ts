@@ -22,7 +22,6 @@ const localeInvariantFields = [
   'difficulty',
   'primaryDomain',
   'secondaryDomains',
-  'isExample',
   'relatedSurfaceKeys',
   'startedAt',
   'updatedAt',

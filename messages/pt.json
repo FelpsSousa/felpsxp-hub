@@ -6,7 +6,6 @@
   "projects": {
     "title": "Projetos",
     "lede": "Projetos selecionados que mostram autoria, raciocínio técnico, decisões de arquitetura e prova de trabalho.",
-    "exampleLabel": "Exemplo",
     "problemLabel": "Problema",
     "solutionLabel": "Solução",
     "architectureHighlightsLabel": "Destaques de arquitetura",
