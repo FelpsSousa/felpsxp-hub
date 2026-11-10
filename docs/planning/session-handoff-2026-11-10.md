@@ -23,11 +23,32 @@ public, standalone repo.
 - Merged: ADR-0002 (#3), AI disclosure policy / no attribution footers (#4),
   ADR-0003 stack decision (#5), v1 scaffold (#6), profile content + home
   page in Tailwind (#7), all 11 project entries plus `/projects` and
-  `/projects/[slug]` in Tailwind (#8), this handoff doc (#9).
-- Open, unrelated: Dependabot PR #2 bumping GitHub Actions versions,
-  routine, merge whenever convenient.
+  `/projects/[slug]` in Tailwind (#8), this handoff doc (#9), ADR-0004 (#10,
+  corrects ADR-0003's Zod/MDX claim), a provisional accent token (#11),
+  Dependabot actions bump (#2), ADR-0005 (#12, the design-token decision),
+  and its implementation (#13, the actual light/dark token set applied
+  across the public pages).
+- No open PRs as of this update.
 - Dev server: `pnpm dev` runs on `http://localhost:3000`, confirmed working
   (home, projects list, project detail pages all render).
+
+## Visual direction (ADR-0005)
+
+Felipe wants the Hub to read as professional and clean, close to GitHub's
+own interface (thin borders, calm surfaces, predictable type/spacing),
+while carrying the FelpsXP identity rather than looking like an unbranded
+clone. GitHub's Primer design system is MIT-licensed and publicly
+published, so its color primitives are used as a direct, legitimate
+reference (hand-ported into this repo's own `globals.css`, not added as a
+dependency; see ADR-0005 for the full token table and sourcing). The one
+deliberate departure from GitHub: the blue accent is replaced by a
+purple/lilac accent as the FelpsXP brand color, applied to the XP-flavored
+bits only (example/status/difficulty/XP badges, highlight-stat values).
+Both light and dark palettes are defined from the start via
+`prefers-color-scheme`; a manual toggle UI is still open, separate work.
+A tasteful, internal-only nod to the XP/RPG identity (the badges, the
+mono font on them) stays scoped to those specific elements; the rest of
+the UI (headings, body copy, nav, card structure) stays plain and clean.
 
 ## Stack (ADR-0003)
 
