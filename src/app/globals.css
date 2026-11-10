@@ -1,14 +1,42 @@
 @import 'tailwindcss';
 
+/*
+ * Palette hand-ported from github.com/primer/primitives (MIT), per
+ * ADR-0005: src/tokens/base/color/{light,dark}/{light,dark}.json5.
+ * --color-accent is Primer's own purple scale, promoted from GitHub's
+ * secondary "done" hue to this repo's primary brand accent.
+ */
 @theme {
-  --color-accent: #fbbf24;
+  --color-canvas: #ffffff;
+  --color-surface: #f6f8fa;
+  --color-border: #d1d9e0;
+  --color-fg: #1f2328;
+  --color-fg-muted: #59636e;
+  --color-success: #1a7f37;
+  --color-danger: #cf222e;
+  --color-attention: #9a6700;
+  --color-accent: #8250df;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-canvas: #0d1117;
+    --color-surface: #151b23;
+    --color-border: #3d444d;
+    --color-fg: #f0f6fc;
+    --color-fg-muted: #9198a1;
+    --color-success: #3fb950;
+    --color-danger: #f85149;
+    --color-attention: #d29922;
+    --color-accent: #ab7df8;
+  }
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 body {
-  background: #07111f;
-  color: #e8f0fb;
+  background-color: var(--color-canvas);
+  color: var(--color-fg);
 }
