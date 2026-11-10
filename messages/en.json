@@ -1,7 +1,6 @@
 {
   "home": {
-    "eyebrow": "FelpsXP Hub",
-    "title": "Felipe Sousa",
-    "lede": "Personal engineering hub and portfolio, under construction."
+    "focusLabel": "Current focus",
+    "statsLabel": "In numbers"
   }
 }
