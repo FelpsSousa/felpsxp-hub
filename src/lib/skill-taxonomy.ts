@@ -1,21 +1,9 @@
+import { projectDifficultySchema, skillDomainSchema } from '@/content/schemas';
 import type { Project, ProjectDifficulty, SkillDomain } from '@/content/types';
 
-export const SKILL_DOMAINS: SkillDomain[] = [
-  'appsec',
-  'iam',
-  'backend',
-  'frontend',
-  'devops-infra',
-  'observability',
-  'data',
-];
+export const SKILL_DOMAINS: readonly SkillDomain[] = skillDomainSchema.options;
 
-export const PROJECT_DIFFICULTIES: ProjectDifficulty[] = [
-  'foundational',
-  'applied',
-  'advanced',
-  'frontier',
-];
+export const PROJECT_DIFFICULTIES: readonly ProjectDifficulty[] = projectDifficultySchema.options;
 
 const DOMAIN_LABEL: Record<SkillDomain, string> = {
   appsec: 'AppSec',

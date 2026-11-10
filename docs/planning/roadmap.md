@@ -45,15 +45,17 @@ security controls.
 
 ## Block 1: Foundation
 
-- [ ] Zod schemas for `profile` and `projects`, parsed at build time
+- [x] Zod schemas for `profile` and `projects`, parsed at build time
       (ADR-0004 follow-up).
-- [ ] Test harness: Vitest for content schemas and server logic (ADR for
-      the test stack first).
+- [x] Test harness: Vitest for content schemas and server logic
+      (ADR-0006).
 - [ ] Site shell: header, navigation, mobile menu, footer, 404 page.
 - [ ] Locale switcher (`pt`/`en`).
 - [ ] Manual light/dark toggle on top of the ADR-0005 tokens.
 - [ ] SEO base: `metadataBase`, per-page metadata, `sitemap.ts`, Person and
       WebSite JSON-LD, default OG image with `next/og`.
+- [ ] Static rendering: `generateStaticParams` for the `[locale]` segment,
+      so home and projects are prerendered instead of rendered on demand.
 - [ ] New Vercel project wired to this repository, preview per PR.
 - [ ] Project content review: hide `example-*`, confirm every remaining
       claim, link or screenshot is verifiable.
