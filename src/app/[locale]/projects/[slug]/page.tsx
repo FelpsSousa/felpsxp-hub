@@ -30,10 +30,10 @@ function Section({ title, items }: { title: string; items: string[] }) {
   }
   return (
     <section className="flex flex-col gap-3">
-      <h2 className="text-sm font-medium uppercase tracking-wide text-slate-400">{title}</h2>
+      <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">{title}</h2>
       <ul className="flex flex-col gap-2">
         {items.map((item) => (
-          <li key={item} className="text-slate-300">
+          <li key={item} className="text-fg">
             {item}
           </li>
         ))}
@@ -61,11 +61,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {t('exampleLabel')}
           </span>
         )}
-        <h1 className="text-3xl font-semibold text-white">{project.title}</h1>
-        <p className="text-slate-300">{project.summary}</p>
+        <h1 className="text-3xl font-semibold text-fg">{project.title}</h1>
+        <p className="text-fg">{project.summary}</p>
         <div className="flex flex-wrap gap-2">
           {projectDomains(project).map((domain) => (
-            <span key={domain} className="rounded-full bg-white/5 px-2 py-0.5 text-xs text-slate-300">
+            <span key={domain} className="rounded-full bg-surface px-2 py-0.5 text-xs text-fg-muted">
               {domainLabel(domain)}
             </span>
           ))}
@@ -79,17 +79,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       )}
 
       <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-slate-400">
+        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
           {t('problemLabel')}
         </h2>
-        <p className="text-slate-300">{project.problem}</p>
+        <p className="text-fg">{project.problem}</p>
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-slate-400">
+        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
           {t('solutionLabel')}
         </h2>
-        <p className="text-slate-300">{project.solution}</p>
+        <p className="text-fg">{project.solution}</p>
       </section>
 
       <Section title={t('architectureHighlightsLabel')} items={project.architectureHighlights} />
@@ -99,12 +99,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Section title={t('learningsLabel')} items={project.learnings} />
 
       <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-slate-400">
+        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
           {t('stackLabel')}
         </h2>
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (
-            <span key={tech} className="rounded-full bg-white/5 px-2 py-0.5 text-xs text-slate-300">
+            <span key={tech} className="rounded-full bg-surface px-2 py-0.5 text-xs text-fg-muted">
               {tech}
             </span>
           ))}

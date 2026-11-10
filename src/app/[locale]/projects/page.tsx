@@ -27,8 +27,8 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-20">
       <header className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold text-white">{t('title')}</h1>
-        <p className="text-slate-300">{t('lede')}</p>
+        <h1 className="text-3xl font-semibold text-fg">{t('title')}</h1>
+        <p className="text-fg">{t('lede')}</p>
       </header>
 
       <div className="flex flex-col gap-6">
@@ -38,7 +38,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="flex flex-col gap-3 rounded-lg border border-white/10 p-5 transition hover:border-white/30"
+              className="flex flex-col gap-3 rounded-lg border border-border p-5 transition hover:border-accent/50"
             >
               {cover && cover.kind === 'image' && (
                 <div className="relative aspect-video w-full overflow-hidden rounded-md">
@@ -52,16 +52,16 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
                 </div>
               )}
 
-              <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-fg-muted">
                 {project.isExample && (
                   <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">
                     {t('exampleLabel')}
                   </span>
                 )}
-                <span className="rounded-full border border-white/10 px-2 py-0.5">
+                <span className="rounded-full border border-border px-2 py-0.5">
                   {project.status}
                 </span>
-                <span className="rounded-full border border-white/10 px-2 py-0.5">
+                <span className="rounded-full border border-border px-2 py-0.5">
                   {project.difficulty}
                 </span>
                 <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">
@@ -69,14 +69,14 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
                 </span>
               </div>
 
-              <h2 className="text-xl font-medium text-white">{project.title}</h2>
-              <p className="text-slate-300">{project.summary}</p>
+              <h2 className="text-xl font-medium text-fg">{project.title}</h2>
+              <p className="text-fg">{project.summary}</p>
 
               <div className="flex flex-wrap gap-2">
                 {projectDomains(project).map((domain) => (
                   <span
                     key={domain}
-                    className="rounded-full bg-white/5 px-2 py-0.5 text-xs text-slate-300"
+                    className="rounded-full bg-surface px-2 py-0.5 text-xs text-fg-muted"
                   >
                     {domainLabel(domain)}
                   </span>
