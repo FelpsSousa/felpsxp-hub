@@ -10,5 +10,6 @@ To add one, copy [`template.md`](template.md) to the next number and add a row b
 | [0003](0003-v1-stack-and-scope.md) | v1 frontend stack and scope | Accepted | 2026-11-09 |
 | [0004](0004-content-validation-and-mdx-scope.md) | Content validation with Zod, MDX scoped to /writing | Accepted | 2026-11-10 |
 | [0005](0005-design-tokens-primer-reference.md) | Design tokens, GitHub Primer as reference, purple as brand accent | Accepted | 2026-11-10 |
+| [0006](0006-testing-stack.md) | Testing stack, Vitest for units and Playwright for end-to-end | Accepted | 2026-11-10 |
 
 Ecosystem-wide decisions live in [`felpsxp-architecture`](https://github.com/FelpsSousa/felpsxp-architecture).
