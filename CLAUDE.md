@@ -72,21 +72,25 @@ happens in this repository, and it changes in the same PR as any change to that.
 
 ## Commands
 
-<!-- Fill in when the stack exists. Keep this table accurate. -->
-
 | Task | Command |
 | ---- | ------- |
-| Install | <!-- pnpm install / uv sync --> |
-| Dev server | <!-- pnpm dev / uv run fastapi dev --> |
-| Lint | <!-- pnpm lint / uv run ruff check . --> |
-| Test | <!-- pnpm test / uv run pytest --> |
+| Install | `pnpm install` |
+| Dev server | `pnpm dev` |
+| Build | `pnpm build` |
+| Lint | `pnpm lint` |
+| Typecheck | `pnpm typecheck` |
 | All checks | `pre-commit run --all-files` |
 
 ## Map
 
 - `docs/adr/`: decisions (source of truth for *why*)
 - `.github/`: CI, Dependabot, templates, CODEOWNERS
-- <!-- add main source folders here -->
+- `src/app/[locale]/`: routed pages (App Router, `pt`/`en`), root layout lives here
+- `src/i18n/`: `next-intl` routing, request config, navigation helpers
+- `src/middleware.ts`: locale routing middleware
+- `messages/`: `pt.json` / `en.json` translation strings
+- No database, no auth, no `/studio` in v1 (ADR-0003). Content is typed TS/MDX files,
+  not yet added as of this scaffold.
 
 ## Do not
 
