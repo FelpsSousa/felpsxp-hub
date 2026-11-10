@@ -12,7 +12,6 @@ export const felpsxpArchitectureProjectByLocale: Localized<Project> = {
     difficulty: 'applied',
     primaryDomain: 'appsec',
     secondaryDomains: ['backend', 'observability'],
-    isExample: false,
     media: [],
     role: 'Curadoria, redação técnica, extração de código e política de publicação',
     problem:
@@ -70,7 +69,6 @@ export const felpsxpArchitectureProjectByLocale: Localized<Project> = {
     difficulty: 'applied',
     primaryDomain: 'appsec',
     secondaryDomains: ['backend', 'observability'],
-    isExample: false,
     media: [],
     role: 'Curation, technical writing, code extraction, and publication policy',
     problem:

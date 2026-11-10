@@ -17,7 +17,6 @@ export const beecrowdProblemSolvingProjectByLocale: Localized<Project> = {
     difficulty: 'foundational',
     primaryDomain: 'backend',
     secondaryDomains: [],
-    isExample: false,
     media: [],
     role: 'Desenho do sistema de estudo, padrão de documentação e automação do repositório',
     problem:
@@ -74,7 +73,6 @@ export const beecrowdProblemSolvingProjectByLocale: Localized<Project> = {
     difficulty: 'foundational',
     primaryDomain: 'backend',
     secondaryDomains: [],
-    isExample: false,
     media: [],
     role: 'Study-system design, documentation standard, and repository automation',
     problem:

@@ -12,7 +12,6 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     difficulty: 'frontier',
     primaryDomain: 'iam',
     secondaryDomains: ['appsec', 'backend'],
-    isExample: false,
     media: [],
     role: 'Arquitetura, estrutura do repositório, base de runtime e fundação compartilhada',
     problem:
@@ -72,7 +71,6 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     difficulty: 'frontier',
     primaryDomain: 'iam',
     secondaryDomains: ['appsec', 'backend'],
-    isExample: false,
     media: [],
     role: 'Architecture, repository structure, runtime baseline, and shared foundation',
     problem:

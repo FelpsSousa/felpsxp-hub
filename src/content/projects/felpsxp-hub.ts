@@ -12,7 +12,6 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'frontend',
     secondaryDomains: ['backend'],
-    isExample: false,
     media: [],
     role: 'Estratégia de superfície, arquitetura de informação, direção de conteúdo e implementação',
     problem:
@@ -75,7 +74,6 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'frontend',
     secondaryDomains: ['backend'],
-    isExample: false,
     media: [],
     role: 'Surface strategy, information architecture, content direction, and implementation',
     problem:
