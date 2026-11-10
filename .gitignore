@@ -30,6 +30,14 @@ coverage/
 npm-debug.log*
 pnpm-debug.log*
 
+# --- Next.js generated files ---
+# next-env.d.ts points at .next/dev/types under `next dev` and at
+# .next/types under `next build`, so committing it causes churn; the
+# typecheck script regenerates it with `next typegen`.
+next-env.d.ts
+# Written by `next dev` for coding agents; not project documentation.
+AGENTS.md
+
 # --- Python ---
 __pycache__/
 *.py[cod]
