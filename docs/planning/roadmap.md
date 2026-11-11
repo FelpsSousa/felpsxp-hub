@@ -55,7 +55,7 @@ security controls.
       revisit when `global-not-found` is stable.
 - [x] Locale switcher (`pt`/`en`).
 - [x] Manual light/dark toggle on top of the ADR-0005 tokens.
-- [ ] SEO base: `metadataBase`, per-page metadata, `sitemap.ts`, Person and
+- [x] SEO base: `metadataBase`, per-page metadata, `sitemap.ts`, Person and
       WebSite JSON-LD, default OG image with `next/og`.
 - [x] Static rendering: `generateStaticParams` for the `[locale]` segment,
       so home and projects are prerendered instead of rendered on demand.

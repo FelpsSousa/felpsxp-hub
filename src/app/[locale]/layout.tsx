@@ -4,14 +4,29 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { notFound } from 'next/navigation';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
+import { StructuredData } from '@/components/seo/structured-data';
 import { locales, routing, type AppLocale } from '@/i18n/routing';
+import { getProfile, getSiteSettings } from '@/lib/content';
 import { themeInitScript } from '@/lib/theme';
 import '../globals.css';
 
-export const metadata: Metadata = {
-  title: 'Felipe Sousa',
-  description: 'Personal engineering hub and portfolio.',
-};
+export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
+  const { locale } = await params;
+  const { name, url } = getSiteSettings();
+  const profile = getProfile(locale as AppLocale);
+
+  return {
+    metadataBase: new URL(url),
+    title: {
+      default: `${name} · ${profile.title}`,
+      template: `%s · ${name}`,
+    },
+    description: profile.shortBio,
+    applicationName: name,
+    authors: [{ name, url }],
+    creator: name,
+  };
+}
 
 /** Prerender every locale at build time instead of on each request. */
 export function generateStaticParams() {
@@ -47,6 +62,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             the current CSP's 'unsafe-inline'; when the CSP is tightened, this
             script gets a sha256 hash instead, which keeps pages static. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <StructuredData locale={locale as AppLocale} />
       </head>
       <body className="flex min-h-dvh flex-col">
         <NextIntlClientProvider messages={messages}>

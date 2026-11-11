@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { AppLocale } from '@/i18n/routing';
 import { getProjectBySlug, getProjectStaticParams } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 import { domainLabel, projectDomains } from '@/lib/skill-taxonomy';
 
 type ProjectPageProps = {
@@ -18,10 +19,16 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { locale, slug } = await params;
   const project = getProjectBySlug(slug, locale as AppLocale);
 
-  return {
-    title: project?.title ?? 'Project',
-    description: project?.summary,
-  };
+  if (!project) {
+    return {};
+  }
+
+  return pageMetadata({
+    locale: locale as AppLocale,
+    path: `/projects/${project.slug}`,
+    title: project.title,
+    description: project.summary,
+  });
 }
 
 function Section({ title, items }: { title: string; items: string[] }) {
