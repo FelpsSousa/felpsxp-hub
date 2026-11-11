@@ -1,11 +1,26 @@
+import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import { getProfile } from '@/lib/content';
+import { getProfile, getSiteSettings } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 import type { AppLocale } from '@/i18n/routing';
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const profile = getProfile(locale as AppLocale);
+
+  return pageMetadata({
+    locale: locale as AppLocale,
+    path: '/',
+    title: `${getSiteSettings().name} · ${profile.title}`,
+    description: profile.shortBio,
+    absoluteTitle: true,
+  });
+}
 
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;

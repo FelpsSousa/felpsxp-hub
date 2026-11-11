@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
 import { getPublicProjects } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 import { domainLabel, projectDomains, projectXp } from '@/lib/skill-taxonomy';
 
 type ProjectsPageProps = {
@@ -12,11 +13,14 @@ type ProjectsPageProps = {
 
 export async function generateMetadata({ params }: ProjectsPageProps): Promise<Metadata> {
   const { locale } = await params;
-  return {
-    title: locale === 'pt' ? 'Projetos' : 'Projects',
-    description:
-      'Selected projects that demonstrate ownership, technical reasoning, architecture decisions, and proof of work.',
-  };
+  const t = await getTranslations({ locale, namespace: 'projects' });
+
+  return pageMetadata({
+    locale: locale as AppLocale,
+    path: '/projects',
+    title: t('title'),
+    description: t('lede'),
+  });
 }
 
 export default async function ProjectsPage({ params }: ProjectsPageProps) {
