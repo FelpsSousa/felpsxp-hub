@@ -12,6 +12,12 @@
   "localeSwitcher": {
     "label": "Language"
   },
+  "theme": {
+    "system": "system",
+    "light": "light",
+    "dark": "dark",
+    "switch": "Theme: {current}. Switch to {next}."
+  },
   "footer": {
     "sourceCode": "Source code",
     "license": "MIT License",

@@ -12,6 +12,12 @@
   "localeSwitcher": {
     "label": "Idioma"
   },
+  "theme": {
+    "system": "sistema",
+    "light": "claro",
+    "dark": "escuro",
+    "switch": "Tema: {current}. Mudar para {next}."
+  },
   "footer": {
     "sourceCode": "Código-fonte",
     "license": "Licença MIT",
