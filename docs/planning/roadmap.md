@@ -87,9 +87,9 @@ security controls.
 
 ## Block 3: Go-live hardening (GL)
 
-- [ ] `Strict-Transport-Security` header, set by the app itself instead of
-      relying on the host.
-- [ ] `Permissions-Policy` (camera, microphone, geolocation and similar off)
+- [x] `Strict-Transport-Security` header, set by the app itself instead of
+      relying on the host (`preload` left for a go-live decision).
+- [x] `Permissions-Policy` (camera, microphone, geolocation and similar off)
       and `Cross-Origin-Opener-Policy: same-origin`.
 - [ ] CodeQL workflow (SAST) in CI.
 - [ ] Playwright smoke tests with axe accessibility checks on the main
