@@ -53,7 +53,7 @@ security controls.
 - [ ] Server-rendered 404: today the localized 404 is rendered on the
       client (Next.js limitation with a root layout under `[locale]`);
       revisit when `global-not-found` is stable.
-- [ ] Locale switcher (`pt`/`en`).
+- [x] Locale switcher (`pt`/`en`).
 - [ ] Manual light/dark toggle on top of the ADR-0005 tokens.
 - [ ] SEO base: `metadataBase`, per-page metadata, `sitemap.ts`, Person and
       WebSite JSON-LD, default OG image with `next/og`.
@@ -78,7 +78,9 @@ security controls.
       persistence, rate limiting at the edge).
 - [ ] `/contact`: server-side Zod validation, honeypot, timing check,
       Turnstile, delivery through Resend; new env vars in `.env.example`.
-- [ ] `/privacy`: what is collected, why, for how long (LGPD).
+- [ ] `/privacy`: what is collected, why, for how long (LGPD), including
+      the `NEXT_LOCALE` preference cookie (session-only, `Secure`,
+      `SameSite=Lax`).
 - [ ] Home: highlight stats, featured projects, closing call to action.
 
 ## Block 3: Go-live hardening (GL)
