@@ -1,4 +1,24 @@
 {
+  "site": {
+    "skipToContent": "Pular para o conteúdo",
+    "homeLink": "Página inicial"
+  },
+  "nav": {
+    "label": "Navegação principal",
+    "projects": "Projetos",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "footer": {
+    "sourceCode": "Código-fonte",
+    "license": "Licença MIT",
+    "elsewhere": "Em outros lugares"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "O endereço pode ter mudado ou nunca ter existido.",
+    "backHome": "Voltar para a página inicial"
+  },
   "home": {
     "focusLabel": "Foco atual",
     "statsLabel": "Em números"

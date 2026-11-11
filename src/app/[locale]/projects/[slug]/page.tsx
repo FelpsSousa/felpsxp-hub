@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { AppLocale } from '@/i18n/routing';
 import { getProjectBySlug, getProjectStaticParams } from '@/lib/content';
 import { domainLabel, projectDomains } from '@/lib/skill-taxonomy';
@@ -44,6 +44,7 @@ function Section({ title, items }: { title: string; items: string[] }) {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { locale, slug } = await params;
+  setRequestLocale(locale as AppLocale);
   const t = await getTranslations('projects');
   const project = getProjectBySlug(slug, locale as AppLocale);
 
@@ -54,7 +55,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const cover = project.media.find((item) => item.kind === 'image');
 
   return (
-    <main className="mx-auto flex max-w-2xl flex-col gap-10 px-6 py-20">
+    <div className="mx-auto flex max-w-2xl flex-col gap-10 px-6 py-20">
       <header className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-fg">{project.title}</h1>
         <p className="text-fg">{project.summary}</p>
@@ -105,6 +106,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

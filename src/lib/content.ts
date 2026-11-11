@@ -7,8 +7,9 @@ import { felpsxpFinanceProjectByLocale } from '@/content/projects/felpsxp-financ
 import { felpsxpHubProjectByLocale } from '@/content/projects/felpsxp-hub';
 import { felpsxpPlatformProjectByLocale } from '@/content/projects/felpsxp-platform';
 import { homeNetworkObservabilityProjectByLocale } from '@/content/projects/home-network-observability';
-import { profileSchema, projectSchema } from '@/content/schemas';
-import type { Localized, Profile, Project } from '@/content/types';
+import { profileSchema, projectSchema, siteSettingsSchema } from '@/content/schemas';
+import { siteSettings as siteSettingsSource } from '@/content/site/settings';
+import type { Localized, Profile, Project, SiteSettings } from '@/content/types';
 import type { AppLocale } from '@/i18n/routing';
 import { locales } from '@/i18n/routing';
 import { parseContent } from '@/lib/parse-content';
@@ -45,6 +46,12 @@ const projectsByLocale = byLocale((locale) =>
 const profilesByLocale = byLocale((locale) =>
   parseContent(profileSchema, profileByLocale[locale], `profile (${locale})`),
 );
+
+const siteSettings = parseContent(siteSettingsSchema, siteSettingsSource, 'site settings');
+
+export function getSiteSettings(): SiteSettings {
+  return siteSettings;
+}
 
 export function getProfile(locale: AppLocale): Profile {
   return profilesByLocale[locale];

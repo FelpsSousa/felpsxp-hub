@@ -129,6 +129,14 @@ export const projectSchema = z.strictObject({
   links: z.array(navigationLinkSchema).optional(),
 });
 
+/** Site-wide settings: identity, canonical URL and outbound links. */
+export const siteSettingsSchema = z.strictObject({
+  name: text,
+  url: httpsUrl,
+  repositoryUrl: httpsUrl,
+  socialLinks: z.array(navigationLinkSchema).min(1),
+});
+
 export const profileSchema = z.strictObject({
   displayName: text,
   title: text,

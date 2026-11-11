@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
 import { getPublicProjects } from '@/lib/content';
@@ -21,11 +21,12 @@ export async function generateMetadata({ params }: ProjectsPageProps): Promise<M
 
 export default async function ProjectsPage({ params }: ProjectsPageProps) {
   const { locale } = await params;
+  setRequestLocale(locale as AppLocale);
   const t = await getTranslations('projects');
   const projects = getPublicProjects(locale as AppLocale);
 
   return (
-    <main className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-20">
+    <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-20">
       <header className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold text-fg">{t('title')}</h1>
         <p className="text-fg">{t('lede')}</p>
@@ -81,6 +82,6 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
           );
         })}
       </div>
-    </main>
+    </div>
   );
 }

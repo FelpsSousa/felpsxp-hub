@@ -1,14 +1,21 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { routing, type AppLocale } from '@/i18n/routing';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { SiteHeader } from '@/components/layout/site-header';
+import { locales, routing, type AppLocale } from '@/i18n/routing';
 import '../globals.css';
 
 export const metadata: Metadata = {
   title: 'Felipe Sousa',
   description: 'Personal engineering hub and portfolio.',
 };
+
+/** Prerender every locale at build time instead of on each request. */
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 type LocaleLayoutProps = {
   children: React.ReactNode;
@@ -22,12 +29,29 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     notFound();
   }
 
+  // Lets next-intl read the locale without request headers, which keeps
+  // the pages static. Every page under this layout calls it as well.
+  setRequestLocale(locale as AppLocale);
+
   const messages = await getMessages();
+  const t = await getTranslations('site');
 
   return (
     <html lang={locale}>
-      <body>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+      <body className="flex min-h-dvh flex-col">
+        <NextIntlClientProvider messages={messages}>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-fg focus:outline-2 focus:outline-accent"
+          >
+            {t('skipToContent')}
+          </a>
+          <SiteHeader />
+          <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+            {children}
+          </main>
+          <SiteFooter />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

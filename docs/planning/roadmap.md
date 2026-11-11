@@ -49,12 +49,15 @@ security controls.
       (ADR-0004 follow-up).
 - [x] Test harness: Vitest for content schemas and server logic
       (ADR-0006).
-- [ ] Site shell: header, navigation, mobile menu, footer, 404 page.
+- [x] Site shell: header, navigation, mobile menu, footer, 404 page.
+- [ ] Server-rendered 404: today the localized 404 is rendered on the
+      client (Next.js limitation with a root layout under `[locale]`);
+      revisit when `global-not-found` is stable.
 - [ ] Locale switcher (`pt`/`en`).
 - [ ] Manual light/dark toggle on top of the ADR-0005 tokens.
 - [ ] SEO base: `metadataBase`, per-page metadata, `sitemap.ts`, Person and
       WebSite JSON-LD, default OG image with `next/og`.
-- [ ] Static rendering: `generateStaticParams` for the `[locale]` segment,
+- [x] Static rendering: `generateStaticParams` for the `[locale]` segment,
       so home and projects are prerendered instead of rendered on demand.
 - [ ] New Vercel project wired to this repository, preview per PR.
 - [x] Remove the fictional `example-*` projects, their mock screenshots and
