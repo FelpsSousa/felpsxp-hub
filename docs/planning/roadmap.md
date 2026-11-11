@@ -59,7 +59,8 @@ security controls.
       WebSite JSON-LD, default OG image with `next/og`.
 - [x] Static rendering: `generateStaticParams` for the `[locale]` segment,
       so home and projects are prerendered instead of rendered on demand.
-- [ ] New Vercel project wired to this repository, preview per PR.
+- [x] New Vercel project wired to this repository, preview per PR
+      (production at `felpsxp-hub-two.vercel.app` until the domain moves).
 - [x] Remove the fictional `example-*` projects, their mock screenshots and
       the "Example" badge.
 - [ ] Content review with Felipe: confirm every remaining claim, link and
@@ -86,7 +87,10 @@ security controls.
 
 ## Block 3: Go-live hardening (GL)
 
-- [ ] `Strict-Transport-Security` header.
+- [ ] `Strict-Transport-Security` header, set by the app itself instead of
+      relying on the host.
+- [ ] `Permissions-Policy` (camera, microphone, geolocation and similar off)
+      and `Cross-Origin-Opener-Policy: same-origin`.
 - [ ] CodeQL workflow (SAST) in CI.
 - [ ] Playwright smoke tests with axe accessibility checks on the main
       pages, running in CI.
@@ -114,29 +118,43 @@ security controls.
 
 The AppSec and ethical hacking track: measure who probes the Hub, from
 where, when, and what is attempted, then show how each attempt is handled.
-Each item below needs its ADR before code, because it introduces data
-collection and, most likely, persistence.
 
+**Direction (2026-11-11):** collection, storage, dashboards and alerts for
+every FelpsXP app (Hub, News, Finance and future modules) move to
+`felpsxp-platform`, refactored into the ecosystem's CORE and observatory.
+The Hub becomes an event emitter and the public showcase of aggregated
+data; it never stores visitor data itself and never depends on the
+Platform being up. This starts after the Hub's go-live and is recorded as
+an ecosystem ADR in `felpsxp-architecture`.
+
+- [ ] Observatory v0, no database: a public page built from the Vercel and
+      Cloudflare analytics APIs (blocked requests, countries, probed paths),
+      aggregated at build or revalidation time.
+- [ ] Ecosystem ADR in `felpsxp-architecture`: the Platform as CORE and
+      observatory (ingestion API, storage with the data tiers below,
+      dashboards, alerts), one scoped ingestion key per app, HMAC-signed
+      events, and a Cloudflare Tunnel so the self-hosted server exposes no
+      open port.
 - [ ] ADR: telemetry source. Cloudflare in proxy mode (WAF events, bot
       score, country, ASN) versus Vercel Firewall and logs; Vercel
       recommends DNS-only records in front of its domains, so the trade-off
       has to be weighed explicitly.
-- [ ] ADR: storage and privacy. Persistence (Supabase, the ecosystem
-      default) with IPs hashed under a rotating salt, a fixed retention
-      window, and only aggregates exposed publicly; `/privacy` updated in
-      the same PR.
+- [ ] Hub event emitter: fire-and-forget, versioned event schema, signed
+      with the Hub's own key, never slowing down or failing a response;
+      `/privacy` updated in the same PR.
 - [ ] Canary routes for common scanner targets (`/wp-admin`, `/.env`,
       `/.git/config`, `/phpmyadmin`, and similar): respond with a plain 404
-      and record the hit.
+      and emit an event.
 - [ ] CSP violation reporting endpoint (`report-to`), with the policy first
       shipped in report-only mode for any tightening.
 - [ ] Drop `'unsafe-inline'` from `script-src`: allow the theme init script
       by its sha256 hash, which keeps pages static (nonces would force
       dynamic rendering).
 - [ ] Public `/security/observatory` page with aggregated charts
-      (Recharts): attempts per hour, most probed paths, top countries and
-      networks, blocked versus allowed.
-- [ ] Spike alerts by e-mail through Resend.
+      (Recharts), reading only tier C aggregates from the Platform:
+      attempts per hour, most probed paths, top countries and networks,
+      blocked versus allowed.
+- [ ] Spike alerts (handled by the Platform, delivered through Resend).
 - [ ] Scheduled OWASP ZAP baseline scan (passive DAST) against production
       in GitHub Actions, with results kept as workflow artifacts.
 
@@ -144,7 +162,7 @@ Guardrails: passive observation of Felipe's own infrastructure only; no
 active response against any source; nothing published that identifies an
 individual.
 
-Data tiers, to be formalised in the storage and privacy ADR:
+Data tiers, to be formalised in the ecosystem ADR (enforced by the Platform):
 
 | Tier | Contents | Retention | Visibility |
 | --- | --- | --- | --- |
@@ -157,15 +175,13 @@ event, or any combination of attributes that could point to a person. A
 public feed of individual probes is limited to datacenter and hosting
 ASNs.
 
-**Reuse across the ecosystem.** The observatory is meant to cover other
-FelpsXP modules later (FelpsXP News, Finance, and whatever comes next). The
-Hub implements it first, but the security event shape is designed from the
-start as a stable, versioned contract, so the collector can be promoted to
-a CORE service once a second module needs it; that promotion is an
-ecosystem decision and gets its ADR in `felpsxp-architecture`. Modules with
-authenticated users, such as Finance, contribute anonymous attack traffic
-only: the activity of signed-in household members never reaches a public
-view.
+**Reuse across the ecosystem.** Every module emits the same versioned
+security event shape to the Platform. Modules with authenticated users,
+such as Finance, contribute anonymous attack traffic only: the activity of
+signed-in household members never reaches a public view. Because the
+Platform repository is private, its public proof lives in the Hub's
+observatory page, in `felpsxp-architecture`, and possibly later in a
+clean public extraction of the observatory module.
 
 ## Block 6: Polish
 
