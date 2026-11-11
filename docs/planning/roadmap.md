@@ -54,7 +54,7 @@ security controls.
       client (Next.js limitation with a root layout under `[locale]`);
       revisit when `global-not-found` is stable.
 - [x] Locale switcher (`pt`/`en`).
-- [ ] Manual light/dark toggle on top of the ADR-0005 tokens.
+- [x] Manual light/dark toggle on top of the ADR-0005 tokens.
 - [ ] SEO base: `metadataBase`, per-page metadata, `sitemap.ts`, Person and
       WebSite JSON-LD, default OG image with `next/og`.
 - [x] Static rendering: `generateStaticParams` for the `[locale]` segment,
@@ -80,7 +80,8 @@ security controls.
       Turnstile, delivery through Resend; new env vars in `.env.example`.
 - [ ] `/privacy`: what is collected, why, for how long (LGPD), including
       the `NEXT_LOCALE` preference cookie (session-only, `Secure`,
-      `SameSite=Lax`).
+      `SameSite=Lax`) and the `theme` key in localStorage (never sent to
+      the server).
 - [ ] Home: highlight stats, featured projects, closing call to action.
 
 ## Block 3: Go-live hardening (GL)
@@ -129,6 +130,9 @@ collection and, most likely, persistence.
       and record the hit.
 - [ ] CSP violation reporting endpoint (`report-to`), with the policy first
       shipped in report-only mode for any tightening.
+- [ ] Drop `'unsafe-inline'` from `script-src`: allow the theme init script
+      by its sha256 hash, which keeps pages static (nonces would force
+      dynamic rendering).
 - [ ] Public `/security/observatory` page with aggregated charts
       (Recharts): attempts per hour, most probed paths, top countries and
       networks, blocked versus allowed.

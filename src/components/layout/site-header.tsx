@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { MobileNav } from '@/components/layout/mobile-nav';
 import { NavLink } from '@/components/layout/nav-link';
+import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { Link } from '@/i18n/navigation';
 import { getSiteSettings } from '@/lib/content';
 import { primaryNavigation } from '@/lib/navigation';
@@ -32,7 +33,10 @@ export async function SiteHeader() {
             </ul>
           </nav>
 
-          <LocaleSwitcher />
+          <div className="flex items-center gap-1">
+            <LocaleSwitcher />
+            <ThemeToggle />
+          </div>
           <MobileNav />
         </div>
       </div>

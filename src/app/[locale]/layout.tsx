@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
 import { locales, routing, type AppLocale } from '@/i18n/routing';
+import { themeInitScript } from '@/lib/theme';
 import '../globals.css';
 
 export const metadata: Metadata = {
@@ -37,7 +38,16 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const t = await getTranslations('site');
 
   return (
-    <html lang={locale}>
+    // suppressHydrationWarning: the inline theme script may set
+    // `data-theme` on <html> before React hydrates; that attribute alone is
+    // expected to differ from the server-rendered markup.
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        {/* Runs before first paint so a stored theme never flashes. Allowed by
+            the current CSP's 'unsafe-inline'; when the CSP is tightened, this
+            script gets a sha256 hash instead, which keeps pages static. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
         <NextIntlClientProvider messages={messages}>
           <a

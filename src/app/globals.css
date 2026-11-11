@@ -18,8 +18,14 @@
   --color-accent: #8250df;
 }
 
+/*
+ * Dark palette. It applies when the visitor explicitly chose dark
+ * (`<html data-theme="dark">`, set by the theme toggle), or when the
+ * operating system prefers dark and no explicit light choice was made.
+ * Light is the @theme default above.
+ */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --color-canvas: #0d1117;
     --color-surface: #151b23;
     --color-border: #3d444d;
@@ -32,8 +38,29 @@
   }
 }
 
+:root[data-theme='dark'] {
+  --color-canvas: #0d1117;
+  --color-surface: #151b23;
+  --color-border: #3d444d;
+  --color-fg: #f0f6fc;
+  --color-fg-muted: #9198a1;
+  --color-success: #3fb950;
+  --color-danger: #f85149;
+  --color-attention: #d29922;
+  --color-accent: #ab7df8;
+}
+
+/* Native controls and scrollbars follow the active palette. */
 :root {
   color-scheme: light dark;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 body {
