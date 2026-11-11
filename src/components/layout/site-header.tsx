@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { MobileNav } from '@/components/layout/mobile-nav';
 import { NavLink } from '@/components/layout/nav-link';
 import { Link } from '@/i18n/navigation';
@@ -20,17 +21,20 @@ export async function SiteHeader() {
           {name}
         </Link>
 
-        <nav aria-label={t('nav.label')} className="hidden sm:block">
-          <ul className="flex items-center gap-6 text-sm">
-            {primaryNavigation.map((item) => (
-              <li key={item.key}>
-                <NavLink href={item.href}>{t(`nav.${item.key}`)}</NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <nav aria-label={t('nav.label')} className="hidden sm:block">
+            <ul className="flex items-center gap-6 text-sm">
+              {primaryNavigation.map((item) => (
+                <li key={item.key}>
+                  <NavLink href={item.href}>{t(`nav.${item.key}`)}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <MobileNav />
+          <LocaleSwitcher />
+          <MobileNav />
+        </div>
       </div>
     </header>
   );

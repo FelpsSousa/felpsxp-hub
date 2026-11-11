@@ -9,6 +9,9 @@
     "openMenu": "Abrir menu",
     "closeMenu": "Fechar menu"
   },
+  "localeSwitcher": {
+    "label": "Idioma"
+  },
   "footer": {
     "sourceCode": "Código-fonte",
     "license": "Licença MIT",
