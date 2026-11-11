@@ -82,8 +82,30 @@ We will use **Option B**, a Server Action, with the request handled in this orde
 **Responses** are generic: success, a validation error naming only the fields to fix, or a
 "try again later" message. Internal errors and third-party responses are never shown.
 
-**Logging** records which step failed (`turnstile`, `validation`, `delivery`) and nothing
-else: no names, addresses, message text or IPs.
+**Logging** records which step failed (`turnstile`, `honeypot`, `validation`, `delivery`)
+and nothing personal: no names, addresses, message text or IPs.
+
+**Security events.** Every rejected attempt also produces an anonymous security event, the
+first source of data for the observatory (roadmap Block 5). Version 1 of the event:
+
+| Field | Content |
+| --- | --- |
+| `schema` | `hub.contact.v1` |
+| `outcome` | `rejected` or `delivered` |
+| `reason` | For rejections: `turnstile`, `honeypot`, `validation` or `delivery` |
+| `turnstileErrors` | Cloudflare's error codes, when Turnstile failed |
+| `country` | ISO country code from the hosting platform's geolocation header |
+| `clientClass` | `browser`, `tool` (curl, scripting libraries), `known-bot` or `unknown`, derived from the User-Agent, which is then discarded |
+| `occurredAt` | Timestamp rounded down to the minute |
+
+Never part of the event: names, e-mail addresses, company, message text (a bot's included),
+IP addresses or the raw User-Agent. A delivered message contributes only to a count.
+
+Until the Platform's ingestion API exists, the event is written as one structured log line.
+Afterwards the same event is sent, signed, to the Platform, which applies the data tiers;
+the form itself does not change, only the event's destination. The Hub stores nothing in
+either case. Publicly, only aggregates appear: rejections per day and reason, the rejection
+rate and the most frequent countries among rejected attempts.
 
 **Data.** Nothing is stored by the Hub. The message exists only in Felipe's mailbox, and the
 `/privacy` page says so, together with Cloudflare's role in the bot check.
@@ -120,8 +142,9 @@ third-party origin the Hub loads.
 
 **Follow-ups**
 
-- [ ] Felipe: Cloudflare Email Routing for `contato@felpsxp.com`, Resend domain
+- [ ] Felipe: Cloudflare Email Routing for the public contact address, Resend domain
       verification, Turnstile site and secret keys.
+- [ ] Send `hub.contact.v1` events to the Platform once its ingestion API exists (Block 5).
 - [ ] Implement the action, the schema and the page, with unit tests for every step.
 - [ ] Update `.env.example` (and drop the unused Supabase entries from the template).
 - [ ] Add Turnstile to the CSP.
