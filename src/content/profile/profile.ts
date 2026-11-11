@@ -39,7 +39,7 @@ export const profileByLocale: Localized<Profile> = {
     ],
     highlightStats: [
       { value: '2 anos', label: 'Frontend de plataformas SaaS nacionais' },
-      { value: '27 ADRs', label: 'Decisões de arquitetura documentadas no FelpsXP Ecosystem' },
+      { value: '16 ADRs', label: 'Decisões de arquitetura públicas, verificáveis no GitHub' },
       { value: '11 anos', label: 'Desde o primeiro contato com programação' },
     ],
   },
@@ -81,7 +81,7 @@ export const profileByLocale: Localized<Profile> = {
     ],
     highlightStats: [
       { value: '2 years', label: 'Frontend of national SaaS platforms' },
-      { value: '27 ADRs', label: 'Architecture decisions documented across the FelpsXP Ecosystem' },
+      { value: '16 ADRs', label: 'Public architecture decisions, verifiable on GitHub' },
       { value: '11 years', label: 'Since my first line of code' },
     ],
   },
