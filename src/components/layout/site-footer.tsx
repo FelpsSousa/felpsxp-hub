@@ -18,6 +18,9 @@ export async function SiteFooter() {
           ({t('license')}) ·{' '}
           <Link href="/privacy" className="underline underline-offset-4 hover:text-fg">
             {t('privacy')}
+          </Link> ·{' '}
+          <Link href="/security" className="underline underline-offset-4 hover:text-fg">
+            {t('security')}
           </Link>
         </p>
 

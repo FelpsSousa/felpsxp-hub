@@ -1,0 +1,8 @@
+# Security contact for felpsxp.com (RFC 9116).
+# The policy explains scope, safe harbor and response times.
+Contact: mailto:security@felpsxp.com
+Contact: https://github.com/FelpsSousa/felpsxp-hub/security/advisories/new
+Expires: 2027-11-01T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://felpsxp.com/.well-known/security.txt
+Policy: https://felpsxp.com/security

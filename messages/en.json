@@ -23,7 +23,8 @@
     "sourceCode": "Source code",
     "license": "MIT License",
     "elsewhere": "Elsewhere",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "security": "Security"
   },
   "notFound": {
     "title": "Page not found",
@@ -86,8 +87,9 @@
     },
     "privacyLink": "How your data is handled"
   },
-  "privacy": {
+  "legal": {
     "updated": "Updated on {date}",
-    "contactLabel": "To exercise your rights or ask a question:"
+    "privacyContact": "To exercise your rights or ask a question:",
+    "securityContact": "To report a vulnerability:"
   }
 }

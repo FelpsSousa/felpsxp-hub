@@ -30,13 +30,18 @@ test('an unknown address returns a localized 404', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
 });
 
-test('robots.txt, sitemap.xml and the share image are served', async ({ request }) => {
+test('robots.txt, sitemap.xml, security.txt and the share images are served', async ({ request }) => {
   const robots = await request.get('/robots.txt');
   expect(await robots.text()).toContain('Sitemap: https://felpsxp.com/sitemap.xml');
 
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.ok()).toBe(true);
   expect(await sitemap.text()).toContain('<loc>https://felpsxp.com/privacy</loc>');
+
+  const securityTxt = await request.get('/.well-known/security.txt');
+  expect(securityTxt.ok()).toBe(true);
+  expect(securityTxt.headers()['content-type']).toContain('text/plain');
+  expect(await securityTxt.text()).toContain('Contact: mailto:security@felpsxp.com');
 
   for (const image of ['/opengraph-image', '/en/opengraph-image']) {
     const response = await request.get(image, { maxRedirects: 0 });

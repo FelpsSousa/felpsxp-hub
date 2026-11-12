@@ -14,9 +14,14 @@ Thank you for helping keep **felpsxp-hub** and its users safe.
 
 **Do not open a public issue, discussion or pull request for security problems.**
 
-Report privately through GitHub:
-**Security → Advisories → Report a vulnerability**
-(`https://github.com/FelpsSousa/felpsxp-hub/security/advisories/new`).
+Report privately, through either channel:
+
+- e-mail: **security@felpsxp.com**;
+- GitHub: **Security → Advisories → Report a vulnerability**
+  (`https://github.com/FelpsSousa/felpsxp-hub/security/advisories/new`).
+
+The same policy is published at [felpsxp.com/security](https://felpsxp.com/security), and
+`https://felpsxp.com/.well-known/security.txt` (RFC 9116) lists both contacts.
 
 Please include:
 
@@ -58,4 +63,8 @@ to demonstrate the issue. Personal data you may encounter must not be kept or sh
 - `gitleaks` runs in pre-commit and in CI over the full history.
 - Dependabot keeps dependencies and GitHub Actions current; actions are pinned to commit SHAs.
 - Workflows run with least-privilege `GITHUB_TOKEN` permissions.
-- Code scanning (CodeQL) and secret scanning with push protection are enabled in repository settings.
+- Code scanning runs CodeQL (`security-extended`) on the code and on the workflows, through
+  `.github/workflows/codeql.yml`; secret scanning with push protection is enabled in
+  repository settings.
+- Tests assert every security header and CSP directive, and an end-to-end suite checks them on
+  a production build; the threat model lives in `docs/security/threat-model.md`.

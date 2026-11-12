@@ -98,7 +98,8 @@ security controls.
       pages, running in CI (desktop and mobile, light and dark).
 - [ ] Lighthouse pass (performance, accessibility, SEO, best practices).
 - [x] `docs/security/threat-model.md`: STRIDE threat model of the Hub.
-- [ ] `/security` page and `/.well-known/security.txt`.
+- [x] `/security` page and `/.well-known/security.txt` (RFC 9116, with a CI
+      check that fails 30 days before it expires).
 - [x] Cloudflare Email Routing for the `felpsxp.com` addresses.
 - [ ] Edge rate-limit rule for the contact form (Vercel Firewall, or
       Cloudflare if the domain is proxied), per ADR-0007.
