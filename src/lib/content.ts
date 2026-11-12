@@ -84,6 +84,11 @@ export function getPublicProjects(locale: AppLocale): Project[] {
   return getAllProjects(locale).filter((project) => project.visibility === 'public');
 }
 
+/** Public projects marked as featured, in the list's display order. */
+export function getFeaturedProjects(locale: AppLocale): Project[] {
+  return getPublicProjects(locale).filter((project) => project.featured);
+}
+
 export function getProjectBySlug(slug: string, locale: AppLocale): Project | undefined {
   return getPublicProjects(locale).find((project) => project.slug === slug);
 }

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import { getProfile, getSiteSettings } from '@/lib/content';
+import { ProjectCard } from '@/components/projects/project-card';
+import { Link } from '@/i18n/navigation';
+import { getFeaturedProjects, getProfile, getSiteSettings } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
+import type { Project } from '@/content/types';
 import type { AppLocale } from '@/i18n/routing';
 
 type HomePageProps = {
@@ -26,11 +29,18 @@ export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale as AppLocale);
   const profile = getProfile(locale as AppLocale);
+  const featured = getFeaturedProjects(locale as AppLocale);
 
-  return <HomeContent profile={profile} />;
+  return <HomeContent profile={profile} featured={featured} />;
 }
 
-function HomeContent({ profile }: { profile: ReturnType<typeof getProfile> }) {
+function HomeContent({
+  profile,
+  featured,
+}: {
+  profile: ReturnType<typeof getProfile>;
+  featured: Project[];
+}) {
   const t = useTranslations('home');
 
   return (
@@ -75,6 +85,34 @@ function HomeContent({ profile }: { profile: ReturnType<typeof getProfile> }) {
             </div>
           ))}
         </dl>
+      </section>
+
+      <section className="flex flex-col gap-4">
+        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
+          {t('featuredLabel')}
+        </h2>
+        <div className="flex flex-col gap-4">
+          {featured.map((project) => (
+            <ProjectCard key={project.slug} project={project} headingLevel="h3" />
+          ))}
+        </div>
+        <Link
+          href="/projects"
+          className="w-fit text-accent underline underline-offset-4 hover:decoration-2"
+        >
+          {t('allProjects')}
+        </Link>
+      </section>
+
+      <section className="flex flex-col gap-4 rounded-lg border border-border bg-surface p-6">
+        <h2 className="text-xl font-semibold text-fg">{t('ctaTitle')}</h2>
+        <p className="text-fg">{t('ctaBody')}</p>
+        <Link
+          href="/contact"
+          className="w-fit rounded-md bg-accent px-5 py-2 font-medium text-canvas hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {t('ctaButton')}
+        </Link>
       </section>
     </div>
   );

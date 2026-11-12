@@ -3,6 +3,7 @@ import type { Project } from '@/content/types';
 import { locales } from '@/i18n/routing';
 import {
   getAllProjects,
+  getFeaturedProjects,
   getPrivacyPage,
   getSecurityPage,
   getProfile,
@@ -133,6 +134,17 @@ describe('content accessors', () => {
   it('returns only public projects from getPublicProjects', () => {
     for (const locale of locales) {
       for (const project of getPublicProjects(locale)) {
+        expect(project.visibility).toBe('public');
+      }
+    }
+  });
+
+  it('returns only public, featured projects from getFeaturedProjects', () => {
+    for (const locale of locales) {
+      const featured = getFeaturedProjects(locale);
+      expect(featured.length).toBeGreaterThan(0);
+      for (const project of featured) {
+        expect(project.featured).toBe(true);
         expect(project.visibility).toBe('public');
       }
     }
