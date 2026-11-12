@@ -12,24 +12,27 @@ export async function SiteFooter() {
   return (
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-3xl flex-col gap-4 px-6 py-8 text-sm text-fg-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>
-          © {year} {name} ·{' '}
-          <a href={repositoryUrl} className="underline underline-offset-4 hover:text-fg">
-            {t('sourceCode')}
-          </a>{' '}
-          ({t('license')}) ·{' '}
-          <Link href="/privacy" className="underline underline-offset-4 hover:text-fg">
-            {t('privacy')}
-          </Link> ·{' '}
-          <Link href="/security" className="underline underline-offset-4 hover:text-fg">
-            {t('security')}
-          </Link>
-          <br />
-          <span className="font-mono text-xs">
+        <div className="flex flex-col gap-2">
+          <p>
+            © {year} {name} ·{' '}
+            <a href={repositoryUrl} className="underline underline-offset-4 hover:text-fg">
+              {t('sourceCode')}
+            </a>{' '}
+            ({t('license')}) ·{' '}
+            <Link href="/privacy" className="underline underline-offset-4 hover:text-fg">
+              {t('privacy')}
+            </Link> ·{' '}
+            <Link href="/security" className="underline underline-offset-4 hover:text-fg">
+              {t('security')}
+            </Link>
+          </p>
+          {/* Small text, so each link gets a 24px-high box of its own to meet
+              WCAG 2.5.8 (target size) wherever the line above wraps. */}
+          <p className="font-mono text-xs">
             <a
               href={build.releasesUrl}
               title={t('versionLabel', { version: build.version })}
-              className="underline underline-offset-4 hover:text-fg"
+              className="inline-block py-1 underline underline-offset-4 hover:text-fg"
             >
               v{build.version}
             </a>
@@ -39,14 +42,14 @@ export async function SiteFooter() {
                 <a
                   href={build.commit.url}
                   title={t('commitLabel', { commit: build.commit.short })}
-                  className="underline underline-offset-4 hover:text-fg"
+                  className="inline-block py-1 underline underline-offset-4 hover:text-fg"
                 >
                   {build.commit.short}
                 </a>
               </>
             )}
-          </span>
-        </p>
+          </p>
+        </div>
 
         <nav aria-label={t('elsewhere')}>
           <ul className="flex gap-4">
