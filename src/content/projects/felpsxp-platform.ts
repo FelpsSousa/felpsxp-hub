@@ -5,7 +5,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     slug: 'felpsxp-platform',
     title: 'FelpsXP Platform',
     summary:
-      'A camada habilitadora do ecossistema: runtime, IAM, eventos, contratos e observabilidade compartilhados, hoje consumidos por duas superfícies em produção, não por superfícies hipotéticas.',
+      'A fundação técnica privada do ecossistema: runtime, IAM, eventos, contratos e observabilidade compartilhados, projetados para serem consumidos por produtos reais como o FelpsXP Finance.',
     status: 'evolving',
     visibility: 'public',
     type: 'platform',
@@ -36,8 +36,8 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
       'Preparar a camada técnica que as futuras superfícies vão consumir',
     ],
     outcomes: [
-      'A Platform deixou de ser protagonista e virou camada habilitadora estável, consumida hoje pelo Hub e pelo Sentinel em produção',
-      'Três cópias independentes do mesmo logger foram centralizadas num pacote único, com 42 testes e uma capacidade que nenhuma das três tinha: redigir campos sensíveis antes de serializar',
+      'A Platform deixou de ser protagonista e virou camada habilitadora: o Hub passou a ser independente dela, e o Sentinel está saindo para repositório próprio',
+      'Três cópias independentes do mesmo logger foram centralizadas num pacote único, coberto por testes automatizados, com uma capacidade que nenhuma das três tinha: redigir campos sensíveis antes de serializar',
       'O limite da API passou a ser exercitado como contrato externo de verdade: um produto em repositório separado consome a plataforma só por ela, sem acesso ao código nem ao banco',
     ],
     learnings: [
@@ -64,7 +64,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     slug: 'felpsxp-platform',
     title: 'FelpsXP Platform',
     summary:
-      'The ecosystem’s enabling layer: shared runtime, IAM, events, contracts and observability, consumed today by two surfaces in production, not by hypothetical ones.',
+      'The ecosystem’s private technical foundation: shared runtime, IAM, events, contracts and observability, designed to be consumed by real products such as FelpsXP Finance.',
     status: 'evolving',
     visibility: 'public',
     type: 'platform',
@@ -95,8 +95,8 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
       'Prepare the technical layer that future surfaces consume',
     ],
     outcomes: [
-      'Platform stopped being the protagonist and became a stable enabling layer, consumed today by Hub and Sentinel in production',
-      'Three independent copies of the same logger were centralized into one package, with 42 tests and a capability none of the three had: redacting sensitive fields before serializing',
+      'Platform stopped being the protagonist and became an enabling layer: the Hub became independent of it, and Sentinel is moving to its own repository',
+      'Three independent copies of the same logger were centralized into one package, covered by automated tests, with a capability none of the three had: redacting sensitive fields before serializing',
       'The API boundary is now exercised as a real external contract: a product in a separate repository consumes the platform only through it, with no access to its source or database',
     ],
     learnings: [

@@ -34,7 +34,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'Parcelas como irmãs sob um mesmo identificador de grupo, sem primeira linha privilegiada: forma que depois serviu inalterada para uma conta dividida entre vários moradores, sem tabela nova',
       'Recorrência idempotente por ponteiro de progresso, que distingue "ainda não gerado" de "gerado e descartado de propósito"',
       'Erro e log que não carregam dado financeiro nem pessoal, por registrar qual operação falhou em vez de manter lista de redação',
-      'Pacote de matemática financeira puro e sem dependências, com 93 testes: parcelamento, ciclo de fatura, recorrência, juros e desconto, e leitura offline dos dígitos de um boleto',
+      'Pacote de matemática financeira puro e sem dependências, coberto por testes automatizados: parcelamento, ciclo de fatura, recorrência, juros e desconto, e leitura offline dos dígitos de um boleto',
     ],
     challenges: [
       'Uma falha real em produção onde as políticas de isolamento corretas nunca eram alcançadas, porque a checagem de permissão da tabela negava a requisição antes: política certa atrás de grant ausente se parece exatamente com produto quebrado',
@@ -49,7 +49,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'Operar o produto em produção, com e-mail transacional no fluxo real de conta',
     ],
     outcomes: [
-      'No ar e em uso diário real por uma casa e por um círculo próximo, não em ambiente de demonstração',
+      'Em produção e em uso diário pela família, não em ambiente de demonstração; o lançamento nas lojas (Android e iOS) está planejado, sem data',
       'Preparado para publicação comercial como aplicativo Android e iOS',
       'Consome a plataforma do ecossistema apenas pela API dela, sem acesso ao código nem ao banco: o limite se mantém honesto porque não é contornável',
       'Gerou o segundo pacote de código real e testado do ecossistema, publicável de forma independente',
@@ -81,7 +81,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     slug: 'felpsxp-finance',
     title: 'FelpsXP Finance',
     summary:
-      'A multi-tenant household finance product, live and in daily use: accounts, cards, instalments, loans, goals and expenses split between the people who live there, shipped to iOS, Android and web from one codebase.',
+      'A multi-tenant household finance product, live and in daily use: accounts, cards, instalments, loans, goals and expenses split between the people who live there, built for iOS, Android and web from one codebase.',
     status: 'active',
     visibility: 'public',
     type: 'product',
@@ -104,7 +104,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'Instalments as siblings under a shared group id, with no privileged first row: a shape that later solved an unrelated problem unchanged, one bill paid by several household members, with no new table',
       'Recurrence made idempotent by a progress pointer, which can tell "not generated yet" from "generated and deliberately discarded"',
       'Errors and logs that carry no financial or personal data, by logging which operation failed rather than maintaining a redaction list',
-      'A pure, dependency-free financial maths package with 93 tests: instalment splitting, card cycles, recurrence, discounts and interest, and reading a bank slip’s own digits offline',
+      'A pure, dependency-free financial maths package covered by automated tests: instalment splitting, card cycles, recurrence, discounts and interest, and reading a bank slip’s own digits offline',
     ],
     challenges: [
       'A real production failure where correct isolation policies were never reached, because the underlying table-permission check denied the request first: a correct policy behind a missing grant looks exactly like a broken product',
@@ -119,7 +119,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'Operate the product in production, with transactional e-mail in the real account flow',
     ],
     outcomes: [
-      'Live and in real daily use by a household and a close circle, not in a demo environment',
+      'Live and in daily use by the family, not in a demo environment; the store launch (Android and iOS) is planned, with no date yet',
       'Being prepared for commercial release as an Android and iOS app',
       'Consumes the ecosystem platform only through its API, with no access to its source or database: the boundary stays honest because it is not bypassable',
       'Produced the ecosystem’s second package of real, tested code, publishable on its own',

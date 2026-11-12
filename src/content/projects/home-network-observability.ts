@@ -5,8 +5,8 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     slug: 'home-network-observability',
     title: 'Sistema de Observabilidade de Rede Doméstica',
     summary:
-      'Sentinel: um sistema real de monitoramento e alertas de rede doméstica, com descoberta de dispositivos, visibilidade de DNS, inteligência de categorias, score de risco e um dashboard completo pro operador.',
-    status: 'active',
+      'Sentinel: um sistema de monitoramento e alertas de rede doméstica, com descoberta de dispositivos, visibilidade de DNS, inteligência de categorias, score de risco e um dashboard para o operador. Em refatoração: os módulos anteriores estão sendo unidos em repositório próprio.',
+    status: 'evolving',
     visibility: 'public',
     type: 'system',
     difficulty: 'applied',
@@ -58,8 +58,8 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     slug: 'home-network-observability',
     title: 'Home Network Observability System',
     summary:
-      'Sentinel: a real-world home-network monitoring and alerting system with device discovery, DNS visibility, category intelligence, risk scoring, and a full operator dashboard.',
-    status: 'active',
+      'Sentinel: a home-network monitoring and alerting system with device discovery, DNS visibility, category intelligence, risk scoring, and an operator dashboard. Being refactored into its own repository.',
+    status: 'evolving',
     visibility: 'public',
     type: 'system',
     difficulty: 'applied',
