@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.2](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.9.1...v0.9.2) (2026-11-12)
+
+
+### Bug Fixes
+
+* **content:** keep the employer projects general until the NDA question is settled ([#44](https://github.com/FelpsSousa/felpsxp-hub/issues/44)) ([95f5148](https://github.com/FelpsSousa/felpsxp-hub/commit/95f51484184d422db662a39b71cb3ade6e64d71c))
+
 ## [0.9.1](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.9.0...v0.9.1) (2026-11-12)
 
 
