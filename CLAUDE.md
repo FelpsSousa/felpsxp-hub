@@ -79,6 +79,8 @@ happens in this repository, and it changes in the same PR as any change to that.
 | Build | `pnpm build` |
 | Lint | `pnpm lint` |
 | Typecheck | `pnpm typecheck` |
+| Unit tests | `pnpm test` (`pnpm test:coverage` for the report) |
+| End-to-end | `pnpm test:e2e` (builds, then runs Playwright with axe) |
 | All checks | `pre-commit run --all-files` |
 
 ## Map

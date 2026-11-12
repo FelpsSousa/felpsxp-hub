@@ -77,7 +77,7 @@ export function TurnstileWidget({
   return (
     <>
       <Script src={SCRIPT_URL} strategy="afterInteractive" onReady={renderWidget} />
-      <div ref={containerRef} className="min-h-[65px]" />
+      <div ref={containerRef} data-testid="turnstile" className="min-h-[65px]" />
     </>
   );
 }
