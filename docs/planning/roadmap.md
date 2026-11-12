@@ -199,7 +199,8 @@ clean public extraction of the observatory module.
 - [ ] Self-hosted Umami, with the CSP `connect-src` updated.
 - [ ] OpenSSF Scorecard workflow and README badge; GitHub Actions pinned by
       commit SHA.
-- [ ] README as a showcase: screenshots, stack, decisions, production link.
+- [x] README as a showcase: stack, decisions, security and quality highlights.
+- [ ] README screenshots, once the recruiter pages are in place.
 - [ ] GitHub profile cleanup (outside this repository): archive bootcamp
       and test repositories, pin the strongest public ones.
 
