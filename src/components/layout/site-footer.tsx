@@ -12,11 +12,11 @@ export async function SiteFooter() {
       <div className="mx-auto flex max-w-3xl flex-col gap-4 px-6 py-8 text-sm text-fg-muted sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {year} {name} ·{' '}
-          <a href={repositoryUrl} className="underline-offset-4 hover:text-fg hover:underline">
+          <a href={repositoryUrl} className="underline underline-offset-4 hover:text-fg">
             {t('sourceCode')}
           </a>{' '}
           ({t('license')}) ·{' '}
-          <Link href="/privacy" className="underline-offset-4 hover:text-fg hover:underline">
+          <Link href="/privacy" className="underline underline-offset-4 hover:text-fg">
             {t('privacy')}
           </Link>
         </p>
@@ -29,7 +29,7 @@ export async function SiteFooter() {
                   href={link.href}
                   rel="me noopener noreferrer"
                   target="_blank"
-                  className="underline-offset-4 hover:text-fg hover:underline"
+                  className="underline underline-offset-4 hover:text-fg"
                 >
                   {link.label}
                 </a>

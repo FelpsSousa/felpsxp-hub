@@ -13,7 +13,8 @@ const nativeNames = {
 /**
  * Plain links rather than a select: they work without JavaScript, are
  * crawlable, and carry `hrefLang`/`lang` for search engines and screen
- * readers. Each link keeps the current page, which is safe because slugs
+ * readers. The accessible name starts with the visible code ("PT, Português"),
+ * so voice control users can say what they see (WCAG 2.5.3, Label in Name). Each link keeps the current page, which is safe because slugs
  * are identical across locales (enforced by the content tests).
  */
 export function LocaleSwitcher() {
@@ -34,7 +35,7 @@ export function LocaleSwitcher() {
                 locale={locale}
                 hrefLang={locale}
                 lang={locale}
-                aria-label={nativeNames[locale]}
+                aria-label={`${locale.toUpperCase()}, ${nativeNames[locale]}`}
                 aria-current={active ? 'true' : undefined}
                 className={`rounded-md px-2 py-1 focus-visible:outline-2 focus-visible:outline-accent ${
                   active ? 'bg-surface text-fg' : 'text-fg-muted hover:text-fg'

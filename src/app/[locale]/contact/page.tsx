@@ -43,7 +43,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
       <section className="flex flex-col gap-2 text-sm text-fg-muted">
         <h2 className="font-medium uppercase tracking-wide">{t('directLabel')}</h2>
         <p>
-          <a href={`mailto:${contactEmail}`} className="text-accent underline-offset-4 hover:underline">
+          <a href={`mailto:${contactEmail}`} className="text-accent underline underline-offset-4 hover:decoration-2">
             {contactEmail}
           </a>
           {linkedIn && (
@@ -53,7 +53,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                 href={linkedIn.href}
                 rel="me noopener noreferrer"
                 target="_blank"
-                className="text-accent underline-offset-4 hover:underline"
+                className="text-accent underline underline-offset-4 hover:decoration-2"
               >
                 LinkedIn
               </a>
@@ -76,7 +76,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
         )}
         <p className="text-sm text-fg-muted">
           {t('privacyNote')}{' '}
-          <Link href="/privacy" className="text-accent underline-offset-4 hover:underline">
+          <Link href="/privacy" className="text-accent underline underline-offset-4 hover:decoration-2">
             {t('privacyLink')}
           </Link>
           .

@@ -26,6 +26,9 @@ build/
 .turbo/
 .vercel/
 coverage/
+# Playwright output
+playwright-report/
+test-results/
 *.tsbuildinfo
 npm-debug.log*
 pnpm-debug.log*

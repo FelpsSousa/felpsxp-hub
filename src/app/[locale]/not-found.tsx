@@ -19,7 +19,7 @@ export default async function NotFound() {
       <p className="font-mono text-sm text-accent">404</p>
       <h1 className="text-3xl font-semibold text-fg">{t('title')}</h1>
       <p className="text-fg-muted">{t('description')}</p>
-      <Link href="/" className="w-fit text-accent underline-offset-4 hover:underline">
+      <Link href="/" className="w-fit text-accent underline underline-offset-4 hover:decoration-2">
         {t('backHome')}
       </Link>
     </div>

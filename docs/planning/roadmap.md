@@ -94,8 +94,8 @@ security controls.
 - [x] `Permissions-Policy` (camera, microphone, geolocation and similar off)
       and `Cross-Origin-Opener-Policy: same-origin`.
 - [x] CodeQL workflow (SAST) in CI, covering the code and the workflows.
-- [ ] Playwright smoke tests with axe accessibility checks on the main
-      pages, running in CI.
+- [x] Playwright smoke tests with axe accessibility checks on the main
+      pages, running in CI (desktop and mobile, light and dark).
 - [ ] Lighthouse pass (performance, accessibility, SEO, best practices).
 - [x] `docs/security/threat-model.md`: STRIDE threat model of the Hub.
 - [ ] `/security` page and `/.well-known/security.txt`.
