@@ -93,6 +93,8 @@ happens in this repository, and it changes in the same PR as any change to that.
 - `src/lib/content.ts`: content accessors used by the pages
 - `messages/`: `pt.json` / `en.json` translation strings
 - `docs/planning/roadmap.md`: the living plan; tick items there as PRs merge
+- `docs/security/threat-model.md`: STRIDE threat model; update it in the same PR as any new
+  data flow, third party or secret
 - No database, no auth, no `/studio` in v1 (ADR-0003).
 
 ## Do not

@@ -95,7 +95,7 @@ security controls.
 - [ ] Playwright smoke tests with axe accessibility checks on the main
       pages, running in CI.
 - [ ] Lighthouse pass (performance, accessibility, SEO, best practices).
-- [ ] `docs/security/threat-model.md`: STRIDE threat model of the Hub.
+- [x] `docs/security/threat-model.md`: STRIDE threat model of the Hub.
 - [ ] `/security` page and `/.well-known/security.txt`.
 - [ ] Cloudflare Email Routing for the `felpsxp.com` addresses.
 - [ ] Domain moved to the new Vercel project; DNS cutover in Cloudflare.
