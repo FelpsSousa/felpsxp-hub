@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { getSiteSettings } from '@/lib/content';
 
 export async function SiteFooter() {
@@ -14,7 +15,10 @@ export async function SiteFooter() {
           <a href={repositoryUrl} className="underline-offset-4 hover:text-fg hover:underline">
             {t('sourceCode')}
           </a>{' '}
-          ({t('license')})
+          ({t('license')}) ·{' '}
+          <Link href="/privacy" className="underline-offset-4 hover:text-fg hover:underline">
+            {t('privacy')}
+          </Link>
         </p>
 
         <nav aria-label={t('elsewhere')}>

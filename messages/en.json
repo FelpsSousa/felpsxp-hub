@@ -22,7 +22,8 @@
   "footer": {
     "sourceCode": "Source code",
     "license": "MIT License",
-    "elsewhere": "Elsewhere"
+    "elsewhere": "Elsewhere",
+    "privacy": "Privacy"
   },
   "notFound": {
     "title": "Page not found",
@@ -82,6 +83,11 @@
       "company": "Use one line, up to 100 characters.",
       "intent": "Choose a subject.",
       "message": "Write between 10 and 5,000 characters."
-    }
+    },
+    "privacyLink": "How your data is handled"
+  },
+  "privacy": {
+    "updated": "Updated on {date}",
+    "contactLabel": "To exercise your rights or ask a question:"
   }
 }

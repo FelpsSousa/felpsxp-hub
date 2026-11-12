@@ -3,6 +3,7 @@ import type { Project } from '@/content/types';
 import { locales } from '@/i18n/routing';
 import {
   getAllProjects,
+  getPrivacyPage,
   getProfile,
   getProjectBySlug,
   getProjectStaticParams,
@@ -78,9 +79,36 @@ describe('project content', () => {
 describe('writing style in content', () => {
   it('contains no em or en dashes', () => {
     for (const locale of locales) {
-      const strings = collectStrings([getProfile(locale), getAllProjects(locale)]);
+      const strings = collectStrings([
+        getProfile(locale),
+        getAllProjects(locale),
+        getPrivacyPage(locale),
+      ]);
       const offenders = strings.filter((value) => /[–—]/.test(value));
       expect(offenders, `dashes found in ${locale} content`).toEqual([]);
+    }
+  });
+});
+
+describe('privacy page', () => {
+  it('has the same structure and date in every locale', () => {
+    const [first, ...others] = locales;
+    const reference = getPrivacyPage(first);
+    for (const locale of others) {
+      const page = getPrivacyPage(locale);
+      expect(page.updatedAt).toBe(reference.updatedAt);
+      expect(page.sections.map((section) => section.paragraphs.length)).toEqual(
+        reference.sections.map((section) => section.paragraphs.length),
+      );
+    }
+  });
+
+  it('names every cookie, storage key and third party the code uses', () => {
+    for (const locale of locales) {
+      const text = collectStrings(getPrivacyPage(locale)).join(' ');
+      for (const term of ['NEXT_LOCALE', 'localStorage', 'Vercel', 'Cloudflare', 'Resend']) {
+        expect(text, `${term} in ${locale}`).toContain(term);
+      }
     }
   });
 });

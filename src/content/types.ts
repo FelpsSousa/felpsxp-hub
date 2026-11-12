@@ -2,6 +2,7 @@ import type { z } from 'zod';
 import type { AppLocale } from '@/i18n/routing';
 import type {
   highlightStatSchema,
+  legalPageSchema,
   navigationLinkSchema,
   profileSchema,
   projectDifficultySchema,
@@ -40,3 +41,4 @@ export type ProjectMediaAudio = Extract<ProjectMedia, { kind: 'audio' }>;
 export type Project = z.infer<typeof projectSchema>;
 export type Profile = z.infer<typeof profileSchema>;
 export type SiteSettings = z.infer<typeof siteSettingsSchema>;
+export type LegalPage = z.infer<typeof legalPageSchema>;

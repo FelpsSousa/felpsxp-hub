@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactForm } from '@/components/contact/contact-form';
+import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
 import { getSiteSettings } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
@@ -73,7 +74,13 @@ export default async function ContactPage({ params }: ContactPageProps) {
         ) : (
           <p className="text-fg-muted">{t('formUnavailable')}</p>
         )}
-        <p className="text-sm text-fg-muted">{t('privacyNote')}</p>
+        <p className="text-sm text-fg-muted">
+          {t('privacyNote')}{' '}
+          <Link href="/privacy" className="text-accent underline-offset-4 hover:underline">
+            {t('privacyLink')}
+          </Link>
+          .
+        </p>
       </section>
     </div>
   );

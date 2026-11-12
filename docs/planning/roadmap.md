@@ -81,7 +81,7 @@ security controls.
 - [x] `/contact`: Server Action with Turnstile, honeypot and Zod validation,
       plain-text delivery through Resend, anonymous `hub.contact.v1` events;
       env vars in `.env.example` (ADR-0007).
-- [ ] `/privacy`: what is collected, why, for how long (LGPD), including
+- [x] `/privacy`: what is collected, why, for how long (LGPD), including
       the `NEXT_LOCALE` preference cookie (session-only, `Secure`,
       `SameSite=Lax`) and the `theme` key in localStorage (never sent to
       the server).
