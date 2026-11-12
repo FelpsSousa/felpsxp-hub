@@ -28,7 +28,9 @@ revisados.
   Sem banco e sem autenticação, porque nenhuma página pública precisa deles.
 - **Conteúdo como código:** perfil, projetos e páginas legais em TypeScript validado com Zod
   no build.
-- **Decisões antes do código:** sete [ADRs](docs/adr/README.md) até agora (em inglês).
+- **Decisões antes do código:** oito [ADRs](docs/adr/README.md) até agora (em inglês).
+- **Versão visível:** versionamento semântico automatizado pelo release-please a partir dos
+  Conventional Commits; o rodapé mostra a versão e o commit em produção.
 - **Modelo de ameaças STRIDE** com cada mitigação ligada ao PR ou ADR que a implementa
   ([docs/security/threat-model.md](docs/security/threat-model.md)).
 - **Headers de segurança testados** em teste unitário e de novo numa resposta real de produção.

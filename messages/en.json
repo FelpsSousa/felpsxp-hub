@@ -24,7 +24,9 @@
     "license": "MIT License",
     "elsewhere": "Elsewhere",
     "privacy": "Privacy",
-    "security": "Security"
+    "security": "Security",
+    "versionLabel": "Version {version}, release notes",
+    "commitLabel": "Commit {commit} in production"
   },
   "notFound": {
     "title": "Page not found",

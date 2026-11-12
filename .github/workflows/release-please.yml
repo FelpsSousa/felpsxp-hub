@@ -1,0 +1,35 @@
+# Release automation (ADR-0008). On every push to main, release-please reads the
+# Conventional Commits and keeps one release pull request open with the next version
+# and a generated CHANGELOG.md. Merging that pull request creates the tag and the
+# GitHub release. Releasing stays a reviewed, human decision.
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-please
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    name: release-please
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          # A fine-grained token scoped to this repository, so the release pull request
+          # runs the required checks; pull requests opened with GITHUB_TOKEN do not
+          # trigger other workflows. Falls back to GITHUB_TOKEN until the secret exists.
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

@@ -1,11 +1,13 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { buildInfo } from '@/lib/build-info';
 import { getSiteSettings } from '@/lib/content';
 
 export async function SiteFooter() {
   const t = await getTranslations('footer');
   const { name, repositoryUrl, socialLinks } = getSiteSettings();
   const year = new Date().getFullYear();
+  const build = buildInfo();
 
   return (
     <footer className="border-t border-border">
@@ -22,6 +24,28 @@ export async function SiteFooter() {
           <Link href="/security" className="underline underline-offset-4 hover:text-fg">
             {t('security')}
           </Link>
+          <br />
+          <span className="font-mono text-xs">
+            <a
+              href={build.releasesUrl}
+              title={t('versionLabel', { version: build.version })}
+              className="underline underline-offset-4 hover:text-fg"
+            >
+              v{build.version}
+            </a>
+            {build.commit && (
+              <>
+                {' · '}
+                <a
+                  href={build.commit.url}
+                  title={t('commitLabel', { commit: build.commit.short })}
+                  className="underline underline-offset-4 hover:text-fg"
+                >
+                  {build.commit.short}
+                </a>
+              </>
+            )}
+          </span>
         </p>
 
         <nav aria-label={t('elsewhere')}>
