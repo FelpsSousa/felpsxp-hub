@@ -1,7 +1,7 @@
 # Threat model: felpsxp-hub
 
 - **Method:** STRIDE, per component and data flow
-- **Version:** 1, 2026-11-12
+- **Version:** 1.1, 2026-11-12 (contact form implemented)
 - **Owner:** Felipe Sousa (@FelpsSousa)
 - **Review:** whenever a new data flow, third party or secret is introduced; next planned
   review at the go-live of `felpsxp.com` and again when the observatory (roadmap Block 5)
@@ -14,9 +14,8 @@ request or ADR that implements it, so each claim can be checked.
 ## Scope
 
 The Hub is a personal portfolio served at `felpsxp.com`: static pages in Portuguese and
-English, one contact form, no database and no authentication (ADR-0003). The contact form is
-designed in ADR-0007 and not yet implemented; it is modelled here because it is the only
-place where the Hub accepts input from strangers.
+English, one contact form, no database and no authentication (ADR-0003). The contact form
+(ADR-0007, #32) is the only place where the Hub accepts input from strangers.
 
 Out of scope: the private repositories of the FelpsXP ecosystem, the Platform's observatory
 (it gets its own threat model), and the security of third parties themselves (GitHub,
@@ -31,7 +30,7 @@ Vercel, Cloudflare, Resend), whose responsibility is limited here to how the Hub
         │                                             ├──▶ CDN: prerendered pages, share images,
         │                                             │        sitemap, robots
         │                                             │
-        └──(contact form, planned)──POST──────────────┴──▶ Vercel Function (Server Action)
+        └──(contact form)─────────POST──────────────┴──▶ Vercel Function (Server Action)
                                                                │  1. Turnstile siteverify ──▶ Cloudflare
                                                                │  2. honeypot, Zod validation
                                                                │  3. plain-text e-mail ─────▶ Resend ──▶ Felipe's mailbox
@@ -65,7 +64,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | --- | --- | --- | --- |
 | S1 | Domain or DNS hijack sends visitors to a fake site | HSTS for two years with subdomains (#28); Cloudflare account with two-factor authentication and registrar lock | Implemented (HSTS) · Owner |
 | S2 | E-mail sent as `@felpsxp.com` by someone else | SPF and DKIM for Resend, DMARC moving from `quarantine` to `reject` | Planned (contact setup) · Owner |
-| S3 | Bots submit the contact form as if they were people | Turnstile verified server-side with the expected hostname; honeypot | Planned (ADR-0007) |
+| S3 | Bots submit the contact form as if they were people | Turnstile verified server-side with the expected hostname; honeypot (#32) | Implemented |
 
 ### Tampering
 
@@ -82,7 +81,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | ID | Threat | Mitigation | Status |
 | --- | --- | --- | --- |
 | R1 | A change cannot be traced to a decision | Squash-merged PRs with descriptions, ADRs for decisions, Vercel deployment history | Implemented |
-| R2 | Abuse of the contact form leaves no trace | An anonymous `hub.contact.v1` event per rejected attempt: reason, country, client class, minute | Planned (ADR-0007) |
+| R2 | Abuse of the contact form leaves no trace | An anonymous `hub.contact.v1` event per submission: outcome, reason, country, client class, minute (#32) | Implemented |
 
 ### Information disclosure
 
@@ -90,9 +89,9 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | --- | --- | --- | --- |
 | I1 | A secret is committed | gitleaks as a pre-commit hook and over the full history in CI; secrets only in Vercel environment variables; `.env*` ignored | Implemented |
 | I2 | Private details (LAN addresses, private repository paths, family or financial data) reach public content | Porting checklist with an IP grep (`docs/planning/roadmap.md`); content published from FelpsXP Logs only after a manual gate | Implemented (process) |
-| I3 | Felipe's private mailbox becomes public | Delivered to a server-only `CONTACT_TO_EMAIL`; the page shows a public alias | Planned (ADR-0007) |
+| I3 | Felipe's private mailbox becomes public | Delivered to a server-only `CONTACT_TO_EMAIL`; the page shows `contact@felpsxp.com` (#32) | Implemented |
 | I4 | The stack is fingerprinted, or source code is exposed | `poweredByHeader: false`; production source maps off (Next.js default) | Implemented |
-| I5 | Visitor data leaks | Nothing is stored: static pages, no database; the only cookie holds the language (`Secure`, `SameSite=Lax`, session, #22); the theme lives in `localStorage` (#23); contact messages are not stored and logs carry no personal data | Implemented · Planned (contact) |
+| I5 | Visitor data leaks | Nothing is stored: static pages, no database; the only cookie holds the language (`Secure`, `SameSite=Lax`, session, #22); the theme lives in `localStorage` (#23); contact messages are not stored and events carry no personal data, which a test asserts (#32) | Implemented |
 | I6 | Full URLs leak to other sites through the referrer | `Referrer-Policy: strict-origin-when-cross-origin` | Implemented |
 
 ### Denial of service
@@ -100,7 +99,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | ID | Threat | Mitigation | Status |
 | --- | --- | --- | --- |
 | D1 | Traffic floods take the site down | Prerendered pages served from Vercel's CDN; no per-request computation for pages | Implemented |
-| D2 | The contact form is abused to burn the Resend quota or the domain's reputation | Turnstile, honeypot, 64 KB body limit, edge rate-limit rule; Resend's quota caps the worst case | Planned (ADR-0007, go-live) |
+| D2 | The contact form is abused to burn the Resend quota or the domain's reputation | Turnstile, honeypot and a 64 KB body limit (#32); edge rate-limit rule; Resend's quota caps the worst case | Implemented · Planned (rate limit, go-live) |
 | D3 | The Server Actions denial-of-service advisory | Next.js pinned at 16.4.5, above the patched 16.4.1 (ADR-0003) | Implemented |
 
 ### Elevation of privilege
@@ -109,7 +108,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | --- | --- | --- | --- |
 | E1 | Cross-site scripting | React escapes by default; only two raw HTML insertions, both controlled (a constant theme script and escaped JSON-LD); CSP with `default-src 'self'`, `object-src 'none'`, `base-uri 'self'` | Implemented |
 | E2 | Clickjacking | `frame-ancestors 'none'` and `X-Frame-Options: DENY` | Implemented |
-| E3 | Cross-site request forgery on the contact form | Server Actions accept only `POST` and reject a mismatched `Origin` | Planned (ADR-0007) |
+| E3 | Cross-site request forgery on the contact form | Server Actions accept only `POST` and reject a mismatched `Origin` (#32) | Implemented |
 | E4 | Takeover of an account that controls the Hub (GitHub, Vercel, Cloudflare, Resend, registrar) | Two-factor authentication with a hardware key or passkey on every one; API keys with minimal scope (Resend: sending only, one domain) | Owner |
 | E5 | Abuse of powerful browser features from the page or an embed | `Permissions-Policy` switching off camera, microphone, geolocation, payment, USB and others; `Cross-Origin-Opener-Policy: same-origin` (#28) | Implemented |
 
