@@ -91,7 +91,7 @@ security controls.
       relying on the host (`preload` left for a go-live decision).
 - [x] `Permissions-Policy` (camera, microphone, geolocation and similar off)
       and `Cross-Origin-Opener-Policy: same-origin`.
-- [ ] CodeQL workflow (SAST) in CI.
+- [x] CodeQL workflow (SAST) in CI, covering the code and the workflows.
 - [ ] Playwright smoke tests with axe accessibility checks on the main
       pages, running in CI.
 - [ ] Lighthouse pass (performance, accessibility, SEO, best practices).
