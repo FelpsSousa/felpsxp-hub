@@ -1,11 +1,17 @@
 import type { Localized, Project } from '@/content/types';
 
+/**
+ * Work done as an employee. Kept deliberately general until the
+ * confidentiality question is settled: no internal module names or
+ * third-party integrations (Logs fact sheet, 2026-11-12, item 8).
+ * Details are for interviews.
+ */
 export const connexiccoProjectByLocale: Localized<Project> = {
   pt: {
     slug: 'connexicco',
     title: 'Connexicco',
     summary:
-      'Plataforma de comunidades digitais corporativas, evoluída da base do Candidattus para arquitetura multi-tenant white-label, servindo múltiplas organizações simultaneamente com identidade visual e estrutura resolvidas em runtime.',
+      'Plataforma de comunidades digitais para organizações, evoluída para uma arquitetura multi-tenant white-label. Trabalhei no frontend como Engenheiro Fullstack Pleno I na Algoricca Software Company.',
     status: 'archived',
     visibility: 'public',
     type: 'product',
@@ -13,35 +19,34 @@ export const connexiccoProjectByLocale: Localized<Project> = {
     primaryDomain: 'backend',
     secondaryDomains: ['frontend'],
     media: [],
-    role: 'Adaptação mobile de toda a plataforma, integração de videoconferência embarcada e participação nas decisões de arquitetura para a customização multi-tenant',
+    role: 'Engenheiro Fullstack Pleno I, com foco em frontend: adaptação mobile, integrações embarcadas e participação nas decisões de arquitetura multi-tenant',
     problem:
-      'A base do Candidattus precisava evoluir para atender múltiplas organizações simultaneamente, cada uma com identidade visual e estrutura próprias, resolvidas em runtime no frontend, além de cobrir divergências de comportamento entre as versões web e mobile.',
+      'Uma base de código existente precisava atender várias organizações ao mesmo tempo, cada uma com identidade visual e estrutura próprias, e ainda fechar diferenças de comportamento entre web e mobile.',
     solution:
-      'Uma camada multi-tenant white-label resolvendo identidade visual e estrutura por organização via headers e cookies, com adaptação mobile completa da plataforma e integração de salas de videoconferência embarcadas (primeiro Zoom Embedded, depois Jitsi), construída em ciclos de experimentação com requisitos em evolução constante. A plataforma transforma organizações em comunidades digitais, com módulos de Comunidade, Clubes de Relacionamento, Educação, Eventos Online, Expertise as a Service e Soluções, com conteúdo gerenciado via Strapi.',
+      'Uma camada multi-tenant white-label que resolve a identidade visual e a estrutura de cada organização em tempo de execução, uma adaptação mobile completa da plataforma e integrações embarcadas, construídas em ciclos de experimentação com requisitos em evolução.',
     architectureHighlights: [
-      'Identidade visual e estrutura multi-tenant resolvidas em runtime no frontend via headers e cookies',
+      'Identidade visual e estrutura de cada organização resolvidas em tempo de execução no frontend',
       'Reimplementação de embeds e funcionalidades que divergiam entre web e mobile',
-      'Integração de salas de videoconferência embarcadas, primeiro com Zoom Embedded e depois com Jitsi',
-      'Provas de conceito e escolha de ferramentas para viabilizar a customização dinâmica entre organizações',
+      'Provas de conceito e escolha de ferramentas para viabilizar a customização entre organizações',
     ],
     challenges: [
-      'Evoluir uma base single-tenant pra multi-tenant sem quebrar o produto single-tenant já em produção',
-      'Resolver identidade e estrutura por organização em runtime, com requisitos de customização mudando constantemente',
+      'Evoluir uma base single-tenant para multi-tenant sem quebrar o produto que já estava em produção',
+      'Resolver identidade e estrutura por organização com requisitos de customização mudando constantemente',
       'Fechar divergências de comportamento entre as versões web e mobile',
     ],
     responsibilities: [
-      'Responsável pela adaptação mobile de toda a plataforma',
-      'Integração das salas de videoconferência embarcadas dentro da plataforma',
+      'Adaptação mobile da plataforma',
+      'Integrações embarcadas dentro da plataforma',
       'Participação nas decisões de arquitetura e nas provas de conceito para a customização multi-tenant',
     ],
     outcomes: [
-      'Evolução bem-sucedida de uma base single-tenant para multi-tenant white-label, atendendo múltiplas organizações simultaneamente',
-      'Paridade funcional entre web e mobile alcançada após a adaptação completa da plataforma',
+      'Evolução de uma base single-tenant para multi-tenant white-label, atendendo várias organizações ao mesmo tempo',
+      'Paridade funcional entre web e mobile depois da adaptação da plataforma',
     ],
     learnings: [
       'Requisitos de customização em evolução constante significam que provas de conceito primeiro valem mais do que uma arquitetura "final" definida de antemão',
     ],
-    stack: ['React', 'Next.js', 'TypeScript', 'MUI', 'Strapi', 'Zoom Embedded', 'Jitsi'],
+    stack: ['React', 'Next.js', 'TypeScript', 'MUI', 'Strapi'],
     tags: ['product', 'multi-tenant', 'white-label', 'saas'],
     relatedSurfaceKeys: [],
     startedAt: '2024-01-01',
@@ -53,7 +58,7 @@ export const connexiccoProjectByLocale: Localized<Project> = {
     slug: 'connexicco',
     title: 'Connexicco',
     summary:
-      'A corporate digital community platform, evolved from the Candidattus codebase into a multi-tenant white-label architecture, serving multiple organizations simultaneously with visual identity and structure resolved at runtime.',
+      'A digital community platform for organizations, evolved into a multi-tenant white-label architecture. I worked on its frontend as a Mid-level Fullstack Engineer (Pleno I) at Algoricca Software Company.',
     status: 'archived',
     visibility: 'public',
     type: 'product',
@@ -61,35 +66,34 @@ export const connexiccoProjectByLocale: Localized<Project> = {
     primaryDomain: 'backend',
     secondaryDomains: ['frontend'],
     media: [],
-    role: 'Mobile adaptation of the entire platform, embedded video-conferencing integration, and participation in architecture decisions for multi-tenant customization',
+    role: 'Mid-level Fullstack Engineer (Pleno I), frontend-focused: mobile adaptation, embedded integrations and participation in multi-tenant architecture decisions',
     problem:
-      'The Candidattus codebase needed to evolve to serve multiple organizations simultaneously, each with its own visual identity and structure, resolved at runtime on the frontend, while also closing behavioral gaps between the web and mobile versions.',
+      'An existing codebase needed to serve several organizations at once, each with its own visual identity and structure, while closing behavioural gaps between web and mobile.',
     solution:
-      'A multi-tenant white-label layer resolving visual identity and structure per organization via headers and cookies, with a full mobile adaptation of the platform and embedded video-conferencing rooms (first Zoom Embedded, then Jitsi), built through experimentation cycles against constantly evolving requirements. The platform turns organizations into digital communities, with modules for Community, Relationship Clubs, Education, Online Events, Expertise as a Service, and Solutions, with content managed in Strapi.',
+      'A multi-tenant white-label layer that resolves each organization’s visual identity and structure at runtime, a full mobile adaptation of the platform, and embedded integrations, built through experimentation cycles against evolving requirements.',
     architectureHighlights: [
-      'Multi-tenant visual identity and structure resolved at runtime on the frontend via headers and cookies',
+      'Each organization’s visual identity and structure resolved at runtime on the frontend',
       'Reimplementation of embeds and features that diverged between web and mobile',
-      'Embedded video-conferencing room integration, first with Zoom Embedded and later with Jitsi',
-      'Proofs of concept and tooling decisions to enable dynamic customization across organizations',
+      'Proofs of concept and tooling decisions to enable customization across organizations',
     ],
     challenges: [
-      'Evolving a single-tenant codebase into multi-tenant without breaking the single-tenant product already in production',
-      'Resolving per-organization identity and structure at runtime, against constantly changing customization requirements',
-      'Closing behavioral gaps between the web and mobile versions',
+      'Evolving a single-tenant codebase into multi-tenant without breaking the product already in production',
+      'Resolving per-organization identity and structure against constantly changing customization requirements',
+      'Closing behavioural gaps between the web and mobile versions',
     ],
     responsibilities: [
-      'Owned the mobile adaptation of the entire platform',
-      'Integrated embedded video-conferencing rooms into the platform',
-      'Participated in architecture decisions and proofs of concept for multi-tenant customization',
+      'Mobile adaptation of the platform',
+      'Embedded integrations within the platform',
+      'Participation in architecture decisions and proofs of concept for multi-tenant customization',
     ],
     outcomes: [
-      'Successfully evolved a single-tenant codebase into a multi-tenant white-label platform serving multiple organizations simultaneously',
-      'Reached functional parity between web and mobile after the full platform adaptation',
+      'Evolved a single-tenant codebase into a multi-tenant white-label platform serving several organizations at once',
+      'Functional parity between web and mobile after the platform adaptation',
     ],
     learnings: [
       'Constantly evolving customization requirements mean proofs of concept first are worth more than a "final" architecture decided upfront',
     ],
-    stack: ['React', 'Next.js', 'TypeScript', 'MUI', 'Strapi', 'Zoom Embedded', 'Jitsi'],
+    stack: ['React', 'Next.js', 'TypeScript', 'MUI', 'Strapi'],
     tags: ['product', 'multi-tenant', 'white-label', 'saas'],
     relatedSurfaceKeys: [],
     startedAt: '2024-01-01',
