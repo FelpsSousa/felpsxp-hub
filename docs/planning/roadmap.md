@@ -21,8 +21,9 @@ security controls.
 - Go-live happens before the writing section; posts ship afterwards.
 - A new Vercel project is created for this repository. The old `hub-web`
   project stays paused as a rollback path until the domain moves.
-- Public contact goes through `contato@felpsxp.com` (and variations) via
-  Cloudflare Email Routing; no personal address in code or content.
+- Public contact goes through `contact@felpsxp.com` (with `contato@` as an
+  alias) via Cloudflare Email Routing; no personal address in code or
+  content.
 - The contact form is protected by Cloudflare Turnstile (ADR pending).
 - Only real projects whose functionality can be proven are listed. The
   fictional `example-*` projects were removed entirely. Private repositories are described as
@@ -77,8 +78,9 @@ security controls.
       pagination, PDF download.
 - [x] ADR: contact form security model (Turnstile, Resend, no
       persistence, rate limiting at the edge): ADR-0007.
-- [ ] `/contact`: server-side Zod validation, honeypot, timing check,
-      Turnstile, delivery through Resend; new env vars in `.env.example`.
+- [x] `/contact`: Server Action with Turnstile, honeypot and Zod validation,
+      plain-text delivery through Resend, anonymous `hub.contact.v1` events;
+      env vars in `.env.example` (ADR-0007).
 - [ ] `/privacy`: what is collected, why, for how long (LGPD), including
       the `NEXT_LOCALE` preference cookie (session-only, `Secure`,
       `SameSite=Lax`) and the `theme` key in localStorage (never sent to
@@ -97,7 +99,9 @@ security controls.
 - [ ] Lighthouse pass (performance, accessibility, SEO, best practices).
 - [x] `docs/security/threat-model.md`: STRIDE threat model of the Hub.
 - [ ] `/security` page and `/.well-known/security.txt`.
-- [ ] Cloudflare Email Routing for the `felpsxp.com` addresses.
+- [x] Cloudflare Email Routing for the `felpsxp.com` addresses.
+- [ ] Edge rate-limit rule for the contact form (Vercel Firewall, or
+      Cloudflare if the domain is proxied), per ADR-0007.
 - [ ] Domain moved to the new Vercel project; DNS cutover in Cloudflare.
 - [ ] Post-launch light pentest (STRIDE, black-box, own site only),
       written up as the first new post.

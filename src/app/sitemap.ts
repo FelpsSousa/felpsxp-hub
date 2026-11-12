@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages: Page[] = [
     { path: '/' },
     { path: '/projects' },
+    { path: '/contact' },
     ...getPublicProjects(defaultLocale).map((project) => ({
       path: `/projects/${project.slug}`,
       lastModified: project.updatedAt,

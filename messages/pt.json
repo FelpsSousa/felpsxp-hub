@@ -7,7 +7,8 @@
     "label": "Navegação principal",
     "projects": "Projetos",
     "openMenu": "Abrir menu",
-    "closeMenu": "Fechar menu"
+    "closeMenu": "Fechar menu",
+    "contact": "Contato"
   },
   "localeSwitcher": {
     "label": "Idioma"
@@ -43,5 +44,44 @@
     "outcomesLabel": "Resultados",
     "learningsLabel": "Aprendizados",
     "stackLabel": "Stack"
+  },
+  "contact": {
+    "title": "Contato",
+    "lede": "Vagas, parcerias, projetos ou uma conversa técnica: escreva por aqui e eu respondo pessoalmente.",
+    "directLabel": "Direto",
+    "formLabel": "Formulário",
+    "formUnavailable": "O formulário está indisponível no momento. Escreva direto para o e-mail acima.",
+    "privacyNote": "Sua mensagem vai direto para a minha caixa de entrada; este site não guarda nada. A verificação contra robôs é feita pelo Cloudflare Turnstile.",
+    "optional": "(opcional)",
+    "fields": {
+      "name": "Nome",
+      "email": "E-mail",
+      "company": "Empresa",
+      "intent": "Assunto",
+      "message": "Mensagem"
+    },
+    "intentPlaceholder": "Escolha um assunto",
+    "intents": {
+      "hiring": "Vaga ou recrutamento",
+      "partnership": "Parceria",
+      "collaboration": "Colaboração em projeto",
+      "other": "Outro"
+    },
+    "send": "Enviar mensagem",
+    "sending": "Enviando…",
+    "success": {
+      "title": "Mensagem enviada.",
+      "body": "Obrigado pelo contato. Eu respondo pelo e-mail que você informou.",
+      "again": "Enviar outra mensagem"
+    },
+    "errors": {
+      "summary": "Revise os campos destacados.",
+      "generic": "Não foi possível enviar agora. Tente de novo em alguns minutos ou escreva direto para o e-mail acima.",
+      "name": "Informe seu nome, em uma linha, com até 100 caracteres.",
+      "email": "Informe um e-mail válido.",
+      "company": "Use uma linha, com até 100 caracteres.",
+      "intent": "Escolha um assunto.",
+      "message": "Escreva entre 10 e 5.000 caracteres."
+    }
   }
 }

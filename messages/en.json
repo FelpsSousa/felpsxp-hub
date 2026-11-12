@@ -7,7 +7,8 @@
     "label": "Main navigation",
     "projects": "Projects",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "contact": "Contact"
   },
   "localeSwitcher": {
     "label": "Language"
@@ -43,5 +44,44 @@
     "outcomesLabel": "Outcomes",
     "learningsLabel": "Learnings",
     "stackLabel": "Stack"
+  },
+  "contact": {
+    "title": "Contact",
+    "lede": "Roles, partnerships, projects or a technical conversation: write here and I will answer personally.",
+    "directLabel": "Direct",
+    "formLabel": "Form",
+    "formUnavailable": "The form is unavailable right now. Please write to the e-mail address above.",
+    "privacyNote": "Your message goes straight to my inbox; this site stores nothing. The bot check is done by Cloudflare Turnstile.",
+    "optional": "(optional)",
+    "fields": {
+      "name": "Name",
+      "email": "E-mail",
+      "company": "Company",
+      "intent": "Subject",
+      "message": "Message"
+    },
+    "intentPlaceholder": "Choose a subject",
+    "intents": {
+      "hiring": "Role or recruiting",
+      "partnership": "Partnership",
+      "collaboration": "Project collaboration",
+      "other": "Other"
+    },
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": {
+      "title": "Message sent.",
+      "body": "Thank you for getting in touch. I will reply to the e-mail address you gave.",
+      "again": "Send another message"
+    },
+    "errors": {
+      "summary": "Please review the highlighted fields.",
+      "generic": "The message could not be sent right now. Try again in a few minutes, or write to the e-mail address above.",
+      "name": "Enter your name on one line, up to 100 characters.",
+      "email": "Enter a valid e-mail address.",
+      "company": "Use one line, up to 100 characters.",
+      "intent": "Choose a subject.",
+      "message": "Write between 10 and 5,000 characters."
+    }
   }
 }
