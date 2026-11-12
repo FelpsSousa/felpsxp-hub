@@ -23,7 +23,8 @@
     "sourceCode": "Código-fonte",
     "license": "Licença MIT",
     "elsewhere": "Em outros lugares",
-    "privacy": "Privacidade"
+    "privacy": "Privacidade",
+    "security": "Segurança"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -86,8 +87,9 @@
     },
     "privacyLink": "Como seus dados são tratados"
   },
-  "privacy": {
+  "legal": {
     "updated": "Atualizado em {date}",
-    "contactLabel": "Para exercer seus direitos ou tirar dúvidas:"
+    "privacyContact": "Para exercer seus direitos ou tirar dúvidas:",
+    "securityContact": "Para relatar uma vulnerabilidade:"
   }
 }

@@ -4,6 +4,7 @@ import { locales } from '@/i18n/routing';
 import {
   getAllProjects,
   getPrivacyPage,
+  getSecurityPage,
   getProfile,
   getProjectBySlug,
   getProjectStaticParams,
@@ -83,6 +84,7 @@ describe('writing style in content', () => {
         getProfile(locale),
         getAllProjects(locale),
         getPrivacyPage(locale),
+        getSecurityPage(locale),
       ]);
       const offenders = strings.filter((value) => /[–—]/.test(value));
       expect(offenders, `dashes found in ${locale} content`).toEqual([]);
@@ -109,6 +111,20 @@ describe('privacy page', () => {
       for (const term of ['NEXT_LOCALE', 'localStorage', 'Vercel', 'Cloudflare', 'Resend']) {
         expect(text, `${term} in ${locale}`).toContain(term);
       }
+    }
+  });
+});
+
+describe('security page', () => {
+  it('has the same structure and date in every locale', () => {
+    const [first, ...others] = locales;
+    const reference = getSecurityPage(first);
+    for (const locale of others) {
+      const page = getSecurityPage(locale);
+      expect(page.updatedAt).toBe(reference.updatedAt);
+      expect(page.sections.map((section) => section.paragraphs.length)).toEqual(
+        reference.sections.map((section) => section.paragraphs.length),
+      );
     }
   });
 });

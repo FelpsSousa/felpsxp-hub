@@ -87,7 +87,7 @@ describe('sitemap', () => {
   const entries = sitemap();
 
   it('has one entry per page and locale', () => {
-    const pageCount = 4 + getPublicProjects('pt').length;
+    const pageCount = 5 + getPublicProjects('pt').length;
     expect(entries).toHaveLength(pageCount * locales.length);
   });
 

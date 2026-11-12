@@ -1,5 +1,12 @@
 /** Every public page, as a locale-free path. Add new pages here. */
-export const pages = ['/', '/projects', '/projects/felpsxp-hub', '/contact', '/privacy'] as const;
+export const pages = [
+  '/',
+  '/projects',
+  '/projects/felpsxp-hub',
+  '/contact',
+  '/privacy',
+  '/security',
+] as const;
 
 export const locales = [
   { code: 'pt', prefix: '' },

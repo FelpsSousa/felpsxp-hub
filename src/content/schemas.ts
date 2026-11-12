@@ -146,6 +146,7 @@ export const siteSettingsSchema = z.strictObject({
   repositoryUrl: httpsUrl,
   contactEmail: z.email(),
   privacyEmail: z.email(),
+  securityEmail: z.email(),
   socialLinks: z.array(navigationLinkSchema).min(1),
 });
 
