@@ -55,7 +55,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
         {t('contactLabel')}{' '}
         <a
           href={`mailto:${privacyEmail}`}
-          className="text-accent underline-offset-4 hover:underline"
+          className="text-accent underline underline-offset-4 hover:decoration-2"
         >
           {privacyEmail}
         </a>

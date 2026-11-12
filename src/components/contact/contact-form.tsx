@@ -47,7 +47,7 @@ export function ContactForm({
             setValues(emptyValues);
             setDismissed(state);
           }}
-          className="w-fit text-accent underline-offset-4 hover:underline"
+          className="w-fit text-accent underline underline-offset-4 hover:decoration-2"
         >
           {t('success.again')}
         </button>
