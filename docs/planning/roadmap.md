@@ -108,6 +108,10 @@ security controls.
 - [ ] Post-launch light pentest (STRIDE, black-box, own site only),
       written up as the first new post.
 
+- [x] Semantic versioning with release-please and the version and commit in the
+      footer (ADR-0008).
+- [ ] Release `1.0.0` at go-live.
+
 ## Block 4: Writing
 
 - [ ] MDX pipeline per ADR-0004: Zod-validated frontmatter, Shiki, one

@@ -24,7 +24,9 @@
     "license": "Licença MIT",
     "elsewhere": "Em outros lugares",
     "privacy": "Privacidade",
-    "security": "Segurança"
+    "security": "Segurança",
+    "versionLabel": "Versão {version}, notas de lançamento",
+    "commitLabel": "Commit {commit} em produção"
   },
   "notFound": {
     "title": "Página não encontrada",

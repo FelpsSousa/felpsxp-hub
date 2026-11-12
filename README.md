@@ -31,7 +31,7 @@ control is tested, and the history is a sequence of small, reviewed pull request
 - **Content as code.** Profile, projects and legal pages are typed TypeScript validated by Zod
   schemas at build time; the types are inferred from the schemas, and a malformed record fails
   the build naming the record and field ([ADR-0004](docs/adr/0004-content-validation-and-mdx-scope.md)).
-- **Decisions before code.** Seven [Architecture Decision Records](docs/adr/README.md) so far,
+- **Decisions before code.** Eight [Architecture Decision Records](docs/adr/README.md) so far,
   including the decision to rebuild from scratch instead of extracting the old app's history
   ([ADR-0002](docs/adr/0002-start-fresh-no-history-extraction.md)).
 
@@ -88,6 +88,12 @@ branch ─▶ pull request ─▶ CI ──────────────�
 ```
 
 `main` is protected: changes arrive only through pull requests with green checks.
+
+**Releases** follow semantic versioning, derived from the Conventional Commits by
+release-please: it keeps a release pull request open with the next version and a generated
+changelog, and merging it publishes the tag and the GitHub release. The footer of every page
+shows the running version and the exact commit deployed
+([ADR-0008](docs/adr/0008-versioning-and-releases.md)).
 
 ## Getting started
 

@@ -13,6 +13,7 @@ for (const { code, prefix } of locales) {
       await expect(page.getByRole('banner')).toBeVisible();
       await expect(page.getByRole('main')).toHaveCount(1);
       await expect(page.getByRole('contentinfo')).toBeVisible();
+      await expect(page.getByRole('contentinfo')).toContainText(/v\d+\.\d+\.\d+/);
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page).toHaveTitle(/Felipe Sousa/);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
