@@ -134,6 +134,7 @@ export const siteSettingsSchema = z.strictObject({
   name: text,
   url: httpsUrl,
   repositoryUrl: httpsUrl,
+  contactEmail: z.email(),
   socialLinks: z.array(navigationLinkSchema).min(1),
 });
 

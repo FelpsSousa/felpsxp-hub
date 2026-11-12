@@ -6,6 +6,8 @@
 
 export type Header = { key: string; value: string };
 
+export const TURNSTILE_ORIGIN = 'https://challenges.cloudflare.com';
+
 /**
  * Baseline, not hardened: 'unsafe-inline' on script/style is required
  * because Next.js's own RSC hydration payload ships as an inline <script>,
@@ -15,7 +17,13 @@ export type Header = { key: string; value: string };
  * the roadmap.
  */
 export function contentSecurityPolicy(isDev: boolean): string {
-  const scriptSrc = ["'self'", "'unsafe-inline'", isDev ? "'unsafe-eval'" : null]
+  const scriptSrc = [
+    "'self'",
+    "'unsafe-inline'",
+    // Cloudflare Turnstile on the contact form (ADR-0007), the only third-party origin.
+    TURNSTILE_ORIGIN,
+    isDev ? "'unsafe-eval'" : null,
+  ]
     .filter(Boolean)
     .join(' ');
 
@@ -26,6 +34,7 @@ export function contentSecurityPolicy(isDev: boolean): string {
     "img-src 'self' data:",
     "font-src 'self' data:",
     "connect-src 'self'",
+    `frame-src ${TURNSTILE_ORIGIN}`,
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",

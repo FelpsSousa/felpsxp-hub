@@ -4,6 +4,7 @@ export const siteSettings: SiteSettings = {
   name: 'Felipe Sousa',
   url: 'https://felpsxp.com',
   repositoryUrl: 'https://github.com/FelpsSousa/felpsxp-hub',
+  contactEmail: 'contact@felpsxp.com',
   socialLinks: [
     { href: 'https://github.com/FelpsSousa', label: 'GitHub', external: true },
     {

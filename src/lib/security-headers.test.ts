@@ -63,6 +63,14 @@ describe('contentSecurityPolicy', () => {
     expect(directives(contentSecurityPolicy(true)).get('script-src')).toContain('unsafe-eval');
   });
 
+  it('allows Cloudflare Turnstile as the only third-party origin', () => {
+    const policy = directives(contentSecurityPolicy(false));
+    expect(policy.get('script-src')).toContain('https://challenges.cloudflare.com');
+    expect(policy.get('frame-src')).toBe('https://challenges.cloudflare.com');
+    const origins = contentSecurityPolicy(false).match(/https:\/\/[^\s;]+/g) ?? [];
+    expect(new Set(origins)).toEqual(new Set(['https://challenges.cloudflare.com']));
+  });
+
   it('keeps the restrictive directives', () => {
     const policy = directives(contentSecurityPolicy(false));
     expect(policy.get('default-src')).toBe("'self'");

@@ -7,6 +7,12 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    serverActions: {
+      // The contact form is the only Server Action; a real message is a few KB (ADR-0007).
+      bodySizeLimit: '64kb',
+    },
+  },
   async headers() {
     return [
       {
