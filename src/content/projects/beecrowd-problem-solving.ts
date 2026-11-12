@@ -10,7 +10,7 @@ export const beecrowdProblemSolvingProjectByLocale: Localized<Project> = {
     slug: 'beecrowd-problem-solving',
     title: 'Beecrowd Problem Solving',
     summary:
-      'Base de conhecimento de resolução de problemas algorítmicos: cada problema documentado com raciocínio, complexidade e erros cometidos, em vez de um arquivo morto de submissões aceitas.',
+      'Base de conhecimento de resolução de problemas algorítmicos: cada problema documentado com raciocínio, complexidade e erros cometidos, em vez de um arquivo morto de submissões aceitas. Em consolidação: as soluções antigas estão sendo incorporadas.',
     status: 'active',
     visibility: 'public',
     type: 'tooling',
@@ -66,7 +66,7 @@ export const beecrowdProblemSolvingProjectByLocale: Localized<Project> = {
     slug: 'beecrowd-problem-solving',
     title: 'Beecrowd Problem Solving',
     summary:
-      'A knowledge base for algorithmic problem solving: each problem documented with the reasoning, the complexity analysis and the mistakes made, instead of a dead archive of accepted submissions.',
+      'A knowledge base for algorithmic problem solving: each problem documented with the reasoning, the complexity analysis and the mistakes made, instead of a dead archive of accepted submissions. Being consolidated: older solutions are being merged in.',
     status: 'active',
     visibility: 'public',
     type: 'tooling',

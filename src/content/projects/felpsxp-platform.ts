@@ -5,7 +5,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     slug: 'felpsxp-platform',
     title: 'FelpsXP Platform',
     summary:
-      'A camada habilitadora do ecossistema: runtime, IAM, eventos, contratos e observabilidade compartilhados, hoje consumidos por duas superfícies em produção, não por superfícies hipotéticas.',
+      'O núcleo privado do ecossistema, com dois papéis: o CORE que todos os módulos consomem (IAM, banco, eventos, contratos e observabilidade) e o observatório que monitora cada aplicação, com segurança de aplicação em todas as camadas.',
     status: 'evolving',
     visibility: 'public',
     type: 'platform',
@@ -17,7 +17,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     problem:
       'O ecossistema precisava de uma fundação técnica durável antes que superfícies voltadas ao usuário pudessem surgir com consistência e coerência de longo prazo.',
     solution:
-      'Uma plataforma baseada em monorepo com suporte de runtime, base de observabilidade, IAM e runtime de acesso por organização v0, e diretrizes arquiteturais compartilhadas.',
+      'Hoje: um monólito modular em monorepo, com runtime, IAM e acesso por organização v0, pacote de observabilidade compartilhado e diretrizes de arquitetura. Próxima etapa: o observatório e centro de controle de todas as aplicações FelpsXP (Hub, Finance, Sentinel e os próximos módulos), com ingestão de eventos assinados por aplicação, dados de segurança em camadas de retenção, dashboards e alertas. Privada por desenho, porque guarda dados brutos de segurança.',
     architectureHighlights: [
       'Monólito modular com workers: regras de domínio vivem em pacotes, nunca dentro de uma borda de runtime',
       'API HTTP sem framework web: Node puro cobre a superfície de rotas atual sem dependência extra',
@@ -36,8 +36,8 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
       'Preparar a camada técnica que as futuras superfícies vão consumir',
     ],
     outcomes: [
-      'A Platform deixou de ser protagonista e virou camada habilitadora estável, consumida hoje pelo Hub e pelo Sentinel em produção',
-      'Três cópias independentes do mesmo logger foram centralizadas num pacote único, com 42 testes e uma capacidade que nenhuma das três tinha: redigir campos sensíveis antes de serializar',
+      'O propósito ficou definido: CORE e observatório de todas as aplicações. O Hub passou a ser independente dela e vai mostrar só agregados anônimos do que ela observa; o Sentinel está saindo para repositório próprio',
+      'Três cópias independentes do mesmo logger foram centralizadas num pacote único, coberto por testes automatizados, com uma capacidade que nenhuma das três tinha: redigir campos sensíveis antes de serializar',
       'O limite da API passou a ser exercitado como contrato externo de verdade: um produto em repositório separado consome a plataforma só por ela, sem acesso ao código nem ao banco',
     ],
     learnings: [
@@ -64,7 +64,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     slug: 'felpsxp-platform',
     title: 'FelpsXP Platform',
     summary:
-      'The ecosystem’s enabling layer: shared runtime, IAM, events, contracts and observability, consumed today by two surfaces in production, not by hypothetical ones.',
+      'The ecosystem’s private core, with two roles: the CORE every module consumes (IAM, database, events, contracts and observability) and the observatory that watches each application, with application security in every layer.',
     status: 'evolving',
     visibility: 'public',
     type: 'platform',
@@ -76,7 +76,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     problem:
       'The ecosystem needed a durable technical foundation before meaningful user-facing surfaces could emerge with consistency and long-term coherence.',
     solution:
-      'A monorepo-based platform with runtime support, observability baseline, IAM and organization access runtime v0, and shared architectural guardrails.',
+      'Today: a modular monolith in a monorepo, with runtime support, IAM and organization access v0, a shared observability package and architectural guardrails. Next: the observatory and control centre for every FelpsXP application (Hub, Finance, Sentinel and the modules that follow), with signed per-application event ingestion, security data in retention tiers, dashboards and alerts. Private by design, because it holds raw security data.',
     architectureHighlights: [
       'Modular monolith with workers: domain rules live in packages, never inside a runtime edge',
       'HTTP API with no web framework: plain Node covers the current routing surface without an extra dependency',
@@ -95,8 +95,8 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
       'Prepare the technical layer that future surfaces consume',
     ],
     outcomes: [
-      'Platform stopped being the protagonist and became a stable enabling layer, consumed today by Hub and Sentinel in production',
-      'Three independent copies of the same logger were centralized into one package, with 42 tests and a capability none of the three had: redacting sensitive fields before serializing',
+      'Its purpose is now settled: CORE and observatory for every application. The Hub became independent of it and will show only anonymous aggregates of what it observes; Sentinel is moving to its own repository',
+      'Three independent copies of the same logger were centralized into one package, covered by automated tests, with a capability none of the three had: redacting sensitive fields before serializing',
       'The API boundary is now exercised as a real external contract: a product in a separate repository consumes the platform only through it, with no access to its source or database',
     ],
     learnings: [
