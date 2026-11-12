@@ -85,7 +85,8 @@ security controls.
       the `NEXT_LOCALE` preference cookie (session-only, `Secure`,
       `SameSite=Lax`) and the `theme` key in localStorage (never sent to
       the server).
-- [ ] Home: highlight stats, featured projects, closing call to action.
+- [x] Home: featured projects and a closing call to action.
+- [ ] Home: highlight stats confirmed by the verified facts from FelpsXP Logs.
 
 ## Block 3: Go-live hardening (GL)
 
@@ -190,7 +191,8 @@ clean public extraction of the observatory module.
 ## Block 6: Polish
 
 - [ ] Domain and difficulty filters on `/projects`.
-- [ ] Featured projects and posts driven by site settings.
+- [x] Featured projects, driven by each project's `featured` flag.
+- [ ] Featured posts, once `/writing` exists.
 - [ ] Site search (Ctrl+K) over a static index built at build time.
 - [ ] `/ecosystem`: decide whether it ships, given most modules are
       private; if it does, link to `felpsxp-architecture` for detail.

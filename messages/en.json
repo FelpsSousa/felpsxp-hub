@@ -32,7 +32,12 @@
   },
   "home": {
     "focusLabel": "Current focus",
-    "statsLabel": "In numbers"
+    "statsLabel": "In numbers",
+    "featuredLabel": "Featured projects",
+    "allProjects": "See all projects",
+    "ctaTitle": "Shall we talk?",
+    "ctaBody": "I am open to fullstack developer roles, in Brazil or abroad, and to conversations about application security and architecture.",
+    "ctaButton": "Get in touch"
   },
   "projects": {
     "title": "Projects",

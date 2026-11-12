@@ -32,7 +32,12 @@
   },
   "home": {
     "focusLabel": "Foco atual",
-    "statsLabel": "Em números"
+    "statsLabel": "Em números",
+    "featuredLabel": "Projetos em destaque",
+    "allProjects": "Ver todos os projetos",
+    "ctaTitle": "Vamos conversar?",
+    "ctaBody": "Estou aberto a vagas de desenvolvedor fullstack, no Brasil ou fora, e a conversas sobre segurança de aplicação e arquitetura.",
+    "ctaButton": "Entrar em contato"
   },
   "projects": {
     "title": "Projetos",
