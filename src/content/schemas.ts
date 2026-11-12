@@ -129,12 +129,23 @@ export const projectSchema = z.strictObject({
   links: z.array(navigationLinkSchema).optional(),
 });
 
+/** A legal page (privacy notice and similar): plain sections of paragraphs. */
+export const legalPageSchema = z.strictObject({
+  title: text,
+  summary: text,
+  updatedAt: isoDate,
+  sections: z
+    .array(z.strictObject({ heading: text, paragraphs: z.array(text).min(1) }))
+    .min(1),
+});
+
 /** Site-wide settings: identity, canonical URL and outbound links. */
 export const siteSettingsSchema = z.strictObject({
   name: text,
   url: httpsUrl,
   repositoryUrl: httpsUrl,
   contactEmail: z.email(),
+  privacyEmail: z.email(),
   socialLinks: z.array(navigationLinkSchema).min(1),
 });
 

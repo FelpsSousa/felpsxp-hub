@@ -7,9 +7,10 @@ import { felpsxpFinanceProjectByLocale } from '@/content/projects/felpsxp-financ
 import { felpsxpHubProjectByLocale } from '@/content/projects/felpsxp-hub';
 import { felpsxpPlatformProjectByLocale } from '@/content/projects/felpsxp-platform';
 import { homeNetworkObservabilityProjectByLocale } from '@/content/projects/home-network-observability';
-import { profileSchema, projectSchema, siteSettingsSchema } from '@/content/schemas';
+import { privacyPageByLocale } from '@/content/legal/privacy';
+import { legalPageSchema, profileSchema, projectSchema, siteSettingsSchema } from '@/content/schemas';
 import { siteSettings as siteSettingsSource } from '@/content/site/settings';
-import type { Localized, Profile, Project, SiteSettings } from '@/content/types';
+import type { LegalPage, Localized, Profile, Project, SiteSettings } from '@/content/types';
 import type { AppLocale } from '@/i18n/routing';
 import { locales } from '@/i18n/routing';
 import { parseContent } from '@/lib/parse-content';
@@ -51,6 +52,14 @@ const siteSettings = parseContent(siteSettingsSchema, siteSettingsSource, 'site 
 
 export function getSiteSettings(): SiteSettings {
   return siteSettings;
+}
+
+const privacyPages = byLocale((locale) =>
+  parseContent(legalPageSchema, privacyPageByLocale[locale], `privacy page (${locale})`),
+);
+
+export function getPrivacyPage(locale: AppLocale): LegalPage {
+  return privacyPages[locale];
 }
 
 export function getProfile(locale: AppLocale): Profile {
