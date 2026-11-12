@@ -75,8 +75,8 @@ security controls.
       data.
 - [ ] `/cv`: full CV in `pt` and `en`, print stylesheet with correct
       pagination, PDF download.
-- [ ] ADR: contact form security model (Turnstile, Resend, no
-      persistence, rate limiting at the edge).
+- [x] ADR: contact form security model (Turnstile, Resend, no
+      persistence, rate limiting at the edge): ADR-0007.
 - [ ] `/contact`: server-side Zod validation, honeypot, timing check,
       Turnstile, delivery through Resend; new env vars in `.env.example`.
 - [ ] `/privacy`: what is collected, why, for how long (LGPD), including
