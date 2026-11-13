@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { Project } from '@/content/types';
 import { locales } from '@/i18n/routing';
 import {
+  getAdjacentProjects,
   getAllProjects,
   getFeaturedProjects,
   getPrivacyPage,
@@ -154,6 +155,18 @@ describe('content accessors', () => {
     const [first] = getPublicProjects('en');
     expect(getProjectBySlug(first.slug, 'en')).toBe(first);
     expect(getProjectBySlug('does-not-exist', 'en')).toBeUndefined();
+  });
+
+  it('links each public project to its neighbours in display order, without wrapping', () => {
+    for (const locale of locales) {
+      const projects = getPublicProjects(locale);
+      projects.forEach((project, index) => {
+        const { previous, next } = getAdjacentProjects(project.slug, locale);
+        expect(previous?.slug ?? null).toBe(projects[index - 1]?.slug ?? null);
+        expect(next?.slug ?? null).toBe(projects[index + 1]?.slug ?? null);
+      });
+    }
+    expect(getAdjacentProjects('does-not-exist', 'en')).toEqual({ previous: null, next: null });
   });
 
   it('builds one static param per public project and locale', () => {
