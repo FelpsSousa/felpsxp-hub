@@ -4,9 +4,9 @@ import { useTranslations } from 'next-intl';
 import { useActionState, useState } from 'react';
 import { submitContact } from '@/app/[locale]/contact/actions';
 import { TurnstileWidget, type TurnstileStatus } from '@/components/contact/turnstile-widget';
-import { HONEYPOT_FIELD } from '@/lib/contact/fields';
+import { contactIntents, HONEYPOT_FIELD } from '@/lib/contact/fields';
 import type { ContactActionState } from '@/lib/contact/handle-submission';
-import { contactIntents, type ContactField } from '@/lib/contact/schema';
+import type { ContactField } from '@/lib/contact/schema';
 
 const initialState: ContactActionState = { status: 'idle' };
 

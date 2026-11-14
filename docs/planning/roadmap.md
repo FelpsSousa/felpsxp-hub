@@ -160,6 +160,9 @@ an ecosystem ADR in `felpsxp-architecture`.
 - [ ] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script
       alone would block Next.js's per-page inline hydration payload; the
       decision is ADR-0009: per-request nonces, report-only first.
+  - [x] Strict nonce policy in report-only mode; the end-to-end suite fails
+        on any violation, and Zod no longer ships to the browser.
+  - [ ] Enforce it, after a clean period in production.
 - [ ] Public `/security/observatory` page with aggregated charts
       (Recharts), reading only tier C aggregates from the Platform:
       attempts per hour, most probed paths, top countries and networks,

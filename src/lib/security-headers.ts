@@ -8,24 +8,48 @@ export type Header = { key: string; value: string };
 
 export const TURNSTILE_ORIGIN = 'https://challenges.cloudflare.com';
 
+/** The request header that carries the per-request nonce to the root layout. */
+export const NONCE_HEADER = 'x-nonce';
+
 /**
- * Baseline, not hardened: 'unsafe-inline' on script/style is required
- * because Next.js's own RSC hydration payload ships as an inline <script>,
- * and 'unsafe-eval' is needed only in development for Fast Refresh's
- * eval()-wrapped chunks. Production builds don't use eval-wrapped chunks.
- * Tightening this (theme script by hash, report-only first) is tracked in
- * the roadmap.
+ * Baseline policy, enforced on every response: 'unsafe-inline' in script-src
+ * is still required because Next.js ships each page's RSC hydration payload
+ * as an inline <script> that differs per page, so it cannot be hashed.
+ * 'unsafe-eval' is needed only in development, for Fast Refresh's
+ * eval()-wrapped chunks. ADR-0009 replaces it with `strictContentSecurityPolicy`,
+ * sent in report-only mode until it has run clean.
  */
 export function contentSecurityPolicy(isDev: boolean): string {
-  const scriptSrc = [
-    "'self'",
-    "'unsafe-inline'",
-    // Cloudflare Turnstile on the contact form (ADR-0007), the only third-party origin.
-    TURNSTILE_ORIGIN,
-    isDev ? "'unsafe-eval'" : null,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  return policy(
+    [
+      "'self'",
+      "'unsafe-inline'",
+      // Cloudflare Turnstile on the contact form (ADR-0007), the only third-party origin.
+      TURNSTILE_ORIGIN,
+    ],
+    isDev,
+  );
+}
+
+/**
+ * Strict policy (ADR-0009): only scripts carrying this request's nonce run,
+ * and 'strict-dynamic' extends that trust to the scripts they load, such as
+ * the Next.js chunks and Turnstile. No 'unsafe-inline' and no host allowlist.
+ * Next.js reads the nonce from this header on the request and adds it to its
+ * own inline scripts.
+ */
+export function strictContentSecurityPolicy(nonce: string, isDev: boolean): string {
+  return policy([`'nonce-${nonce}'`, "'strict-dynamic'"], isDev);
+}
+
+/** A fresh, unguessable nonce: 128 random bits, base64-encoded. */
+export function createNonce(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  return btoa(String.fromCharCode(...bytes));
+}
+
+function policy(scriptSources: string[], isDev: boolean): string {
+  const scriptSrc = [...scriptSources, isDev ? "'unsafe-eval'" : null].filter(Boolean).join(' ');
 
   return [
     "default-src 'self'",
