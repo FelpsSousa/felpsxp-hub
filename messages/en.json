@@ -94,6 +94,8 @@
     "errors": {
       "summary": "Please review the highlighted fields.",
       "generic": "The message could not be sent right now. Try again in a few minutes, or write to the e-mail address above.",
+      "verificationPending": "Wait for the bot check to finish, then send again.",
+      "verificationFailed": "The bot check did not load. Reload the page, or write to the e-mail address above.",
       "name": "Enter your name on one line, up to 100 characters.",
       "email": "Enter a valid e-mail address.",
       "company": "Use one line, up to 100 characters.",
