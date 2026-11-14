@@ -157,9 +157,9 @@ an ecosystem ADR in `felpsxp-architecture`.
       and emit an event.
 - [ ] CSP violation reporting endpoint (`report-to`), with the policy first
       shipped in report-only mode for any tightening.
-- [ ] Drop `'unsafe-inline'` from `script-src`: allow the theme init script
-      by its sha256 hash, which keeps pages static (nonces would force
-      dynamic rendering).
+- [ ] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script
+      alone would block Next.js's per-page inline hydration payload; the
+      options and their costs are in ADR-0009 (proposed).
 - [ ] Public `/security/observatory` page with aggregated charts
       (Recharts), reading only tier C aggregates from the Platform:
       attempts per hour, most probed paths, top countries and networks,

@@ -116,7 +116,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 
 | Risk | Why it is accepted | Plan |
 | --- | --- | --- |
-| `'unsafe-inline'` in `script-src` | Required by Next.js's inline hydration payload and the theme script | Allow the theme script by SHA-256 hash, test in report-only mode first (roadmap Block 5) |
+| `'unsafe-inline'` in `script-src` | Required by Next.js's inline hydration payload, which differs on every page, and the theme script | Per-request nonces with `'strict-dynamic'`, report-only first; proposed in ADR-0009 |
 | No required review before merge | Solo maintainer; GitHub does not allow approving one's own pull request | Required checks, small PRs and CodeQL compensate; enable reviews when there is a second maintainer |
 | Turnstile loads a third-party script | The cost of abuse without a bot check is higher | Limited to `https://challenges.cloudflare.com` in the CSP |
 | The 404 page renders on the client | A Next.js limitation with a root layout under `[locale]`; no security impact, the status is a real 404 with `noindex` | Revisit when `global-not-found` is stable |
