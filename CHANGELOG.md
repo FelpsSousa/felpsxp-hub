@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.11.0...v0.11.1) (2026-11-14)
+
+
+### Bug Fixes
+
+* answer unknown locales with a 404 before page code runs, and add a favicon ([#50](https://github.com/FelpsSousa/felpsxp-hub/issues/50)) ([d9b61ff](https://github.com/FelpsSousa/felpsxp-hub/commit/d9b61ff35f6ab7047bcaf4cd055f4afb00b99689))
+
 ## [0.11.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.10.0...v0.11.0) (2026-11-14)
 
 
