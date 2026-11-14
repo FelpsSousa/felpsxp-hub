@@ -10,6 +10,9 @@ updates:
       day: monday
       time: "07:00"
       timezone: America/Sao_Paulo
+    # Only releases at least two weeks old, the same rule as every other dependency.
+    cooldown:
+      default-days: 14
     commit-message:
       prefix: ci
       include: scope
