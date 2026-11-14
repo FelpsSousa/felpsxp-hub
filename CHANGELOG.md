@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.2](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.1...v0.18.2) (2026-11-14)
+
+
+### Security
+
+* send a strict nonce-based CSP in report-only mode (ADR-0009) ([#77](https://github.com/FelpsSousa/felpsxp-hub/issues/77)) ([24f2c79](https://github.com/FelpsSousa/felpsxp-hub/commit/24f2c791ef82040c2f55a3268630abafde1934d6))
+
 ## [0.18.1](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.0...v0.18.1) (2026-11-14)
 
 
