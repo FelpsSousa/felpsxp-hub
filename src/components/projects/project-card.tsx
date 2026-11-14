@@ -15,7 +15,7 @@ export function ProjectCard({
   project: Project;
   headingLevel?: 'h2' | 'h3';
 }) {
-  const t = useTranslations('projects.filters.levels');
+  const t = useTranslations('projects');
   const cover = project.media.find((item) => item.kind === 'image');
   const Heading = headingLevel;
 
@@ -37,8 +37,8 @@ export function ProjectCard({
       )}
 
       <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-fg-muted">
-        <span className="rounded-full border border-border px-2 py-0.5">{project.status}</span>
-        <span className="rounded-full border border-border px-2 py-0.5">{t(project.difficulty)}</span>
+        <span className="rounded-full border border-border px-2 py-0.5">{t(`status.${project.status}`)}</span>
+        <span className="rounded-full border border-border px-2 py-0.5">{t(`filters.levels.${project.difficulty}`)}</span>
         <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">
           ~{projectXp(project)} XP
         </span>

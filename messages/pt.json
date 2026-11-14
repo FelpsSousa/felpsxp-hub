@@ -76,6 +76,13 @@
         "advanced": "Avançado",
         "frontier": "Fronteira"
       }
+    },
+    "status": {
+      "planned": "Planejado",
+      "active": "Ativo",
+      "evolving": "Em evolução",
+      "paused": "Pausado",
+      "archived": "Arquivado"
     }
   },
   "contact": {
