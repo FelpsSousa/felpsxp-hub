@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.1](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.0...v0.18.1) (2026-11-14)
+
+
+### Bug Fixes
+
+* highlight the current section in the header navigation ([#73](https://github.com/FelpsSousa/felpsxp-hub/issues/73)) ([6f3a005](https://github.com/FelpsSousa/felpsxp-hub/commit/6f3a0058d351d7d05cd97aedd98c80a25ba98e84))
+
 ## [0.18.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.17.0...v0.18.0) (2026-11-14)
 
 
