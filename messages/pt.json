@@ -170,5 +170,22 @@
       "project": "Projeto",
       "section": "Seção"
     }
+  },
+  "shortcuts": {
+    "open": "Atalhos de teclado",
+    "title": "Atalhos de teclado",
+    "keysHeading": "Teclas",
+    "actionHeading": "Ação",
+    "then": "depois",
+    "actions": {
+      "search": "Buscar no site",
+      "home": "Ir para o início",
+      "projects": "Ir para Projetos",
+      "contact": "Ir para Contato",
+      "help": "Mostrar esta lista"
+    },
+    "toggle": "Atalhos de uma tecla ativos",
+    "toggleHelp": "Desligue se eles atrapalharem um leitor de tela ou um software de voz. Ctrl+K continua funcionando. A escolha fica só neste navegador.",
+    "close": "Fechar"
   }
 }

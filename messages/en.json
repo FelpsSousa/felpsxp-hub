@@ -170,5 +170,22 @@
       "project": "Project",
       "section": "Section"
     }
+  },
+  "shortcuts": {
+    "open": "Keyboard shortcuts",
+    "title": "Keyboard shortcuts",
+    "keysHeading": "Keys",
+    "actionHeading": "Action",
+    "then": "then",
+    "actions": {
+      "search": "Search the site",
+      "home": "Go to the home page",
+      "projects": "Go to Projects",
+      "contact": "Go to Contact",
+      "help": "Show this list"
+    },
+    "toggle": "Single-key shortcuts on",
+    "toggleHelp": "Turn them off if they get in the way of a screen reader or speech software. Ctrl+K keeps working. The choice stays in this browser only.",
+    "close": "Close"
   }
 }

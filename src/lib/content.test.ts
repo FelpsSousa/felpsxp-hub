@@ -13,6 +13,8 @@ import {
   getProjectStaticParams,
   getPublicProjects,
 } from '@/lib/content';
+import { SHORTCUTS_STORAGE_KEY } from '@/lib/shortcuts';
+import { THEME_STORAGE_KEY } from '@/lib/theme';
 
 // Importing '@/lib/content' already parses every record through its Zod
 // schema, so these tests failing to load at all means some record is
@@ -112,7 +114,15 @@ describe('privacy page', () => {
   it('names every cookie, storage key and third party the code uses', () => {
     for (const locale of locales) {
       const text = collectStrings(getPrivacyPage(locale)).join(' ');
-      for (const term of ['NEXT_LOCALE', 'localStorage', 'Vercel', 'Cloudflare', 'Resend']) {
+      for (const term of [
+        'NEXT_LOCALE',
+        'localStorage',
+        `"${THEME_STORAGE_KEY}"`,
+        `"${SHORTCUTS_STORAGE_KEY}"`,
+        'Vercel',
+        'Cloudflare',
+        'Resend',
+      ]) {
         expect(text, `${term} in ${locale}`).toContain(term);
       }
     }
