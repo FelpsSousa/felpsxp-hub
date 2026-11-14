@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.13.0...v0.14.0) (2026-11-14)
+
+
+### Features
+
+* publish an accessibility statement and link it from the footer ([#58](https://github.com/FelpsSousa/felpsxp-hub/issues/58)) ([13af019](https://github.com/FelpsSousa/felpsxp-hub/commit/13af019ae862f183b29a0cab3885baf520bc2835))
+
 ## [0.13.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.12.0...v0.13.0) (2026-11-14)
 
 
