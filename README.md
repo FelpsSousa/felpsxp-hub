@@ -7,6 +7,7 @@
 
 [![CI](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/codeql.yml/badge.svg)](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/FelpsSousa/felpsxp-hub/badge)](https://scorecard.dev/viewer/?uri=github.com/FelpsSousa/felpsxp-hub)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-fe5196.svg)](https://www.conventionalcommits.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -47,8 +48,8 @@ control is tested, and the history is a sequence of small, reviewed pull request
   stored, and anonymous security events with no personal data
   ([ADR-0007](docs/adr/0007-contact-form-security-model.md)).
 - **Supply chain.** gitleaks in pre-commit and over the full history in CI, CodeQL on the code
-  and on the workflows, GitHub Actions pinned by commit SHA, and new dependencies taken only at
-  releases a few weeks old.
+  and on the workflows, GitHub Actions pinned by commit SHA, new dependencies taken only at
+  releases a few weeks old, and a weekly OpenSSF Scorecard report published as the badge above.
 - **Disclosure.** A published [security policy](https://felpsxp.com/security) and an RFC 9116
   `security.txt` that CI refuses to let expire.
 

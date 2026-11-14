@@ -8,6 +8,7 @@
 
 [![CI](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/codeql.yml/badge.svg)](https://github.com/FelpsSousa/felpsxp-hub/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/FelpsSousa/felpsxp-hub/badge)](https://scorecard.dev/viewer/?uri=github.com/FelpsSousa/felpsxp-hub)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Parte do **ecossistema digital FelpsXP** · ID no registro: `FXP-003`
@@ -38,7 +39,8 @@ revisados.
   validação que barra injeção de cabeçalho, e-mail em texto puro, nada armazenado e eventos de
   segurança anônimos.
 - **Cadeia de suprimentos:** gitleaks, CodeQL no código e nos workflows, actions fixadas por SHA
-  e dependências novas só em versões com algumas semanas de vida.
+  dependências novas só em versões com algumas semanas de vida e um relatório semanal do
+  OpenSSF Scorecard, publicado no selo acima.
 - **Testes de ponta a ponta com Playwright e auditoria WCAG 2.2 AA com axe** em todas as páginas,
   nos dois idiomas e nos dois temas, em desktop e mobile.
 - **Privacidade desde o desenho (LGPD):** um único cookie de sessão para o idioma, nenhum

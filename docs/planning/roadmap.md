@@ -214,7 +214,7 @@ clean public extraction of the observatory module.
 - [ ] Documented screen reader pass (NVDA and VoiceOver), then update the
       statement's known limitations.
 - [ ] Self-hosted Umami, with the CSP `connect-src` updated.
-- [ ] OpenSSF Scorecard workflow and README badge; GitHub Actions pinned by
+- [x] OpenSSF Scorecard workflow and README badge; GitHub Actions pinned by
       commit SHA.
 - [x] README as a showcase: stack, decisions, security and quality highlights.
 - [ ] README screenshots, once the recruiter pages are in place.
