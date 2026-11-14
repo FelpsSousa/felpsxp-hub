@@ -90,3 +90,13 @@ test.describe('strict CSP in report-only mode (ADR-0009)', () => {
     }
   }
 });
+
+test('hreflang alternates come only from the HTML, on the production domain', async ({ request }) => {
+  const response = await request.get('/en/projects');
+  expect(response.headers()['link'] ?? '').not.toContain('hreflang');
+
+  const html = await response.text();
+  const alternates = html.match(/<link rel="alternate" hrefLang="[^"]+" href="[^"]+"/g) ?? [];
+  expect(alternates).toHaveLength(3);
+  for (const link of alternates) expect(link).toContain('href="https://felpsxp.com');
+});
