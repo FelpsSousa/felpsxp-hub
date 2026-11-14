@@ -72,7 +72,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | --- | --- | --- | --- |
 | T1 | A malicious or careless change reaches production | `main` protected: pull requests only, linear history, required checks (gitleaks, pre-commit, Conventional Commits) | Implemented |
 | T2 | A compromised npm package enters the build | Lockfile with `--frozen-lockfile` in CI; Dependabot; new dependencies only at a release a few weeks old (#19); CodeQL (#30) | Implemented |
-| T3 | A compromised or abused GitHub Action | Actions pinned by commit SHA; least-privilege `permissions`; `pull_request_target` never checks out PR code; CodeQL analyses the workflows (#30) | Implemented |
+| T3 | A compromised or abused GitHub Action | Actions pinned by commit SHA; least-privilege `permissions`; `pull_request_target` never checks out PR code; CodeQL analyses the workflows (#30); a weekly OpenSSF Scorecard run grades these practices and publishes only public repository metadata to the Scorecard API, with no secret involved | Implemented |
 | T4 | Content files carry a dangerous link or markup | Zod rejects any link that is not HTTPS or same-origin, including `javascript:` and `data:` (#19); JSON-LD escapes `<` (#24) | Implemented |
 | T5 | Commits impersonate Felipe in the history | Signed commits and vigilant mode on GitHub | Owner |
 
@@ -134,7 +134,8 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 ## How this model is verified
 
 - **Continuously:** CI (gitleaks, tests that assert every security header and CSP
-  directive, CodeQL) on every pull request.
+  directive, CodeQL) on every pull request, and a weekly OpenSSF Scorecard report of the
+  repository's supply chain practices.
 - **Before go-live:** an external header check of the production domain.
 - **After go-live:** a light black-box pentest of the production site, following this
   document, published as a write-up (roadmap Block 3).
