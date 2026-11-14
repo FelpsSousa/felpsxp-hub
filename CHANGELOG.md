@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.9.2...v0.10.0) (2026-11-14)
+
+
+### Features
+
+* add breadcrumbs and previous and next links to project pages ([#46](https://github.com/FelpsSousa/felpsxp-hub/issues/46)) ([48f9e5f](https://github.com/FelpsSousa/felpsxp-hub/commit/48f9e5f8557cd245924990a2e94c632ee5484a1c))
+
 ## [0.9.2](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.9.1...v0.9.2) (2026-11-12)
 
 
