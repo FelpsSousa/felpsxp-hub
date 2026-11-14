@@ -6,17 +6,20 @@ and 4x CPU slowdown) and the desktop preset.
 
 ## Scores
 
+Mobile performance is the median of three runs on a quiet machine, with the range in
+parentheses; the other categories were identical in every run.
+
 | Page | Mobile perf. | Desktop perf. | Accessibility | Best practices | SEO |
 | --- | --- | --- | --- | --- | --- |
-| `/` | 90 | 100 | 100 | 100 | 100 |
-| `/en/projects` | 97 to 100 | 100 | 100 | 100 | 100 |
-| `/projects/felpsxp-hub` | 94 to 100 | 100 | 100 | 100 | 100 |
-| `/contact` | 76 | 100 | 100 | 100 | 100 |
+| `/` | 97 (94 to 99) | 100 | 100 | 100 | 100 |
+| `/en/projects` | 99 (98 to 100) | 100 | 100 | 100 | 100 |
+| `/projects/felpsxp-hub` | 98 (94 to 100) | 100 | 100 | 100 | 100 |
+| `/contact` | 82 (78 to 99) | 100 | 100 | 100 | 100 |
 
-Mobile performance is the only score below 100, and it moves with the load on the machine:
-a first run, taken while another build was running, gave 66 to 76 on the same pages. The
-ranges above come from three runs on a quiet machine. Cumulative Layout Shift is 0 on every
-page. The contact page carries Turnstile, whose script accounts for most of its blocking time.
+Mobile performance is the only score below 100, and it is sensitive to the load on the
+machine: a first run, taken while another build was running, gave 66 to 90 on these pages.
+Cumulative Layout Shift is 0 on every page. On the contact page, the Turnstile script accounts
+for most of the blocking time, which is why its score swings the most.
 
 ## Cost of per-request rendering (ADR-0009)
 
