@@ -13,6 +13,6 @@ To add one, copy [`template.md`](template.md) to the next number and add a row b
 | [0006](0006-testing-stack.md) | Testing stack, Vitest for units and Playwright for end-to-end | Accepted | 2026-11-10 |
 | [0007](0007-contact-form-security-model.md) | Contact form security model | Accepted | 2026-11-11 |
 | [0008](0008-versioning-and-releases.md) | Semantic versioning, automated releases and a visible version | Accepted | 2026-11-12 |
-| [0009](0009-script-src-without-unsafe-inline.md) | Removing `'unsafe-inline'` from `script-src` | Proposed | 2026-11-14 |
+| [0009](0009-script-src-without-unsafe-inline.md) | Removing `'unsafe-inline'` from `script-src` | Accepted | 2026-11-14 |
 
 Ecosystem-wide decisions live in [`felpsxp-architecture`](https://github.com/FelpsSousa/felpsxp-architecture).

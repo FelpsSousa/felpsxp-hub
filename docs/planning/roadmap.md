@@ -159,7 +159,7 @@ an ecosystem ADR in `felpsxp-architecture`.
       shipped in report-only mode for any tightening.
 - [ ] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script
       alone would block Next.js's per-page inline hydration payload; the
-      options and their costs are in ADR-0009 (proposed).
+      decision is ADR-0009: per-request nonces, report-only first.
 - [ ] Public `/security/observatory` page with aggregated charts
       (Recharts), reading only tier C aggregates from the Platform:
       attempts per hour, most probed paths, top countries and networks,
