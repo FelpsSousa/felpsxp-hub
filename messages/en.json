@@ -126,5 +126,9 @@
       "reverts": "Reverts",
       "breaking": "Breaking changes"
     }
+  },
+  "toc": {
+    "label": "On this page",
+    "anchor": "Link to the {section} section"
   }
 }
