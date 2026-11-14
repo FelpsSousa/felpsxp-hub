@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import en from '../../messages/en.json';
 import pt from '../../messages/pt.json';
+import { projectDifficultySchema, projectStatusSchema } from '@/content/schemas';
 
 function keyPaths(value: unknown, prefix = ''): string[] {
   if (value && typeof value === 'object' && !Array.isArray(value)) {
@@ -28,6 +29,17 @@ describe('translation messages', () => {
       expect(typeof value).toBe('string');
       expect((value as string).trim()).not.toBe('');
       expect(value).not.toMatch(/[–—]/);
+    }
+  });
+
+  it('label every project status and difficulty the content schema allows', () => {
+    for (const messages of [pt, en]) {
+      expect(Object.keys(messages.projects.status).sort()).toEqual(
+        [...projectStatusSchema.options].sort(),
+      );
+      expect(Object.keys(messages.projects.filters.levels).sort()).toEqual(
+        [...projectDifficultySchema.options].sort(),
+      );
     }
   });
 });

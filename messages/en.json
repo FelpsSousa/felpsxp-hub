@@ -76,6 +76,13 @@
         "advanced": "Advanced",
         "frontier": "Frontier"
       }
+    },
+    "status": {
+      "planned": "Planned",
+      "active": "Active",
+      "evolving": "Evolving",
+      "paused": "Paused",
+      "archived": "Archived"
     }
   },
   "contact": {
