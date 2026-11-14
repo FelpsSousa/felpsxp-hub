@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.16.0...v0.17.0) (2026-11-14)
+
+
+### Features
+
+* add site search (Ctrl+K) over a static index built at build time ([#68](https://github.com/FelpsSousa/felpsxp-hub/issues/68)) ([a75c4fc](https://github.com/FelpsSousa/felpsxp-hub/commit/a75c4fca6aa2fe84fcdaa7f9fb6ce25b270ddd6e))
+
 ## [0.16.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.15.0...v0.16.0) (2026-11-14)
 
 
