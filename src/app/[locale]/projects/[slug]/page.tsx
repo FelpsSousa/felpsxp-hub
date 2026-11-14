@@ -8,6 +8,7 @@ import type { AppLocale } from '@/i18n/routing';
 import { getAdjacentProjects, getProjectBySlug, getProjectStaticParams } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { domainLabel, projectDomains } from '@/lib/skill-taxonomy';
+import { requireLocale } from '@/i18n/locale';
 
 type ProjectPageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -18,15 +19,16 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const project = getProjectBySlug(slug, locale as AppLocale);
+  const { locale: localeParam, slug } = await params;
+  const locale = requireLocale(localeParam);
+  const project = getProjectBySlug(slug, locale);
 
   if (!project) {
     return {};
   }
 
   return pageMetadata({
-    locale: locale as AppLocale,
+    locale: locale,
     path: `/projects/${project.slug}`,
     title: project.title,
     description: project.summary,
@@ -52,23 +54,24 @@ function Section({ title, items }: { title: string; items: string[] }) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { locale, slug } = await params;
-  setRequestLocale(locale as AppLocale);
+  const { locale: localeParam, slug } = await params;
+  const locale = requireLocale(localeParam);
+  setRequestLocale(locale);
   const t = await getTranslations('projects');
-  const project = getProjectBySlug(slug, locale as AppLocale);
+  const project = getProjectBySlug(slug, locale);
 
   if (!project) {
     notFound();
   }
 
   const cover = project.media.find((item) => item.kind === 'image');
-  const { previous, next } = getAdjacentProjects(project.slug, locale as AppLocale);
+  const { previous, next } = getAdjacentProjects(project.slug, locale);
   const tCrumb = await getTranslations('breadcrumb');
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-10 px-6 py-20">
       <Breadcrumbs
-        locale={locale as AppLocale}
+        locale={locale}
         items={[
           { name: tCrumb('home'), path: '/' },
           { name: t('title'), path: '/projects' },

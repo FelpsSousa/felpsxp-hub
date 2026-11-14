@@ -4,17 +4,18 @@ import { LegalPageView } from '@/components/legal/legal-page-view';
 import type { AppLocale } from '@/i18n/routing';
 import { getPrivacyPage, getSiteSettings } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
+import { requireLocale } from '@/i18n/locale';
 
 type PrivacyPageProps = {
   params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: PrivacyPageProps): Promise<Metadata> {
-  const { locale } = await params;
-  const page = getPrivacyPage(locale as AppLocale);
+  const locale = requireLocale((await params).locale);
+  const page = getPrivacyPage(locale);
 
   return pageMetadata({
-    locale: locale as AppLocale,
+    locale: locale,
     path: '/privacy',
     title: page.title,
     description: page.summary,
@@ -22,13 +23,13 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
 }
 
 export default async function PrivacyPage({ params }: PrivacyPageProps) {
-  const { locale } = await params;
-  setRequestLocale(locale as AppLocale);
+  const locale = requireLocale((await params).locale);
+  setRequestLocale(locale);
   const t = await getTranslations('legal');
 
   return (
     <LegalPageView
-      page={getPrivacyPage(locale as AppLocale)}
+      page={getPrivacyPage(locale)}
       contactLabel={t('privacyContact')}
       contactEmail={getSiteSettings().privacyEmail}
     />

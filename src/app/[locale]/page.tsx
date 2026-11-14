@@ -7,17 +7,18 @@ import { getFeaturedProjects, getProfile, getSiteSettings } from '@/lib/content'
 import { pageMetadata } from '@/lib/seo';
 import type { Project } from '@/content/types';
 import type { AppLocale } from '@/i18n/routing';
+import { requireLocale } from '@/i18n/locale';
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
-  const { locale } = await params;
-  const profile = getProfile(locale as AppLocale);
+  const locale = requireLocale((await params).locale);
+  const profile = getProfile(locale);
 
   return pageMetadata({
-    locale: locale as AppLocale,
+    locale: locale,
     path: '/',
     title: `${getSiteSettings().name} · ${profile.title}`,
     description: profile.shortBio,
@@ -26,10 +27,10 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 }
 
 export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = await params;
-  setRequestLocale(locale as AppLocale);
-  const profile = getProfile(locale as AppLocale);
-  const featured = getFeaturedProjects(locale as AppLocale);
+  const locale = requireLocale((await params).locale);
+  setRequestLocale(locale);
+  const profile = getProfile(locale);
+  const featured = getFeaturedProjects(locale);
 
   return <HomeContent profile={profile} featured={featured} />;
 }

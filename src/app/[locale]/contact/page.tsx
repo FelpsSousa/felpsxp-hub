@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
 import { getSiteSettings } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
+import { requireLocale } from '@/i18n/locale';
 
 type ContactPageProps = {
   params: Promise<{ locale: string }>;
@@ -14,11 +15,11 @@ type ContactPageProps = {
 const turnstileLanguages = { pt: 'pt-br', en: 'en' } as const satisfies Record<AppLocale, string>;
 
 export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
-  const { locale } = await params;
+  const locale = requireLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: 'contact' });
 
   return pageMetadata({
-    locale: locale as AppLocale,
+    locale: locale,
     path: '/contact',
     title: t('title'),
     description: t('lede'),
@@ -26,8 +27,8 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
 }
 
 export default async function ContactPage({ params }: ContactPageProps) {
-  const { locale } = await params;
-  setRequestLocale(locale as AppLocale);
+  const locale = requireLocale((await params).locale);
+  setRequestLocale(locale);
   const t = await getTranslations('contact');
   const { contactEmail, socialLinks } = getSiteSettings();
   const linkedIn = socialLinks.find((link) => link.label === 'LinkedIn');
@@ -69,7 +70,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
         {siteKey ? (
           <ContactForm
             turnstileSiteKey={siteKey}
-            turnstileLanguage={turnstileLanguages[locale as AppLocale]}
+            turnstileLanguage={turnstileLanguages[locale]}
           />
         ) : (
           <p className="text-fg-muted">{t('formUnavailable')}</p>
