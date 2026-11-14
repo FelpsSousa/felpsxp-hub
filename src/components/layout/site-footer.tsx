@@ -29,13 +29,13 @@ export async function SiteFooter() {
           {/* Small text, so each link gets a 24px-high box of its own to meet
               WCAG 2.5.8 (target size) wherever the line above wraps. */}
           <p className="font-mono text-xs">
-            <a
-              href={build.releasesUrl}
+            <Link
+              href={`/changelog#v${build.version}`}
               title={t('versionLabel', { version: build.version })}
               className="inline-block py-1 underline underline-offset-4 hover:text-fg"
             >
               v{build.version}
-            </a>
+            </Link>
             {build.commit && (
               <>
                 {' · '}
