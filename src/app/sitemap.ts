@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/contact' },
     { path: '/privacy' },
     { path: '/security' },
+    { path: '/changelog' },
     ...getPublicProjects(defaultLocale).map((project) => ({
       path: `/projects/${project.slug}`,
       lastModified: project.updatedAt,

@@ -6,6 +6,7 @@ export const pages = [
   '/contact',
   '/privacy',
   '/security',
+  '/changelog',
 ] as const;
 
 export const locales = [

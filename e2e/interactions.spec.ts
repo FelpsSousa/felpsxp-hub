@@ -37,6 +37,17 @@ test('a project page leads back to the list and on to the next project', async (
   ).toHaveAttribute('href', '/projects/felpsxp-hub');
 });
 
+test('the footer version leads to its entry in the changelog', async ({ page }) => {
+  await page.goto('/');
+  const version = page.getByRole('contentinfo').getByRole('link', { name: /^v\d+\.\d+\.\d+$/ });
+  const label = (await version.textContent())!.trim();
+
+  await version.click();
+  await expect(page).toHaveURL(new RegExp(`/changelog#${label.replaceAll('.', '\\.')}$`));
+  await expect(page.getByRole('heading', { level: 1, name: 'Histórico de versões' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: label })).toBeVisible();
+});
+
 test('the skip link moves focus to the main content', async ({ page }) => {
   await page.goto('/');
   await page.keyboard.press('Tab');

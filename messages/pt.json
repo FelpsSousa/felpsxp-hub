@@ -108,5 +108,23 @@
     "updated": "Atualizado em {date}",
     "privacyContact": "Para exercer seus direitos ou tirar dúvidas:",
     "securityContact": "Para relatar uma vulnerabilidade:"
+  },
+  "changelog": {
+    "title": "Histórico de versões",
+    "lede": "Cada versão publicada deste site, gerada pelo release-please a partir dos commits. As notas ficam em inglês, como os próprios commits.",
+    "allReleases": "Todas as releases no GitHub",
+    "released": "Publicada em {date}",
+    "releaseLink": "Release {version} no GitHub",
+    "pullRequest": "Pull request #{number}",
+    "commit": "Commit {commit}",
+    "empty": "Nenhuma versão publicada ainda.",
+    "sections": {
+      "features": "Novidades",
+      "fixes": "Correções",
+      "security": "Segurança",
+      "performance": "Desempenho",
+      "reverts": "Reversões",
+      "breaking": "Mudanças incompatíveis"
+    }
   }
 }

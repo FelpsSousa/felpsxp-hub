@@ -201,7 +201,7 @@ clean public extraction of the observatory module.
       a filtered list can be shared and the way back returns to it.
 - [ ] Anchor links on section headings and a table of contents on long pages
       (projects, legal pages, CV).
-- [ ] `/changelog` page built from `CHANGELOG.md`, linked from the footer
+- [x] `/changelog` page built from `CHANGELOG.md`, linked from the footer
       version.
 - [ ] Keyboard shortcuts (`/` for search, `g p` for projects), after the
       site search.
