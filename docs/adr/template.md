@@ -44,3 +44,8 @@
 **Follow-ups**
 
 - [ ] <work this decision creates>
+
+## Amendments
+
+<!-- Leave empty when the ADR is first written. Later improvements that keep the decision
+     standing are logged here: "- **YYYY-MM-DD** (#PR): what changed and why." -->
