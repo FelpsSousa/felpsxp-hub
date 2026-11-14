@@ -6,7 +6,10 @@ import { isActivePath } from '@/lib/navigation';
 
 type NavLinkProps = Omit<ComponentProps<typeof Link>, 'href'> & { href: string };
 
-/** A locale-aware link that marks itself as the current page. */
+/**
+ * A locale-aware link that marks itself as the current page with
+ * `aria-current`; callers style that state with `aria-[current=page]:`.
+ */
 export function NavLink({ href, className, ...props }: NavLinkProps) {
   const pathname = usePathname();
   const active = isActivePath(pathname, href);
