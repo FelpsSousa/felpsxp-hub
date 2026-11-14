@@ -57,7 +57,7 @@ export function MobileNav() {
         <ul className="mx-auto flex max-w-3xl flex-col px-6 py-2">
           {primaryNavigation.map((item) => (
             <li key={item.key}>
-              <NavLink href={item.href} className="block py-3 text-base">
+              <NavLink href={item.href} className="-ml-3 block border-l-2 border-transparent py-3 pl-3 text-base aria-[current=page]:border-accent aria-[current=page]:font-medium">
                 {t(item.key)}
               </NavLink>
             </li>

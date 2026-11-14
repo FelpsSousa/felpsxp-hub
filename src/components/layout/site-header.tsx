@@ -28,7 +28,12 @@ export async function SiteHeader() {
             <ul className="flex items-center gap-6 text-sm">
               {primaryNavigation.map((item) => (
                 <li key={item.key}>
-                  <NavLink href={item.href}>{t(`nav.${item.key}`)}</NavLink>
+                  <NavLink
+                    href={item.href}
+                    className="rounded-sm decoration-accent decoration-2 underline-offset-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent aria-[current=page]:underline"
+                  >
+                    {t(`nav.${item.key}`)}
+                  </NavLink>
                 </li>
               ))}
             </ul>

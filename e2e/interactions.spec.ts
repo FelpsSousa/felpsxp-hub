@@ -161,3 +161,22 @@ test.describe('mobile menu', () => {
     );
   });
 });
+
+test('the header highlights the section of the current page', async ({ page, isMobile }) => {
+  await page.goto('/projects/felpsxp-hub');
+  if (isMobile) await page.getByRole('button', { name: 'Abrir menu' }).click();
+  const nav = page.getByRole('navigation', { name: 'Navegação principal' }).locator('visible=true');
+
+  const projects = nav.getByRole('link', { name: 'Projetos' });
+  const contact = nav.getByRole('link', { name: 'Contato' });
+  await expect(projects).toHaveAttribute('aria-current', 'page');
+  await expect(contact).not.toHaveAttribute('aria-current');
+
+  // The current section is marked visually, not only for assistive technology.
+  const marker = (link: typeof projects) =>
+    link.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return `${style.textDecorationLine} ${style.borderLeftColor}`;
+    });
+  expect(await marker(projects)).not.toBe(await marker(contact));
+});
