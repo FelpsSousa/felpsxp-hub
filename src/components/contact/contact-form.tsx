@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useActionState, useState } from 'react';
 import { submitContact } from '@/app/[locale]/contact/actions';
-import { TurnstileWidget } from '@/components/contact/turnstile-widget';
+import { TurnstileWidget, type TurnstileStatus } from '@/components/contact/turnstile-widget';
 import { HONEYPOT_FIELD } from '@/lib/contact/fields';
 import type { ContactActionState } from '@/lib/contact/handle-submission';
 import { contactIntents, type ContactField } from '@/lib/contact/schema';
@@ -32,6 +32,9 @@ export function ContactForm({
   const [state, formAction, pending] = useActionState(submitContact, initialState);
   const [values, setValues] = useState(emptyValues);
   const [dismissed, setDismissed] = useState<ContactActionState | null>(null);
+  const [verification, setVerification] = useState<TurnstileStatus>('loading');
+  // Set when a submission is held back because the check has no token yet.
+  const [held, setHeld] = useState(false);
 
   const invalidFields = state.status === 'invalid' ? state.fields : [];
   const isInvalid = (name: ContactField) => invalidFields.includes(name);
@@ -68,7 +71,23 @@ export function ContactForm({
     ) : null;
 
   return (
-    <form action={formAction} noValidate className="flex flex-col gap-5">
+    <form
+      action={formAction}
+      onSubmit={(event) => {
+        // Without a token the server can only refuse, so explain it here.
+        if (verification !== 'ready') {
+          event.preventDefault();
+          setHeld(true);
+        }
+      }}
+      noValidate
+      className="flex flex-col gap-5"
+    >
+      {held && verification !== 'ready' && (
+        <p role="alert" className="rounded-md border border-danger/50 p-3 text-sm text-danger">
+          {verification === 'error' ? t('errors.verificationFailed') : t('errors.verificationPending')}
+        </p>
+      )}
       {state.status === 'error' && (
         <p role="alert" className="rounded-md border border-danger/50 p-3 text-sm text-danger">
           {t('errors.generic')}
@@ -195,7 +214,15 @@ export function ContactForm({
         />
       </div>
 
-      <TurnstileWidget siteKey={turnstileSiteKey} language={turnstileLanguage} resetSignal={state} />
+      <TurnstileWidget
+        siteKey={turnstileSiteKey}
+        language={turnstileLanguage}
+        resetSignal={state}
+        onStatusChange={(status) => {
+          setVerification(status);
+          if (status === 'ready') setHeld(false);
+        }}
+      />
 
       <button
         type="submit"

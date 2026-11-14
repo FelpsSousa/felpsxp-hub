@@ -94,6 +94,8 @@
     "errors": {
       "summary": "Revise os campos destacados.",
       "generic": "Não foi possível enviar agora. Tente de novo em alguns minutos ou escreva direto para o e-mail acima.",
+      "verificationPending": "Aguarde a verificação anti-robô terminar e envie de novo.",
+      "verificationFailed": "A verificação anti-robô não carregou. Recarregue a página ou escreva direto para o e-mail acima.",
       "name": "Informe seu nome, em uma linha, com até 100 caracteres.",
       "email": "Informe um e-mail válido.",
       "company": "Use uma linha, com até 100 caracteres.",

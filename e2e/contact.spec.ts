@@ -59,3 +59,21 @@ test('shows a generic error when delivery fails', async ({ page }) => {
   await expect(alert).toContainText('could not be sent right now');
   await expect(alert).not.toContainText(/resend|api|401|key/i);
 });
+
+test('explains a bot check that did not load instead of submitting', async ({ page }) => {
+  // Simulates Cloudflare being unreachable, or a site key the host is not allowed to use.
+  await page.route('https://challenges.cloudflare.com/**', (route) => route.abort());
+  let submitted = false;
+  page.on('request', (request) => {
+    if (request.method() === 'POST') submitted = true;
+  });
+
+  await page.goto('/en/contact');
+  await fillValid(page);
+  await page.getByRole('button', { name: 'Send message' }).click();
+
+  await expect(page.locator('form').getByRole('alert')).toContainText(
+    'The bot check did not load.',
+  );
+  expect(submitted).toBe(false);
+});
