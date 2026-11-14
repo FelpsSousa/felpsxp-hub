@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.12.0...v0.13.0) (2026-11-14)
+
+
+### Features
+
+* add anchor links to section headings and a table of contents on project and legal pages ([#56](https://github.com/FelpsSousa/felpsxp-hub/issues/56)) ([0cc05a5](https://github.com/FelpsSousa/felpsxp-hub/commit/0cc05a5540954a870398e05801d93835f0473e55))
+
 ## [0.12.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.11.1...v0.12.0) (2026-11-14)
 
 
