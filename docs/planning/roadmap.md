@@ -207,7 +207,7 @@ clean public extraction of the observatory module.
       site search.
 - [x] Featured projects, driven by each project's `featured` flag.
 - [ ] Featured posts, once `/writing` exists.
-- [ ] Site search (Ctrl+K) over a static index built at build time.
+- [x] Site search (Ctrl+K) over a static index built at build time.
 - [ ] `/ecosystem`: decide whether it ships, given most modules are
       private; if it does, link to `felpsxp-architecture` for detail.
 - [x] `/accessibility` statement, linked from the footer.
