@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.10.0...v0.11.0) (2026-11-14)
+
+
+### Features
+
+* **contact:** explain a bot check that has not passed instead of submitting ([#48](https://github.com/FelpsSousa/felpsxp-hub/issues/48)) ([280f159](https://github.com/FelpsSousa/felpsxp-hub/commit/280f159dfb9a4b7fbcfa17afa022e5f520286b90))
+
 ## [0.10.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.9.2...v0.10.0) (2026-11-14)
 
 
