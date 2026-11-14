@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { locales, pages, urlFor } from './pages';
 
 /**
  * The unit tests check the header definitions; these check that a real
@@ -30,4 +31,62 @@ test('the locale cookie is Secure and SameSite=Lax', async ({ request }) => {
   expect(cookie).toMatch(/NEXT_LOCALE=pt/);
   expect(cookie).toMatch(/Secure/i);
   expect(cookie).toMatch(/SameSite=lax/i);
+});
+
+test.describe('strict CSP in report-only mode (ADR-0009)', () => {
+  test('each response gets its own nonce, and every script carries it', async ({ request }) => {
+    const nonces = new Set<string>();
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const response = await request.get('/en/projects');
+      const policy = response.headers()['content-security-policy-report-only'] ?? '';
+      const scriptSrc = policy.split('; ').find((directive) => directive.startsWith('script-src '));
+      expect(scriptSrc).toMatch(/^script-src 'nonce-[^']+' 'strict-dynamic'$/);
+
+      const nonce = policy.match(/'nonce-([^']+)'/)?.[1] ?? '';
+      expect(nonce).not.toBe('');
+      nonces.add(nonce);
+
+      // JSON-LD is data, not code; every executable script must carry the nonce.
+      const html = await response.text();
+      const scripts = html.match(/<script(?![^>]*application\/ld\+json)[^>]*>/g) ?? [];
+      expect(scripts.length).toBeGreaterThan(0);
+      for (const script of scripts) expect(script).toContain(`nonce="${nonce}"`);
+    }
+    expect(nonces.size).toBe(2);
+  });
+
+  test('a client cannot choose the nonce', async ({ request }) => {
+    const response = await request.get('/en/projects', {
+      headers: { 'x-nonce': 'attacker', 'content-security-policy-report-only': "script-src 'nonce-attacker'" },
+    });
+    expect(response.headers()['content-security-policy-report-only']).not.toContain('attacker');
+    expect(await response.text()).not.toContain('nonce="attacker"');
+  });
+
+  for (const { code, prefix } of locales) {
+    for (const path of pages) {
+      test(`${urlFor(prefix, path)} (${code}) runs without a single violation`, async ({ page }) => {
+        await page.addInitScript(() => {
+          const seen: string[] = [];
+          (window as unknown as { cspViolations: string[] }).cspViolations = seen;
+          document.addEventListener('securitypolicyviolation', (event) => {
+            seen.push(`${event.disposition} ${event.effectiveDirective} ${event.blockedURI} ${event.sourceFile}:${event.lineNumber}`);
+          });
+        });
+        await page.goto(urlFor(prefix, path));
+        if (path === '/contact') {
+          // Turnstile keeps the network busy; its token proves its scripts ran.
+          await expect(page.locator('input[name="cf-turnstile-response"]')).toHaveValue(/.+/, {
+            timeout: 20_000,
+          });
+        } else {
+          await page.waitForLoadState('networkidle');
+        }
+        const violations = await page.evaluate(
+          () => (window as unknown as { cspViolations: string[] }).cspViolations,
+        );
+        expect(violations).toEqual([]);
+      });
+    }
+  }
 });
