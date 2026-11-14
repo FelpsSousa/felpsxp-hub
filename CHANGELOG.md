@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.11.1...v0.12.0) (2026-11-14)
+
+
+### Features
+
+* add a changelog page built from CHANGELOG.md and link the footer version to it ([#54](https://github.com/FelpsSousa/felpsxp-hub/issues/54)) ([ea00f86](https://github.com/FelpsSousa/felpsxp-hub/commit/ea00f861e0d8db4ab875ee8b303dcb9be81c4c0c))
+
 ## [0.11.1](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.11.0...v0.11.1) (2026-11-14)
 
 
