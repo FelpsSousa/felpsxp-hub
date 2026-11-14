@@ -103,7 +103,15 @@ acceptable.
 
 **Follow-ups**
 
-- [ ] If accepted: report-only rollout, reporting endpoint, then enforcement, each in its own PR.
-- [ ] Measure time to first byte before and after in the Lighthouse pass.
-- [ ] Update the threat model and the code comments in `security-headers.ts` and the root
-      layout, which still describe the hash plan.
+- [x] Report-only rollout (#77).
+- [ ] Reporting endpoint, then enforcement, each in its own PR.
+- [x] Measure time to first byte before and after in the Lighthouse pass.
+- [x] Update the threat model and the code comments in `security-headers.ts` and the root
+      layout, which still describe the hash plan (#77).
+
+## Amendments
+
+- **2026-11-14:** measured the cost of per-request rendering (`docs/quality/lighthouse.md`).
+  Server time grows from about 5 ms to about 13 ms per page and mobile Lighthouse scores do not
+  change; the costs that matter are the loss of CDN caching for HTML and of the browser's
+  back/forward cache, since dynamic pages are sent with `no-store`. The decision stands.
