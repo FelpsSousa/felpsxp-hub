@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { Project } from '@/content/types';
 import { locales } from '@/i18n/routing';
 import {
+  getAccessibilityPage,
   getAdjacentProjects,
   getAllProjects,
   getFeaturedProjects,
@@ -87,6 +88,7 @@ describe('writing style in content', () => {
         getAllProjects(locale),
         getPrivacyPage(locale),
         getSecurityPage(locale),
+        getAccessibilityPage(locale),
       ]);
       const offenders = strings.filter((value) => /[–—]/.test(value));
       expect(offenders, `dashes found in ${locale} content`).toEqual([]);
@@ -117,12 +119,15 @@ describe('privacy page', () => {
   });
 });
 
-describe('security page', () => {
+describe.each([
+  ['security', getSecurityPage],
+  ['accessibility', getAccessibilityPage],
+])('%s page', (_name, getPage) => {
   it('has the same structure and date in every locale', () => {
     const [first, ...others] = locales;
-    const reference = getSecurityPage(first);
+    const reference = getPage(first);
     for (const locale of others) {
-      const page = getSecurityPage(locale);
+      const page = getPage(locale);
       expect(page.updatedAt).toBe(reference.updatedAt);
       expect(page.sections.map((section) => section.paragraphs.length)).toEqual(
         reference.sections.map((section) => section.paragraphs.length),
