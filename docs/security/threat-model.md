@@ -91,7 +91,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | I2 | Private details (LAN addresses, private repository paths, family or financial data) reach public content | Porting checklist with an IP grep (`docs/planning/roadmap.md`); content published from FelpsXP Logs only after a manual gate | Implemented (process) |
 | I3 | Felipe's private mailbox becomes public | Delivered to a server-only `CONTACT_TO_EMAIL`; the page shows `contact@felpsxp.com` (#32) | Implemented |
 | I4 | The stack is fingerprinted, or source code is exposed | `poweredByHeader: false`; production source maps off (Next.js default) | Implemented |
-| I5 | Visitor data leaks | Nothing is stored: static pages, no database; the only cookie holds the language (`Secure`, `SameSite=Lax`, session, #22); the theme lives in `localStorage` (#23); contact messages are not stored and events carry no personal data, which a test asserts (#32) | Implemented |
+| I5 | Visitor data leaks | Nothing is stored: static pages, no database; the only cookie holds the language (`Secure`, `SameSite=Lax`, session, #22); the theme and the choice to turn off single-key shortcuts live in `localStorage` (#23) and never reach the server; contact messages are not stored and events carry no personal data, which a test asserts (#32) | Implemented |
 | I6 | Full URLs leak to other sites through the referrer | `Referrer-Policy: strict-origin-when-cross-origin` | Implemented |
 
 ### Denial of service

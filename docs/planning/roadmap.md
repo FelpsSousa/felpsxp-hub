@@ -203,8 +203,8 @@ clean public extraction of the observatory module.
       (projects and legal pages; the CV page gets them when it ships).
 - [x] `/changelog` page built from `CHANGELOG.md`, linked from the footer
       version.
-- [ ] Keyboard shortcuts (`/` for search, `g p` for projects), after the
-      site search.
+- [x] Keyboard shortcuts (`/` for search, `g p` for projects), after the
+      site search, with a switch to turn single-key shortcuts off (WCAG 2.1.4).
 - [x] Featured projects, driven by each project's `featured` flag.
 - [ ] Featured posts, once `/writing` exists.
 - [x] Site search (Ctrl+K) over a static index built at build time.

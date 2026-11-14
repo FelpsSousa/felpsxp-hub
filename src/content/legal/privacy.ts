@@ -10,7 +10,7 @@ export const privacyPageByLocale: Localized<LegalPage> = {
     title: 'Privacidade',
     summary:
       'O que este site coleta, por que, por quanto tempo e quem mais participa. Versão curta: nada de rastreamento, nada de anúncios, e o formulário de contato não guarda nada aqui.',
-    updatedAt: '2026-11-12',
+    updatedAt: '2026-11-14',
     sections: [
       {
         heading: 'Quem é o responsável',
@@ -23,7 +23,7 @@ export const privacyPageByLocale: Localized<LegalPage> = {
         paragraphs: [
           'O site não usa analytics, cookies de rastreamento, pixels de redes sociais nem anúncios. As páginas são geradas antecipadamente e entregues prontas, sem banco de dados e sem login.',
           'Um único cookie é usado: NEXT_LOCALE, que guarda apenas o idioma escolhido ("pt" ou "en"). Ele dura até o navegador ser fechado, só trafega por HTTPS (Secure) e não é enviado em requisições de outros sites (SameSite=Lax).',
-          'A preferência de tema claro ou escuro fica no armazenamento local do seu navegador (localStorage, chave "theme") e nunca é enviada ao servidor. Você pode apagá-la limpando os dados do site.',
+          'A preferência de tema claro ou escuro fica no armazenamento local do seu navegador (localStorage, chave "theme") e nunca é enviada ao servidor. Se você desligar os atalhos de teclado de uma tecla, essa escolha fica no mesmo lugar, na chave "shortcuts". Você pode apagar as duas limpando os dados do site.',
           'Como qualquer hospedagem, a Vercel, que serve este site, processa dados técnicos de cada acesso (como endereço IP e tipo de navegador) para entregar as páginas e proteger o serviço, conforme a política de privacidade dela. Este site não usa esses registros para identificar visitantes.',
         ],
       },
@@ -66,7 +66,7 @@ export const privacyPageByLocale: Localized<LegalPage> = {
     title: 'Privacy',
     summary:
       'What this site collects, why, for how long, and who else is involved. Short version: no tracking, no ads, and the contact form stores nothing here.',
-    updatedAt: '2026-11-12',
+    updatedAt: '2026-11-14',
     sections: [
       {
         heading: 'Who is responsible',
@@ -79,7 +79,7 @@ export const privacyPageByLocale: Localized<LegalPage> = {
         paragraphs: [
           'The site uses no analytics, no tracking cookies, no social media pixels and no ads. Pages are generated in advance and served ready, with no database and no sign-in.',
           'A single cookie is used: NEXT_LOCALE, which only stores the language you chose ("pt" or "en"). It lasts until the browser is closed, travels only over HTTPS (Secure) and is not sent with requests from other sites (SameSite=Lax).',
-          'Your light or dark theme preference lives in your browser’s local storage (localStorage, key "theme") and is never sent to the server. You can remove it by clearing this site’s data.',
+          'Your light or dark theme preference lives in your browser’s local storage (localStorage, key "theme") and is never sent to the server. If you turn off the single-key keyboard shortcuts, that choice is kept in the same place, under the key "shortcuts". You can remove both by clearing this site’s data.',
           'Like any host, Vercel, which serves this site, processes technical data about each request (such as IP address and browser type) to deliver pages and protect the service, under its own privacy policy. This site does not use those records to identify visitors.',
         ],
       },

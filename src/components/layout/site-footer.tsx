@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { KeyboardShortcuts } from '@/components/shortcuts/keyboard-shortcuts';
 import { Link } from '@/i18n/navigation';
 import { buildInfo } from '@/lib/build-info';
 import { getSiteSettings } from '@/lib/content';
@@ -31,7 +32,7 @@ export async function SiteFooter() {
           </p>
           {/* Small text, so each link gets a 24px-high box of its own to meet
               WCAG 2.5.8 (target size) wherever the line above wraps. */}
-          <p className="font-mono text-xs">
+          <div className="font-mono text-xs">
             <Link
               href={`/changelog#v${build.version}`}
               title={t('versionLabel', { version: build.version })}
@@ -51,7 +52,11 @@ export async function SiteFooter() {
                 </a>
               </>
             )}
-          </p>
+            {' · '}
+            <span className="font-sans">
+              <KeyboardShortcuts />
+            </span>
+          </div>
         </div>
 
         <nav aria-label={t('elsewhere')}>

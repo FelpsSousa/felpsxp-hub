@@ -6,6 +6,7 @@ import { useEffect, useEffectEvent, useId, useRef, useState, type KeyboardEvent 
 import { useRouter } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
 import { searchEntries, type SearchEntry } from '@/lib/search';
+import { OPEN_SEARCH_EVENT } from '@/lib/shortcuts';
 
 type Indexes = Record<AppLocale, SearchEntry[]>;
 type LoadState = 'idle' | 'loading' | 'ready' | 'error';
@@ -69,9 +70,15 @@ export function SiteSearch() {
       open();
     }
   });
+  // The `/` shortcut (KeyboardShortcuts) asks for the dialog through an event.
+  const onOpenRequest = useEffectEvent(() => open());
   useEffect(() => {
     window.addEventListener('keydown', onShortcut);
-    return () => window.removeEventListener('keydown', onShortcut);
+    window.addEventListener(OPEN_SEARCH_EVENT, onOpenRequest);
+    return () => {
+      window.removeEventListener('keydown', onShortcut);
+      window.removeEventListener(OPEN_SEARCH_EVENT, onOpenRequest);
+    };
   }, []);
 
   function onInputKeyDown(event: KeyboardEvent<HTMLInputElement>) {

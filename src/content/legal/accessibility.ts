@@ -34,6 +34,7 @@ export const accessibilityPageByLocale: Localized<LegalPage> = {
           'Tema claro e escuro que segue a preferência do sistema, com troca manual que fica salva só no seu navegador.',
           'Formulário de contato com rótulos em todos os campos, erros ligados ao campo que os causou e mensagens anunciadas por leitores de tela.',
           'Trilha de navegação, sumário e links diretos para cada seção nas páginas longas.',
+          'Busca com Ctrl+K e atalhos de uma tecla (/ para buscar, g seguido de p para Projetos), listados em "Atalhos de teclado" no rodapé, onde os atalhos de uma tecla podem ser desligados.',
         ],
       },
       {
@@ -80,6 +81,7 @@ export const accessibilityPageByLocale: Localized<LegalPage> = {
           'Light and dark themes that follow the system preference, with a manual switch saved only in your browser.',
           'A contact form with a label on every field, errors tied to the field that caused them and messages announced by screen readers.',
           'A breadcrumb trail, a table of contents and direct links to each section on long pages.',
+          'Search with Ctrl+K and single-key shortcuts (/ to search, g then p for Projects), listed under "Keyboard shortcuts" in the footer, where the single-key shortcuts can be turned off.',
         ],
       },
       {
