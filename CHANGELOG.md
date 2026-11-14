@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.3](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.2...v0.18.3) (2026-11-14)
+
+
+### Bug Fixes
+
+* serve hreflang alternates only from the page metadata ([#79](https://github.com/FelpsSousa/felpsxp-hub/issues/79)) ([84d0c49](https://github.com/FelpsSousa/felpsxp-hub/commit/84d0c49da935df9fd28381d3b444aa73ef009a87))
+
 ## [0.18.2](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.1...v0.18.2) (2026-11-14)
 
 
