@@ -1,0 +1,3 @@
+# Tools CI installs with pip. Compiled with hashes into pre-commit.txt:
+#   uv pip compile .github/requirements/pre-commit.in --generate-hashes \n#     --python-version 3.13 --python-platform linux --exclude-newer <date two weeks ago> \n#     -o .github/requirements/pre-commit.txt
+pre-commit==4.7.0

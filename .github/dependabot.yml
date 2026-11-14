@@ -18,6 +18,25 @@ updates:
       actions:
         patterns: ["*"]
 
+  # The hash-pinned tools CI installs with pip (pre-commit and its dependencies).
+  # The cooldown keeps the rule of taking only releases at least two weeks old.
+  - package-ecosystem: pip
+    directory: /.github/requirements
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: America/Sao_Paulo
+    cooldown:
+      default-days: 14
+    commit-message:
+      prefix: ci
+      include: scope
+    labels: ["dependencies", "area: ci"]
+    groups:
+      ci-tools:
+        patterns: ["*"]
+
   # --- Enable the blocks for the stack this project uses ---------------------
   # (scripts/init-template.sh does it for you when package.json / pyproject.toml exist)
 
