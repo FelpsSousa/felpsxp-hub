@@ -197,7 +197,7 @@ clean public extraction of the observatory module.
 
 - [x] Project navigation: breadcrumb trail (with BreadcrumbList JSON-LD),
       previous and next project, and a link back to the full list.
-- [ ] Domain and difficulty filters on `/projects`, kept in the URL query so
+- [x] Domain and difficulty filters on `/projects`, kept in the URL query so
       a filtered list can be shared and the way back returns to it.
 - [x] Anchor links on section headings and a table of contents on long pages
       (projects and legal pages; the CV page gets them when it ships).

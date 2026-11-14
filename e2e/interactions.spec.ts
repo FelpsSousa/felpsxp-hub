@@ -59,6 +59,35 @@ test('the table of contents links to sections that keep their id in every locale
   await expect(page.getByRole('navigation', { name: 'On this page' })).toBeVisible();
 });
 
+test('project filters live in the URL and survive going back', async ({ page }) => {
+  await page.goto('/projects');
+  const filters = page.getByRole('region', { name: 'Filtrar projetos' });
+  const cards = page.getByRole('main').getByRole('heading', { level: 2 });
+  const total = await cards.count();
+
+  await filters.getByRole('group', { name: 'Domínio' }).getByRole('link', { name: /^AppSec/ }).click();
+  await expect(page).toHaveURL(/\/projects\?domain=appsec$/);
+  await expect(filters.getByRole('link', { name: /^AppSec/ })).toHaveAttribute('aria-current', 'true');
+  const filtered = await cards.count();
+  expect(filtered).toBeGreaterThan(0);
+  expect(filtered).toBeLessThan(total);
+  await expect(filters.getByRole('status')).toContainText(`${filtered} de ${total} projetos`);
+
+  await cards.first().click();
+  await expect(page).toHaveURL(/\/projects\/[a-z0-9-]+$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/projects\?domain=appsec$/);
+  await expect(cards).toHaveCount(filtered);
+
+  await filters.getByRole('link', { name: 'Limpar filtros' }).click();
+  await expect(page).toHaveURL(/\/projects$/);
+  await expect(cards).toHaveCount(total);
+
+  // A shared link with an unknown value shows the whole list.
+  await page.goto('/projects?domain=nope');
+  await expect(cards).toHaveCount(total);
+});
+
 test('the footer version leads to its entry in the changelog', async ({ page }) => {
   await page.goto('/');
   const version = page.getByRole('contentinfo').getByRole('link', { name: /^v\d+\.\d+\.\d+$/ });
