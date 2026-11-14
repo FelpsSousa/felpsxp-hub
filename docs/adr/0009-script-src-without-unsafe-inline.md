@@ -1,6 +1,6 @@
 # ADR-0009: Removing `'unsafe-inline'` from `script-src`
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-11-14
 - **Deciders:** Felipe Sousa (@FelpsSousa)
 - **Related:** ADR-0003 (v1 stack and scope), ADR-0007 (contact form security model),
@@ -81,11 +81,13 @@ A post-build step hashes the inline scripts of every prerendered page and writes
 
 ## Decision
 
-To be agreed. The recommendation is **Option B**, shipped in two steps: first as
-`Content-Security-Policy-Report-Only` alongside the current policy, together with the
-reporting endpoint already planned in Block 5, and enforced only after a clean period with
-the end-to-end suite passing against it. Option C is rejected as too fragile; Option A is the
-fallback if the Lighthouse pass shows the dynamic rendering cost is not acceptable.
+We will use **Option B**, per-request nonces with `'strict-dynamic'`, shipped in two steps:
+first as `Content-Security-Policy-Report-Only` alongside the current policy, together with
+the reporting endpoint already planned in Block 5, and enforced only after a clean period
+with the end-to-end suite passing against it. It is the only option that gives a strict
+policy through a mechanism Next.js documents and supports. Option C is rejected as too
+fragile; Option A is the fallback if measurements show the dynamic rendering cost is not
+acceptable.
 
 ## Consequences
 

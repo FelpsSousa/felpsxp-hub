@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { contentSecurityPolicy, securityHeaders } from '@/lib/security-headers';
+import {
+  contentSecurityPolicy,
+  createNonce,
+  securityHeaders,
+  strictContentSecurityPolicy,
+} from '@/lib/security-headers';
 
 function headerMap(isDev: boolean): Map<string, string> {
   return new Map(securityHeaders(isDev).map(({ key, value }) => [key, value]));
@@ -78,5 +83,34 @@ describe('contentSecurityPolicy', () => {
     expect(policy.get('object-src')).toBe("'none'");
     expect(policy.get('base-uri')).toBe("'self'");
     expect(policy.get('form-action')).toBe("'self'");
+  });
+});
+
+describe('strictContentSecurityPolicy', () => {
+  it('allows scripts only by nonce, with strict-dynamic and no unsafe-inline', () => {
+    const scriptSrc = directives(strictContentSecurityPolicy('abc123', false)).get('script-src');
+    expect(scriptSrc).toBe("'nonce-abc123' 'strict-dynamic'");
+  });
+
+  it('keeps every other directive of the baseline policy', () => {
+    const strict = directives(strictContentSecurityPolicy('abc123', false));
+    const baseline = directives(contentSecurityPolicy(false));
+    strict.delete('script-src');
+    baseline.delete('script-src');
+    expect(strict).toEqual(baseline);
+  });
+
+  it('allows eval only in development', () => {
+    expect(directives(strictContentSecurityPolicy('n', true)).get('script-src')).toContain(
+      'unsafe-eval',
+    );
+  });
+});
+
+describe('createNonce', () => {
+  it('returns 128 random bits in base64, different every time', () => {
+    const nonces = new Set(Array.from({ length: 50 }, () => createNonce()));
+    expect(nonces.size).toBe(50);
+    for (const nonce of nonces) expect(nonce).toMatch(/^[A-Za-z0-9+/]{22}==$/);
   });
 });

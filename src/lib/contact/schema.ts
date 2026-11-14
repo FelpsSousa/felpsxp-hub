@@ -1,9 +1,7 @@
 import { z } from 'zod';
+import { contactIntents } from '@/lib/contact/fields';
 
-/** Why someone is writing. Kept small so the e-mail subject stays scannable. */
-export const contactIntents = ['hiring', 'partnership', 'collaboration', 'other'] as const;
-
-export type ContactIntent = (typeof contactIntents)[number];
+export { contactIntents, type ContactIntent } from '@/lib/contact/fields';
 
 /** Any carriage return or line feed. Fields that reach an e-mail header must not contain one. */
 const lineBreak = /[\r\n]/;
