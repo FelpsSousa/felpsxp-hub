@@ -6,6 +6,7 @@ export const pages = [
   '/contact',
   '/privacy',
   '/security',
+  '/accessibility',
   '/changelog',
 ] as const;
 

@@ -210,7 +210,9 @@ clean public extraction of the observatory module.
 - [ ] Site search (Ctrl+K) over a static index built at build time.
 - [ ] `/ecosystem`: decide whether it ships, given most modules are
       private; if it does, link to `felpsxp-architecture` for detail.
-- [ ] `/accessibility` statement.
+- [x] `/accessibility` statement, linked from the footer.
+- [ ] Documented screen reader pass (NVDA and VoiceOver), then update the
+      statement's known limitations.
 - [ ] Self-hosted Umami, with the CSP `connect-src` updated.
 - [ ] OpenSSF Scorecard workflow and README badge; GitHub Actions pinned by
       commit SHA.

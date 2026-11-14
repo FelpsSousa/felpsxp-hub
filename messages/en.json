@@ -29,6 +29,7 @@
     "elsewhere": "Elsewhere",
     "privacy": "Privacy",
     "security": "Security",
+    "accessibility": "Accessibility",
     "versionLabel": "Version {version}, release notes",
     "commitLabel": "Commit {commit} in production"
   },
@@ -107,7 +108,8 @@
   "legal": {
     "updated": "Updated on {date}",
     "privacyContact": "To exercise your rights or ask a question:",
-    "securityContact": "To report a vulnerability:"
+    "securityContact": "To report a vulnerability:",
+    "accessibilityContact": "To report an accessibility barrier:"
   },
   "changelog": {
     "title": "Changelog",
