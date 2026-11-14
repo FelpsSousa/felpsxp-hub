@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.14.0...v0.15.0) (2026-11-14)
+
+
+### Features
+
+* filter projects by domain and level, kept in the URL query ([#60](https://github.com/FelpsSousa/felpsxp-hub/issues/60)) ([e39bb04](https://github.com/FelpsSousa/felpsxp-hub/commit/e39bb048033503c1ae32da4d3e7cfe02da159dd1))
+
 ## [0.14.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.13.0...v0.14.0) (2026-11-14)
 
 
