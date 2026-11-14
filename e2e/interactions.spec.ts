@@ -18,6 +18,25 @@ test('the locale switcher keeps the current page', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
 });
 
+test('a project page leads back to the list and on to the next project', async ({ page }) => {
+  await page.goto('/projects/felpsxp-hub');
+  const breadcrumb = page.getByRole('navigation', { name: 'Trilha de navegação' });
+
+  await expect(breadcrumb.locator('[aria-current="page"]')).toHaveText('FelpsXP Hub');
+  await breadcrumb.getByRole('link', { name: 'Projetos' }).click();
+  await expect(page).toHaveURL(/\/projects$/);
+
+  await page.goto('/projects/felpsxp-hub');
+  const more = page.getByRole('navigation', { name: 'Mais projetos' });
+  // The first project in the list has no previous one.
+  await expect(more.getByRole('link', { name: /Anterior/ })).toHaveCount(0);
+  await more.getByRole('link', { name: /Próximo/ }).click();
+  await expect(page).toHaveURL(/\/projects\/felpsxp-platform$/);
+  await expect(
+    page.getByRole('navigation', { name: 'Mais projetos' }).getByRole('link', { name: /Anterior/ }),
+  ).toHaveAttribute('href', '/projects/felpsxp-hub');
+});
+
 test('the skip link moves focus to the main content', async ({ page }) => {
   await page.goto('/');
   await page.keyboard.press('Tab');

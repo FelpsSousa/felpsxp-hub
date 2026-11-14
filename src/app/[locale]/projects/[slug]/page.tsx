@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Breadcrumbs } from '@/components/navigation/breadcrumbs';
+import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
-import { getProjectBySlug, getProjectStaticParams } from '@/lib/content';
+import { getAdjacentProjects, getProjectBySlug, getProjectStaticParams } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { domainLabel, projectDomains } from '@/lib/skill-taxonomy';
 
@@ -60,9 +62,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const cover = project.media.find((item) => item.kind === 'image');
+  const { previous, next } = getAdjacentProjects(project.slug, locale as AppLocale);
+  const tCrumb = await getTranslations('breadcrumb');
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-10 px-6 py-20">
+      <Breadcrumbs
+        locale={locale as AppLocale}
+        items={[
+          { name: tCrumb('home'), path: '/' },
+          { name: t('title'), path: '/projects' },
+          { name: project.title, path: `/projects/${project.slug}` },
+        ]}
+      />
+
       <header className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-fg">{project.title}</h1>
         <p className="text-fg">{project.summary}</p>
@@ -113,6 +126,41 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           ))}
         </div>
       </section>
+
+      <nav aria-label={t('moreProjects')} className="flex flex-col gap-4 border-t border-border pt-8">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {previous && (
+            <Link
+              href={`/projects/${previous.slug}`}
+              rel="prev"
+              className="flex flex-col gap-1 rounded-lg border border-border p-4 hover:border-accent"
+            >
+              <span className="text-xs uppercase tracking-wide text-fg-muted">
+                ← {t('previousProject')}
+              </span>
+              <span className="font-medium text-fg">{previous.title}</span>
+            </Link>
+          )}
+          {next && (
+            <Link
+              href={`/projects/${next.slug}`}
+              rel="next"
+              className="flex flex-col gap-1 rounded-lg border border-border p-4 text-right hover:border-accent sm:col-start-2"
+            >
+              <span className="text-xs uppercase tracking-wide text-fg-muted">
+                {t('nextProject')} →
+              </span>
+              <span className="font-medium text-fg">{next.title}</span>
+            </Link>
+          )}
+        </div>
+        <Link
+          href="/projects"
+          className="self-start py-1 text-sm text-fg-muted underline underline-offset-4 hover:text-fg"
+        >
+          {t('allProjects')}
+        </Link>
+      </nav>
     </div>
   );
 }

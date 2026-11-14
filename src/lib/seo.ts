@@ -103,3 +103,23 @@ export function pageMetadata({
 export function serializeJsonLd(data: unknown): string {
   return JSON.stringify(data).replace(/</g, '\\u003c');
 }
+
+/** One step of a breadcrumb trail; `path` is locale-free, as in `localizedPath`. */
+export type BreadcrumbItem = { name: string; path: string };
+
+/**
+ * schema.org BreadcrumbList for a trail of pages, root first. Search engines
+ * may show it in place of the raw URL in their results.
+ */
+export function breadcrumbJsonLd(locale: AppLocale, items: BreadcrumbItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(localizedPath(locale, item.path)),
+    })),
+  };
+}

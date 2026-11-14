@@ -93,6 +93,25 @@ export function getProjectBySlug(slug: string, locale: AppLocale): Project | und
   return getPublicProjects(locale).find((project) => project.slug === slug);
 }
 
+/**
+ * The public projects before and after `slug` in the list's display order,
+ * for the previous and next links on a project page. The ends do not wrap.
+ */
+export function getAdjacentProjects(
+  slug: string,
+  locale: AppLocale,
+): { previous: Project | null; next: Project | null } {
+  const projects = getPublicProjects(locale);
+  const index = projects.findIndex((project) => project.slug === slug);
+  if (index === -1) {
+    return { previous: null, next: null };
+  }
+  return {
+    previous: projects[index - 1] ?? null,
+    next: projects[index + 1] ?? null,
+  };
+}
+
 export function getProjectStaticParams() {
   // The [locale] segment above [slug] has no generateStaticParams of its
   // own, so Next.js needs every {locale, slug} pair from this leaf segment

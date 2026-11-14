@@ -4,6 +4,7 @@ import { locales } from '@/i18n/routing';
 import { getPublicProjects } from '@/lib/content';
 import {
   absoluteUrl,
+  breadcrumbJsonLd,
   languageAlternates,
   localizedPath,
   pageMetadata,
@@ -98,5 +99,23 @@ describe('sitemap', () => {
       expect(entry.url.startsWith('https://felpsxp.com')).toBe(true);
       expect(Object.keys(entry.alternates?.languages ?? {})).toEqual([...locales]);
     }
+  });
+});
+
+describe('breadcrumbJsonLd', () => {
+  it('numbers the trail from 1 with absolute, localized URLs', () => {
+    const trail = [
+      { name: 'Home', path: '/' },
+      { name: 'Projects', path: '/projects' },
+      { name: 'FelpsXP Hub', path: '/projects/felpsxp-hub' },
+    ];
+    const data = breadcrumbJsonLd('en', trail);
+
+    expect(data['@type']).toBe('BreadcrumbList');
+    expect(data.itemListElement.map((item) => [item.position, item.name, item.item])).toEqual([
+      [1, 'Home', absoluteUrl('/en')],
+      [2, 'Projects', absoluteUrl('/en/projects')],
+      [3, 'FelpsXP Hub', absoluteUrl('/en/projects/felpsxp-hub')],
+    ]);
   });
 });

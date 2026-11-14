@@ -10,6 +10,10 @@
     "closeMenu": "Close menu",
     "contact": "Contact"
   },
+  "breadcrumb": {
+    "label": "Breadcrumb",
+    "home": "Home"
+  },
   "localeSwitcher": {
     "label": "Language"
   },
@@ -52,7 +56,11 @@
     "responsibilitiesLabel": "Responsibilities",
     "outcomesLabel": "Outcomes",
     "learningsLabel": "Learnings",
-    "stackLabel": "Stack"
+    "stackLabel": "Stack",
+    "allProjects": "All projects",
+    "moreProjects": "More projects",
+    "previousProject": "Previous",
+    "nextProject": "Next"
   },
   "contact": {
     "title": "Contact",
