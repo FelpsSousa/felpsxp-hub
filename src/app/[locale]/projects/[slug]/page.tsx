@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Breadcrumbs } from '@/components/navigation/breadcrumbs';
+import { AnchorHeading, TableOfContents } from '@/components/navigation/section-anchors';
 import { Link } from '@/i18n/navigation';
-import type { AppLocale } from '@/i18n/routing';
+import type { TocItem } from '@/lib/anchors';
 import { getAdjacentProjects, getProjectBySlug, getProjectStaticParams } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { domainLabel, projectDomains } from '@/lib/skill-taxonomy';
@@ -35,13 +36,17 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   });
 }
 
-function Section({ title, items }: { title: string; items: string[] }) {
+const headingClass = 'text-sm font-medium uppercase tracking-wide text-fg-muted';
+
+function Section({ id, title, items }: { id: string; title: string; items: string[] }) {
   if (items.length === 0) {
     return null;
   }
   return (
-    <section className="flex flex-col gap-3">
-      <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">{title}</h2>
+    <section aria-labelledby={id} className="flex flex-col gap-3">
+      <AnchorHeading id={id} className={headingClass}>
+        {title}
+      </AnchorHeading>
       <ul className="flex flex-col gap-2">
         {items.map((item) => (
           <li key={item} className="text-fg">
@@ -68,6 +73,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { previous, next } = getAdjacentProjects(project.slug, locale);
   const tCrumb = await getTranslations('breadcrumb');
 
+  // Section ids are the same in every locale, so a link to a section keeps
+  // working after the locale switcher changes the language.
+  const listSections = [
+    { id: 'architecture', title: t('architectureHighlightsLabel'), items: project.architectureHighlights },
+    { id: 'challenges', title: t('challengesLabel'), items: project.challenges },
+    { id: 'responsibilities', title: t('responsibilitiesLabel'), items: project.responsibilities },
+    { id: 'outcomes', title: t('outcomesLabel'), items: project.outcomes },
+    { id: 'learnings', title: t('learningsLabel'), items: project.learnings },
+  ].filter((section) => section.items.length > 0);
+  const toc: TocItem[] = [
+    { id: 'problem', label: t('problemLabel') },
+    { id: 'solution', label: t('solutionLabel') },
+    ...listSections.map(({ id, title }) => ({ id, label: title })),
+    { id: 'stack', label: t('stackLabel') },
+  ];
+
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-10 px-6 py-20">
       <Breadcrumbs
@@ -91,36 +112,36 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </header>
 
+      <TableOfContents items={toc} />
+
       {cover && cover.kind === 'image' && (
         <div className="relative aspect-video w-full overflow-hidden rounded-md">
           <Image src={cover.url} alt={cover.alt} fill sizes="100vw" className="object-cover" />
         </div>
       )}
 
-      <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
+      <section aria-labelledby="problem" className="flex flex-col gap-3">
+        <AnchorHeading id="problem" className={headingClass}>
           {t('problemLabel')}
-        </h2>
+        </AnchorHeading>
         <p className="text-fg">{project.problem}</p>
       </section>
 
-      <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
+      <section aria-labelledby="solution" className="flex flex-col gap-3">
+        <AnchorHeading id="solution" className={headingClass}>
           {t('solutionLabel')}
-        </h2>
+        </AnchorHeading>
         <p className="text-fg">{project.solution}</p>
       </section>
 
-      <Section title={t('architectureHighlightsLabel')} items={project.architectureHighlights} />
-      <Section title={t('challengesLabel')} items={project.challenges} />
-      <Section title={t('responsibilitiesLabel')} items={project.responsibilities} />
-      <Section title={t('outcomesLabel')} items={project.outcomes} />
-      <Section title={t('learningsLabel')} items={project.learnings} />
+      {listSections.map((section) => (
+        <Section key={section.id} {...section} />
+      ))}
 
-      <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
+      <section aria-labelledby="stack" className="flex flex-col gap-3">
+        <AnchorHeading id="stack" className={headingClass}>
           {t('stackLabel')}
-        </h2>
+        </AnchorHeading>
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <span key={tech} className="rounded-full bg-surface px-2 py-0.5 text-xs text-fg-muted">

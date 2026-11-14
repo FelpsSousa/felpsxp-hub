@@ -37,6 +37,28 @@ test('a project page leads back to the list and on to the next project', async (
   ).toHaveAttribute('href', '/projects/felpsxp-hub');
 });
 
+test('the table of contents links to sections that keep their id in every locale', async ({
+  page,
+}) => {
+  await page.goto('/projects/felpsxp-hub');
+  const toc = page.getByRole('navigation', { name: 'Nesta página' });
+
+  await toc.getByRole('link', { name: 'Resultados' }).click();
+  await expect(page).toHaveURL(/\/projects\/felpsxp-hub#outcomes$/);
+  await expect(page.getByRole('heading', { level: 2, name: /Resultados/ })).toBeInViewport();
+  await expect(page.getByRole('link', { name: 'Link para a seção Resultados' })).toHaveAttribute(
+    'href',
+    '#outcomes',
+  );
+
+  await page.goto('/en/projects/felpsxp-hub#outcomes');
+  await expect(page.locator('#outcomes')).toContainText('Outcomes');
+
+  // The visit above stored English as the preferred locale.
+  await page.goto('/en/privacy');
+  await expect(page.getByRole('navigation', { name: 'On this page' })).toBeVisible();
+});
+
 test('the footer version leads to its entry in the changelog', async ({ page }) => {
   await page.goto('/');
   const version = page.getByRole('contentinfo').getByRole('link', { name: /^v\d+\.\d+\.\d+$/ });
