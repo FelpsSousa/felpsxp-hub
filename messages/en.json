@@ -61,7 +61,22 @@
     "allProjects": "All projects",
     "moreProjects": "More projects",
     "previousProject": "Previous",
-    "nextProject": "Next"
+    "nextProject": "Next",
+    "filters": {
+      "label": "Filter projects",
+      "domain": "Domain",
+      "level": "Level",
+      "all": "All",
+      "showing": "{shown} of {total} projects",
+      "empty": "No project matches these filters.",
+      "clear": "Clear filters",
+      "levels": {
+        "foundational": "Foundational",
+        "applied": "Applied",
+        "advanced": "Advanced",
+        "frontier": "Frontier"
+      }
+    }
   },
   "contact": {
     "title": "Contact",
