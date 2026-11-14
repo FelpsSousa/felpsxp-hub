@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.17.0...v0.18.0) (2026-11-14)
+
+
+### Features
+
+* add keyboard shortcuts (/ to search, g then h, p or c to navigate) that can be turned off ([#70](https://github.com/FelpsSousa/felpsxp-hub/issues/70)) ([b82ca4b](https://github.com/FelpsSousa/felpsxp-hub/commit/b82ca4b128a484090787ccf55732bc08311d6a0b))
+
 ## [0.17.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.16.0...v0.17.0) (2026-11-14)
 
 
