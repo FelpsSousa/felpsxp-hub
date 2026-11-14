@@ -34,8 +34,13 @@ in `docs/adr/`.
 - **Files:** `docs/adr/NNNN-title-in-kebab-case.md`, numbered sequentially per repository,
   starting at `0001`. Numbers are never reused.
 - **Lifecycle:** `Proposed` → `Accepted` (or `Rejected`) → optionally `Deprecated` or
-  `Superseded by ADR-NNNN`. Accepted ADRs are immutable; a change of mind is a new ADR that
-  supersedes the old one, and only the old one's status line is edited.
+  `Superseded by ADR-NNNN`.
+- **Changing an accepted ADR:** an accepted ADR may be amended through a pull request when
+  the change makes it better (stronger security, a new capability, a correction, clearer
+  reasoning) while the decision itself stands. The amendment is logged at the end of the
+  ADR, in an `Amendments` section with the date, the pull request and what changed, so the
+  original reasoning stays readable. Reversing or replacing the decision is still a new ADR
+  that supersedes the old one.
 - **Review:** an ADR is merged through a pull request like code, so the discussion is kept.
 - **Language:** English, because repositories are public portfolio material.
 - **Ecosystem-wide decisions** (those that bind more than one project, such as the
@@ -65,3 +70,9 @@ in `docs/adr/`.
 
 - Michael Nygard, *Documenting Architecture Decisions* (2011)
 - [MADR: Markdown Architectural Decision Records](https://adr.github.io/madr/)
+
+## Amendments
+
+- **2026-11-14:** accepted ADRs may be amended when the change improves them and the decision
+  stands; reversals still go through a superseding ADR. Previously, accepted ADRs were
+  immutable.

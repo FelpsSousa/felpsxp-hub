@@ -102,6 +102,8 @@ happens in this repository, and it changes in the same PR as any change to that.
 ## Do not
 
 - Do not add dependencies, services or infrastructure without saying why (and an ADR if major).
-- Do not edit accepted ADRs; supersede them.
+- Do not silently rewrite accepted ADRs. Improvements (security, new capability, corrections)
+  are amendments logged in the ADR's `Amendments` section; reversing a decision is a new ADR
+  that supersedes it (ADR-0001).
 - Do not disable hooks, CI checks or security settings to make something pass.
 - Do not publish real network topology, credentials or personal data in code, tests or docs.
