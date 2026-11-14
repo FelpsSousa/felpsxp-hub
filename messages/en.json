@@ -154,5 +154,21 @@
   "toc": {
     "label": "On this page",
     "anchor": "Link to the {section} section"
+  },
+  "search": {
+    "open": "Search the site",
+    "dialogLabel": "Search the site",
+    "placeholder": "Projects, pages, sections…",
+    "resultsLabel": "Results",
+    "loading": "Loading the index…",
+    "error": "Search did not load. Please try again later.",
+    "hint": "↑ ↓ to choose, Enter to open, Esc to close",
+    "noResults": "Nothing found for “{query}”.",
+    "results": "{count, plural, one {# result} other {# results}}",
+    "kinds": {
+      "page": "Page",
+      "project": "Project",
+      "section": "Section"
+    }
   }
 }

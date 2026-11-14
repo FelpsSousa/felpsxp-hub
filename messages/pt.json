@@ -154,5 +154,21 @@
   "toc": {
     "label": "Nesta página",
     "anchor": "Link para a seção {section}"
+  },
+  "search": {
+    "open": "Buscar no site",
+    "dialogLabel": "Buscar no site",
+    "placeholder": "Projetos, páginas, seções…",
+    "resultsLabel": "Resultados",
+    "loading": "Carregando o índice…",
+    "error": "A busca não carregou. Tente de novo mais tarde.",
+    "hint": "↑ ↓ para escolher, Enter para abrir, Esc para fechar",
+    "noResults": "Nada encontrado para “{query}”.",
+    "results": "{count, plural, one {# resultado} other {# resultados}}",
+    "kinds": {
+      "page": "Página",
+      "project": "Projeto",
+      "section": "Seção"
+    }
   }
 }

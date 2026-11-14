@@ -3,6 +3,7 @@ import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { MobileNav } from '@/components/layout/mobile-nav';
 import { NavLink } from '@/components/layout/nav-link';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
+import { SiteSearch } from '@/components/search/site-search';
 import { Link } from '@/i18n/navigation';
 import { getSiteSettings } from '@/lib/content';
 import { primaryNavigation } from '@/lib/navigation';
@@ -34,6 +35,7 @@ export async function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-1">
+            <SiteSearch />
             <LocaleSwitcher />
             <ThemeToggle />
           </div>
