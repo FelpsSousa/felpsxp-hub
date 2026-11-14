@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { locales, type AppLocale } from '@/i18n/routing';
 import { getProfile, getSiteSettings } from '@/lib/content';
+import { requireLocale } from '@/i18n/locale';
 
 /**
  * Default share image (Open Graph and Twitter) for every page in a locale,
@@ -18,8 +19,8 @@ export function generateStaticParams() {
 type ImageProps = { params: Promise<{ locale: string }> };
 
 export default async function OpenGraphImage({ params }: ImageProps) {
-  const { locale } = await params;
-  const profile = getProfile(locale as AppLocale);
+  const locale = requireLocale((await params).locale);
+  const profile = getProfile(locale);
   const { name, url } = getSiteSettings();
   const domain = new URL(url).host;
 

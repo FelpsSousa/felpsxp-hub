@@ -50,3 +50,26 @@ test('robots.txt, sitemap.xml, security.txt and the share images are served', as
     expect(response.headers()['content-type']).toBe('image/png');
   }
 });
+
+test('the favicon and the site icon are served and linked', async ({ page, request }) => {
+  const favicon = await request.get('/favicon.ico');
+  expect(favicon.status()).toBe(200);
+
+  const icon = await request.get('/icon.svg');
+  expect(icon.status()).toBe(200);
+  expect(icon.headers()['content-type']).toContain('image/svg+xml');
+
+  await page.goto('/');
+  await expect(page.locator('link[rel="icon"][href*="icon.svg"]')).toHaveCount(1);
+});
+
+test('a path that only looks like a file is a plain 404, never a server error', async ({
+  request,
+}) => {
+  // Typical scanner probes. They skip the locale proxy because they contain a
+  // dot, so they reach the [locale] segment with a bogus locale.
+  for (const path of ['/wp-login.php', '/.env.bak', '/xmlrpc.php']) {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status(), path).toBe(404);
+  }
+});

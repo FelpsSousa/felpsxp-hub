@@ -4,17 +4,18 @@ import { ProjectCard } from '@/components/projects/project-card';
 import type { AppLocale } from '@/i18n/routing';
 import { getPublicProjects } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
+import { requireLocale } from '@/i18n/locale';
 
 type ProjectsPageProps = {
   params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: ProjectsPageProps): Promise<Metadata> {
-  const { locale } = await params;
+  const locale = requireLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: 'projects' });
 
   return pageMetadata({
-    locale: locale as AppLocale,
+    locale: locale,
     path: '/projects',
     title: t('title'),
     description: t('lede'),
@@ -22,10 +23,10 @@ export async function generateMetadata({ params }: ProjectsPageProps): Promise<M
 }
 
 export default async function ProjectsPage({ params }: ProjectsPageProps) {
-  const { locale } = await params;
-  setRequestLocale(locale as AppLocale);
+  const locale = requireLocale((await params).locale);
+  setRequestLocale(locale);
   const t = await getTranslations('projects');
-  const projects = getPublicProjects(locale as AppLocale);
+  const projects = getPublicProjects(locale);
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-20">

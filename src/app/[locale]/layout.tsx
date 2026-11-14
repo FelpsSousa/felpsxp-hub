@@ -9,11 +9,12 @@ import { locales, routing, type AppLocale } from '@/i18n/routing';
 import { getProfile, getSiteSettings } from '@/lib/content';
 import { themeInitScript } from '@/lib/theme';
 import '../globals.css';
+import { requireLocale } from '@/i18n/locale';
 
 export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
-  const { locale } = await params;
+  const locale = requireLocale((await params).locale);
   const { name, url } = getSiteSettings();
-  const profile = getProfile(locale as AppLocale);
+  const profile = getProfile(locale);
 
   return {
     metadataBase: new URL(url),
@@ -39,15 +40,12 @@ type LocaleLayoutProps = {
 };
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
-  const { locale } = await params;
+  const locale = requireLocale((await params).locale);
 
-  if (!routing.locales.includes(locale as AppLocale)) {
-    notFound();
-  }
 
   // Lets next-intl read the locale without request headers, which keeps
   // the pages static. Every page under this layout calls it as well.
-  setRequestLocale(locale as AppLocale);
+  setRequestLocale(locale);
 
   const messages = await getMessages();
   const t = await getTranslations('site');
@@ -62,7 +60,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             the current CSP's 'unsafe-inline'; when the CSP is tightened, this
             script gets a sha256 hash instead, which keeps pages static. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        <StructuredData locale={locale as AppLocale} />
+        <StructuredData locale={locale} />
       </head>
       <body className="flex min-h-dvh flex-col">
         <NextIntlClientProvider messages={messages}>
