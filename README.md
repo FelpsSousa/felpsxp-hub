@@ -26,9 +26,11 @@ control is tested, and the history is a sequence of small, reviewed pull request
 
 **Architecture**
 
-- **Static by default.** Every page is prerendered at build time in both locales and served
-  from a CDN. No database and no authentication, because no public page needs them
-  ([ADR-0003](docs/adr/0003-v1-stack-and-scope.md)).
+- **No database, no sign-in.** No public page needs them
+  ([ADR-0003](docs/adr/0003-v1-stack-and-scope.md)). Pages render per request so each one
+  carries a fresh CSP nonce; the cost was measured at about 10 ms of server time
+  ([ADR-0009](docs/adr/0009-script-src-without-unsafe-inline.md),
+  [Lighthouse baseline](docs/quality/lighthouse.md)).
 - **Content as code.** Profile, projects and legal pages are typed TypeScript validated by Zod
   schemas at build time; the types are inferred from the schemas, and a malformed record fails
   the build naming the record and field ([ADR-0004](docs/adr/0004-content-validation-and-mdx-scope.md)).

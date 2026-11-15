@@ -7,7 +7,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     slug: 'felpsxp-hub',
     title: 'FelpsXP Hub',
     summary:
-      'Este site: um portfólio reconstruído do zero em um repositório público, estático por padrão, com cada decisão registrada em ADR e segurança e testes rodando em cada pull request.',
+      'Este site: um portfólio reconstruído do zero em um repositório público, sem banco e sem login, com cada decisão registrada em ADR e segurança e testes rodando em cada pull request.',
     status: 'active',
     visibility: 'public',
     type: 'surface',
@@ -19,12 +19,13 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     problem:
       'A versão anterior do Hub vivia dentro de um monorepo privado, acoplada à autenticação e ao banco da plataforma. O portfólio não podia ser mostrado como código, e uma página pública dependia de infraestrutura de que não precisava.',
     solution:
-      'Recomeçar em um repositório público e independente, em vez de extrair o histórico antigo (ADR-0002). O conteúdo é TypeScript tipado e validado com Zod no build, as páginas são pré-renderizadas em português e inglês e servidas pela CDN, e a v1 não tem banco nem autenticação, porque nenhuma página pública precisa deles (ADR-0003).',
+      'Recomeçar em um repositório público e independente, em vez de extrair o histórico antigo (ADR-0002). O conteúdo é TypeScript tipado e validado com Zod no build, as páginas em português e inglês foram pré-renderizadas e servidas pela CDN até a CSP estrita exigir um nonce por requisição (ADR-0009), e a v1 não tem banco nem autenticação, porque nenhuma página pública precisa deles (ADR-0003).',
     architectureHighlights: [
-      'Estático por padrão: toda página é gerada no build nos dois idiomas; sem banco e sem login, não há dado de visitante para vazar',
+      'Sem banco e sem login, não há dado de visitante para vazar; as páginas nascem de conteúdo tipado, nos dois idiomas',
       'Schemas Zod como fonte única da verdade: os tipos TypeScript são inferidos deles, e o build falha apontando registro e campo quando algo está errado, incluindo links que não sejam HTTPS',
       'Headers de segurança desde o primeiro commit: CSP sem unsafe-eval em produção, frame-ancestors none, nosniff e Referrer-Policy restritiva; cookie de idioma Secure e SameSite',
-      'Tema claro e escuro sem flash em páginas estáticas, com um script inline que só aceita dois valores e um plano registrado para liberá-lo por hash SHA-256 na CSP',
+      'Tema claro e escuro sem flash, com um script inline que só aceita dois valores e carrega o nonce de cada requisição',
+      'CSP estrita com nonce por requisição e strict-dynamic, sem unsafe-inline, em modo report-only até rodar limpa em produção (ADR-0009)',
       'Idioma como segmento de rota, com hreflang, URL canônica no domínio de produção, sitemap com alternativas e imagem de compartilhamento gerada no build',
       'Toda decisão cara de reverter vira ADR antes do código; PRs pequenos com squash; CI com gitleaks, lint, typecheck, testes e build',
     ],
@@ -32,6 +33,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
       'O Next.js 16 renderiza o 404 no cliente quando o layout raiz fica sob um segmento dinâmico. Antes de culpar a mudança, a mesma falha foi reproduzida na main; a limitação ficou documentada em vez de adotar uma flag experimental',
       'A imagem de compartilhamento do idioma padrão passava por um redirecionamento 307, que robôs de redes sociais não seguem em imagens. O problema só apareceu servindo o build de produção, e hoje um teste impede a regressão',
       'Um ADR aceito descrevia a camada de conteúdo de forma diferente do código real. Ele foi corrigido por um novo ADR, sem reescrever o histórico',
+      'O plano registrado era liberar o script de tema por hash SHA-256. Inspecionando o build, cada página trazia um payload de hidratação inline diferente, e um hash sozinho teria quebrado o site inteiro. A alternativa foi decidida em ADR, medida antes e depois e lançada primeiro em modo report-only, com testes que falham a qualquer violação',
     ],
     responsibilities: [
       'Arquitetura e registro das decisões em ADRs',
@@ -42,7 +44,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     ],
     outcomes: [
       'Um portfólio que é, ele próprio, a prova: código, histórico, ADRs e pull requests abertos para qualquer revisor',
-      'Todas as páginas pré-renderizadas nos dois idiomas e servidas direto da CDN',
+      'Nota 100 em acessibilidade, boas práticas e SEO no Lighthouse em todas as páginas, e CSP estrita sem nenhuma violação na suíte de ponta a ponta',
       'Uma suíte de testes que cobre schemas, consistência entre idiomas, SEO e as regras de escrita do repositório',
     ],
     learnings: [
@@ -64,7 +66,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     tags: ['portfolio', 'appsec', 'nextjs', 'i18n', 'open-source'],
     relatedSurfaceKeys: ['hub'],
     startedAt: '2026-04-21',
-    updatedAt: '2026-11-11',
+    updatedAt: '2026-11-15',
     featured: true,
     links: [{ href: repositoryUrl, label: 'Repositório no GitHub', external: true }],
   },
@@ -72,7 +74,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     slug: 'felpsxp-hub',
     title: 'FelpsXP Hub',
     summary:
-      'This site: a portfolio rebuilt from scratch in a public repository, static by default, with every decision recorded as an ADR and security and tests running on every pull request.',
+      'This site: a portfolio rebuilt from scratch in a public repository, with no database and no sign-in, every decision recorded as an ADR and security and tests running on every pull request.',
     status: 'active',
     visibility: 'public',
     type: 'surface',
@@ -84,12 +86,13 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     problem:
       'The previous Hub lived inside a private monorepo, coupled to the platform’s authentication and database. The portfolio could not be shown as code, and a public page depended on infrastructure it did not need.',
     solution:
-      'Start again in a public, standalone repository instead of extracting the old history (ADR-0002). Content is typed TypeScript validated with Zod at build time, pages are prerendered in Portuguese and English and served from the CDN, and v1 has no database and no authentication, because no public page needs them (ADR-0003).',
+      'Start again in a public, standalone repository instead of extracting the old history (ADR-0002). Content is typed TypeScript validated with Zod at build time, pages in Portuguese and English were prerendered and served from the CDN until the strict CSP required a per-request nonce (ADR-0009), and v1 has no database and no authentication, because no public page needs them (ADR-0003).',
     architectureHighlights: [
-      'Static by default: every page is generated at build time in both languages; with no database and no sign-in, there is no visitor data to leak',
+      'No database and no sign-in, so there is no visitor data to leak; pages come from typed content, in both languages',
       'Zod schemas as the single source of truth: TypeScript types are inferred from them, and the build fails naming the record and field when something is wrong, including links that are not HTTPS',
       'Security headers from the first commit: a CSP without unsafe-eval in production, frame-ancestors none, nosniff and a strict Referrer-Policy; a Secure, SameSite locale cookie',
-      'Light and dark themes without a flash on static pages, through an inline script that accepts only two values and a recorded plan to allow it by SHA-256 hash in the CSP',
+      'Light and dark themes without a flash, through an inline script that accepts only two values and carries each request’s nonce',
+      'A strict CSP with a per-request nonce and strict-dynamic, without unsafe-inline, in report-only mode until it runs clean in production (ADR-0009)',
       'Language as a route segment, with hreflang, a canonical URL on the production domain, a sitemap with alternates and a share image generated at build time',
       'Every decision that is costly to reverse becomes an ADR before code; small squash-merged PRs; CI with gitleaks, lint, typecheck, tests and build',
     ],
@@ -97,6 +100,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
       'Next.js 16 renders the 404 on the client when the root layout sits under a dynamic segment. Before blaming the change, the same failure was reproduced on main; the limitation was documented instead of adopting an experimental flag',
       'The default locale’s share image went through a 307 redirect, which social media crawlers do not follow for images. It only showed up when serving the production build, and a test now prevents the regression',
       'An accepted ADR described the content layer differently from the actual code. It was corrected by a new ADR, without rewriting history',
+      'The recorded plan was to allow the theme script by SHA-256 hash. Inspecting the build showed a different inline hydration payload on every page, so a hash alone would have broken the whole site. The alternative was decided in an ADR, measured before and after and shipped in report-only mode first, with tests that fail on any violation',
     ],
     responsibilities: [
       'Architecture and recording decisions as ADRs',
@@ -107,7 +111,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     ],
     outcomes: [
       'A portfolio that is itself the evidence: code, history, ADRs and pull requests open to any reviewer',
-      'Every page prerendered in both languages and served straight from the CDN',
+      'Lighthouse scores of 100 for accessibility, best practices and SEO on every page, and a strict CSP with no violation across the end-to-end suite',
       'A test suite covering schemas, cross-language consistency, SEO and the repository’s own writing rules',
     ],
     learnings: [
@@ -129,7 +133,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     tags: ['portfolio', 'appsec', 'nextjs', 'i18n', 'open-source'],
     relatedSurfaceKeys: ['hub'],
     startedAt: '2026-04-21',
-    updatedAt: '2026-11-11',
+    updatedAt: '2026-11-15',
     featured: true,
     links: [{ href: repositoryUrl, label: 'Repository on GitHub', external: true }],
   },

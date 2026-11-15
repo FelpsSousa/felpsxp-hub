@@ -25,8 +25,10 @@ revisados.
 
 ## Destaques
 
-- **Estático por padrão:** toda página é gerada no build, nos dois idiomas, e servida por CDN.
-  Sem banco e sem autenticação, porque nenhuma página pública precisa deles.
+- **Sem banco e sem login:** nenhuma página pública precisa deles. As páginas são geradas a
+  cada requisição para que cada uma leve um nonce novo da CSP; o custo medido foi de cerca de
+  10 ms no servidor ([ADR-0009](docs/adr/0009-script-src-without-unsafe-inline.md),
+  [Lighthouse](docs/quality/lighthouse.md)).
 - **Conteúdo como código:** perfil, projetos e páginas legais em TypeScript validado com Zod
   no build.
 - **Decisões antes do código:** oito [ADRs](docs/adr/README.md) até agora (em inglês).
