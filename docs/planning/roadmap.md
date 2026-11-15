@@ -97,7 +97,8 @@ security controls.
 - [x] CodeQL workflow (SAST) in CI, covering the code and the workflows.
 - [x] Playwright smoke tests with axe accessibility checks on the main
       pages, running in CI (desktop and mobile, light and dark).
-- [ ] Lighthouse pass (performance, accessibility, SEO, best practices).
+- [x] Lighthouse pass (performance, accessibility, SEO, best practices):
+      baseline and method in `docs/quality/lighthouse.md`.
 - [x] `docs/security/threat-model.md`: STRIDE threat model of the Hub.
 - [x] `/security` page and `/.well-known/security.txt` (RFC 9116, with a CI
       check that fails 30 days before it expires).
