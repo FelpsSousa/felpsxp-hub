@@ -156,8 +156,8 @@ an ecosystem ADR in `felpsxp-architecture`.
 - [ ] Canary routes for common scanner targets (`/wp-admin`, `/.env`,
       `/.git/config`, `/phpmyadmin`, and similar): respond with a plain 404
       and emit an event.
-- [ ] CSP violation reporting endpoint (`report-to`), with the policy first
-      shipped in report-only mode for any tightening.
+- [x] CSP violation reporting endpoint (`/api/csp-report`, both `report-to`
+      and `report-uri`), logging anonymous `hub.csp.v1` events.
 - [ ] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script
       alone would block Next.js's per-page inline hydration payload; the
       decision is ADR-0009: per-request nonces, report-only first.

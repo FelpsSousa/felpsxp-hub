@@ -13,9 +13,11 @@ request or ADR that implements it, so each claim can be checked.
 
 ## Scope
 
-The Hub is a personal portfolio served at `felpsxp.com`: static pages in Portuguese and
-English, one contact form, no database and no authentication (ADR-0003). The contact form
-(ADR-0007, #32) is the only place where the Hub accepts input from strangers.
+The Hub is a personal portfolio served at `felpsxp.com`: pages in Portuguese and English,
+rendered per request for the CSP nonce (ADR-0009), one contact form, no database and no
+authentication (ADR-0003). The contact form (ADR-0007, #32) is the only place where the Hub
+accepts input that a person writes; the CSP report endpoint accepts machine-written reports
+and keeps none of their personal data.
 
 Out of scope: the private repositories of the FelpsXP ecosystem, the Platform's observatory
 (it gets its own threat model), and the security of third parties themselves (GitHub,
@@ -27,8 +29,11 @@ Vercel, Cloudflare, Resend), whose responsibility is limited here to how the Hub
                            ┌─────────────────────── Trust boundary: the internet ──────────────────────┐
   Visitor's browser ──HTTPS──▶ Cloudflare DNS ──▶ Vercel edge (proxy.ts: locale, headers)
         │                                             │
-        │                                             ├──▶ CDN: prerendered pages, share images,
-        │                                             │        sitemap, robots
+        │                                             ├──▶ Vercel Function: pages rendered per request
+        │                                             │        (CSP nonce, ADR-0009)
+        │                                             ├──▶ CDN: share images, sitemap, robots, search index
+        │                                             ├──▶ Vercel Function: /api/csp-report
+        │                                             │        (browser violation reports ─▶ anonymous log line)
         │                                             │
         └──(contact form)─────────POST──────────────┴──▶ Vercel Function (Server Action)
                                                                │  1. Turnstile siteverify ──▶ Cloudflare
@@ -82,6 +87,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | --- | --- | --- | --- |
 | R1 | A change cannot be traced to a decision | Squash-merged PRs with descriptions, ADRs for decisions, Vercel deployment history | Implemented |
 | R2 | Abuse of the contact form leaves no trace | An anonymous `hub.contact.v1` event per submission: outcome, reason, country, client class, minute (#32) | Implemented |
+| R3 | A script injected into a page goes unnoticed | Browsers report CSP violations to `/api/csp-report`; each becomes an anonymous `hub.csp.v1` event: directive, blocked origin or keyword, page path, script file and line, client class, minute; no query strings, samples, IP address or User-Agent (ADR-0009) | Implemented |
 
 ### Information disclosure
 
@@ -91,14 +97,15 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | I2 | Private details (LAN addresses, private repository paths, family or financial data) reach public content | Porting checklist with an IP grep (`docs/planning/roadmap.md`); content published from FelpsXP Logs only after a manual gate | Implemented (process) |
 | I3 | Felipe's private mailbox becomes public | Delivered to a server-only `CONTACT_TO_EMAIL`; the page shows `contact@felpsxp.com` (#32) | Implemented |
 | I4 | The stack is fingerprinted, or source code is exposed | `poweredByHeader: false`; production source maps off (Next.js default) | Implemented |
-| I5 | Visitor data leaks | Nothing is stored: static pages, no database; the only cookie holds the language (`Secure`, `SameSite=Lax`, session, #22); the theme and the choice to turn off single-key shortcuts live in `localStorage` (#23) and never reach the server; contact messages are not stored and events carry no personal data, which a test asserts (#32) | Implemented |
+| I5 | Visitor data leaks | Nothing is stored: no database; the only cookie holds the language (`Secure`, `SameSite=Lax`, session, #22); the theme and the choice to turn off single-key shortcuts live in `localStorage` (#23) and never reach the server; contact messages are not stored and events carry no personal data, which a test asserts (#32); CSP reports are reduced to anonymous events before logging, which a test asserts | Implemented |
 | I6 | Full URLs leak to other sites through the referrer | `Referrer-Policy: strict-origin-when-cross-origin` | Implemented |
 
 ### Denial of service
 
 | ID | Threat | Mitigation | Status |
 | --- | --- | --- | --- |
-| D1 | Traffic floods take the site down | Prerendered pages served from Vercel's CDN; no per-request computation for pages | Implemented |
+| D1 | Traffic floods take the site down | Pages render per request since ADR-0009 (about 13 ms of server time each, `docs/quality/lighthouse.md`); Vercel's platform DDoS mitigation in front; static assets stay on the CDN | Implemented · Planned (edge rate limit, go-live) |
+| D4 | The CSP report endpoint is flooded with fake reports to fill the logs | Body capped at 16 KB and read with a hard limit; at most ten reports per batch; only `application/csp-report` and `application/reports+json`; reports about other hosts dropped; each event is one short, bounded log line | Implemented |
 | D2 | The contact form is abused to burn the Resend quota or the domain's reputation | Turnstile, honeypot and a 64 KB body limit (#32); edge rate-limit rule; Resend's quota caps the worst case | Implemented · Planned (rate limit, go-live) |
 | D3 | The Server Actions denial-of-service advisory | Next.js pinned at 16.4.5, above the patched 16.4.1 (ADR-0003) | Implemented |
 

@@ -3,7 +3,9 @@ import {
   contentSecurityPolicy,
   createNonce,
   securityHeaders,
+  reportingEndpoints,
   strictContentSecurityPolicy,
+  withViolationReports,
 } from '@/lib/security-headers';
 
 function headerMap(isDev: boolean): Map<string, string> {
@@ -112,5 +114,19 @@ describe('createNonce', () => {
     const nonces = new Set(Array.from({ length: 50 }, () => createNonce()));
     expect(nonces.size).toBe(50);
     for (const nonce of nonces) expect(nonce).toMatch(/^[A-Za-z0-9+/]{22}==$/);
+  });
+});
+
+describe('violation reports', () => {
+  it('adds report-uri and report-to to a policy', () => {
+    const policy = directives(withViolationReports(strictContentSecurityPolicy('n', false)));
+    expect(policy.get('report-uri')).toBe('/api/csp-report');
+    expect(policy.get('report-to')).toBe('csp-endpoint');
+  });
+
+  it('declares the Reporting API endpoint with an absolute URL', () => {
+    expect(reportingEndpoints('https://felpsxp.com')).toBe(
+      'csp-endpoint="https://felpsxp.com/api/csp-report"',
+    );
   });
 });

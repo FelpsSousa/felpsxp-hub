@@ -100,3 +100,52 @@ test('hreflang alternates come only from the HTML, on the production domain', as
   expect(alternates).toHaveLength(3);
   for (const link of alternates) expect(link).toContain('href="https://felpsxp.com');
 });
+
+test.describe('CSP violation reports (ADR-0009)', () => {
+  test('the report-only policy names the report endpoint', async ({ request }) => {
+    const response = await request.get('/en/projects');
+    const policy = response.headers()['content-security-policy-report-only'] ?? '';
+    expect(policy).toContain('report-uri /api/csp-report');
+    expect(policy).toContain('report-to csp-endpoint');
+    expect(response.headers()['reporting-endpoints']).toMatch(
+      /^csp-endpoint="http:\/\/localhost:\d+\/api\/csp-report"$/,
+    );
+  });
+
+  test('the endpoint accepts both report formats, outside the locale routing', async ({
+    request,
+    baseURL,
+  }) => {
+    const legacy = await request.post('/api/csp-report', {
+      headers: { 'content-type': 'application/csp-report' },
+      data: JSON.stringify({
+        'csp-report': {
+          'document-uri': `${baseURL}/en/projects`,
+          'effective-directive': 'script-src-elem',
+          'blocked-uri': 'inline',
+        },
+      }),
+    });
+    expect(legacy.status()).toBe(204);
+
+    const reportingApi = await request.post('/api/csp-report', {
+      headers: { 'content-type': 'application/reports+json' },
+      data: JSON.stringify([{ type: 'csp-violation', body: { documentURL: `${baseURL}/` } }]),
+    });
+    expect(reportingApi.status()).toBe(204);
+  });
+
+  test('the endpoint refuses anything that is not a report', async ({ request }) => {
+    expect((await request.get('/api/csp-report')).status()).toBe(405);
+    const json = await request.post('/api/csp-report', {
+      headers: { 'content-type': 'application/json' },
+      data: '{}',
+    });
+    expect(json.status()).toBe(415);
+    const huge = await request.post('/api/csp-report', {
+      headers: { 'content-type': 'application/csp-report' },
+      data: 'x'.repeat(64 * 1024),
+    });
+    expect(huge.status()).toBe(413);
+  });
+});
