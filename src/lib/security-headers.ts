@@ -8,6 +8,12 @@ export type Header = { key: string; value: string };
 
 export const TURNSTILE_ORIGIN = 'https://challenges.cloudflare.com';
 
+/** Where browsers send CSP violation reports (`src/app/api/csp-report`). */
+export const CSP_REPORT_PATH = '/api/csp-report';
+
+/** Reporting API endpoint name, declared in the `Reporting-Endpoints` header. */
+export const CSP_REPORT_GROUP = 'csp-endpoint';
+
 /** The request header that carries the per-request nonce to the root layout. */
 export const NONCE_HEADER = 'x-nonce';
 
@@ -40,6 +46,20 @@ export function contentSecurityPolicy(isDev: boolean): string {
  */
 export function strictContentSecurityPolicy(nonce: string, isDev: boolean): string {
   return policy([`'nonce-${nonce}'`, "'strict-dynamic'"], isDev);
+}
+
+/**
+ * Where browsers send violation reports: `report-to` names the Reporting API
+ * endpoint declared in the `Reporting-Endpoints` header; `report-uri` serves
+ * browsers without the Reporting API (Chrome ignores it when `report-to` is set).
+ */
+export function withViolationReports(policy: string): string {
+  return `${policy}; report-uri ${CSP_REPORT_PATH}; report-to ${CSP_REPORT_GROUP}`;
+}
+
+/** The `Reporting-Endpoints` header value; the URL must be absolute. */
+export function reportingEndpoints(origin: string): string {
+  return `${CSP_REPORT_GROUP}="${origin}${CSP_REPORT_PATH}"`;
 }
 
 /** A fresh, unguessable nonce: 128 random bits, base64-encoded. */

@@ -104,7 +104,8 @@ acceptable.
 **Follow-ups**
 
 - [x] Report-only rollout (#77).
-- [ ] Reporting endpoint, then enforcement, each in its own PR.
+- [x] Reporting endpoint, logging anonymous `hub.csp.v1` events.
+- [ ] Enforcement, after a clean period in production.
 - [x] Measure time to first byte before and after in the Lighthouse pass.
 - [x] Update the threat model and the code comments in `security-headers.ts` and the root
       layout, which still describe the hash plan (#77).
