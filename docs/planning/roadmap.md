@@ -113,6 +113,28 @@ security controls.
       footer (ADR-0008).
 - [ ] Release `1.0.0` at go-live.
 
+## Block 3b: Projects as proof (after go-live, one project per PR)
+
+Each case page shows evidence a recruiter can check, not only a description.
+Requested by Felipe on 2026-11-16. Only material classified `public` or
+cleared with the showcase checklist goes in; facts come from FelpsXP Logs.
+
+- [ ] Shared building blocks: screenshot gallery with captions and alt text,
+      a "what I did" list mapped to verified facts, stack chips, links to the
+      repository or a demo when public.
+- [ ] Candidattus and Connexicco: the public module names from the products'
+      own sites, screenshots of the public pages, Felipe's role (sole frontend
+      at the start, frontend owner to the end, technical reference).
+- [ ] FelpsXP Finance: a demo with fictitious test data (seeded household,
+      accounts and transactions), screenshots of web and mobile, the
+      multi-tenant isolation explained with the RLS tests as proof.
+- [ ] FelpsXP Platform: the security review findings and fixes, the
+      observability package and its tests.
+- [ ] FelpsXP Logs: screenshots of the dashboard and compliance report with
+      fictitious data (the real data is private).
+- [ ] Earlier work: CLARA joystick (photos and docs), Centro de Mediadores,
+      the vehicle dealer system, WebSim; only what is cleared for public use.
+
 ## Block 4: Writing
 
 - [ ] MDX pipeline per ADR-0004: Zod-validated frontmatter, Shiki, one
