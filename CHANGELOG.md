@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.4](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.3...v0.18.4) (2026-11-16)
+
+
+### Security
+
+* receive CSP violation reports as anonymous events (ADR-0009) ([#83](https://github.com/FelpsSousa/felpsxp-hub/issues/83)) ([99b3840](https://github.com/FelpsSousa/felpsxp-hub/commit/99b384040027dc5561893fcbe739c7e449c9236e))
+
 ## [0.18.3](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.2...v0.18.3) (2026-11-14)
 
 
