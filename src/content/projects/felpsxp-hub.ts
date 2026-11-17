@@ -44,7 +44,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     ],
     outcomes: [
       'Um portfólio que é, ele próprio, a prova: código, histórico, ADRs e pull requests abertos para qualquer revisor',
-      'Nota 100 em acessibilidade, boas práticas e SEO no Lighthouse em todas as páginas, e CSP estrita sem nenhuma violação na suíte de ponta a ponta',
+      'Nota 100 em acessibilidade, boas práticas e SEO no Lighthouse nas quatro páginas medidas, e CSP estrita sem nenhuma violação na suíte de ponta a ponta',
       'Uma suíte de testes que cobre schemas, consistência entre idiomas, SEO e as regras de escrita do repositório',
     ],
     learnings: [
@@ -65,7 +65,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     ],
     tags: ['portfolio', 'appsec', 'nextjs', 'i18n', 'open-source'],
     relatedSurfaceKeys: ['hub'],
-    startedAt: '2026-04-21',
+    startedAt: '2026-11-07',
     updatedAt: '2026-11-15',
     featured: true,
     links: [{ href: repositoryUrl, label: 'Repositório no GitHub', external: true }],
@@ -111,7 +111,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     ],
     outcomes: [
       'A portfolio that is itself the evidence: code, history, ADRs and pull requests open to any reviewer',
-      'Lighthouse scores of 100 for accessibility, best practices and SEO on every page, and a strict CSP with no violation across the end-to-end suite',
+      'Lighthouse scores of 100 for accessibility, best practices and SEO on the four pages measured, and a strict CSP with no violation across the end-to-end suite',
       'A test suite covering schemas, cross-language consistency, SEO and the repository’s own writing rules',
     ],
     learnings: [
@@ -132,7 +132,7 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     ],
     tags: ['portfolio', 'appsec', 'nextjs', 'i18n', 'open-source'],
     relatedSurfaceKeys: ['hub'],
-    startedAt: '2026-04-21',
+    startedAt: '2026-11-07',
     updatedAt: '2026-11-15',
     featured: true,
     links: [{ href: repositoryUrl, label: 'Repository on GitHub', external: true }],

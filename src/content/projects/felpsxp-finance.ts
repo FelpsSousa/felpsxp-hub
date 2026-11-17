@@ -51,7 +51,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     outcomes: [
       'Em produção e em uso diário pela família, não em ambiente de demonstração; o lançamento nas lojas (Android e iOS) está planejado, sem data',
       'Preparado para publicação comercial como aplicativo Android e iOS',
-      'Consome a plataforma do ecossistema apenas pela API dela, sem acesso ao código nem ao banco: o limite se mantém honesto porque não é contornável',
+      'Projetado para consumir a plataforma do ecossistema apenas pela API dela, sem acesso ao código nem ao banco; essa integração ainda não está ligada',
       'Gerou o segundo pacote de código real e testado do ecossistema, publicável de forma independente',
     ],
     learnings: [
@@ -73,7 +73,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     ],
     tags: ['fintech', 'multi-tenant', 'appsec', 'mobile', 'produto'],
     relatedSurfaceKeys: ['finance', 'platform'],
-    startedAt: '2026-09-12',
+    startedAt: '2025-09-08',
     updatedAt: '2026-09-28',
     featured: true,
   },
@@ -121,7 +121,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     outcomes: [
       'Live and in daily use by the family, not in a demo environment; the store launch (Android and iOS) is planned, with no date yet',
       'Being prepared for commercial release as an Android and iOS app',
-      'Consumes the ecosystem platform only through its API, with no access to its source or database: the boundary stays honest because it is not bypassable',
+      'Designed to consume the ecosystem platform only through its API, with no access to its source or database; that integration is not wired up yet',
       'Produced the ecosystem’s second package of real, tested code, publishable on its own',
     ],
     learnings: [
@@ -143,7 +143,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     ],
     tags: ['fintech', 'multi-tenant', 'appsec', 'mobile', 'product'],
     relatedSurfaceKeys: ['finance', 'platform'],
-    startedAt: '2026-09-12',
+    startedAt: '2025-09-08',
     updatedAt: '2026-09-28',
     featured: true,
   },

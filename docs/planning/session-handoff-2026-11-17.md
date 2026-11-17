@@ -51,8 +51,10 @@ This repository is **public**. Felipe's facts live in the private repository `fe
 - Use a fact only when its `status` is `verified`. Prefer `classification: public`; a fact
   marked `shareable-after-review` needs Felipe's explicit yes for that wording before it goes
   into a page; a `private` fact never goes into this repository, not even paraphrased.
-- Every claim on a page should map to a fact id. Keep the mapping in the pull request
-  description (claim, fact id), not in the code, because fact ids describe private material.
+- Every claim on a page should map to a fact id. Fact ids describe private material, and
+  this repository and its pull requests are public, so the mapping (claim, fact id) lives in
+  `felpsxp-logs`, under `career/claims/`. The pull request description lists only each claim
+  and its verdict: verified, fixed, or waiting on Felipe.
 - Former employer: describe the products only with what their public sites show (product
   names, public module and solution names, the audience) and Felipe's role. No internal
   mechanics (how tenants are resolved, which headers or cookies, internal tools), no

@@ -38,7 +38,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     outcomes: [
       'O propósito ficou definido: CORE e observatório de todas as aplicações. O Hub passou a ser independente dela e vai mostrar só agregados anônimos do que ela observa; o Sentinel está saindo para repositório próprio',
       'Três cópias independentes do mesmo logger foram centralizadas num pacote único, coberto por testes automatizados, com uma capacidade que nenhuma das três tinha: redigir campos sensíveis antes de serializar',
-      'O limite da API passou a ser exercitado como contrato externo de verdade: um produto em repositório separado consome a plataforma só por ela, sem acesso ao código nem ao banco',
+      'A API foi desenhada como contrato externo para o Finance, um produto em repositório separado que não terá acesso ao código nem ao banco da plataforma; essa integração ainda não está ligada',
     ],
     learnings: [
       'Construir infraestrutura "como protagonista" primeiro, e depois recuar deliberadamente pra "camada habilitadora" assim que o Hub surgiu, foi o sequenciamento certo: trabalho de fundação é fácil de superinvestir sem um consumidor real puxando os requisitos',
@@ -56,7 +56,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     ],
     tags: ['platform', 'monorepo', 'runtime', 'observability', 'iam'],
     relatedSurfaceKeys: ['platform', 'hub'],
-    startedAt: '2026-03-31',
+    startedAt: '2026-04-01',
     updatedAt: '2026-09-28',
     featured: true,
   },
@@ -97,7 +97,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     outcomes: [
       'Its purpose is now settled: CORE and observatory for every application. The Hub became independent of it and will show only anonymous aggregates of what it observes; Sentinel is moving to its own repository',
       'Three independent copies of the same logger were centralized into one package, covered by automated tests, with a capability none of the three had: redacting sensitive fields before serializing',
-      'The API boundary is now exercised as a real external contract: a product in a separate repository consumes the platform only through it, with no access to its source or database',
+      'The API was designed as an external contract for Finance, a product in a separate repository that will have no access to the platform’s source or database; that integration is not wired up yet',
     ],
     learnings: [
       'Building infrastructure "as protagonist" first, then deliberately stepping back into an enabling layer once Hub emerged, was the right sequencing - foundation work is easy to over-invest in without a real consumer pulling requirements',
@@ -115,7 +115,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     ],
     tags: ['platform', 'monorepo', 'runtime', 'observability', 'iam'],
     relatedSurfaceKeys: ['platform', 'hub'],
-    startedAt: '2026-03-31',
+    startedAt: '2026-04-01',
     updatedAt: '2026-09-28',
     featured: true,
   },
