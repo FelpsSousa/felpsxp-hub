@@ -1,17 +1,18 @@
 import type { Localized, Project } from '@/content/types';
 
 /**
- * Work done as an employee. Kept deliberately general until the
- * confidentiality question is settled: no data volumes, internal module
- * names, client cycles or third-party integrations (Logs fact sheet,
- * 2026-11-12, item 8). Details are for interviews.
+ * Work done as a contractor. Only what the product's public site shows
+ * (audience, module and solution names, real-time monitoring, data at the
+ * scale of tens of millions of records, LGPD) plus Felipe's role, in the
+ * wording of his public LinkedIn profile. No internal mechanics, named
+ * third-party integrations or business numbers: those are for interviews.
  */
 export const candidattusProjectByLocale: Localized<Project> = {
   pt: {
     slug: 'candidattus',
     title: 'Candidattus',
     summary:
-      'Produto SaaS de inteligência de dados políticos, com dashboards analíticos. Trabalhei no frontend como Engenheiro Fullstack Pleno I na Algoricca Software Company.',
+      'Plataforma SaaS de inteligência eleitoral para agências, partidos, candidatos e doadores, com dashboards analíticos e monitoramento em tempo real. Fui responsável pelo frontend como Engenheiro Fullstack Pleno I na Algoricca Software Company.',
     status: 'archived',
     visibility: 'public',
     type: 'product',
@@ -19,13 +20,14 @@ export const candidattusProjectByLocale: Localized<Project> = {
     primaryDomain: 'data',
     secondaryDomains: ['backend', 'frontend'],
     media: [],
-    role: 'Engenheiro Fullstack Pleno I, com foco em frontend, de outubro de 2023 a outubro de 2025',
+    role: 'Engenheiro Fullstack Pleno I, com foco em frontend, de outubro de 2023 a outubro de 2025: entrei como único desenvolvedor frontend e fiquei até o fim do contrato',
     problem:
       'Um produto de inteligência de dados políticos precisava transformar dados eleitorais em dashboards analíticos legíveis para os seus usuários.',
     solution:
-      'Um frontend em React e Next.js com visualizações de dados variadas (mapas, indicadores e gráficos de vários tipos), construído para continuar legível e rápido com grandes volumes de dados.',
+      'Um frontend em React e Next.js com visualizações de dados variadas (mapas, indicadores e gráficos de vários tipos), construído para continuar legível e rápido sobre dezenas de milhões de registros eleitorais.',
     architectureHighlights: [
       'Dashboards analíticos com visualizações de vários tipos, em React e Next.js',
+      'Módulos públicos do produto, com os nomes do site: Cockpit do Candidato, Estratégia de Candidatura, Gestão da Candidatura, Inteligência Política, Trajetória Política e Portfólio de Candidaturas; soluções Candidato Preferido, Politica Vox, Arquétipo Político e Diagnóstico Político',
       'Componentes e funções customizadas em CSS onde as bibliotecas de gráficos não atendiam ao requisito',
       'Produto alinhado à LGPD, com requisitos de segurança e confidencialidade no tratamento de dados sensíveis',
     ],
@@ -35,7 +37,9 @@ export const candidattusProjectByLocale: Localized<Project> = {
       'Trabalhar sob exigências de LGPD, segurança e confidencialidade',
     ],
     responsibilities: [
-      'Estruturação e evolução do frontend da aplicação',
+      'Escolha da stack e estruturação da arquitetura do frontend',
+      'Evolução do frontend ao longo dos dois anos',
+      'Onboarding de quem entrou no time e revisão de pull requests para merge com deploy automático, inclusive do backend',
       'Desenvolvimento de módulos analíticos e de suas visualizações',
       'Integração com recursos de apoio à interpretação dos dados',
     ],
@@ -57,7 +61,7 @@ export const candidattusProjectByLocale: Localized<Project> = {
     slug: 'candidattus',
     title: 'Candidattus',
     summary:
-      'A political data intelligence SaaS product with analytical dashboards. I worked on its frontend as a Mid-level Fullstack Engineer (Pleno I) at Algoricca Software Company.',
+      'An electoral intelligence SaaS platform for agencies, parties, candidates and donors, with analytical dashboards and real-time monitoring. I was responsible for its frontend as a Mid-level Fullstack Engineer (Pleno I) at Algoricca Software Company.',
     status: 'archived',
     visibility: 'public',
     type: 'product',
@@ -65,13 +69,14 @@ export const candidattusProjectByLocale: Localized<Project> = {
     primaryDomain: 'data',
     secondaryDomains: ['backend', 'frontend'],
     media: [],
-    role: 'Mid-level Fullstack Engineer (Pleno I), frontend-focused, October 2023 to October 2025',
+    role: 'Mid-level Fullstack Engineer (Pleno I), frontend-focused, October 2023 to October 2025: I joined as the only frontend developer and stayed until the end of the contract',
     problem:
       'A political data intelligence product needed to turn electoral data into legible analytical dashboards for its users.',
     solution:
-      'A React and Next.js frontend with varied data visualizations (maps, indicators and many kinds of charts), built to stay legible and fast over large volumes of data.',
+      'A React and Next.js frontend with varied data visualizations (maps, indicators and many kinds of charts), built to stay legible and fast over tens of millions of electoral records.',
     architectureHighlights: [
       'Analytical dashboards with many kinds of visualizations, in React and Next.js',
+      'The product’s public modules, named as on its site: Cockpit do Candidato, Estratégia de Candidatura, Gestão da Candidatura, Inteligência Política, Trajetória Política and Portfólio de Candidaturas; solutions Candidato Preferido, Politica Vox, Arquétipo Político and Diagnóstico Político',
       'Custom CSS components and functions where charting libraries fell short of the requirement',
       'LGPD-aligned product, with security and confidentiality requirements for sensitive data handling',
     ],
@@ -81,7 +86,9 @@ export const candidattusProjectByLocale: Localized<Project> = {
       'Working under LGPD, security and confidentiality requirements',
     ],
     responsibilities: [
-      'Building and evolving the application’s frontend',
+      'Choosing the stack and structuring the frontend architecture',
+      'Evolving the frontend throughout the two years',
+      'Onboarding everyone who joined the team and reviewing pull requests for merge with automatic deployment, backend ones included',
       'Developing analytical modules and their visualizations',
       'Integrating features that help users interpret the data',
     ],
