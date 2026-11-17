@@ -89,7 +89,7 @@ security controls.
       `SameSite=Lax`) and the `theme` key in localStorage (never sent to
       the server).
 - [x] Home: featured projects and a closing call to action.
-- [ ] Home: highlight stats confirmed by the verified facts from FelpsXP Logs.
+- [x] Home: highlight stats confirmed by the verified facts from FelpsXP Logs.
 
 ## Block 3: Go-live hardening (GL)
 
