@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.5](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.4...v0.18.5) (2026-11-17)
+
+
+### Bug Fixes
+
+* **content:** correct the claims the verified facts contradict ([#88](https://github.com/FelpsSousa/felpsxp-hub/issues/88)) ([6b04026](https://github.com/FelpsSousa/felpsxp-hub/commit/6b040263c2cae64a95530c62108d48d1e267f4c5))
+
 ## [0.18.4](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.3...v0.18.4) (2026-11-16)
 
 
