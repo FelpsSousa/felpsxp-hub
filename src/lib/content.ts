@@ -2,7 +2,6 @@ import { profileByLocale } from '@/content/profile/profile';
 import { beecrowdProblemSolvingProjectByLocale } from '@/content/projects/beecrowd-problem-solving';
 import { candidattusProjectByLocale } from '@/content/projects/candidattus';
 import { connexiccoProjectByLocale } from '@/content/projects/connexicco';
-import { felpsxpArchitectureProjectByLocale } from '@/content/projects/felpsxp-architecture';
 import { felpsxpFinanceProjectByLocale } from '@/content/projects/felpsxp-finance';
 import { felpsxpHubProjectByLocale } from '@/content/projects/felpsxp-hub';
 import { felpsxpPlatformProjectByLocale } from '@/content/projects/felpsxp-platform';
@@ -23,7 +22,6 @@ const projectSources: Localized<Project>[] = [
   felpsxpPlatformProjectByLocale,
   felpsxpFinanceProjectByLocale,
   homeNetworkObservabilityProjectByLocale,
-  felpsxpArchitectureProjectByLocale,
   beecrowdProblemSolvingProjectByLocale,
   candidattusProjectByLocale,
   connexiccoProjectByLocale,

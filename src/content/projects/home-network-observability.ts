@@ -19,7 +19,7 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     solution:
       'Um sensor de rede always-on alimenta eventos de descoberta de dispositivos e consultas DNS numa API de plataforma compartilhada, que normaliza, categoriza e pontua esses dados para um dashboard dedicado ao operador, com alertas, limites configuráveis e relatórios.',
     architectureHighlights: [
-      'Sensor always-on: descoberta via ARP no Linux, descoberta via cache ICMP/ARP no Windows, visibilidade de DNS via polling do log de consultas do AdGuard Home',
+      'Sensor always-on: descoberta via ARP no Linux, descoberta via cache ICMP/ARP no Windows, visibilidade de DNS via polling do log de consultas de um resolvedor DNS local',
       'API de plataforma que recebe dispositivos e eventos de DNS atrás de uma fronteira autenticada por sensor, sustentada por Postgres/Prisma',
       'Sete workers agendados: rollups, detecção de offline, arquivamento, revisão de risco, alertas de limite, resumo diário por e-mail e verificação de saúde do próprio sistema',
       'Dashboard em Next.js com score de risco por dispositivo (sempre acompanhado do detalhamento dos fatores que o produziram, nunca um número opaco), categorias, alertas, limites customizados, exportação em CSV e relatórios em PDF sob demanda',
@@ -40,19 +40,19 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     outcomes: [
       'Criou uma prova aplicada forte, além do trabalho de arquitetura só do ecossistema',
       'Demonstrou pensamento sistêmico em rede, backend, dados e frontend',
-      'Validado de ponta a ponta contra uma rede doméstica real, incluindo descoberta de dispositivos e tráfego de DNS reais',
+      'Foi validado de ponta a ponta contra uma rede doméstica real, com descoberta de dispositivos e tráfego de DNS reais, enquanto rodava como módulo da plataforma',
     ],
     learnings: [
       'Validação contra tráfego real de rede e DNS revelou casos de borda que dados sintéticos não teriam mostrado',
       'Um sistema de monitoramento que não enxerga a própria queda reporta "tudo tranquilo" e "eu morri" exatamente igual. Fechar essa lacuna não exigiu infraestrutura nova: bastou reusar o feed de alertas que já existia, com três tipos novos sem dispositivo associado',
       'Prova de vida tem que ser sinal direto, não inferência: deduzir "o sensor está vivo" da recência de eventos DNS confunde sensor parado com casa dormindo, e toda madrugada vira falso positivo',
     ],
-    stack: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Prisma', 'AdGuard Home'],
+    stack: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Prisma'],
     tags: ['observability', 'networking', 'dashboard', 'backend', 'frontend'],
     relatedSurfaceKeys: ['hub', 'sentinel', 'command'],
-    startedAt: '2025-04-09',
+    startedAt: '2025-04-07',
     updatedAt: '2026-09-28',
-    featured: true,
+    featured: false,
   },
   en: {
     slug: 'home-network-observability',
@@ -72,7 +72,7 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     solution:
       'An always-on network sensor feeds device discovery and DNS query events into a shared platform API, which normalizes, categorizes, and scores that data for a dedicated operator dashboard with alerting, thresholds, and reporting.',
     architectureHighlights: [
-      'Always-on sensor: ARP-based discovery on Linux, ICMP/ARP-cache discovery on Windows, DNS visibility via AdGuard Home query-log polling',
+      'Always-on sensor: ARP-based discovery on Linux, ICMP/ARP-cache discovery on Windows, DNS visibility via polling the query log of a local DNS resolver',
       'Platform API ingesting devices and DNS events behind a sensor-authenticated boundary, backed by Postgres/Prisma',
       'Seven scheduled workers: rollups, offline detection, archival, risk review, threshold alerts, daily email digests, and a health check on the system itself',
       'Next.js dashboard with device risk scoring - always shown with the breakdown of the factors that produced it, never an opaque number - category breakdowns, alerts, custom thresholds, CSV export, and on-demand PDF reports',
@@ -93,18 +93,18 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     outcomes: [
       'Created strong applied proof beyond ecosystem-only architecture work',
       'Demonstrated systems thinking across network, backend, data, and frontend layers',
-      'Validated end to end against a live home network, including real device discovery and real DNS traffic',
+      'Was validated end to end against a live home network, with real device discovery and real DNS traffic, while it ran as a platform module',
     ],
     learnings: [
       'Validating against real network and DNS traffic surfaced edge cases synthetic data would not have shown',
       'A monitoring system that cannot see its own outage reports "all quiet" and "I am dead" identically. Closing that gap needed no new infrastructure: it reused the alert feed that already existed, with three new device-less alert types',
       'Proof of life has to be a direct signal, not an inference: deriving "the sensor is alive" from recent DNS events confuses a stalled sensor with a sleeping household, and turns every night into a false positive',
     ],
-    stack: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Prisma', 'AdGuard Home'],
+    stack: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Prisma'],
     tags: ['observability', 'networking', 'dashboard', 'backend', 'frontend'],
     relatedSurfaceKeys: ['hub', 'sentinel', 'command'],
-    startedAt: '2025-04-09',
+    startedAt: '2025-04-07',
     updatedAt: '2026-09-28',
-    featured: true,
+    featured: false,
   },
 };
