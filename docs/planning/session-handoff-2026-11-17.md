@@ -20,11 +20,10 @@ the content. The bootstrap handoff of 2026-11-10 is kept only as history.
 
 ## 2. Why the order matters
 
-Felipe is applying for pleno fullstack roles (frontend focus, AppSec and IAM as the
-differentiator) starting this week. Recruiters open the profile link, so `felpsxp.com`
-must serve this repository, with pages that hold up to a careful read: a CV page, a
-career timeline and an about page, all backed by facts. Until 22 November Felipe is also
-preparing for an entrance exam, so sessions are short: prefer small, finished pull requests
+The Hub targets pleno fullstack roles (frontend focus, AppSec and IAM as the
+differentiator). Recruiters open the profile link, so `felpsxp.com` must serve this
+repository, with pages that hold up to a careful read: a CV page, a career timeline and an
+about page, all backed by facts. Sessions are short: prefer small, finished pull requests
 over long branches.
 
 ## 3. Where things stand (2026-11-17)
@@ -54,11 +53,10 @@ This repository is **public**. Felipe's facts live in the private repository `fe
   into a page; a `private` fact never goes into this repository, not even paraphrased.
 - Every claim on a page should map to a fact id. Keep the mapping in the pull request
   description (claim, fact id), not in the code, because fact ids describe private material.
-- Former employer: Felipe's contract has a confidentiality clause that is mainly about source
-  code. Describe the products only with what their public sites show (product names, public
-  module and solution names, the audience) and Felipe's role. No internal mechanics (how
-  tenants are resolved, which headers or cookies, internal tools), no screenshots of logged-in
-  areas, no metrics that are not public.
+- Former employer: describe the products only with what their public sites show (product
+  names, public module and solution names, the audience) and Felipe's role. No internal
+  mechanics (how tenants are resolved, which headers or cookies, internal tools), no
+  screenshots of logged-in areas, no metrics that are not public.
 - Private repositories (Platform, Finance, Logs, Sentinel) are described as case studies;
   shareable detail goes to the public `felpsxp-architecture` repository. Screenshots of private
   apps use fictitious data only.
