@@ -9,7 +9,7 @@ export const securityPageByLocale: Localized<LegalPage> = {
     title: 'Segurança',
     summary:
       'Como relatar uma vulnerabilidade neste site ou no código dele, o que está no escopo e o que você pode esperar de volta.',
-    updatedAt: '2026-11-12',
+    updatedAt: '2026-11-17',
     sections: [
       {
         heading: 'Como relatar',
@@ -21,7 +21,7 @@ export const securityPageByLocale: Localized<LegalPage> = {
       {
         heading: 'Escopo',
         paragraphs: [
-          'Estão no escopo o site felpsxp.com, seus subdomínios e o código do repositório público felpsxp-hub.',
+          'Estão no escopo o site felpsxp.com, inclusive www.felpsxp.com, e o código do repositório público felpsxp-hub. Os outros módulos do ecossistema, servidos em subdomínios próprios, ficam fora deste escopo; se encontrar um problema em algum deles, escreva mesmo assim para o endereço no fim desta página.',
           'Ficam fora do escopo: ataques de negação de serviço ou volumétricos, engenharia social, ataques físicos, achados que exigem um dispositivo já comprometido, relatórios automáticos de scanners sem impacto demonstrado e vulnerabilidades em serviços de terceiros, que devem ser relatadas ao respectivo fornecedor.',
         ],
       },
@@ -51,7 +51,7 @@ export const securityPageByLocale: Localized<LegalPage> = {
     title: 'Security',
     summary:
       'How to report a vulnerability in this site or its code, what is in scope, and what you can expect back.',
-    updatedAt: '2026-11-12',
+    updatedAt: '2026-11-17',
     sections: [
       {
         heading: 'How to report',
@@ -63,7 +63,7 @@ export const securityPageByLocale: Localized<LegalPage> = {
       {
         heading: 'Scope',
         paragraphs: [
-          'In scope: the felpsxp.com site, its subdomains and the code in the public felpsxp-hub repository.',
+          'In scope: the felpsxp.com site, www.felpsxp.com included, and the code in the public felpsxp-hub repository. The ecosystem’s other modules, served on their own subdomains, are out of this scope; if you find a problem in one of them, please still write to the address at the end of this page.',
           'Out of scope: denial-of-service or volumetric attacks, social engineering, physical attacks, findings that require an already compromised device, automated scanner reports without demonstrated impact, and vulnerabilities in third-party services, which should be reported to the vendor.',
         ],
       },
