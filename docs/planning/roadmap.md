@@ -5,6 +5,9 @@ Living plan for this repository. It replaces the bootstrap handoff
 tracked. Each item becomes one small PR; Felipe validates it on the Vercel
 preview before it is merged and ticked here.
 
+Working order, acceptance criteria and content rules for each block:
+[`session-handoff-2026-11-17.md`](session-handoff-2026-11-17.md).
+
 Legend: **GL** marks what is required for the go-live of `felpsxp.com`;
 everything else ships afterwards, one PR at a time, with the site already
 online.
@@ -251,7 +254,8 @@ clean public extraction of the observatory module.
 
 - [ ] ADR retiring `/studio` in favour of PR-versioned content.
 - [ ] Decommission `hub-web` inside `felpsxp-platform`.
-- [ ] Delete the old Vercel project once the new one has been stable.
+- [ ] Delete the old Vercel project once the new one has been stable (its Git
+      connection was removed on 2026-11-17, so it no longer builds previews).
 
 ## Proof matrix
 
