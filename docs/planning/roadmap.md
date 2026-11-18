@@ -67,7 +67,7 @@ security controls.
       (production at `felpsxp-hub-two.vercel.app` until the domain moves).
 - [x] Remove the fictional `example-*` projects, their mock screenshots and
       the "Example" badge.
-- [ ] Content review with Felipe: confirm every remaining claim, link and
+- [x] Content review with Felipe: confirm every remaining claim, link and
       number is verifiable (for instance, the profile's ADR count points to
       a private repository and is already out of date).
 
@@ -137,6 +137,8 @@ cleared with the showcase checklist goes in; facts come from FelpsXP Logs.
       fictitious data (the real data is private).
 - [ ] Earlier work: CLARA joystick (photos and docs), Centro de Mediadores,
       the vehicle dealer system, WebSim; only what is cleared for public use.
+- [ ] FelpsXP Architecture: bring its project page back (removed during the
+      content review) once the public repository has its first publication.
 
 ## Block 4: Writing
 

@@ -49,10 +49,9 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'Operar o produto em produção, com e-mail transacional no fluxo real de conta',
     ],
     outcomes: [
-      'Em produção e em uso diário pela família, não em ambiente de demonstração; o lançamento nas lojas (Android e iOS) está planejado, sem data',
-      'Preparado para publicação comercial como aplicativo Android e iOS',
+      'Em produção e em uso diário pela família, não em ambiente de demonstração; o lançamento nas lojas (Android e iOS) está previsto para 2027',
       'Projetado para consumir a plataforma do ecossistema apenas pela API dela, sem acesso ao código nem ao banco; essa integração ainda não está ligada',
-      'Gerou o segundo pacote de código real e testado do ecossistema, publicável de forma independente',
+      'O pacote de matemática financeira, testado, já está separado para ser publicado de forma independente',
     ],
     learnings: [
       'Política de isolamento correta é inútil se a permissão embaixo dela nega antes. O modo de falha não avisa que é de permissão: ele se apresenta como o produto simplesmente não funcionando, e foi preciso uma falha em produção pra aprender a olhar uma camada abaixo',
@@ -69,7 +68,6 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'PostgreSQL',
       'Row-Level Security',
       'Vitest',
-      'n8n',
     ],
     tags: ['fintech', 'multi-tenant', 'appsec', 'mobile', 'produto'],
     relatedSurfaceKeys: ['finance', 'platform'],
@@ -119,10 +117,9 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'Operate the product in production, with transactional e-mail in the real account flow',
     ],
     outcomes: [
-      'Live and in daily use by the family, not in a demo environment; the store launch (Android and iOS) is planned, with no date yet',
-      'Being prepared for commercial release as an Android and iOS app',
+      'Live and in daily use by the family, not in a demo environment; the store launch (Android and iOS) is planned for 2027',
       'Designed to consume the ecosystem platform only through its API, with no access to its source or database; that integration is not wired up yet',
-      'Produced the ecosystem’s second package of real, tested code, publishable on its own',
+      'The tested financial maths package is already separated so it can be published on its own',
     ],
     learnings: [
       'A correct isolation policy is useless if the permission underneath it denies first. The failure mode does not announce itself as a permissions problem: it presents as the product simply not working, and it took a production failure to learn to look one layer down',
@@ -139,7 +136,6 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
       'PostgreSQL',
       'Row-Level Security',
       'Vitest',
-      'n8n',
     ],
     tags: ['fintech', 'multi-tenant', 'appsec', 'mobile', 'product'],
     relatedSurfaceKeys: ['finance', 'platform'],
