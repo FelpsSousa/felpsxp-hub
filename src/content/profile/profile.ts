@@ -3,18 +3,18 @@ import type { Localized, Profile } from '@/content/types';
 export const profileByLocale: Localized<Profile> = {
   pt: {
     displayName: 'Felipe Sousa',
-    title: 'Desenvolvedor Fullstack: React, Next.js, TypeScript',
+    title: 'Desenvolvedor Fullstack com foco em frontend: React, Next.js, TypeScript',
     location: 'Brasília, Brasil',
     languages: [
       'Português (nativo)',
       'Inglês: leitura e escrita técnica (documentação, commits e ADRs em inglês); conversação em desenvolvimento',
     ],
     shortBio:
-      'Dois anos no frontend de dois produtos SaaS, como engenheiro fullstack. Hoje arquiteto um ecossistema modular próprio, com foco em identidade, eventos e observabilidade.',
+      'Dois anos no frontend de dois produtos SaaS, como engenheiro fullstack. Hoje mantenho um app financeiro multi-tenant em produção e arquiteto um ecossistema modular próprio, com foco em identidade, eventos e observabilidade.',
     summaryParagraphs: [
-      'Comecei a programar em 2015, na Engenharia Mecatrônica da UnB, escrevendo C para robôs antes de escrever JavaScript para navegadores. Dei aulas de robótica em escolas públicas, fui monitor de algoritmos e trabalhei em pesquisa com firmware e comunicação sem fio para um robô cirúrgico.',
-      'Essa base me levou para o software. De outubro de 2023 a outubro de 2025 fui Engenheiro Fullstack Pleno I, com foco em frontend, na Algoricca Software Company, trabalhando em dois produtos SaaS: Candidattus e Connexicco.',
-      'Hoje construo o FelpsXP Ecosystem: uma plataforma modular própria onde aplico o que aprendi sobre arquitetura, identidade e acesso, eventos e observabilidade. É onde minha experiência mais recente acontece, e onde estou consolidando uma especialização em segurança de aplicação e gestão de identidade.',
+      'Comecei a programar em 2015, na Engenharia Mecatrônica da UnB, escrevendo C para robôs antes de escrever JavaScript para navegadores. Dei aulas de robótica em escolas públicas, fui monitor de algoritmos e fiz pesquisa de graduação com firmware e comunicação sem fio para o joystick de um robô cirúrgico.',
+      'Essa base me levou para o software. De outubro de 2023 a outubro de 2025 fui Engenheiro Fullstack Pleno I, com foco em frontend, na Algoricca Software Company, trabalhando em dois produtos SaaS: Candidattus e Connexicco. Entrei como único desenvolvedor frontend, escolhi a stack e iniciei a arquitetura do frontend, e fiquei até o fim do contrato.',
+      'Hoje construo o FelpsXP Ecosystem: uma plataforma modular própria onde aplico o que aprendi sobre arquitetura, identidade e acesso, eventos e observabilidade. Um dos módulos, o FelpsXP Finance, está em produção e em uso diário, com o isolamento entre casas garantido por Row-Level Security no PostgreSQL. É onde minha experiência mais recente acontece, e onde estou consolidando uma especialização em segurança de aplicação e gestão de identidade.',
       'Gosto de resolver o problema difícil e de deixar registrado por que foi resolvido daquele jeito.',
     ],
     currentFocus: [
@@ -34,7 +34,8 @@ export const profileByLocale: Localized<Profile> = {
     highlights: [
       '2 anos no frontend de dois produtos SaaS (Candidattus e Connexicco)',
       'Base em Engenharia Mecatrônica (UnB), com passagem por sistemas embarcados e controle de acesso',
-      'Controle de acesso desde 2017: do reconhecimento facial nos laboratórios da UnB ao IAM da FelpsXP Platform',
+      'Controle de acesso como linha contínua: em 2017, um projeto de disciplina em equipe na UnB com reconhecimento facial; em 2021, controle de acesso por perfil num sistema para cliente; hoje, IAM na FelpsXP Platform',
+      'App financeiro multi-tenant em produção, com isolamento por casa via Row-Level Security no PostgreSQL',
       'Disciplina de conteúdo tipado, ADRs e documentação como parte do trabalho, não um extra',
     ],
     highlightStats: [
@@ -45,18 +46,18 @@ export const profileByLocale: Localized<Profile> = {
   },
   en: {
     displayName: 'Felipe Sousa',
-    title: 'Fullstack Developer: React, Next.js, TypeScript',
+    title: 'Fullstack Developer, frontend-focused: React, Next.js, TypeScript',
     location: 'Brasília, Brazil',
     languages: [
       'Portuguese (native)',
       'English: technical reading and writing (docs, commits and ADRs in English); conversation in progress',
     ],
     shortBio:
-      'Two years on the frontend of two SaaS products as a fullstack engineer. Today I architect my own modular ecosystem, focused on identity, events, and observability.',
+      'Two years on the frontend of two SaaS products as a fullstack engineer. Today I run a multi-tenant finance app in production and architect my own modular ecosystem, focused on identity, events, and observability.',
     summaryParagraphs: [
-      'I started programming in 2015, studying Mechatronics Engineering at the University of Brasília, writing C for robots before writing JavaScript for browsers. I taught robotics in public schools, worked as an algorithms teaching assistant, and did research on firmware and wireless communication for a surgical robot.',
-      'That foundation led me into software. From October 2023 to October 2025 I was a Mid-level Fullstack Engineer (Pleno I), frontend-focused, at Algoricca Software Company, working on two SaaS products: Candidattus and Connexicco.',
-      "Today I'm building the FelpsXP Ecosystem: my own modular platform where I apply what I've learned about architecture, identity and access, events and observability. It's where my most recent experience lives, and where I'm consolidating a specialization in application security and identity management.",
+      'I started programming in 2015, studying Mechatronics Engineering at the University of Brasília, writing C for robots before writing JavaScript for browsers. I taught robotics in public schools, worked as an algorithms teaching assistant, and did undergraduate research on firmware and wireless communication for the joystick of a surgical robot.',
+      'That foundation led me into software. From October 2023 to October 2025 I was a Mid-level Fullstack Engineer (Pleno I), frontend-focused, at Algoricca Software Company, working on two SaaS products: Candidattus and Connexicco. I joined as the only frontend developer, chose the stack and started the frontend architecture, and stayed until the end of the contract.',
+      "Today I'm building the FelpsXP Ecosystem: my own modular platform where I apply what I've learned about architecture, identity and access, events and observability. One of its modules, FelpsXP Finance, is in production and in daily use, with isolation between households enforced by Row-Level Security in PostgreSQL. It's where my most recent experience lives, and where I'm consolidating a specialization in application security and identity management.",
       'I like solving the hard problem, and leaving a record of why it was solved that way.',
     ],
     currentFocus: [
@@ -76,7 +77,8 @@ export const profileByLocale: Localized<Profile> = {
     highlights: [
       '2 years on the frontend of two SaaS products (Candidattus and Connexicco)',
       'Mechatronics Engineering background (University of Brasília), with a path through embedded systems and access control',
-      'Access control since 2017: from facial recognition at the University of Brasília labs to IAM in the FelpsXP Platform',
+      'Access control as a continuous thread: in 2017, a team course project at the University of Brasília with facial recognition; in 2021, role-based access in a client system; today, IAM in the FelpsXP Platform',
+      'A multi-tenant finance app in production, with per-household isolation through Row-Level Security in PostgreSQL',
       'Typed content, ADRs, and documentation as part of the work, not an extra',
     ],
     highlightStats: [
