@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.18.6](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.5...v0.18.6) (2026-11-18)
+
+
+### Bug Fixes
+
+* **content:** align the profile with the master CV ([#90](https://github.com/FelpsSousa/felpsxp-hub/issues/90)) ([60d0f2a](https://github.com/FelpsSousa/felpsxp-hub/commit/60d0f2a6090279d05b0777ea8c31d622c0e8ef61))
+* **content:** bring the remaining projects in line with the facts ([#92](https://github.com/FelpsSousa/felpsxp-hub/issues/92)) ([804040d](https://github.com/FelpsSousa/felpsxp-hub/commit/804040d7561263b72824feb1034231095a595148))
+* **content:** describe the former employer products as their public sites do ([#91](https://github.com/FelpsSousa/felpsxp-hub/issues/91)) ([5e119c2](https://github.com/FelpsSousa/felpsxp-hub/commit/5e119c206e3894d5ecf59be81328890dbb8a3875))
+* **security:** narrow the policy scope and check every project page ([#93](https://github.com/FelpsSousa/felpsxp-hub/issues/93)) ([0e2f0a2](https://github.com/FelpsSousa/felpsxp-hub/commit/0e2f0a2babe8cb2bb565aeb0891a40bab310f7e0))
+
 ## [0.18.5](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.4...v0.18.5) (2026-11-17)
 
 
