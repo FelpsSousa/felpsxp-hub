@@ -54,9 +54,11 @@ security controls.
 - [x] Test harness: Vitest for content schemas and server logic
       (ADR-0006).
 - [x] Site shell: header, navigation, mobile menu, footer, 404 page.
-- [ ] Server-rendered 404: today the localized 404 is rendered on the
-      client (Next.js limitation with a root layout under `[locale]`);
-      revisit when `global-not-found` is stable.
+- [x] 404 decision (2026-11-19): keep the localized 404 rendered on the
+      client (Next.js limitation with a root layout under `[locale]`). It
+      already answers with status 404, which the end-to-end suite checks,
+      and `global-not-found` is still experimental in Next.js 16.4.5.
+- [ ] Server-rendered 404, once `global-not-found` leaves experimental.
 - [x] Locale switcher (`pt`/`en`).
 - [x] Manual light/dark toggle on top of the ADR-0005 tokens.
 - [x] SEO base: `metadataBase`, per-page metadata, `sitemap.ts`, Person and
@@ -108,13 +110,16 @@ security controls.
 - [x] Cloudflare Email Routing for the `felpsxp.com` addresses.
 - [ ] Edge rate-limit rule for the contact form (Vercel Firewall, or
       Cloudflare if the domain is proxied), per ADR-0007.
-- [ ] Domain moved to the new Vercel project; DNS cutover in Cloudflare.
+- [ ] Domain moved to the new Vercel project; DNS cutover in Cloudflare,
+      following [`go-live-checklist.md`](go-live-checklist.md).
 - [ ] Post-launch light pentest (STRIDE, black-box, own site only),
       written up as the first new post.
 
 - [x] Semantic versioning with release-please and the version and commit in the
       footer (ADR-0008).
-- [ ] Release `1.0.0` at go-live.
+- [ ] Release `1.0.0` once `/cv`, `/experience` and `/about` ship. Decided
+      on 2026-11-19: the domain moves first, because `felpsxp.com` answering
+      503 hurts applications more than pages still to come.
 
 ## Block 3b: Projects as proof (after go-live, one project per PR)
 
