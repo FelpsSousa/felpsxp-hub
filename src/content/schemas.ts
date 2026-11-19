@@ -184,6 +184,8 @@ const cvPeriodSchema = z
 const cvProjectSchema = z.strictObject({
   name: text,
   url: httpsUrl.optional(),
+  /** The project's own page on this site, when it has one. */
+  slug: slug.optional(),
   description: text,
   period: cvPeriodSchema.optional(),
   bullets: z.array(text).min(1),
@@ -213,9 +215,39 @@ export const cvSchema = z.strictObject({
       }),
     )
     .min(1),
-  ownProjects: z.array(z.strictObject({ name: text, url: httpsUrl.optional(), text })).min(1),
-  earlierExperience: z.array(z.strictObject({ title: text, context: text, text })),
-  education: z.array(z.strictObject({ title: text, institution: text, period: text, note: text.optional() })).min(1),
+  ownProjects: z
+    .array(
+      z.strictObject({
+        name: text,
+        url: httpsUrl.optional(),
+        slug: slug.optional(),
+        period: cvPeriodSchema.optional(),
+        text,
+      }),
+    )
+    .min(1),
+  earlierExperience: z.array(
+    z.strictObject({
+      title: text,
+      context: text,
+      /** Where it sits on the /experience timeline. */
+      kind: z.enum(['work', 'research', 'teaching', 'project']),
+      /** Items without an exact period stay off the timeline. */
+      period: cvPeriodSchema.optional(),
+      text,
+    }),
+  ),
+  education: z
+    .array(
+      z.strictObject({
+        title: text,
+        institution: text,
+        period: text,
+        span: cvPeriodSchema.optional(),
+        note: text.optional(),
+      }),
+    )
+    .min(1),
   courses: z.array(text),
   languages: z.array(text).min(1),
 });

@@ -58,6 +58,7 @@ export const cvByLocale: Localized<Cv> = {
         projects: [
           {
             name: 'Candidattus',
+            slug: 'candidattus',
             url: 'https://www.candidattus.com/',
             description: 'Plataforma SaaS de inteligência eleitoral para agências, partidos e candidatos.',
             period: { start: '2023-10', end: '2024-12' },
@@ -69,6 +70,7 @@ export const cvByLocale: Localized<Cv> = {
           },
           {
             name: 'Connexicco',
+            slug: 'connexicco',
             url: 'https://www.connexicco.com/',
             description: 'Plataforma de comunidades digitais para empresas.',
             period: { start: '2024-12', end: '2025-10' },
@@ -106,23 +108,31 @@ export const cvByLocale: Localized<Cv> = {
     ownProjects: [
       {
         name: 'FelpsXP Finance',
+        slug: 'felpsxp-finance',
+        period: { start: '2026-09', end: null },
         text: 'App financeiro multi-tenant em produção e em uso diário: Expo Router (iOS, Android e web no mesmo código), API tRPC em Node.js e TypeScript e isolamento por casa com Row-Level Security no PostgreSQL (Supabase).',
       },
       {
         name: 'FelpsXP Logs',
+        period: { start: '2026-11', end: null },
         text: 'Central local e privada que lê todos os repositórios do ecossistema (clones e API do GitHub com token só de leitura) e gera inventário, índice de ADRs e relatório de conformidade com 15 regras, numa CLI e num app web em Next.js.',
       },
       {
         name: 'FelpsXP Hub',
         url: 'https://github.com/FelpsSousa/felpsxp-hub',
+        slug: 'felpsxp-hub',
+        period: { start: '2026-04', end: null },
         text: 'Este site: portfólio reconstruído do zero em Next.js, em repositório público, com decisões registradas em ADRs públicos, testes e controles de segurança em cada pull request.',
       },
       {
         name: 'FelpsXP Platform',
+        slug: 'felpsxp-platform',
+        period: { start: '2026-04', end: null },
         text: 'Base privada do ecossistema: IAM por organização, eventos e um pacote de observabilidade (logging, redação de campos sensíveis, correlation ID e request ID) coberto por testes automatizados.',
       },
       {
         name: 'Revisão de segurança do próprio código',
+        period: { start: '2026-09', end: '2026-09' },
         text: 'Correção de escalonamento de privilégio por papel, de identidade baseada em header interno sem assinatura e de cookie de sessão sem verificação criptográfica.',
       },
     ],
@@ -130,31 +140,42 @@ export const cvByLocale: Localized<Cv> = {
       {
         title: 'Automação de documentos',
         context: 'Freelance, por volta de 2018',
+        kind: 'work',
         text: 'Download, leitura, renomeação e organização diária dos PDFs públicos do ONS para um engenheiro eletricista, em Python.',
       },
       {
         title: 'Pesquisa no Projeto CLARA',
         context: 'LARA, UnB, novembro de 2017 a julho de 2018',
+        kind: 'research',
+        period: { start: '2017-11', end: '2018-07' },
         text: 'Joystick sem fio 2.0 do robô auxiliar de cirurgia laparoscópica, em C e C++ com comunicação RF e Bluetooth.',
       },
       {
         title: 'Controle de acesso com reconhecimento facial',
-        context: 'UnB, novembro de 2017',
+        context: 'UnB, setembro a dezembro de 2017',
+        kind: 'project',
+        period: { start: '2017-09', end: '2017-12' },
         text: 'Projeto de disciplina em equipe de três, em C++ com OpenCV, interface gráfica e banco de usuários e reservas.',
       },
       {
         title: 'Monitor de Algoritmos e Programação de Computadores',
         context: 'UnB, 2017',
+        kind: 'teaching',
+        period: { start: '2017-03', end: '2017-07' },
         text: 'Monitoria da disciplina de introdução à programação.',
       },
       {
         title: 'Equipe de robótica UnBeatables',
         context: 'UnB, 2016 a 2017',
+        kind: 'teaching',
+        period: { start: '2016-03', end: '2017-12' },
         text: 'Extensão de 195 horas, incluindo o Projeto EDUBOT, com apoio do IEEE RAS: robótica em escolas públicas com o robô Sparki.',
       },
       {
         title: 'Professor particular',
         context: 'Janeiro de 2017 a julho de 2018',
+        kind: 'teaching',
+        period: { start: '2017-01', end: '2018-07' },
         text: 'Matemática, física e química para o ensino médio.',
       },
     ],
@@ -163,6 +184,7 @@ export const cvByLocale: Localized<Cv> = {
         title: 'Engenharia Mecatrônica (Controle e Automação)',
         institution: 'Universidade de Brasília',
         period: '2015 a 2021',
+        span: { start: '2015-08', end: '2021-07' },
         note: 'Não concluído',
       },
     ],
@@ -221,6 +243,7 @@ export const cvByLocale: Localized<Cv> = {
         projects: [
           {
             name: 'Candidattus',
+            slug: 'candidattus',
             url: 'https://www.candidattus.com/',
             description: 'An electoral intelligence SaaS platform for agencies, parties and candidates.',
             period: { start: '2023-10', end: '2024-12' },
@@ -232,6 +255,7 @@ export const cvByLocale: Localized<Cv> = {
           },
           {
             name: 'Connexicco',
+            slug: 'connexicco',
             url: 'https://www.connexicco.com/',
             description: 'A digital community platform for companies.',
             period: { start: '2024-12', end: '2025-10' },
@@ -269,23 +293,31 @@ export const cvByLocale: Localized<Cv> = {
     ownProjects: [
       {
         name: 'FelpsXP Finance',
+        slug: 'felpsxp-finance',
+        period: { start: '2026-09', end: null },
         text: 'A multi-tenant finance app in production and daily use: Expo Router (iOS, Android and web from one codebase), a tRPC API in Node.js and TypeScript, and per-household isolation with Row-Level Security in PostgreSQL (Supabase).',
       },
       {
         name: 'FelpsXP Logs',
+        period: { start: '2026-11', end: null },
         text: 'A local, private command centre that reads every repository in the ecosystem (local clones and the GitHub API with a read-only token) and produces an inventory, an ADR index and a 15-check compliance report, through a CLI and a Next.js web app.',
       },
       {
         name: 'FelpsXP Hub',
         url: 'https://github.com/FelpsSousa/felpsxp-hub',
+        slug: 'felpsxp-hub',
+        period: { start: '2026-04', end: null },
         text: 'This site: a portfolio rebuilt from scratch in Next.js in a public repository, with decisions recorded as public ADRs, and tests and security controls on every pull request.',
       },
       {
         name: 'FelpsXP Platform',
+        slug: 'felpsxp-platform',
+        period: { start: '2026-04', end: null },
         text: 'The private foundation of the ecosystem: per-organization IAM, events, and an observability package (logging, redaction of sensitive fields, correlation and request IDs) covered by automated tests.',
       },
       {
         name: 'Security review of my own code',
+        period: { start: '2026-09', end: '2026-09' },
         text: 'Fixed a role-based privilege escalation, an identity taken from an unsigned internal header, and a session cookie compared without cryptographic verification.',
       },
     ],
@@ -293,31 +325,42 @@ export const cvByLocale: Localized<Cv> = {
       {
         title: 'Document automation',
         context: 'Freelance, around 2018',
+        kind: 'work',
         text: 'Daily download, reading, renaming and filing of the public PDF documents of Brazil’s grid operator (ONS) for an electrical engineer, in Python.',
       },
       {
         title: 'Research in the CLARA Project',
         context: 'LARA, University of Brasília, November 2017 to July 2018',
+        kind: 'research',
+        period: { start: '2017-11', end: '2018-07' },
         text: 'The wireless joystick 2.0 of a laparoscopic surgery assistant robot, in C and C++ with RF and Bluetooth communication.',
       },
       {
         title: 'Access control with facial recognition',
-        context: 'University of Brasília, November 2017',
+        context: 'University of Brasília, September to December 2017',
+        kind: 'project',
+        period: { start: '2017-09', end: '2017-12' },
         text: 'A three-person course project in C++ with OpenCV, a GUI and a user and booking database.',
       },
       {
         title: 'Teaching assistant, Algorithms and Computer Programming',
         context: 'University of Brasília, 2017',
+        kind: 'teaching',
+        period: { start: '2017-03', end: '2017-07' },
         text: 'Teaching assistant for the introductory programming course.',
       },
       {
         title: 'UnBeatables robotics team',
         context: 'University of Brasília, 2016 to 2017',
+        kind: 'teaching',
+        period: { start: '2016-03', end: '2017-12' },
         text: 'A 195-hour extension activity, including the EDUBOT Project, supported by IEEE RAS: robotics in public schools with the Sparki robot.',
       },
       {
         title: 'Private tutor',
         context: 'January 2017 to July 2018',
+        kind: 'teaching',
+        period: { start: '2017-01', end: '2018-07' },
         text: 'Mathematics, physics and chemistry for high school students.',
       },
     ],
@@ -326,6 +369,7 @@ export const cvByLocale: Localized<Cv> = {
         title: 'Mechatronics Engineering (Control and Automation)',
         institution: 'University of Brasília',
         period: '2015 to 2021',
+        span: { start: '2015-08', end: '2021-07' },
         note: 'Not completed',
       },
     ],

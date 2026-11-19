@@ -205,5 +205,24 @@
     "languages": "Idiomas",
     "period": "{start} a {end}",
     "present": "o momento"
+  },
+  "experience": {
+    "title": "Experiência",
+    "description": "Trajetória de Felipe Sousa em linha do tempo, de pesquisa e ensino na UnB ao trabalho fullstack e aos projetos próprios, e as habilidades ligadas aos projetos que as usam.",
+    "lede": "A trajetória em ordem, da mais recente à mais antiga, e as habilidades técnicas com os projetos deste site que as usam. Tudo sai dos mesmos dados do currículo.",
+    "cvLink": "Ver o currículo completo",
+    "timeline": "Linha do tempo",
+    "skills": "Habilidades",
+    "skillsNote": "Quando uma habilidade aparece na stack de um projeto deste site, o link leva até ele.",
+    "usedIn": "em",
+    "period": "{start} a {end}",
+    "present": "hoje",
+    "kinds": {
+      "work": "Trabalho",
+      "research": "Pesquisa",
+      "teaching": "Ensino",
+      "project": "Projeto",
+      "education": "Formação"
+    }
   }
 }

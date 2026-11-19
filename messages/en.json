@@ -205,5 +205,24 @@
     "languages": "Languages",
     "period": "{start} to {end}",
     "present": "present"
+  },
+  "experience": {
+    "title": "Experience",
+    "description": "Felipe Sousa's path as a timeline, from research and teaching at the University of Brasília to fullstack work and his own projects, with each skill linked to the projects that use it.",
+    "lede": "The path in order, newest first, and the technical skills with the projects on this site that use them. Everything comes from the same data as the CV.",
+    "cvLink": "See the full CV",
+    "timeline": "Timeline",
+    "skills": "Skills",
+    "skillsNote": "When a skill is in the stack of a project on this site, the link leads to it.",
+    "usedIn": "in",
+    "period": "{start} to {end}",
+    "present": "present",
+    "kinds": {
+      "work": "Work",
+      "research": "Research",
+      "teaching": "Teaching",
+      "project": "Project",
+      "education": "Education"
+    }
   }
 }
