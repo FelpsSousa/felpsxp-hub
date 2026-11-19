@@ -81,6 +81,7 @@ happens in this repository, and it changes in the same PR as any change to that.
 | Typecheck | `pnpm typecheck` |
 | Unit tests | `pnpm test` (`pnpm test:coverage` for the report) |
 | End-to-end | `pnpm test:e2e` (builds, then runs Playwright with axe) |
+| CV PDFs | `pnpm cv:pdf` (after any CV change; a unit test fails until it runs, ADR-0010) |
 | All checks | `pre-commit run --all-files` |
 
 ## Map

@@ -66,7 +66,16 @@ export default async function CvPage({ params }: CvPageProps) {
           ))}
         </ul>
         <div className="mt-2 flex flex-col gap-2 print:hidden">
-          <PrintButton label={t('print')} />
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={`/cv/felipe-sousa-cv-${locale}.pdf`}
+              download
+              className="w-fit rounded-md bg-accent px-4 py-2 text-sm font-medium text-canvas hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {t('download')}
+            </a>
+            <PrintButton label={t('print')} />
+          </div>
           <p className="text-sm text-fg-muted">{t('printHint')}</p>
         </div>
       </header>

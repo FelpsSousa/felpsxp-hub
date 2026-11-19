@@ -111,9 +111,9 @@ variant follows it, and the private claim map records the facts behind both.
 **Follow-ups**
 
 - [x] Zod schema and `pt`/`en` content in `src/content/cv/`, from the master variant.
-- [ ] `/cv` page with print stylesheet, print button, metadata, sitemap entry and JSON-LD
+- [x] `/cv` page with print stylesheet, print button, metadata, sitemap entry and JSON-LD
       where it helps; axe-clean in both themes.
-- [ ] `pnpm cv:pdf` and the freshness test.
+- [x] `pnpm cv:pdf` and the freshness test.
 - [ ] `/experience` and `/about` read the same content.
 
 ## Amendments

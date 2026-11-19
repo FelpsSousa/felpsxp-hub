@@ -49,6 +49,12 @@ test('robots.txt, sitemap.xml, security.txt and the share images are served', as
     expect(response.status(), image).toBe(200);
     expect(response.headers()['content-type']).toBe('image/png');
   }
+
+  for (const pdf of ['/cv/felipe-sousa-cv-pt.pdf', '/cv/felipe-sousa-cv-en.pdf']) {
+    const response = await request.get(pdf, { maxRedirects: 0 });
+    expect(response.status(), pdf).toBe(200);
+    expect(response.headers()['content-type']).toBe('application/pdf');
+  }
 });
 
 test('the favicon and the site icon are served and linked', async ({ page, request }) => {
