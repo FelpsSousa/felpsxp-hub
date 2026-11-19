@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.7](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.6...v0.18.7) (2026-11-19)
+
+
+### Bug Fixes
+
+* **content:** match project dates and periods to the public profile ([#95](https://github.com/FelpsSousa/felpsxp-hub/issues/95)) ([9e1a0ff](https://github.com/FelpsSousa/felpsxp-hub/commit/9e1a0ff3298f0eae11b625798ba6dbf104097ad3))
+
 ## [0.18.6](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.5...v0.18.6) (2026-11-18)
 
 
