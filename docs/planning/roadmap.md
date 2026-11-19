@@ -130,6 +130,12 @@ cleared with the showcase checklist goes in; facts come from FelpsXP Logs.
 - [ ] Shared building blocks: screenshot gallery with captions and alt text,
       a "what I did" list mapped to verified facts, stack chips, links to the
       repository or a demo when public.
+  - [x] Screens gallery: uncropped app screens with captions and alt text, a
+        light and a dark capture swapped by the site theme with CSS only, and
+        each thumbnail linking to the full-size image.
+- [x] FelpsXP Finance screens: five screens in both languages and themes,
+      captured from the production web build with a fictitious household
+      (the Finance repository's `seed:demo` and `screenshots:demo`).
 - [ ] Candidattus and Connexicco: the public module names from the products'
       own sites, screenshots of the public pages, Felipe's role (sole frontend
       at the start, frontend owner to the end, technical reference).

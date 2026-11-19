@@ -1,11 +1,25 @@
 import type { Localized, Project } from '@/content/types';
 
 /**
- * Deliberately published without a repository link and without screenshots:
- * the product holds real household financial data, and the repository is
- * private. Same posture as `home-network-observability`: describe the
- * capability and the decisions, never the data or the topology.
+ * Published without a repository link: the repository is private and the
+ * product holds real household financial data. The screens come from the
+ * production app running locally with a fictitious household (the
+ * `seed:demo` and `screenshots:demo` scripts in the Finance repository),
+ * never from a real one; the page says so next to them.
  */
+
+type Screen = Project['media'][number];
+
+function screen(locale: 'pt' | 'en', name: string, alt: string, caption: string): Screen {
+  return {
+    kind: 'image',
+    url: `/projects/felpsxp-finance/${locale}-light-${name}.png`,
+    darkUrl: `/projects/felpsxp-finance/${locale}-dark-${name}.png`,
+    alt,
+    caption,
+    presentation: 'screen',
+  };
+}
 export const felpsxpFinanceProjectByLocale: Localized<Project> = {
   pt: {
     slug: 'felpsxp-finance',
@@ -18,7 +32,13 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'backend',
     secondaryDomains: ['appsec', 'iam', 'frontend'],
-    media: [],
+    media: [
+      screen('pt', 'dashboard', 'Dashboard do app com saldo total, saldo por conta e por pessoa, saldo projetado para o fim do mês e a fatura do cartão a pagar.', 'Dashboard: saldos derivados do extrato, por conta e por pessoa, e o saldo projetado do mês.'),
+      screen('pt', 'transactions', 'Lista de transações agrupada por dia, com categoria, conta, forma de pagamento e situação de cada lançamento.', 'Transações agrupadas por dia, cada uma com conta, forma de pagamento e situação.'),
+      screen('pt', 'accounts', 'Conta corrente com o cartão de crédito vinculado, o limite disponível e as próximas faturas, cada uma com a opção de pagar ou renegociar.', 'Contas e cartões: limite disponível e as faturas futuras geradas pela compra parcelada.'),
+      screen('pt', 'unpaid', 'Tela de contas a pagar com as faturas do cartão mês a mês, de dezembro até setembro do ano seguinte.', 'A pagar: uma compra de R$ 3.600 em 10 parcelas, distribuída fatura a fatura.'),
+      screen('pt', 'goals', 'Meta mensal da casa com alvo de receita, limite de despesa e metas de economia, e o progresso do mês.', 'Metas do mês para a casa inteira ou por pessoa, com o progresso até agora.'),
+    ],
     role: 'Arquitetura, backend, cliente, modelagem de domínio e operação em produção',
     problem:
       'Ferramenta de finanças pessoais é quase sempre desenhada para uma pessoa. Uma casa é outra coisa: várias pessoas, contas e cartões compartilhados, e compromissos que pertencem a um morador mas afetam o mês de todo mundo. E o requisito que manda em tudo não é funcional: duas casas jamais podem enxergar o dinheiro uma da outra.',
@@ -86,7 +106,13 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     difficulty: 'advanced',
     primaryDomain: 'backend',
     secondaryDomains: ['appsec', 'iam', 'frontend'],
-    media: [],
+    media: [
+      screen('en', 'dashboard', 'The app dashboard with the total balance, balances per account and per person, the projected end-of-month balance and the card statement to pay.', 'Dashboard: balances derived from the ledger, per account and per person, and the projected month-end balance.'),
+      screen('en', 'transactions', 'The transaction list grouped by day, with the category, account, payment method and status of each entry.', 'Transactions grouped by day, each with its account, payment method and status.'),
+      screen('en', 'accounts', 'A checking account with its linked credit card, the available limit and the upcoming statements, each with options to pay or renegotiate.', 'Accounts and cards: available limit and the future statements created by an instalment purchase.'),
+      screen('en', 'unpaid', 'The bills-to-pay screen with the card statements month by month, from December through September of the following year.', 'To pay: a R$ 3,600 purchase in 10 instalments, spread statement by statement.'),
+      screen('en', 'goals', 'The household monthly goal with an income target, an expense limit and savings targets, and progress for the month.', 'Monthly goals for the whole household or per person, with progress so far.'),
+    ],
     role: 'Architecture, backend, client, domain modelling, and running it in production',
     problem:
       'Personal finance tools are almost always designed for one person. A household is a different problem: several people, shared accounts and cards, and commitments that belong to one member but affect everyone’s month. And the requirement that drives everything is not a feature: two households can never see each other’s money.',

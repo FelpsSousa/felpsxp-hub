@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { Project } from '@/content/types';
 import { Link } from '@/i18n/navigation';
+import { coverImage } from '@/lib/media';
 import { domainLabel, projectDomains, projectXp } from '@/lib/skill-taxonomy';
 
 /**
@@ -16,7 +17,7 @@ export function ProjectCard({
   headingLevel?: 'h2' | 'h3';
 }) {
   const t = useTranslations('projects');
-  const cover = project.media.find((item) => item.kind === 'image');
+  const cover = coverImage(project);
   const Heading = headingLevel;
 
   return (
@@ -24,7 +25,7 @@ export function ProjectCard({
       href={`/projects/${project.slug}`}
       className="flex flex-col gap-3 rounded-lg border border-border p-5 transition hover:border-accent/50"
     >
-      {cover && cover.kind === 'image' && (
+      {cover && (
         <div className="relative aspect-video w-full overflow-hidden rounded-md">
           <Image
             src={cover.url}

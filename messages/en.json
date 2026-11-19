@@ -52,6 +52,8 @@
     "lede": "Selected projects that demonstrate ownership, technical reasoning, architecture decisions, and proof of work.",
     "problemLabel": "Problem",
     "solutionLabel": "Solution",
+    "screensLabel": "Screens",
+    "screensNote": "Captures of the production app, with a fictitious household created only for this demo: names, accounts and amounts are invented, and no real data appears here.",
     "architectureHighlightsLabel": "Architecture highlights",
     "challengesLabel": "Challenges",
     "responsibilitiesLabel": "Responsibilities",
