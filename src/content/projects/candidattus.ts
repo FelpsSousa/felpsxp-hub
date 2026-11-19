@@ -12,7 +12,7 @@ export const candidattusProjectByLocale: Localized<Project> = {
     slug: 'candidattus',
     title: 'Candidattus',
     summary:
-      'Plataforma SaaS de inteligência eleitoral para agências, partidos, candidatos e doadores, com dashboards analíticos e monitoramento em tempo real. Fui responsável pelo frontend como Engenheiro Fullstack Pleno I na Algoricca Software Company.',
+      'Plataforma SaaS de inteligência eleitoral para agências, partidos, candidatos e doadores, com dashboards analíticos e monitoramento em tempo real, usada nas eleições de 2024. Fui responsável pelo frontend como Engenheiro Fullstack Pleno I na Algoricca Software Company.',
     status: 'archived',
     visibility: 'public',
     type: 'product',
@@ -20,7 +20,7 @@ export const candidattusProjectByLocale: Localized<Project> = {
     primaryDomain: 'data',
     secondaryDomains: ['backend', 'frontend'],
     media: [],
-    role: 'Engenheiro Fullstack Pleno I, com foco em frontend, de outubro de 2023 a outubro de 2025: entrei como único desenvolvedor frontend e fiquei até o fim do contrato',
+    role: 'Engenheiro Fullstack Pleno I, com foco em frontend, no Candidattus de outubro de 2023 a dezembro de 2024: entrei como único desenvolvedor frontend e estruturei a aplicação',
     problem:
       'Um produto de inteligência de dados políticos precisava transformar dados eleitorais em dashboards analíticos legíveis para os seus usuários.',
     solution:
@@ -38,30 +38,30 @@ export const candidattusProjectByLocale: Localized<Project> = {
     ],
     responsibilities: [
       'Escolha da stack e estruturação da arquitetura do frontend',
-      'Evolução do frontend ao longo dos dois anos',
+      'Evolução do frontend até o fim do ciclo eleitoral de 2024',
       'Onboarding de quem entrou no time e revisão de pull requests para merge com deploy automático, inclusive do backend',
       'Desenvolvimento de módulos analíticos e de suas visualizações',
       'Integração com recursos de apoio à interpretação dos dados',
     ],
     outcomes: [
-      'Frontend mantido ao longo dos dois anos, atravessando uma renovação completa do time',
+      'Frontend estruturado no início do produto e mantido até o fim do ciclo eleitoral de 2024, com o time mudando ao redor',
     ],
     learnings: [
-      'Continuidade técnica ao longo de um ciclo completo de produto e de uma renovação total de time ensina a escrever código e documentação pra outra pessoa dar manutenção, não só pra você mesmo',
+      'Continuidade técnica ao longo de um ciclo completo de produto e de mudanças no time ensina a escrever código e documentação pra outra pessoa dar manutenção, não só pra você mesmo',
     ],
     stack: ['React', 'Next.js', 'TypeScript', 'ApexCharts', 'ECharts'],
     tags: ['product', 'data-visualization', 'saas'],
     relatedSurfaceKeys: [],
     startedAt: '2023-10-01',
-    updatedAt: '2025-10-01',
-    featured: false,
+    updatedAt: '2024-12-31',
+    featured: true,
     links: [{ href: 'https://candidattus.com', label: 'candidattus.com', external: true }],
   },
   en: {
     slug: 'candidattus',
     title: 'Candidattus',
     summary:
-      'An electoral intelligence SaaS platform for agencies, parties, candidates and donors, with analytical dashboards and real-time monitoring. I was responsible for its frontend as a Mid-level Fullstack Engineer (Pleno I) at Algoricca Software Company.',
+      'An electoral intelligence SaaS platform for agencies, parties, candidates and donors, with analytical dashboards and real-time monitoring, used in the 2024 elections. I was responsible for its frontend as a Mid-level Fullstack Engineer (Pleno I) at Algoricca Software Company.',
     status: 'archived',
     visibility: 'public',
     type: 'product',
@@ -69,7 +69,7 @@ export const candidattusProjectByLocale: Localized<Project> = {
     primaryDomain: 'data',
     secondaryDomains: ['backend', 'frontend'],
     media: [],
-    role: 'Mid-level Fullstack Engineer (Pleno I), frontend-focused, October 2023 to October 2025: I joined as the only frontend developer and stayed until the end of the contract',
+    role: 'Mid-level Fullstack Engineer (Pleno I), frontend-focused, on Candidattus from October 2023 to December 2024: I joined as the only frontend developer and structured the application',
     problem:
       'A political data intelligence product needed to turn electoral data into legible analytical dashboards for its users.',
     solution:
@@ -87,21 +87,23 @@ export const candidattusProjectByLocale: Localized<Project> = {
     ],
     responsibilities: [
       'Choosing the stack and structuring the frontend architecture',
-      'Evolving the frontend throughout the two years',
+      'Evolving the frontend through the end of the 2024 election cycle',
       'Onboarding everyone who joined the team and reviewing pull requests for merge with automatic deployment, backend ones included',
       'Developing analytical modules and their visualizations',
       'Integrating features that help users interpret the data',
     ],
-    outcomes: ['Frontend maintained throughout the two years, across a complete team turnover'],
+    outcomes: [
+      'Frontend structured at the start of the product and maintained through the end of the 2024 election cycle, while the team changed around it',
+    ],
     learnings: [
-      'Technical continuity across a full product lifecycle and a complete team turnover teaches you to write code and docs for someone else to maintain, not just yourself',
+      'Technical continuity across a full product lifecycle and a changing team teaches you to write code and docs for someone else to maintain, not just yourself',
     ],
     stack: ['React', 'Next.js', 'TypeScript', 'ApexCharts', 'ECharts'],
     tags: ['product', 'data-visualization', 'saas'],
     relatedSurfaceKeys: [],
     startedAt: '2023-10-01',
-    updatedAt: '2025-10-01',
-    featured: false,
+    updatedAt: '2024-12-31',
+    featured: true,
     links: [{ href: 'https://candidattus.com', label: 'candidattus.com', external: true }],
   },
 };
