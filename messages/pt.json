@@ -8,7 +8,10 @@
     "projects": "Projetos",
     "openMenu": "Abrir menu",
     "closeMenu": "Fechar menu",
-    "contact": "Contato"
+    "contact": "Contato",
+    "about": "Sobre",
+    "experience": "Experiência",
+    "cv": "Currículo"
   },
   "breadcrumb": {
     "label": "Trilha de navegação",
@@ -45,7 +48,8 @@
     "allProjects": "Ver todos os projetos",
     "ctaTitle": "Vamos conversar?",
     "ctaBody": "Estou aberto a vagas de desenvolvedor fullstack e a conversas sobre segurança de aplicação e arquitetura.",
-    "ctaButton": "Entrar em contato"
+    "ctaButton": "Entrar em contato",
+    "ctaCv": "Ou veja o currículo completo, com PDF para baixar"
   },
   "projects": {
     "title": "Projetos",

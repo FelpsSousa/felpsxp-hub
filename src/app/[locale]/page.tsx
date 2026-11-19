@@ -114,6 +114,9 @@ function HomeContent({
         >
           {t('ctaButton')}
         </Link>
+        <Link href="/cv" className="w-fit text-accent underline underline-offset-4 hover:decoration-2">
+          {t('ctaCv')}
+        </Link>
       </section>
     </div>
   );

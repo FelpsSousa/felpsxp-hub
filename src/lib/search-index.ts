@@ -40,6 +40,27 @@ export function buildSearchIndex(locale: AppLocale): SearchEntry[] {
     },
     {
       kind: 'page',
+      title: m.about.title,
+      description: excerpt(m.about.description),
+      href: '/about',
+      keywords: 'bio sobre about ai ia',
+    },
+    {
+      kind: 'page',
+      title: m.experience.title,
+      description: excerpt(m.experience.lede),
+      href: '/experience',
+      keywords: 'timeline linha do tempo skills habilidades',
+    },
+    {
+      kind: 'page',
+      title: m.cv.title,
+      description: excerpt(m.cv.description),
+      href: '/cv',
+      keywords: 'cv curriculo currículo resume pdf',
+    },
+    {
+      kind: 'page',
       title: m.projects.title,
       description: excerpt(m.projects.lede),
       href: '/projects',
