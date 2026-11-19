@@ -6,7 +6,9 @@ import { Breadcrumbs } from '@/components/navigation/breadcrumbs';
 import { AnchorHeading, TableOfContents } from '@/components/navigation/section-anchors';
 import { Link } from '@/i18n/navigation';
 import type { TocItem } from '@/lib/anchors';
+import { ProjectScreens } from '@/components/projects/project-screens';
 import { getAdjacentProjects, getProjectBySlug, getProjectStaticParams } from '@/lib/content';
+import { coverImage, screenImages } from '@/lib/media';
 import { pageMetadata } from '@/lib/seo';
 import { domainLabel, projectDomains } from '@/lib/skill-taxonomy';
 import { requireLocale } from '@/i18n/locale';
@@ -69,7 +71,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const cover = project.media.find((item) => item.kind === 'image');
+  const cover = coverImage(project);
+  const screens = screenImages(project);
   const { previous, next } = getAdjacentProjects(project.slug, locale);
   const tCrumb = await getTranslations('breadcrumb');
 
@@ -85,6 +88,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const toc: TocItem[] = [
     { id: 'problem', label: t('problemLabel') },
     { id: 'solution', label: t('solutionLabel') },
+    ...(screens.length > 0 ? [{ id: 'screens', label: t('screensLabel') }] : []),
     ...listSections.map(({ id, title }) => ({ id, label: title })),
     { id: 'stack', label: t('stackLabel') },
   ];
@@ -114,7 +118,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <TableOfContents items={toc} />
 
-      {cover && cover.kind === 'image' && (
+      {cover && (
         <div className="relative aspect-video w-full overflow-hidden rounded-md">
           <Image src={cover.url} alt={cover.alt} fill sizes="100vw" className="object-cover" />
         </div>
@@ -133,6 +137,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </AnchorHeading>
         <p className="text-fg">{project.solution}</p>
       </section>
+
+      {screens.length > 0 && (
+        <section aria-labelledby="screens" className="flex flex-col gap-3">
+          <AnchorHeading id="screens" className={headingClass}>
+            {t('screensLabel')}
+          </AnchorHeading>
+          <p className="text-sm text-fg-muted">{t('screensNote')}</p>
+          <ProjectScreens screens={screens} />
+        </section>
+      )}
 
       {listSections.map((section) => (
         <Section key={section.id} {...section} />

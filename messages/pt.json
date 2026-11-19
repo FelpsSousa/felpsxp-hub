@@ -52,6 +52,8 @@
     "lede": "Projetos selecionados que mostram autoria, raciocínio técnico, decisões de arquitetura e prova de trabalho.",
     "problemLabel": "Problema",
     "solutionLabel": "Solução",
+    "screensLabel": "Telas",
+    "screensNote": "Capturas do app em produção, com uma casa fictícia criada só para demonstração: nomes, contas e valores são inventados, e nenhum dado real aparece aqui.",
     "architectureHighlightsLabel": "Destaques de arquitetura",
     "challengesLabel": "Desafios",
     "responsibilitiesLabel": "Responsabilidades",

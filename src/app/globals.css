@@ -67,3 +67,30 @@ body {
   background-color: var(--color-canvas);
   color: var(--color-fg);
 }
+
+/*
+ * Content captured in both themes (project screens): show the capture that
+ * matches the active palette, with the same selectors as the palette above.
+ * `display: none` also hides the other one from assistive technology, and
+ * a lazy image that is never displayed is never downloaded.
+ */
+.theme-dark-only {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-light-only {
+    display: none;
+  }
+  :root:not([data-theme='light']) .theme-dark-only {
+    display: block;
+  }
+}
+
+:root[data-theme='dark'] .theme-light-only {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-dark-only {
+  display: block;
+}

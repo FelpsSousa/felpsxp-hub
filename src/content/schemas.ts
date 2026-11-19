@@ -88,6 +88,13 @@ export const projectMediaSchema = z.discriminatedUnion('kind', [
     url: mediaUrl,
     alt: text,
     caption: text.optional(),
+    /** The same image captured in the dark theme, shown when the site is dark. */
+    darkUrl: mediaUrl.optional(),
+    /**
+     * `cover` (the default) is the wide image on the card and at the top of
+     * the page; `screen` is an app screen, shown uncropped in the gallery.
+     */
+    presentation: z.enum(['cover', 'screen']).optional(),
   }),
   z.strictObject({
     kind: z.literal('video'),
