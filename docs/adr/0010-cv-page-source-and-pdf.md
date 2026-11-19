@@ -1,6 +1,6 @@
 # ADR-0010: The CV page: typed content as the single source, PDF rendered from the page
 
-- **Status:** Proposed
+- **Status:** Accepted (merged in #97 on 2026-11-19)
 - **Date:** 2026-11-19
 - **Deciders:** Felipe Sousa (@FelpsSousa)
 - **Related:** ADR-0003 (v1 stack and scope), ADR-0004 (content validation and MDX scope),
@@ -110,7 +110,7 @@ variant follows it, and the private claim map records the facts behind both.
 
 **Follow-ups**
 
-- [ ] Zod schema and `pt`/`en` content in `src/content/cv/`, from the master variant.
+- [x] Zod schema and `pt`/`en` content in `src/content/cv/`, from the master variant.
 - [ ] `/cv` page with print stylesheet, print button, metadata, sitemap entry and JSON-LD
       where it helps; axe-clean in both themes.
 - [ ] `pnpm cv:pdf` and the freshness test.

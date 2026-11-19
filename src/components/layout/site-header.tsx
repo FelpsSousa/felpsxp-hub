@@ -13,7 +13,7 @@ export async function SiteHeader() {
   const { name } = getSiteSettings();
 
   return (
-    <header className="relative border-b border-border">
+    <header className="relative border-b border-border print:hidden">
       <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-6">
         <Link
           href="/"

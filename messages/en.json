@@ -189,5 +189,20 @@
     "toggle": "Single-key shortcuts on",
     "toggleHelp": "Turn them off if they get in the way of a screen reader or speech software. Ctrl+K keeps working. The choice stays in this browser only.",
     "close": "Close"
+  },
+  "cv": {
+    "title": "CV",
+    "description": "CV of Felipe Sousa, a fullstack developer with a frontend focus: experience, projects, education and skills.",
+    "print": "Print or save as PDF",
+    "printHint": "The printed version has the same content as this page, without the site menu and footer.",
+    "summary": "Summary",
+    "skills": "Technical skills",
+    "experience": "Professional experience",
+    "ownProjects": "Own projects (FelpsXP)",
+    "earlierExperience": "Earlier experience",
+    "education": "Education",
+    "languages": "Languages",
+    "period": "{start} to {end}",
+    "present": "present"
   }
 }

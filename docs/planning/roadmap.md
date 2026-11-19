@@ -81,6 +81,10 @@ security controls.
       data.
 - [ ] `/cv`: full CV in `pt` and `en`, print stylesheet with correct
       pagination, PDF download.
+  - [x] ADR-0010: typed content as the single source, PDF rendered from the page.
+  - [x] Page in both locales with the print stylesheet (two A4 pages) and a
+        print button.
+  - [ ] PDF download rendered from the page, with a freshness test.
 - [x] ADR: contact form security model (Turnstile, Resend, no
       persistence, rate limiting at the edge): ADR-0007.
 - [x] `/contact`: Server Action with Turnstile, honeypot and Zod validation,

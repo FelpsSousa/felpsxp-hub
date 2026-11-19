@@ -4,6 +4,7 @@ import type {
   highlightStatSchema,
   legalPageSchema,
   navigationLinkSchema,
+  cvSchema,
   profileSchema,
   projectDifficultySchema,
   projectMediaSchema,
@@ -42,3 +43,4 @@ export type Project = z.infer<typeof projectSchema>;
 export type Profile = z.infer<typeof profileSchema>;
 export type SiteSettings = z.infer<typeof siteSettingsSchema>;
 export type LegalPage = z.infer<typeof legalPageSchema>;
+export type Cv = z.infer<typeof cvSchema>;

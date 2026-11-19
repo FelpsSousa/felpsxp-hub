@@ -11,6 +11,7 @@ const projectPages = getPublicProjects('pt').map(({ slug }) => `/projects/${slug
 export const pages: readonly string[] = [
   '/',
   '/projects',
+  '/cv',
   ...projectPages,
   '/contact',
   '/privacy',

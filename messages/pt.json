@@ -189,5 +189,20 @@
     "toggle": "Atalhos de uma tecla ativos",
     "toggleHelp": "Desligue se eles atrapalharem um leitor de tela ou um software de voz. Ctrl+K continua funcionando. A escolha fica só neste navegador.",
     "close": "Fechar"
+  },
+  "cv": {
+    "title": "Currículo",
+    "description": "Currículo de Felipe Sousa, desenvolvedor fullstack com foco em frontend: experiência, projetos, formação e habilidades.",
+    "print": "Imprimir ou salvar em PDF",
+    "printHint": "A versão impressa tem o mesmo conteúdo desta página, sem o menu e o rodapé do site.",
+    "summary": "Resumo",
+    "skills": "Habilidades técnicas",
+    "experience": "Experiência profissional",
+    "ownProjects": "Projetos próprios (FelpsXP)",
+    "earlierExperience": "Experiências anteriores",
+    "education": "Formação",
+    "languages": "Idiomas",
+    "period": "{start} a {end}",
+    "present": "o momento"
   }
 }

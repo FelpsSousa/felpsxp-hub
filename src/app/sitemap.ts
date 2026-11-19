@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages: Page[] = [
     { path: '/' },
     { path: '/projects' },
+    { path: '/cv' },
     { path: '/contact' },
     { path: '/privacy' },
     { path: '/security' },
