@@ -224,5 +224,23 @@
       "project": "Project",
       "education": "Education"
     }
+  },
+  "about": {
+    "title": "About",
+    "description": "Who Felipe Sousa is, a fullstack developer with a frontend focus, what he is focused on now and how he works.",
+    "bio": "Background",
+    "focus": "Current focus",
+    "howIWork": "How I work",
+    "evidence": "You can check it in this site's repository:",
+    "adrs": "the ADRs",
+    "pullRequests": "the pull requests",
+    "principles": "Principles",
+    "next": "Where to go next",
+    "links": {
+      "cv": "Full CV",
+      "experience": "Timeline and skills",
+      "projects": "Projects",
+      "contact": "Contact"
+    }
   }
 }

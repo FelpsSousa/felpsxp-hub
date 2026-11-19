@@ -88,8 +88,8 @@ describe('sitemap', () => {
   const entries = sitemap();
 
   it('has one entry per page and locale', () => {
-    // Home, projects, CV, experience, contact, privacy, security, accessibility and changelog.
-    const pageCount = 9 + getPublicProjects('pt').length;
+    // Home, projects, CV, experience, about, contact, privacy, security, accessibility and changelog.
+    const pageCount = 10 + getPublicProjects('pt').length;
     expect(entries).toHaveLength(pageCount * locales.length);
   });
 

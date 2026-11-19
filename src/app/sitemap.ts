@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/projects' },
     { path: '/cv' },
     { path: '/experience' },
+    { path: '/about' },
     { path: '/contact' },
     { path: '/privacy' },
     { path: '/security' },

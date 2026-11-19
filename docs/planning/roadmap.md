@@ -75,7 +75,7 @@ security controls.
 
 ## Block 2: Pages recruiters read (GL)
 
-- [ ] `/about`: bio, current focus (fullstack with AppSec/IAM), how Felipe
+- [x] `/about`: bio, current focus (fullstack with AppSec/IAM), how Felipe
       works.
 - [x] `/experience`: career timeline and skill tree derived from the CV
       data.

@@ -166,6 +166,8 @@ export const profileSchema = z.strictObject({
   summaryParagraphs: z.array(text).min(1),
   currentFocus: z.array(text),
   principles: z.array(text),
+  /** How Felipe works, for /about; kept true to AI.md and the repository itself. */
+  howIWork: z.array(text).min(1),
   highlights: z.array(text),
   highlightStats: z.array(highlightStatSchema),
 });
