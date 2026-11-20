@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.20.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.19.0...v0.20.0) (2026-11-20)
+
+
+### Features
+
+* **about:** add the about page with how Felipe works ([#104](https://github.com/FelpsSousa/felpsxp-hub/issues/104)) ([43c2502](https://github.com/FelpsSousa/felpsxp-hub/commit/43c2502f8ade68144524fcecb4d3c1217faa3ede))
+* **cv:** render the CV PDFs from the page and test that they stay current ([#102](https://github.com/FelpsSousa/felpsxp-hub/issues/102)) ([f9ba79e](https://github.com/FelpsSousa/felpsxp-hub/commit/f9ba79eead828418c9e1854cce97df23e4e8e802))
+* **experience:** add the career timeline and skill tree from the CV data ([#103](https://github.com/FelpsSousa/felpsxp-hub/issues/103)) ([36d7b16](https://github.com/FelpsSousa/felpsxp-hub/commit/36d7b161798255d9a3bcb5bc68cb970358fa5228))
+* **navigation:** link the recruiter pages from the menu, search and home ([#105](https://github.com/FelpsSousa/felpsxp-hub/issues/105)) ([35702e5](https://github.com/FelpsSousa/felpsxp-hub/commit/35702e5c13d8d5db57719abf797b476a1f130526))
+
 ## [0.19.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.7...v0.19.0) (2026-11-20)
 
 
