@@ -8,7 +8,10 @@
     "projects": "Projects",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "contact": "Contact"
+    "contact": "Contact",
+    "about": "About",
+    "experience": "Experience",
+    "cv": "CV"
   },
   "breadcrumb": {
     "label": "Breadcrumb",
@@ -45,7 +48,8 @@
     "allProjects": "See all projects",
     "ctaTitle": "Shall we talk?",
     "ctaBody": "I am open to fullstack developer roles and to conversations about application security and architecture.",
-    "ctaButton": "Get in touch"
+    "ctaButton": "Get in touch",
+    "ctaCv": "Or see the full CV, with a PDF to download"
   },
   "projects": {
     "title": "Projects",

@@ -24,7 +24,7 @@ export async function SiteHeader() {
         </Link>
 
         <div className="flex items-center gap-4 sm:gap-6">
-          <nav aria-label={t('nav.label')} className="hidden sm:block">
+          <nav aria-label={t('nav.label')} className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm">
               {primaryNavigation.map((item) => (
                 <li key={item.key}>
