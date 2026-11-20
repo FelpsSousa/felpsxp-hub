@@ -12,6 +12,7 @@ export const pages: readonly string[] = [
   '/',
   '/projects',
   '/cv',
+  '/experience',
   ...projectPages,
   '/contact',
   '/privacy',

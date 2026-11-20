@@ -77,7 +77,7 @@ security controls.
 
 - [ ] `/about`: bio, current focus (fullstack with AppSec/IAM), how Felipe
       works.
-- [ ] `/experience`: career timeline and skill tree derived from the CV
+- [x] `/experience`: career timeline and skill tree derived from the CV
       data.
 - [x] `/cv`: full CV in `pt` and `en`, print stylesheet with correct
       pagination, PDF download.
