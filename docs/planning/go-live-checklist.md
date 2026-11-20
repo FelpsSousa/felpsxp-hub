@@ -81,8 +81,8 @@ Felipe checks, because they need a browser and a real inbox:
 The cutover is done. `felpsxp.com` is the production domain of this project and
 `www.felpsxp.com` redirects to it with a 308. Checked from outside:
 
-- [x] `/` and `/en` answer 200 from this project, with the footer showing `v0.19.0` and
-      commit `35702e5`, the head of `main`.
+- [x] `/` and `/en` answer 200 from this project, with the footer showing the head of
+      `main` (checked again after release `0.20.0`: `v0.20.0`, commit `3616f62`).
 - [x] `http://felpsxp.com/` and `https://www.felpsxp.com/` redirect with a 308 to
       `https://felpsxp.com/`; the `www` record is a DNS-only CNAME to Vercel, resolved by
       Cloudflare's authoritative servers, `1.1.1.1` and `8.8.8.8`.
