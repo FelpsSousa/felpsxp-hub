@@ -76,6 +76,26 @@ Felipe checks, because they need a browser and a real inbox:
 - [ ] A message sent through `/contact` arrives.
 - [ ] Mail sent to `contact@felpsxp.com` still arrives (Email Routing).
 
+### Result, 2026-11-20
+
+The cutover is done. `felpsxp.com` is the production domain of this project and
+`www.felpsxp.com` redirects to it with a 308. Checked from outside:
+
+- [x] `/` and `/en` answer 200 from this project, with the footer showing the head of
+      `main` (checked again after release `0.20.0`: `v0.20.0`, commit `3616f62`).
+- [x] `http://felpsxp.com/` and `https://www.felpsxp.com/` redirect with a 308 to
+      `https://felpsxp.com/`; the `www` record is a DNS-only CNAME to Vercel, resolved by
+      Cloudflare's authoritative servers, `1.1.1.1` and `8.8.8.8`.
+- [x] All the security headers listed above are present, HSTS with `includeSubDomains`.
+- [x] `security.txt`, `robots.txt`, `sitemap.xml`, the share image and both CV PDFs are
+      served, and the canonical and `hreflang` links use `https://felpsxp.com`.
+- [x] `/cv`, `/experience`, `/about` and `/en/contact` answer 200; an unknown path answers
+      404.
+- [x] Turnstile lists both hostnames (Felipe).
+
+Still open: the contact form and Email Routing checks in a browser, and the rate-limit rule
+of section 3.
+
 ## 5. Right after
 
 - Felipe points the LinkedIn and GitHub profile links, and the CV header, to

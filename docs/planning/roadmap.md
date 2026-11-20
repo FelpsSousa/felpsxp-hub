@@ -114,8 +114,9 @@ security controls.
 - [x] Cloudflare Email Routing for the `felpsxp.com` addresses.
 - [ ] Edge rate-limit rule for the contact form (Vercel Firewall, or
       Cloudflare if the domain is proxied), per ADR-0007.
-- [ ] Domain moved to the new Vercel project; DNS cutover in Cloudflare,
-      following [`go-live-checklist.md`](go-live-checklist.md).
+- [x] Domain moved to the new Vercel project; DNS cutover in Cloudflare,
+      following [`go-live-checklist.md`](go-live-checklist.md). Live on
+      2026-11-20; the verification is recorded in the checklist.
 - [ ] Post-launch light pentest (STRIDE, black-box, own site only),
       written up as the first new post.
 
