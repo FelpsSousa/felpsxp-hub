@@ -31,6 +31,14 @@ export const profileByLocale: Localized<Profile> = {
       'Arquitetura com intenção de produto',
       'Honestidade calibrada: sem inflar o que ainda não está confirmado',
     ],
+    howIWork: [
+      'Decisão antes do código: o que é caro de reverter vira um ADR antes da implementação, com as alternativas consideradas e as consequências assumidas.',
+      'Mudanças pequenas e revisadas: um pull request por tarefa, com Conventional Commits, validado no preview antes do merge.',
+      'Testes e controles em cada pull request: testes unitários, ponta a ponta com axe, CodeQL e gitleaks; o OpenSSF Scorecard acompanha a cadeia de suprimentos toda semana.',
+      'Segurança desde o desenho: modelo de ameaças STRIDE, CSP estrita, cabeçalhos de segurança e validação com Zod nas fronteiras.',
+      'IA com regras escritas: uso o Claude Code para rascunhar, propor e explicar, mas arquitetura e merge são decisões minhas, como o AI.md do repositório descreve.',
+      'Afirmação com prova: o que este site diz corresponde a um fato verificado ou a algo que o próprio repositório mostra.',
+    ],
     highlights: [
       '2 anos no frontend de dois produtos SaaS (Candidattus e Connexicco)',
       'Base em Engenharia Mecatrônica (UnB), com passagem por sistemas embarcados e controle de acesso',
@@ -73,6 +81,14 @@ export const profileByLocale: Localized<Profile> = {
       'Systems thinking over isolated features',
       'Architecture with product intent',
       'Calibrated honesty: never inflate what is not yet confirmed',
+    ],
+    howIWork: [
+      'Decisions before code: anything costly to reverse becomes an ADR before it is built, with the alternatives considered and the consequences accepted.',
+      'Small, reviewed changes: one pull request per task, with Conventional Commits, validated on its preview before the merge.',
+      'Tests and controls on every pull request: unit tests, end-to-end tests with axe, CodeQL and gitleaks; OpenSSF Scorecard tracks the supply chain every week.',
+      'Security from the design: a STRIDE threat model, a strict CSP, security headers and Zod validation at the boundaries.',
+      'AI under written rules: I use Claude Code to draft, propose and explain, but architecture and merges are my decisions, as the repository’s AI.md describes.',
+      'Claims with proof: what this site says matches a verified fact or something the repository itself shows.',
     ],
     highlights: [
       '2 years on the frontend of two SaaS products (Candidattus and Connexicco)',

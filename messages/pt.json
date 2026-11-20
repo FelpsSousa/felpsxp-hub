@@ -224,5 +224,23 @@
       "project": "Projeto",
       "education": "Formação"
     }
+  },
+  "about": {
+    "title": "Sobre",
+    "description": "Quem é Felipe Sousa, desenvolvedor fullstack com foco em frontend, no que está focado agora e como trabalha.",
+    "bio": "Trajetória",
+    "focus": "Foco atual",
+    "howIWork": "Como trabalho",
+    "evidence": "Dá para conferir no repositório deste site:",
+    "adrs": "os ADRs",
+    "pullRequests": "os pull requests",
+    "principles": "Princípios",
+    "next": "Para continuar",
+    "links": {
+      "cv": "Currículo completo",
+      "experience": "Linha do tempo e habilidades",
+      "projects": "Projetos",
+      "contact": "Contato"
+    }
   }
 }

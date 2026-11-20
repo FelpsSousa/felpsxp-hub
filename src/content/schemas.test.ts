@@ -39,6 +39,7 @@ const validProfile: Profile = {
   summaryParagraphs: ['One paragraph.'],
   currentFocus: [],
   principles: [],
+  howIWork: ['Small pull requests.'],
   highlights: [],
   highlightStats: [{ value: '10', label: 'Things' }],
 };
