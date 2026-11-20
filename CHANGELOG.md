@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.19.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.7...v0.19.0) (2026-11-20)
+
+
+### Features
+
+* **cv:** add the CV page with a print stylesheet (ADR-0010) ([#100](https://github.com/FelpsSousa/felpsxp-hub/issues/100)) ([77ff94a](https://github.com/FelpsSousa/felpsxp-hub/commit/77ff94a11b8c1eb106ea0f6abf2647fef6cc7b52))
+* **projects:** add a screens gallery and the FelpsXP Finance screens ([#99](https://github.com/FelpsSousa/felpsxp-hub/issues/99)) ([6072555](https://github.com/FelpsSousa/felpsxp-hub/commit/6072555aaf3318b725c50316badbb78a4fa85f13))
+
 ## [0.18.7](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.18.6...v0.18.7) (2026-11-19)
 
 
