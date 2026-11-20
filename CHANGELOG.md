@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.20.0...v1.0.0) (2026-11-20)
+
+
+### Documentation
+
+* **planning:** record the felpsxp.com go-live ([#107](https://github.com/FelpsSousa/felpsxp-hub/issues/107)) ([d093751](https://github.com/FelpsSousa/felpsxp-hub/commit/d093751dc9d504c8faf4a37b9fbe673c7ce153ee))
+
 ## [0.20.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.19.0...v0.20.0) (2026-11-20)
 
 
