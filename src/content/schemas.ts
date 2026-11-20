@@ -169,3 +169,53 @@ export const profileSchema = z.strictObject({
   highlights: z.array(text),
   highlightStats: z.array(highlightStatSchema),
 });
+
+/** A month as `YYYY-MM`: CV periods are stated to the month, never to the day. */
+const yearMonth = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'Use YYYY-MM');
+
+/** From one month to another, or to the present when `end` is null. */
+const cvPeriodSchema = z
+  .strictObject({ start: yearMonth, end: yearMonth.nullable() })
+  .refine((period) => period.end === null || period.end >= period.start, {
+    message: 'A period cannot end before it starts',
+  });
+
+/** A product or engagement inside a role, with its own period when it has one. */
+const cvProjectSchema = z.strictObject({
+  name: text,
+  url: httpsUrl.optional(),
+  description: text,
+  period: cvPeriodSchema.optional(),
+  bullets: z.array(text).min(1),
+});
+
+/**
+ * The public CV (ADR-0010): the single source for `/cv`, its PDF and the
+ * planned `/experience` and `/about` pages. Contact data is limited to what
+ * the site already publishes; no phone number, no personal address.
+ */
+export const cvSchema = z.strictObject({
+  name: text,
+  headline: text,
+  stack: z.array(text).min(1),
+  location: text,
+  summary: z.array(text).min(1),
+  skills: z.array(z.strictObject({ area: text, items: z.array(text).min(1) })).min(1),
+  experience: z
+    .array(
+      z.strictObject({
+        role: text,
+        organization: text,
+        period: cvPeriodSchema,
+        terms: text,
+        bullets: z.array(text),
+        projects: z.array(cvProjectSchema),
+      }),
+    )
+    .min(1),
+  ownProjects: z.array(z.strictObject({ name: text, url: httpsUrl.optional(), text })).min(1),
+  earlierExperience: z.array(z.strictObject({ title: text, context: text, text })),
+  education: z.array(z.strictObject({ title: text, institution: text, period: text, note: text.optional() })).min(1),
+  courses: z.array(text),
+  languages: z.array(text).min(1),
+});

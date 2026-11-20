@@ -94,3 +94,26 @@ body {
 :root[data-theme='dark'] .theme-dark-only {
   display: block;
 }
+
+/*
+ * Print (the CV page, ADR-0010): always the light palette on white paper,
+ * whatever the screen theme, with the site chrome hidden through Tailwind's
+ * `print:` variant on the header and footer.
+ */
+@page {
+  margin: 14mm 16mm;
+}
+
+@media print {
+  :root,
+  :root:not([data-theme='light']),
+  :root[data-theme='dark'] {
+    --color-canvas: #ffffff;
+    --color-surface: #ffffff;
+    --color-border: #d1d9e0;
+    --color-fg: #1f2328;
+    --color-fg-muted: #4b535c;
+    --color-accent: #6639ba;
+    color-scheme: light;
+  }
+}

@@ -1,3 +1,4 @@
+import { cvByLocale } from '@/content/cv/cv';
 import { profileByLocale } from '@/content/profile/profile';
 import { beecrowdProblemSolvingProjectByLocale } from '@/content/projects/beecrowd-problem-solving';
 import { candidattusProjectByLocale } from '@/content/projects/candidattus';
@@ -9,9 +10,9 @@ import { homeNetworkObservabilityProjectByLocale } from '@/content/projects/home
 import { accessibilityPageByLocale } from '@/content/legal/accessibility';
 import { privacyPageByLocale } from '@/content/legal/privacy';
 import { securityPageByLocale } from '@/content/legal/security';
-import { legalPageSchema, profileSchema, projectSchema, siteSettingsSchema } from '@/content/schemas';
+import { cvSchema, legalPageSchema, profileSchema, projectSchema, siteSettingsSchema } from '@/content/schemas';
 import { siteSettings as siteSettingsSource } from '@/content/site/settings';
-import type { LegalPage, Localized, Profile, Project, SiteSettings } from '@/content/types';
+import type { Cv, LegalPage, Localized, Profile, Project, SiteSettings } from '@/content/types';
 import type { AppLocale } from '@/i18n/routing';
 import { locales } from '@/i18n/routing';
 import { parseContent } from '@/lib/parse-content';
@@ -134,4 +135,11 @@ export function getProjectStaticParams() {
       slug: project.slug,
     })),
   );
+}
+
+const cvs = byLocale((locale) => parseContent(cvSchema, cvByLocale[locale], `cv (${locale})`));
+
+/** The public CV (ADR-0010), the source for `/cv` and its PDF. */
+export function getCv(locale: AppLocale): Cv {
+  return cvs[locale];
 }
