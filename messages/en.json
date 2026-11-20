@@ -193,8 +193,9 @@
   "cv": {
     "title": "CV",
     "description": "CV of Felipe Sousa, a fullstack developer with a frontend focus: experience, projects, education and skills.",
+    "download": "Download PDF",
     "print": "Print or save as PDF",
-    "printHint": "The printed version has the same content as this page, without the site menu and footer.",
+    "printHint": "The PDF and the printed version have the same content as this page, without the site menu and footer.",
     "summary": "Summary",
     "skills": "Technical skills",
     "experience": "Professional experience",

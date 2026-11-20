@@ -193,8 +193,9 @@
   "cv": {
     "title": "Currículo",
     "description": "Currículo de Felipe Sousa, desenvolvedor fullstack com foco em frontend: experiência, projetos, formação e habilidades.",
+    "download": "Baixar PDF",
     "print": "Imprimir ou salvar em PDF",
-    "printHint": "A versão impressa tem o mesmo conteúdo desta página, sem o menu e o rodapé do site.",
+    "printHint": "O PDF e a versão impressa têm o mesmo conteúdo desta página, sem o menu e o rodapé do site.",
     "summary": "Resumo",
     "skills": "Habilidades técnicas",
     "experience": "Experiência profissional",
