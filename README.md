@@ -17,10 +17,23 @@ Part of the **FelpsXP digital ecosystem** · Registry ID: `FXP-003`
 
 ## What this is
 
-A bilingual (Portuguese and English) portfolio: profile, projects, a contact form, and the
-privacy and security policies. It is deliberately small in features and strict in engineering:
+A bilingual (Portuguese and English) portfolio: about, experience, a CV with a PDF download,
+projects, a contact form, and the privacy and security policies. It is deliberately small in features and strict in engineering:
 the repository itself is meant to be read, so every decision is recorded, every security
 control is tested, and the history is a sequence of small, reviewed pull requests.
+
+<table>
+<tr>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/en-dark-home.png"><img src="docs/images/readme/en-light-home.png" alt="Home page: name, role and summary"></picture></td>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/en-dark-experience.png"><img src="docs/images/readme/en-light-experience.png" alt="Experience page: career timeline, newest first"></picture></td>
+</tr>
+<tr>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/en-dark-cv.png"><img src="docs/images/readme/en-light-cv.png" alt="CV page with the PDF download"></picture></td>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/en-dark-project.png"><img src="docs/images/readme/en-light-project.png" alt="Project page for FelpsXP Finance"></picture></td>
+</tr>
+</table>
+
+Screenshots of the live site; GitHub shows the dark versions when your theme is dark.
 
 ## Highlights
 
