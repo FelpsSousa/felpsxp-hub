@@ -113,7 +113,10 @@ security controls.
       check that fails 30 days before it expires).
 - [x] Cloudflare Email Routing for the `felpsxp.com` addresses.
 - [ ] Edge rate-limit rule for the contact form (Vercel Firewall, or
-      Cloudflare if the domain is proxied), per ADR-0007.
+      Cloudflare if the domain is proxied), per ADR-0007. The Hobby plan
+      allows the one rule needed; it still needs the `POST` condition and a
+      publish, then the acceptance test in
+      [`go-live-checklist.md`](go-live-checklist.md) (next up).
 - [x] Domain moved to the new Vercel project; DNS cutover in Cloudflare,
       following [`go-live-checklist.md`](go-live-checklist.md). Live on
       2026-11-20; the verification is recorded in the checklist.
@@ -122,7 +125,8 @@ security controls.
 
 - [x] Semantic versioning with release-please and the version and commit in the
       footer (ADR-0008).
-- [ ] Release `1.0.0` once `/cv`, `/experience` and `/about` ship. Decided
+- [x] Release `1.0.0` once `/cv`, `/experience` and `/about` ship (released
+      on 2026-11-20, with `felpsxp.com` live). Decided
       on 2026-11-19: the domain moves first, because `felpsxp.com` answering
       503 hurts applications more than pages still to come.
 

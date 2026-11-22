@@ -93,8 +93,27 @@ The cutover is done. `felpsxp.com` is the production domain of this project and
       404.
 - [x] Turnstile lists both hostnames (Felipe).
 
-Still open: the contact form and Email Routing checks in a browser, and the rate-limit rule
-of section 3.
+### Result, 2026-11-20 and 2026-11-22
+
+- [x] Release `1.0.0` is published and live (footer `v1.0.0`, commit `0c2c269`).
+- [x] A message sent through `/contact` arrives (Felipe).
+- [x] Mail sent to `contact@felpsxp.com` arrives (Felipe). Every Email Routing rule had the
+      action **Drop**, so mail to the published addresses was accepted and discarded; the
+      rules for `contact@`, `contato@`, `security@`, `privacy@` and `support@` now send to
+      Felipe's verified inbox. The catch-all stays disabled.
+- [ ] Rate-limit rule of section 3. The Hobby plan allows one rate-limit rule per project
+      (fixed window, keyed by IP or JA4), which is enough for ADR-0007, so no amendment is
+      needed. Not done yet:
+  - The first version had no method condition: the sixth plain `GET /contact` within a
+    minute answered 429, which would lock out a visitor who reloads the page or a recruiter
+    behind a shared corporate IP.
+  - While it was being edited, seven `POST /en/contact` in a row all answered 200, so the
+    rule live at that moment did not cover the form.
+  - Target: the method condition `POST` inside the condition group of each path (or one
+    group with `Request Path` *is any of* `/contact`, `/en/contact`, plus `Method` equals
+    `POST`), published, not only saved.
+  - Acceptance, run by the session: seven `GET` requests to each path all answer 200, and
+    the sixth `POST` to each path within a minute answers 429.
 
 ## 5. Right after
 
@@ -103,5 +122,6 @@ of section 3.
 - Remove the `vercel.app` host from the Turnstile widget once the domain has been stable for
   a day.
 - Tick the domain item in the roadmap and say that the registry record `FXP-003` needs an
-  update.
-- Release `1.0.0` waits for `/cv`, `/experience` and `/about` (roadmap, Block 3).
+  update (done in the session; the registry update is Felipe's).
+- Release `1.0.0` waits for `/cv`, `/experience` and `/about` (roadmap, Block 3): released
+  on 2026-11-20.
