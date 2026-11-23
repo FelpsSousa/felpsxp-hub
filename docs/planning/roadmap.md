@@ -120,8 +120,9 @@ security controls.
 - [x] Domain moved to the new Vercel project; DNS cutover in Cloudflare,
       following [`go-live-checklist.md`](go-live-checklist.md). Live on
       2026-11-20; the verification is recorded in the checklist.
-- [ ] Post-launch light pentest (STRIDE, black-box, own site only),
-      written up as the first new post.
+- [x] Post-launch light pentest (STRIDE, black-box, own site only):
+      [`pentest-2026-11-22.md`](../security/pentest-2026-11-22.md). The
+      write-up as the first new post waits for Block 4.
 
 - [x] Semantic versioning with release-please and the version and commit in the
       footer (ADR-0008).
