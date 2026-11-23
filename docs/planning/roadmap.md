@@ -269,7 +269,9 @@ clean public extraction of the observatory module.
 - [x] OpenSSF Scorecard workflow and README badge; GitHub Actions pinned by
       commit SHA.
 - [x] README as a showcase: stack, decisions, security and quality highlights.
-- [ ] README screenshots, once the recruiter pages are in place.
+- [x] README screenshots, once the recruiter pages are in place: home,
+      experience, CV and a project page, per locale, with the dark versions
+      shown to readers on a dark GitHub theme.
 - [ ] GitHub profile cleanup (outside this repository): archive bootcamp
       and test repositories, pin the strongest public ones.
 

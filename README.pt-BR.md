@@ -17,11 +17,24 @@ Parte do **ecossistema digital FelpsXP** · ID no registro: `FXP-003`
 
 ## O que é
 
-Um portfólio bilíngue (português e inglês): perfil, projetos, formulário de contato e as
-políticas de privacidade e de segurança. Enxuto em funcionalidades e rigoroso em engenharia:
-o próprio repositório foi feito para ser lido, então cada decisão está registrada, cada
-controle de segurança tem teste e o histórico é uma sequência de pull requests pequenos e
-revisados.
+Um portfólio bilíngue (português e inglês): sobre, experiência, currículo com download em PDF,
+projetos, formulário de contato e as políticas de privacidade e de segurança. Enxuto em
+funcionalidades e rigoroso em engenharia: o próprio repositório foi feito para ser lido, então
+cada decisão está registrada, cada controle de segurança tem teste e o histórico é uma
+sequência de pull requests pequenos e revisados.
+
+<table>
+<tr>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/pt-dark-home.png"><img src="docs/images/readme/pt-light-home.png" alt="Página inicial: nome, cargo e resumo"></picture></td>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/pt-dark-experience.png"><img src="docs/images/readme/pt-light-experience.png" alt="Página de experiência: linha do tempo, da mais recente para a mais antiga"></picture></td>
+</tr>
+<tr>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/pt-dark-cv.png"><img src="docs/images/readme/pt-light-cv.png" alt="Página do currículo com o download em PDF"></picture></td>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/pt-dark-project.png"><img src="docs/images/readme/pt-light-project.png" alt="Página do projeto FelpsXP Finance"></picture></td>
+</tr>
+</table>
+
+Telas do site no ar; o GitHub mostra as versões escuras quando o seu tema é escuro.
 
 ## Destaques
 
