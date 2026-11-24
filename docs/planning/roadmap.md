@@ -212,9 +212,9 @@ an ecosystem ADR in `felpsxp-architecture`.
 - [ ] Hub event emitter: fire-and-forget, versioned event schema, signed
       with the Hub's own key, never slowing down or failing a response;
       `/privacy` updated in the same PR.
-- [ ] Canary routes for common scanner targets (`/wp-admin`, `/.env`,
+- [x] Canary routes for common scanner targets (`/wp-admin`, `/.env`,
       `/.git/config`, `/phpmyadmin`, and similar): respond with a plain 404
-      and emit an event.
+      and emit an anonymous `hub.probe.v1` event (ADR-0011).
 - [x] CSP violation reporting endpoint (`/api/csp-report`, both `report-to`
       and `report-uri`), logging anonymous `hub.csp.v1` events.
 - [ ] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script

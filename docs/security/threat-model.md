@@ -88,6 +88,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 | R1 | A change cannot be traced to a decision | Squash-merged PRs with descriptions, ADRs for decisions, Vercel deployment history | Implemented |
 | R2 | Abuse of the contact form leaves no trace | An anonymous `hub.contact.v1` event per submission: outcome, reason, country, client class, minute (#32) | Implemented |
 | R3 | A script injected into a page goes unnoticed | Browsers report CSP violations to `/api/csp-report`; each becomes an anonymous `hub.csp.v1` event: directive, blocked origin or keyword, page path, script file and line, client class, minute; no query strings, samples, IP address or User-Agent (ADR-0009) | Implemented |
+| R4 | Scanners probe the site and leave no trace | Canary routes for common scanner targets (`/.env`, `/.git/*`, WordPress and database admin paths, and similar) answer a plain 404 from the proxy and emit an anonymous `hub.probe.v1` event: target category, country, client class, minute; never the requested path, IP address or User-Agent (ADR-0011) | Implemented |
 
 ### Information disclosure
 
