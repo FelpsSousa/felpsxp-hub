@@ -116,7 +116,16 @@ security controls.
       Cloudflare if the domain is proxied), per ADR-0007. The Hobby plan
       allows the one rule needed; it still needs the `POST` condition and a
       publish, then the acceptance test in
-      [`go-live-checklist.md`](go-live-checklist.md) (next up).
+      [`go-live-checklist.md`](go-live-checklist.md). Rechecked on
+      2026-11-23: seven `GET` and seven `POST` in a row all answered 200, so
+      no rule is in effect yet.
+- [ ] Pentest follow-ups (dashboard changes by Felipe, checked from outside
+      by the session afterwards; findings in
+      [`pentest-2026-11-22.md`](../security/pentest-2026-11-22.md)):
+  - [ ] P-2: redirect `felpsxp-hub-two.vercel.app` (308) to `felpsxp.com`,
+        then remove that host from the Turnstile widget.
+  - [ ] P-3: DMARC through Cloudflare DMARC Management, `p=none` first.
+  - [ ] P-4: DNSSEC in Cloudflare.
 - [x] Domain moved to the new Vercel project; DNS cutover in Cloudflare,
       following [`go-live-checklist.md`](go-live-checklist.md). Live on
       2026-11-20; the verification is recorded in the checklist.
@@ -281,6 +290,8 @@ clean public extraction of the observatory module.
 - [ ] Decommission `hub-web` inside `felpsxp-platform`.
 - [ ] Delete the old Vercel project once the new one has been stable (its Git
       connection was removed on 2026-11-17, so it no longer builds previews).
+      The domain left it on 2026-11-20, so a week of stability ends on
+      2026-11-27.
 
 ## Proof matrix
 
