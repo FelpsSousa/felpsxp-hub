@@ -15,5 +15,6 @@ To add one, copy [`template.md`](template.md) to the next number and add a row b
 | [0008](0008-versioning-and-releases.md) | Semantic versioning, automated releases and a visible version | Accepted | 2026-11-12 |
 | [0009](0009-script-src-without-unsafe-inline.md) | Removing `'unsafe-inline'` from `script-src` | Accepted | 2026-11-14 |
 | [0010](0010-cv-page-source-and-pdf.md) | The CV page: typed content as the single source, PDF rendered from the page | Accepted | 2026-11-19 |
+| [0011](0011-telemetry-source.md) | Telemetry source for the security observatory | Accepted | 2026-11-24 |
 
 Ecosystem-wide decisions live in [`felpsxp-architecture`](https://github.com/FelpsSousa/felpsxp-architecture).
