@@ -1,6 +1,6 @@
 # ADR-0011: Telemetry source for the security observatory
 
-- **Status:** Proposed
+- **Status:** Accepted (agreed by Felipe on 2026-11-24, in #114)
 - **Date:** 2026-11-24
 - **Deciders:** Felipe Sousa (@FelpsSousa)
 - **Related:** ADR-0003 (v1 stack and scope), ADR-0007 (contact form security model),
@@ -100,7 +100,7 @@ once it exists; the public page reads tier C aggregates from there.
 
 ## Decision
 
-**Proposed: Option C as the direction, with the canary routes shipped now, and Option B
+**Option C as the direction, with the canary routes shipped now, and Option B
 rejected for this site while it runs on Vercel Hobby.**
 
 Reasons:

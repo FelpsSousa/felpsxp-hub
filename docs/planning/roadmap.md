@@ -194,10 +194,10 @@ an ecosystem ADR in `felpsxp-architecture`.
       dashboards, alerts), one scoped ingestion key per app, HMAC-signed
       events, and a Cloudflare Tunnel so the self-hosted server exposes no
       open port.
-- [ ] ADR: telemetry source. Cloudflare in proxy mode (WAF events, bot
+- [x] ADR: telemetry source. Cloudflare in proxy mode (WAF events, bot
       score, country, ASN) versus Vercel Firewall and logs; Vercel
       recommends DNS-only records in front of its domains, so the trade-off
-      has to be weighed explicitly. Proposed in
+      has to be weighed explicitly. Decided in
       [ADR-0011](../adr/0011-telemetry-source.md): first-party events and
       canary routes, Cloudflare proxy rejected while on Vercel Hobby.
 - [ ] Hub event emitter: fire-and-forget, versioned event schema, signed
