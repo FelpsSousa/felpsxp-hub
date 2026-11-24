@@ -197,7 +197,9 @@ an ecosystem ADR in `felpsxp-architecture`.
 - [ ] ADR: telemetry source. Cloudflare in proxy mode (WAF events, bot
       score, country, ASN) versus Vercel Firewall and logs; Vercel
       recommends DNS-only records in front of its domains, so the trade-off
-      has to be weighed explicitly.
+      has to be weighed explicitly. Proposed in
+      [ADR-0011](../adr/0011-telemetry-source.md): first-party events and
+      canary routes, Cloudflare proxy rejected while on Vercel Hobby.
 - [ ] Hub event emitter: fire-and-forget, versioned event schema, signed
       with the Hub's own key, never slowing down or failing a response;
       `/privacy` updated in the same PR.
