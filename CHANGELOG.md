@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v1.0.0...v1.1.0) (2026-11-24)
+
+
+### Features
+
+* **security:** add canary routes that log anonymous probe events (ADR-0011) ([#115](https://github.com/FelpsSousa/felpsxp-hub/issues/115)) ([c0db8e5](https://github.com/FelpsSousa/felpsxp-hub/commit/c0db8e532ef4e5e3a68d17c77639c668a2670d66))
+
 ## [1.0.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v0.20.0...v1.0.0) (2026-11-20)
 
 
