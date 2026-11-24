@@ -1,6 +1,7 @@
 import createIntlMiddleware from 'next-intl/middleware';
-import type { NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from '@/i18n/routing';
+import { buildProbeEvent, probeCategory } from '@/lib/probes';
 import {
   createNonce,
   NONCE_HEADER,
@@ -19,6 +20,23 @@ const handleLocale = createIntlMiddleware(routing);
  * enforced policy still comes from `next.config.ts`.
  */
 export default function proxy(request: NextRequest) {
+  // Canary routes (ADR-0011): a plain 404 and an anonymous event, before any
+  // locale or page work is done for a scanner.
+  const category = probeCategory(request.nextUrl.pathname);
+  if (category) {
+    const event = buildProbeEvent({
+      category,
+      country: request.headers.get('x-vercel-ip-country'),
+      userAgent: request.headers.get('user-agent'),
+      now: new Date(),
+    });
+    console.warn(JSON.stringify(event));
+    return new NextResponse('Not Found', {
+      status: 404,
+      headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
+    });
+  }
+
   const nonce = createNonce();
   const policy = strictContentSecurityPolicy(nonce, process.env.NODE_ENV !== 'production');
 
@@ -34,6 +52,30 @@ export default function proxy(request: NextRequest) {
 
 export const config = {
   // Skips Next.js assets, files with an extension and API routes, which are
-  // neither localised nor HTML.
-  matcher: ['/((?!api/|_next|.*\\..*).*)'],
+  // neither localised nor HTML. The entries after the first are the dotted
+  // canary routes of `DOTTED_PROBE_MATCHERS` in `src/lib/probes.ts`; Next.js
+  // reads this config statically, so they are written out here and a test
+  // keeps the two lists in step.
+  matcher: [
+    '/((?!api/|_next|.*\\..*).*)',
+    '/.env',
+    '/.env.local',
+    '/.env.production',
+    '/.env.development',
+    '/.aws/:path*',
+    '/.git/:path*',
+    '/.svn/:path*',
+    '/.hg/:path*',
+    '/.htaccess',
+    '/.DS_Store',
+    '/wp-config.php',
+    '/config.php',
+    '/wp-login.php',
+    '/xmlrpc.php',
+    '/wp-content/:path*',
+    '/wp-includes/:path*',
+    '/adminer.php',
+    '/phpinfo.php',
+    '/info.php',
+  ],
 };

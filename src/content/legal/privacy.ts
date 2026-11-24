@@ -10,7 +10,7 @@ export const privacyPageByLocale: Localized<LegalPage> = {
     title: 'Privacidade',
     summary:
       'O que este site coleta, por que, por quanto tempo e quem mais participa. Versão curta: nada de rastreamento, nada de anúncios, e o formulário de contato não guarda nada aqui.',
-    updatedAt: '2026-11-15',
+    updatedAt: '2026-11-24',
     sections: [
       {
         heading: 'Quem é o responsável',
@@ -40,7 +40,8 @@ export const privacyPageByLocale: Localized<LegalPage> = {
         heading: 'Registros de segurança anônimos',
         paragraphs: [
           'Cada envio do formulário gera um registro técnico sem dados pessoais: se foi entregue ou barrado, o motivo do bloqueio, o país de origem, o tipo de cliente (navegador, ferramenta ou robô) e o horário arredondado ao minuto. Ele nunca contém nome, e-mail, empresa, texto da mensagem, endereço IP ou a identificação completa do navegador.',
-          'Esses registros servem para proteger o formulário e podem ser publicados apenas como números agregados, por exemplo quantas tentativas automatizadas foram barradas em uma semana.',
+          'Pedidos a endereços que só ferramentas de varredura procuram, como arquivos de configuração ou painéis de administração que este site não tem, recebem uma resposta de página não encontrada e geram um registro do mesmo tipo: a categoria do alvo, o país de origem, o tipo de cliente e o horário arredondado ao minuto. O endereço pedido, o IP e a identificação do navegador não são guardados.',
+          'Esses registros servem para proteger o site e podem ser publicados apenas como números agregados, por exemplo quantas tentativas automatizadas foram barradas em uma semana.',
         ],
       },
       {
@@ -67,7 +68,7 @@ export const privacyPageByLocale: Localized<LegalPage> = {
     title: 'Privacy',
     summary:
       'What this site collects, why, for how long, and who else is involved. Short version: no tracking, no ads, and the contact form stores nothing here.',
-    updatedAt: '2026-11-15',
+    updatedAt: '2026-11-24',
     sections: [
       {
         heading: 'Who is responsible',
@@ -97,7 +98,8 @@ export const privacyPageByLocale: Localized<LegalPage> = {
         heading: 'Anonymous security records',
         paragraphs: [
           'Each form submission produces a technical record with no personal data: whether it was delivered or blocked, the reason for a block, the country of origin, the kind of client (browser, tool or bot) and the time rounded to the minute. It never contains a name, e-mail address, company, message text, IP address or the full browser identification.',
-          'These records exist to protect the form and may be published only as aggregated numbers, for example how many automated attempts were blocked in a week.',
+          'Requests for addresses that only scanning tools look for, such as configuration files or admin panels this site does not have, get a page-not-found answer and produce a record of the same kind: the category of the target, the country of origin, the kind of client and the time rounded to the minute. The requested address, the IP address and the browser identification are not kept.',
+          'These records exist to protect the site and may be published only as aggregated numbers, for example how many automated attempts were blocked in a week.',
         ],
       },
       {

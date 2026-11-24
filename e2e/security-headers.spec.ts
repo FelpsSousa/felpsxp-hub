@@ -149,3 +149,22 @@ test.describe('CSP violation reports (ADR-0009)', () => {
     expect(huge.status()).toBe(413);
   });
 });
+
+test.describe('canary routes (ADR-0011)', () => {
+  for (const path of ['/.env', '/.git/config', '/wp-login.php', '/wp-admin', '/phpmyadmin']) {
+    test(`${path} answers a plain 404 with the security headers`, async ({ request }) => {
+      const response = await request.get(path, { maxRedirects: 0 });
+      expect(response.status()).toBe(404);
+      expect(response.headers()['content-type']).toContain('text/plain');
+      expect(response.headers()['cache-control']).toBe('no-store');
+      expect(response.headers()['x-frame-options']).toBe('DENY');
+      expect(response.headers()['content-security-policy']).toContain("default-src 'self'");
+      expect(await response.text()).toBe('Not Found');
+    });
+  }
+
+  test('ordinary dotted files are still served', async ({ request }) => {
+    expect((await request.get('/robots.txt')).status()).toBe(200);
+    expect((await request.get('/.well-known/security.txt')).status()).toBe(200);
+  });
+});
