@@ -19,7 +19,12 @@ test('Ctrl+K opens the search, the keyboard picks a result and Enter opens it', 
   if (isMobile) {
     await page.getByRole('button', { name: 'Buscar no site' }).click();
   } else {
-    await page.keyboard.press('Control+K');
+    // The shortcut listener is attached on hydration, which can land after
+    // the first key press; pressing again is safe because it only opens.
+    await expect(async () => {
+      await page.keyboard.press('Control+K');
+      await expect(dialog).toBeVisible({ timeout: 1_000 });
+    }).toPass();
   }
   await expect(dialog).toBeVisible();
   const input = dialog.getByRole('combobox');
