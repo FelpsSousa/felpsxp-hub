@@ -1,8 +1,10 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
-import { securityHeaders } from './src/lib/security-headers';
+import { contentSecurityPolicy, PROXY_SKIPPED_SOURCE, securityHeaders } from './src/lib/security-headers';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+const isDev = process.env.NODE_ENV !== 'production';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -15,9 +17,11 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      { source: '/:path*', headers: securityHeaders() },
+      // Pages get their enforced CSP, with the nonce, from `src/proxy.ts`.
       {
-        source: '/:path*',
-        headers: securityHeaders(process.env.NODE_ENV !== 'production'),
+        source: PROXY_SKIPPED_SOURCE,
+        headers: [{ key: 'Content-Security-Policy', value: contentSecurityPolicy(isDev) }],
       },
     ];
   },

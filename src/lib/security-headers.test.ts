@@ -2,14 +2,15 @@ import { describe, expect, it } from 'vitest';
 import {
   contentSecurityPolicy,
   createNonce,
+  PROXY_SKIPPED_SOURCE,
   securityHeaders,
   reportingEndpoints,
   strictContentSecurityPolicy,
   withViolationReports,
 } from '@/lib/security-headers';
 
-function headerMap(isDev: boolean): Map<string, string> {
-  return new Map(securityHeaders(isDev).map(({ key, value }) => [key, value]));
+function headerMap(): Map<string, string> {
+  return new Map(securityHeaders().map(({ key, value }) => [key, value]));
 }
 
 function directives(policy: string): Map<string, string> {
@@ -23,11 +24,12 @@ function directives(policy: string): Map<string, string> {
 
 describe('securityHeaders', () => {
   it('sends every expected header exactly once', () => {
-    const keys = securityHeaders(false).map(({ key }) => key);
+    const keys = securityHeaders().map(({ key }) => key);
     expect(new Set(keys).size).toBe(keys.length);
+    // The enforced CSP comes from the proxy (pages) or from the config entry
+    // for the paths the proxy skips, never from this shared list.
     expect(keys.sort()).toEqual(
       [
-        'Content-Security-Policy',
         'Cross-Origin-Opener-Policy',
         'Permissions-Policy',
         'Referrer-Policy',
@@ -39,20 +41,20 @@ describe('securityHeaders', () => {
   });
 
   it('forbids framing and MIME sniffing', () => {
-    const headers = headerMap(false);
+    const headers = headerMap();
     expect(headers.get('X-Frame-Options')).toBe('DENY');
     expect(headers.get('X-Content-Type-Options')).toBe('nosniff');
     expect(headers.get('Cross-Origin-Opener-Policy')).toBe('same-origin');
   });
 
   it('enforces HTTPS for two years, subdomains included', () => {
-    const hsts = headerMap(false).get('Strict-Transport-Security') ?? '';
+    const hsts = headerMap().get('Strict-Transport-Security') ?? '';
     expect(hsts).toContain('max-age=63072000');
     expect(hsts).toContain('includeSubDomains');
   });
 
   it('switches off sensitive browser features', () => {
-    const policy = headerMap(false).get('Permissions-Policy') ?? '';
+    const policy = headerMap().get('Permissions-Policy') ?? '';
     for (const feature of ['camera', 'microphone', 'geolocation', 'payment', 'usb']) {
       expect(policy).toContain(`${feature}=()`);
     }
@@ -76,6 +78,13 @@ describe('contentSecurityPolicy', () => {
     expect(policy.get('frame-src')).toBe('https://challenges.cloudflare.com');
     const origins = contentSecurityPolicy(false).match(/https:\/\/[^\s;]+/g) ?? [];
     expect(new Set(origins)).toEqual(new Set(['https://challenges.cloudflare.com']));
+  });
+
+  it('carries the request nonce on pages, next to the fallback for old browsers', () => {
+    const scriptSrc = directives(contentSecurityPolicy(false, 'abc123')).get('script-src') ?? '';
+    expect(scriptSrc).toContain("'nonce-abc123'");
+    expect(scriptSrc).toContain("'unsafe-inline'");
+    expect(contentSecurityPolicy(false)).not.toContain('nonce-');
   });
 
   it('keeps the restrictive directives', () => {
@@ -129,4 +138,19 @@ describe('violation reports', () => {
       'csp-endpoint="https://felpsxp.com/api/csp-report"',
     );
   });
+});
+
+describe('PROXY_SKIPPED_SOURCE', () => {
+  // Next.js turns the source into an anchored pattern; this is its parameter.
+  const pattern = new RegExp(`^/${PROXY_SKIPPED_SOURCE.match(/^\/:path\((.*)\)$/)?.[1]}$`);
+
+  it.each(['/api/csp-report', '/_next/static/chunks/a.js', '/robots.txt', '/cv/felipe-sousa-en.pdf', '/.env'])(
+    '%s gets the baseline CSP from the config',
+    (path) => expect(pattern.test(path)).toBe(true),
+  );
+
+  it.each(['/', '/en', '/projects', '/en/projects/felpsxp-hub', '/wp-admin'])(
+    '%s gets its CSP from the proxy only',
+    (path) => expect(pattern.test(path)).toBe(false),
+  );
 });
