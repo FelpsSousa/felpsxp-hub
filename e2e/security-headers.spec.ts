@@ -55,6 +55,30 @@ test.describe('strict CSP in report-only mode (ADR-0009)', () => {
     expect(nonces.size).toBe(2);
   });
 
+  // On Vercel the response's enforced policy is what Next.js reads the nonce
+  // from, so it has to carry the same nonce as the report-only one, on every
+  // page including the 404.
+  for (const path of ['/en/projects', '/no-such-page']) {
+    test(`the enforced policy on ${path} carries the same nonce as every script`, async ({ request }) => {
+      const response = await request.get(path);
+      const headers = response.headers();
+      const enforced = headers['content-security-policy']?.match(/'nonce-([^']+)'/)?.[1] ?? '';
+      expect(enforced).not.toBe('');
+      expect(headers['content-security-policy-report-only']).toContain(`'nonce-${enforced}'`);
+      const scripts = (await response.text()).match(/<script(?![^>]*application\/ld\+json)[^>]*>/g) ?? [];
+      expect(scripts.length).toBeGreaterThan(1);
+      for (const script of scripts) expect(script).toContain(`nonce="${enforced}"`);
+    });
+  }
+
+  test('files and API routes keep the baseline policy, without a nonce', async ({ request }) => {
+    for (const path of ['/robots.txt', '/search-index.json']) {
+      const csp = (await request.get(path)).headers()['content-security-policy'] ?? '';
+      expect(csp, path).toContain("default-src 'self'");
+      expect(csp, path).not.toContain('nonce-');
+    }
+  });
+
   test('a client cannot choose the nonce', async ({ request }) => {
     const response = await request.get('/en/projects', {
       headers: { 'x-nonce': 'attacker', 'content-security-policy-report-only': "script-src 'nonce-attacker'" },

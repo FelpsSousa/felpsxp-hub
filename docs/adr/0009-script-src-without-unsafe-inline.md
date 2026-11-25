@@ -116,3 +116,22 @@ acceptable.
   Server time grows from about 5 ms to about 13 ms per page and mobile Lighthouse scores do not
   change; the costs that matter are the loss of CDN caching for HTML and of the browser's
   back/forward cache, since dynamic pages are sent with `no-store`. The decision stands.
+- **2026-11-25:** on Vercel the report-only rollout never signed the framework scripts. A
+  crawl of every sitemap URL in production found violations on every page: Next.js reads the
+  nonce from the request's enforced `Content-Security-Policy` before the report-only one, and
+  on Vercel the response's enforced policy (then the static baseline from `next.config.ts`,
+  without a nonce) is copied onto the request the page renders with. Locally and in CI that
+  never happens, so the end-to-end suite stayed green. The same precedence is described in
+  [vercel/next.js#99360](https://github.com/vercel/next.js/issues/99360). Two changes follow,
+  and the decision itself stands:
+  - **Pages get the enforced policy from the proxy, with the request nonce** in `script-src`
+    next to `'self'`, `'unsafe-inline'` and the Turnstile origin. `next.config.ts` sends the
+    baseline only to the paths the proxy skips (API routes, `_next` and files with an
+    extension), so a page never carries a second enforced policy. A consequence that comes
+    earlier than planned: browsers with nonce support ignore `'unsafe-inline'` when a nonce
+    is present, so on pages they already block inline scripts without the nonce. External
+    scripts are still allowed by host until the strict policy is enforced.
+  - **The evidence for enforcing the strict policy** is a crawl of every sitemap URL in
+    production, in both themes and on desktop and mobile, with no violation, plus the
+    end-to-end gate. Waiting for a clean period in the logs is not workable on the Hobby plan,
+    which keeps runtime logs for about an hour.

@@ -18,17 +18,25 @@ export const CSP_REPORT_GROUP = 'csp-endpoint';
 export const NONCE_HEADER = 'x-nonce';
 
 /**
- * Baseline policy, enforced on every response: 'unsafe-inline' in script-src
- * is still required because Next.js ships each page's RSC hydration payload
- * as an inline <script> that differs per page, so it cannot be hashed.
- * 'unsafe-eval' is needed only in development, for Fast Refresh's
- * eval()-wrapped chunks. ADR-0009 replaces it with `strictContentSecurityPolicy`,
- * sent in report-only mode until it has run clean.
+ * Baseline policy, enforced on every response. 'unsafe-inline' in script-src
+ * stays for browsers without nonce support: Next.js ships each page's RSC
+ * hydration payload as an inline <script> that differs per page, so it cannot
+ * be hashed. 'unsafe-eval' is needed only in development, for Fast Refresh's
+ * eval()-wrapped chunks.
+ *
+ * Pages pass their request's nonce (ADR-0009, amendment of 2026-11-25). Every
+ * browser with nonce support then ignores 'unsafe-inline' and runs only the
+ * inline scripts that carry it. It also has to be here for Next.js to sign its
+ * own scripts at all: Next.js reads the nonce from the request's enforced
+ * policy first, and on Vercel the response's enforced policy is copied onto
+ * that request, so a policy without the nonce left every framework script
+ * unsigned in production.
  */
-export function contentSecurityPolicy(isDev: boolean): string {
+export function contentSecurityPolicy(isDev: boolean, nonce?: string): string {
   return policy(
     [
       "'self'",
+      nonce ? `'nonce-${nonce}'` : null,
       "'unsafe-inline'",
       // Cloudflare Turnstile on the contact form (ADR-0007), the only third-party origin.
       TURNSTILE_ORIGIN,
@@ -68,7 +76,7 @@ export function createNonce(): string {
   return btoa(String.fromCharCode(...bytes));
 }
 
-function policy(scriptSources: string[], isDev: boolean): string {
+function policy(scriptSources: (string | null)[], isDev: boolean): string {
   const scriptSrc = [...scriptSources, isDev ? "'unsafe-eval'" : null].filter(Boolean).join(' ');
 
   return [
@@ -112,9 +120,13 @@ export const permissionsPolicy = [
  */
 export const strictTransportSecurity = 'max-age=63072000; includeSubDomains';
 
-export function securityHeaders(isDev: boolean): Header[] {
+/**
+ * Headers for every response. The enforced CSP is not among them: pages get
+ * theirs, with the nonce, from the proxy (`src/proxy.ts`), and everything the
+ * proxy skips gets the baseline from `next.config.ts` (`PROXY_SKIPPED_SOURCE`).
+ */
+export function securityHeaders(): Header[] {
   return [
-    { key: 'Content-Security-Policy', value: contentSecurityPolicy(isDev) },
     { key: 'Strict-Transport-Security', value: strictTransportSecurity },
     { key: 'Permissions-Policy', value: permissionsPolicy },
     // Isolates this window from cross-origin pages it opens or is opened by.
@@ -124,3 +136,12 @@ export function securityHeaders(isDev: boolean): Header[] {
     { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   ];
 }
+
+/**
+ * The paths the proxy's main matcher skips: API routes, Next.js assets and
+ * files with an extension. They get the baseline CSP from `next.config.ts`;
+ * every other path gets its policy from the proxy. A second enforced policy
+ * from the config on a page would reach Next.js on Vercel in place of the one
+ * with the nonce.
+ */
+export const PROXY_SKIPPED_SOURCE = '/:path((?:api|_next)/.*|.*\\..*)';

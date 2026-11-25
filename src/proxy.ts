@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from '@/i18n/routing';
 import { buildProbeEvent, probeCategory } from '@/lib/probes';
 import {
+  contentSecurityPolicy,
   createNonce,
   NONCE_HEADER,
   reportingEndpoints,
@@ -11,13 +12,15 @@ import {
 } from '@/lib/security-headers';
 
 const handleLocale = createIntlMiddleware(routing);
+const isDev = process.env.NODE_ENV !== 'production';
 
 /**
- * Locale routing, plus the strict CSP of ADR-0009 in report-only mode: each
- * request gets a fresh nonce, passed on as request headers (next-intl copies
- * them onto the response it builds), so Next.js and the root layout put it on
- * their inline scripts. Violations are reported to `/api/csp-report`. The
- * enforced policy still comes from `next.config.ts`.
+ * Locale routing and the CSP of every page (ADR-0009): each request gets a
+ * fresh nonce, passed on as request headers, so Next.js and the root layout
+ * put it on their inline scripts. The enforced baseline carries the nonce and
+ * the strict policy runs in report-only mode, with violations reported to
+ * `/api/csp-report`. Paths the proxy skips get the baseline from
+ * `next.config.ts`.
  */
 export default function proxy(request: NextRequest) {
   // Canary routes (ADR-0011): a plain 404 and an anonymous event, before any
@@ -33,24 +36,29 @@ export default function proxy(request: NextRequest) {
     console.warn(JSON.stringify(event));
     return new NextResponse('Not Found', {
       status: 404,
-      headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Cache-Control': 'no-store',
+        'Content-Security-Policy': contentSecurityPolicy(isDev),
+      },
     });
   }
 
   const nonce = createNonce();
-  const policy = strictContentSecurityPolicy(nonce, process.env.NODE_ENV !== 'production');
+  const enforced = contentSecurityPolicy(isDev, nonce);
+  const strict = strictContentSecurityPolicy(nonce, isDev);
 
-  // Always overwritten, so a client cannot choose the nonce. Next.js reads
-  // the nonce for its own scripts from the request's `content-security-policy`
-  // header first and only falls back to the report-only one, so both carry
-  // the strict policy: on Vercel the first one otherwise arrives without a
-  // nonce and every framework script is left unsigned.
+  // Always overwritten, so a client cannot choose the nonce. Next.js reads the
+  // nonce for its own scripts from the request's enforced policy first, and on
+  // Vercel the response's enforced policy is copied onto that request, so both
+  // carry the same nonce (ADR-0009, amendment of 2026-11-25).
   request.headers.set(NONCE_HEADER, nonce);
-  request.headers.set('content-security-policy', policy);
-  request.headers.set('content-security-policy-report-only', policy);
+  request.headers.set('content-security-policy', enforced);
+  request.headers.set('content-security-policy-report-only', strict);
 
   const response = handleLocale(request);
-  response.headers.set('Content-Security-Policy-Report-Only', withViolationReports(policy));
+  response.headers.set('Content-Security-Policy', enforced);
+  response.headers.set('Content-Security-Policy-Report-Only', withViolationReports(strict));
   response.headers.set('Reporting-Endpoints', reportingEndpoints(request.nextUrl.origin));
   return response;
 }

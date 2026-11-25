@@ -234,10 +234,11 @@ an ecosystem ADR in `felpsxp-architecture`.
   - [ ] Enforce it, after a clean period in production. A crawl of every
         sitemap URL in production on 2026-11-25 found every framework script
         without the nonce: Next.js reads it from the request's enforced CSP
-        header first, which arrives on Vercel without one, while the local
-        suite never sent that header. Fixed by giving both request headers the
-        strict policy, with end-to-end tests for that case; the clean period
-        starts once a new crawl of production comes back without violations.
+        header first, and on Vercel the response's enforced policy is copied
+        onto that request. Giving both request headers the strict policy (#119)
+        was not enough; the enforced policy of every page now carries the nonce
+        too (ADR-0009, amendment of 2026-11-25). Enforcement follows a
+        production crawl with no violations.
 - [ ] Public `/security/observatory` page with aggregated charts
       (Recharts), reading only tier C aggregates from the Platform:
       attempts per hour, most probed paths, top countries and networks,
