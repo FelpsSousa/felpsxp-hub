@@ -2,52 +2,105 @@
 
 /*
  * Palette hand-ported from github.com/primer/primitives (MIT), per
- * ADR-0005: src/tokens/base/color/{light,dark}/{light,dark}.json5.
- * --color-accent is Primer's own purple scale, promoted from GitHub's
- * secondary "done" hue to this repo's primary brand accent.
+ * ADR-0005 and ADR-0012 (the FelpsXP visual standard, shared with FelpsXP
+ * Logs): src/tokens/base/color/{light,dark}/{light,dark}.json5.
+ * --color-accent is Primer's own purple scale, the brand accent; links use
+ * Primer blue. Layers from back to front: inset, canvas, surface. Each state
+ * colour has a muted fill (`*-muted`) for badges and highlighted cards.
  */
 @theme {
+  --color-inset: #f6f8fa;
   --color-canvas: #ffffff;
   --color-surface: #f6f8fa;
   --color-border: #d1d9e0;
   --color-fg: #1f2328;
   --color-fg-muted: #59636e;
+  --color-link: #0969da;
   --color-success: #1a7f37;
+  --color-success-muted: #dafbe1;
   --color-danger: #cf222e;
+  --color-danger-muted: #ffebe9;
   --color-attention: #9a6700;
+  --color-attention-muted: #fff8c5;
   --color-accent: #8250df;
+  --color-accent-muted: #fbefff;
+  --color-info-muted: #ddf4ff;
+  --color-tab-active: #fd8c73;
+
+  /* Accent faces (ADR-0012), self-hosted through next/font in
+     src/lib/fonts.ts: a typewriter face for small labels and a retro game
+     face for the XP badge. Never for names, headings, body text or numbers. */
+  --font-typewriter: var(--font-special-elite), 'Courier New', monospace;
+  --font-pixel: var(--font-press-start), ui-monospace, monospace;
 }
 
 /*
  * Dark palette. It applies when the visitor explicitly chose dark
  * (`<html data-theme="dark">`, set by the theme toggle), or when the
  * operating system prefers dark and no explicit light choice was made.
- * Light is the @theme default above.
+ * Light is the @theme default above. Any element can also force a palette
+ * with `data-theme`, which is how /design shows both side by side.
  */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
+    --color-inset: #010409;
     --color-canvas: #0d1117;
     --color-surface: #151b23;
     --color-border: #3d444d;
     --color-fg: #f0f6fc;
     --color-fg-muted: #9198a1;
+    --color-link: #4493f8;
     --color-success: #3fb950;
+    --color-success-muted: #2ea04326;
     --color-danger: #f85149;
+    --color-danger-muted: #f8514926;
     --color-attention: #d29922;
+    --color-attention-muted: #bb800926;
     --color-accent: #ab7df8;
+    --color-accent-muted: #ab7df826;
+    --color-info-muted: #388bfd26;
+    --color-tab-active: #f78166;
   }
 }
 
-:root[data-theme='dark'] {
-  --color-canvas: #0d1117;
-  --color-surface: #151b23;
-  --color-border: #3d444d;
-  --color-fg: #f0f6fc;
-  --color-fg-muted: #9198a1;
-  --color-success: #3fb950;
-  --color-danger: #f85149;
-  --color-attention: #d29922;
-  --color-accent: #ab7df8;
+[data-theme='dark'] {
+    --color-inset: #010409;
+    --color-canvas: #0d1117;
+    --color-surface: #151b23;
+    --color-border: #3d444d;
+    --color-fg: #f0f6fc;
+    --color-fg-muted: #9198a1;
+    --color-link: #4493f8;
+    --color-success: #3fb950;
+    --color-success-muted: #2ea04326;
+    --color-danger: #f85149;
+    --color-danger-muted: #f8514926;
+    --color-attention: #d29922;
+    --color-attention-muted: #bb800926;
+    --color-accent: #ab7df8;
+    --color-accent-muted: #ab7df826;
+    --color-info-muted: #388bfd26;
+    --color-tab-active: #f78166;
+}
+
+[data-theme='light'] {
+  --color-inset: #f6f8fa;
+  --color-canvas: #ffffff;
+  --color-surface: #f6f8fa;
+  --color-border: #d1d9e0;
+  --color-fg: #1f2328;
+  --color-fg-muted: #59636e;
+  --color-link: #0969da;
+  --color-success: #1a7f37;
+  --color-success-muted: #dafbe1;
+  --color-danger: #cf222e;
+  --color-danger-muted: #ffebe9;
+  --color-attention: #9a6700;
+  --color-attention-muted: #fff8c5;
+  --color-accent: #8250df;
+  --color-accent-muted: #fbefff;
+  --color-info-muted: #ddf4ff;
+  --color-tab-active: #fd8c73;
 }
 
 /* Native controls and scrollbars follow the active palette. */

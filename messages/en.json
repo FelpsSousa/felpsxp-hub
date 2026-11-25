@@ -34,7 +34,8 @@
     "security": "Security",
     "accessibility": "Accessibility",
     "versionLabel": "Version {version}, release notes",
-    "commitLabel": "Commit {commit} in production"
+    "commitLabel": "Commit {commit} in production",
+    "design": "Visual standard"
   },
   "notFound": {
     "title": "Page not found",
@@ -245,6 +246,150 @@
       "experience": "Timeline and skills",
       "projects": "Projects",
       "contact": "Contact"
+    }
+  },
+  "design": {
+    "title": "Visual standard",
+    "description": "The FelpsXP visual standard, live: colours, type, icons, components and the variations still being chosen, side by side, in both themes.",
+    "lead": "The FelpsXP visual standard, live, built with the same components the pages use. Its base is Primer, GitHub's open-source design system, with a few discreet retro touches as a signature.",
+    "decision": "Decision recorded in ADR-0012",
+    "inUse": "In use",
+    "option": "Option {letter}",
+    "light": "Light",
+    "dark": "Dark",
+    "colors": {
+      "title": "Colour",
+      "lead": "The same tokens in both themes. A state tone appears as a border or a muted fill, never as a saturated background behind text.",
+      "canvas": "Page",
+      "surface": "Cards and headers",
+      "inset": "Inset background",
+      "border": "Borders",
+      "fg": "Text",
+      "fgMuted": "Secondary text",
+      "link": "Links",
+      "accent": "Brand and primary action",
+      "success": "Success",
+      "attention": "Attention",
+      "danger": "Danger",
+      "tabActive": "Current tab, as on GitHub"
+    },
+    "type": {
+      "title": "Type",
+      "lead": "System faces for everything people read. The two retro faces only mark: never the name, headings, running text or numbers.",
+      "h1": "Page title",
+      "h2": "Section title",
+      "h3": "Subheading",
+      "body": "Running text at 16 px, with a line height that is comfortable for unhurried reading.",
+      "mono": "code, paths and versions: v1.2.0",
+      "typewriter": "Section label",
+      "pixel": "50 XP",
+      "sans": "System sans: all text",
+      "monoFace": "System mono: code and paths",
+      "typewriterFace": "Special Elite: small labels above sections",
+      "pixelFace": "Press Start 2P: only the XP badge and the FelpsXP mark"
+    },
+    "icons": {
+      "title": "Icons",
+      "lead": "Octicons, 16 px beside headings and navigation and 12 px in meta lines, always next to a text label."
+    },
+    "components": {
+      "title": "Components",
+      "badges": "Badges",
+      "box": "Box",
+      "boxTitle": "Highlights",
+      "boxRow1": "Rows divided by the border colour, for lists inside a Box",
+      "boxRow2": "Each row can carry an icon, text and badges",
+      "boxRow3": "The header row sits on the surface fill",
+      "scoreCards": "ScoreCard",
+      "scoreLabel": "Tests",
+      "scoreDetail": "Unit tests, in the latest build"
+    },
+    "choices": {
+      "title": "Being chosen",
+      "lead": "Each item shows its options rendered with the site's real components. The one marked in use is what the pages show today.",
+      "navCurrent": {
+        "title": "Current navigation item",
+        "a": "Purple underline",
+        "b": "Coral underline, like GitHub's tabs",
+        "c": "Pill on a muted purple fill"
+      },
+      "statusBadge": {
+        "title": "Project status badges",
+        "a": "Neutral outline",
+        "b": "Outline in the status tone",
+        "c": "Muted fill in the tone, with an icon"
+      },
+      "projectCard": {
+        "title": "Project card",
+        "a": "Plain border",
+        "b": "Box with the badges in its header",
+        "c": "Side stripe in the status tone"
+      },
+      "sectionLabel": {
+        "title": "Section label",
+        "a": "Uppercase in the system face",
+        "b": "Typewriter",
+        "c": "Typewriter with an icon",
+        "sample": "Current focus"
+      },
+      "numbers": {
+        "title": "Headline numbers",
+        "a": "Purple mono",
+        "b": "ScoreCard with an icon",
+        "c": "ScoreCard in the accent tone"
+      },
+      "xpBadge": {
+        "title": "XP badge",
+        "a": "Mono with a tilde",
+        "b": "Pixel face in a purple pill",
+        "c": "Pixel face with a star",
+        "note": "The value shown follows ADR-0013, still a proposal."
+      },
+      "projectSections": {
+        "title": "Project page sections",
+        "a": "Loose sections",
+        "b": "Box with an icon in its header"
+      },
+      "brandMark": {
+        "title": "Brand in the header",
+        "a": "Name in the system face",
+        "b": "Name with the pixel XP badge"
+      }
+    },
+    "xp": {
+      "title": "XP legend (proposal)",
+      "lead": "How each project's XP would be computed if ADR-0013 is accepted: a base per level, with a written criterion, plus a bonus for each piece of evidence the page itself proves. It is a self-assessment with public criteria, not a certification.",
+      "level": "Level",
+      "base": "Base",
+      "criterion": "Criterion",
+      "evidence": "Evidence",
+      "bonus": "Bonus",
+      "proof": "How the page proves it",
+      "foundational": "Study or practice with a guided scope, one concept at a time",
+      "applied": "A complete tool or product, used for real, built on known patterns",
+      "advanced": "A system in production with real users or data, and at least one hard decision in architecture, security or scale",
+      "frontier": "A foundation other systems consume, or a problem with no ready recipe, that sets the patterns others follow",
+      "production": "In production or used for real",
+      "productionProof": "A link to the live product, or a dated statement of use in the text",
+      "publicCode": "Public source code",
+      "publicCodeProof": "A link to the public repository",
+      "decisions": "Written decisions",
+      "decisionsProof": "A link to public ADRs",
+      "screens": "Screens or a demo",
+      "screensProof": "At least one screen in the gallery"
+    },
+    "credits": {
+      "title": "Credits and licences",
+      "lead": "Everything that comes from third parties, with its author and licence. The Hub uses Primer, GitHub's open-source design system, as a reference; it is not a GitHub product, it is not endorsed by GitHub, and it uses no GitHub logos.",
+      "asset": "Asset",
+      "author": "Author",
+      "license": "Licence",
+      "use": "Use",
+      "primerUse": "Colour values",
+      "octiconsUse": "Icons",
+      "specialEliteUse": "Section labels",
+      "pressStartUse": "XP badge and mark",
+      "notices": "The full licence notices live in the repository, in THIRD_PARTY_NOTICES.md."
     }
   }
 }

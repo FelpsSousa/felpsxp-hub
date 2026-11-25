@@ -1,6 +1,6 @@
 'use client';
 
-import { Monitor, Moon, Sun } from 'lucide-react';
+import { DeviceDesktopIcon, MoonIcon, SunIcon } from '@primer/octicons-react';
 import { useTranslations } from 'next-intl';
 import { useSyncExternalStore } from 'react';
 import {
@@ -11,7 +11,7 @@ import {
   type ThemePreference,
 } from '@/lib/theme';
 
-const icons = { system: Monitor, light: Sun, dark: Moon } as const;
+const icons = { system: DeviceDesktopIcon, light: SunIcon, dark: MoonIcon } as const;
 
 /** Static pages cannot know the stored choice, so the server renders `system`. */
 function getServerSnapshot(): ThemePreference {

@@ -34,7 +34,8 @@
     "security": "Segurança",
     "accessibility": "Acessibilidade",
     "versionLabel": "Versão {version}, notas de lançamento",
-    "commitLabel": "Commit {commit} em produção"
+    "commitLabel": "Commit {commit} em produção",
+    "design": "Padrão visual"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -245,6 +246,150 @@
       "experience": "Linha do tempo e habilidades",
       "projects": "Projetos",
       "contact": "Contato"
+    }
+  },
+  "design": {
+    "title": "Padrão visual",
+    "description": "O padrão visual do FelpsXP ao vivo: cores, tipos, ícones, componentes e as variações ainda em escolha, lado a lado, nos dois temas.",
+    "lead": "O padrão visual do FelpsXP ao vivo, com os mesmos componentes que as páginas usam. A base é o Primer, o design system de código aberto do GitHub, com alguns toques retrô discretos como assinatura.",
+    "decision": "Decisão registrada na ADR-0012",
+    "inUse": "Em uso",
+    "option": "Opção {letter}",
+    "light": "Claro",
+    "dark": "Escuro",
+    "colors": {
+      "title": "Cores",
+      "lead": "Os mesmos tokens nos dois temas. Um tom de estado aparece como borda ou fundo suave, nunca como fundo saturado atrás de texto.",
+      "canvas": "Página",
+      "surface": "Cartões e cabeçalhos",
+      "inset": "Fundo recuado",
+      "border": "Bordas",
+      "fg": "Texto",
+      "fgMuted": "Texto secundário",
+      "link": "Links",
+      "accent": "Marca e ação principal",
+      "success": "Sucesso",
+      "attention": "Atenção",
+      "danger": "Perigo",
+      "tabActive": "Aba atual, como no GitHub"
+    },
+    "type": {
+      "title": "Tipografia",
+      "lead": "Fontes do sistema para tudo que se lê. As duas fontes retrô só marcam: nunca o nome, títulos, texto corrido ou números.",
+      "h1": "Título da página",
+      "h2": "Título de seção",
+      "h3": "Subtítulo",
+      "body": "Texto corrido em 16 px, com altura de linha confortável para quem lê com calma.",
+      "mono": "código, caminhos e versões: v1.2.0",
+      "typewriter": "Rótulo de seção",
+      "pixel": "50 XP",
+      "sans": "Sans do sistema: todo o texto",
+      "monoFace": "Mono do sistema: código e caminhos",
+      "typewriterFace": "Special Elite: rótulos pequenos acima das seções",
+      "pixelFace": "Press Start 2P: só o selo de XP e a marca FelpsXP"
+    },
+    "icons": {
+      "title": "Ícones",
+      "lead": "Octicons, com 16 px ao lado de títulos e da navegação e 12 px em linhas de detalhe, sempre acompanhados de um texto."
+    },
+    "components": {
+      "title": "Componentes",
+      "badges": "Selos",
+      "box": "Box",
+      "boxTitle": "Destaques",
+      "boxRow1": "Linhas divididas pela cor da borda, para listas dentro de um Box",
+      "boxRow2": "Cada linha pode levar ícone, texto e selos",
+      "boxRow3": "O cabeçalho fica sobre o fundo de superfície",
+      "scoreCards": "ScoreCard",
+      "scoreLabel": "Testes",
+      "scoreDetail": "Unitários, no último build"
+    },
+    "choices": {
+      "title": "Em escolha",
+      "lead": "Cada item mostra as opções renderizadas com os componentes reais do site. A marcada como em uso é a que as páginas mostram hoje.",
+      "navCurrent": {
+        "title": "Item atual da navegação",
+        "a": "Sublinhado roxo",
+        "b": "Sublinhado coral, como as abas do GitHub",
+        "c": "Pílula com fundo roxo suave"
+      },
+      "statusBadge": {
+        "title": "Selos de status do projeto",
+        "a": "Contorno neutro",
+        "b": "Contorno no tom do status",
+        "c": "Fundo suave no tom, com ícone"
+      },
+      "projectCard": {
+        "title": "Card de projeto",
+        "a": "Borda simples",
+        "b": "Box com os selos no cabeçalho",
+        "c": "Faixa lateral no tom do status"
+      },
+      "sectionLabel": {
+        "title": "Rótulo de seção",
+        "a": "Caixa-alta na fonte do sistema",
+        "b": "Máquina de escrever",
+        "c": "Máquina de escrever com ícone",
+        "sample": "Foco atual"
+      },
+      "numbers": {
+        "title": "Números em destaque",
+        "a": "Mono roxo",
+        "b": "ScoreCard com ícone",
+        "c": "ScoreCard no tom de destaque"
+      },
+      "xpBadge": {
+        "title": "Selo de XP",
+        "a": "Mono com til",
+        "b": "Fonte pixel em pílula roxa",
+        "c": "Fonte pixel com estrela",
+        "note": "O valor mostrado segue a ADR-0013, ainda em proposta."
+      },
+      "projectSections": {
+        "title": "Seções da página de projeto",
+        "a": "Seções soltas",
+        "b": "Box com ícone no cabeçalho"
+      },
+      "brandMark": {
+        "title": "Marca no cabeçalho",
+        "a": "Nome na fonte do sistema",
+        "b": "Nome com o selo XP em pixel"
+      }
+    },
+    "xp": {
+      "title": "Legenda de XP (proposta)",
+      "lead": "Como o XP de cada projeto seria calculado se a ADR-0013 for aceita: uma base por nível, com critério escrito, mais um bônus por evidência que a própria página prova. É uma autoavaliação com critérios públicos, não uma certificação.",
+      "level": "Nível",
+      "base": "Base",
+      "criterion": "Critério",
+      "evidence": "Evidência",
+      "bonus": "Bônus",
+      "proof": "Como a página prova",
+      "foundational": "Estudo ou prática com escopo guiado, um conceito por vez",
+      "applied": "Ferramenta ou produto completo, usado de verdade, com padrões conhecidos",
+      "advanced": "Sistema em produção com usuários ou dados reais e ao menos uma decisão difícil de arquitetura, segurança ou escala",
+      "frontier": "Fundação que outros sistemas consomem, ou problema sem receita pronta, que define os padrões seguidos pelos outros",
+      "production": "Em produção ou usado de verdade",
+      "productionProof": "Link para o produto no ar ou registro datado de uso no texto",
+      "publicCode": "Código público",
+      "publicCodeProof": "Link para o repositório público",
+      "decisions": "Decisões registradas",
+      "decisionsProof": "Link para ADRs públicas",
+      "screens": "Telas ou demonstração",
+      "screensProof": "Ao menos uma tela na galeria"
+    },
+    "credits": {
+      "title": "Créditos e licenças",
+      "lead": "Tudo o que vem de terceiros, com autor e licença. O Hub usa o Primer, o design system de código aberto do GitHub, como referência; não é um produto do GitHub, não tem endosso dele e não usa logotipos do GitHub.",
+      "asset": "Recurso",
+      "author": "Autor",
+      "license": "Licença",
+      "use": "Uso",
+      "primerUse": "Valores de cor",
+      "octiconsUse": "Ícones",
+      "specialEliteUse": "Rótulos de seção",
+      "pressStartUse": "Selo de XP e marca",
+      "notices": "Os avisos completos de licença ficam no repositório, em THIRD_PARTY_NOTICES.md."
     }
   }
 }

@@ -19,6 +19,7 @@ export const pages: readonly string[] = [
   '/privacy',
   '/security',
   '/accessibility',
+  '/design',
   '/changelog',
 ];
 
