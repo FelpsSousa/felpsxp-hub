@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/FelpsSousa/felpsxp-hub/compare/v1.1.0...v1.1.1) (2026-11-25)
+
+
+### Bug Fixes
+
+* **security:** give Next.js the nonce on Vercel for the strict CSP ([#119](https://github.com/FelpsSousa/felpsxp-hub/issues/119)) ([37b7b02](https://github.com/FelpsSousa/felpsxp-hub/commit/37b7b0213979f598a844ec39020073c76c9ff58b))
+
 ## [1.1.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v1.0.0...v1.1.0) (2026-11-24)
 
 
