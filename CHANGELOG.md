@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v1.2.0...v1.3.0) (2026-11-25)
+
+
+### Features
+
+* **design:** add the /design page, Octicons and the accent faces (ADR-0012) ([#127](https://github.com/FelpsSousa/felpsxp-hub/issues/127)) ([81f3764](https://github.com/FelpsSousa/felpsxp-hub/commit/81f37645bb064ea00a456bf49533b5ac5ca6828d))
+* **security:** enforce the strict nonce CSP on every page ([#124](https://github.com/FelpsSousa/felpsxp-hub/issues/124)) ([4f20cd6](https://github.com/FelpsSousa/felpsxp-hub/commit/4f20cd6abdda4e076ac5059a4416fa6de50edc12))
+
 ## [1.2.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v1.1.1...v1.2.0) (2026-11-25)
 
 
