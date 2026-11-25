@@ -63,6 +63,25 @@ test.describe('strict CSP in report-only mode (ADR-0009)', () => {
     expect(await response.text()).not.toContain('nonce="attacker"');
   });
 
+  // Next.js reads the nonce from the request's enforced CSP header before the
+  // report-only one. On Vercel that header arrives without a nonce, which once
+  // left every framework script unsigned in production while this suite,
+  // run without it, stayed green.
+  for (const [label, header] of [
+    ['carries no nonce', "default-src 'self'"],
+    ['names its own nonce', "script-src 'nonce-attacker'"],
+  ] as const) {
+    test(`every script keeps the response nonce when the request CSP ${label}`, async ({ request }) => {
+      const response = await request.get('/en/projects', { headers: { 'content-security-policy': header } });
+      const nonce = response.headers()['content-security-policy-report-only']?.match(/'nonce-([^']+)'/)?.[1] ?? '';
+      expect(nonce).not.toBe('');
+      expect(nonce).not.toBe('attacker');
+      const scripts = (await response.text()).match(/<script(?![^>]*application\/ld\+json)[^>]*>/g) ?? [];
+      expect(scripts.length).toBeGreaterThan(1);
+      for (const script of scripts) expect(script).toContain(`nonce="${nonce}"`);
+    });
+  }
+
   for (const { code, prefix } of locales) {
     for (const path of pages) {
       test(`${urlFor(prefix, path)} (${code}) runs without a single violation`, async ({ page }) => {
