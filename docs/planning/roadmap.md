@@ -231,7 +231,13 @@ an ecosystem ADR in `felpsxp-architecture`.
       decision is ADR-0009: per-request nonces, report-only first.
   - [x] Strict nonce policy in report-only mode; the end-to-end suite fails
         on any violation, and Zod no longer ships to the browser.
-  - [ ] Enforce it, after a clean period in production.
+  - [ ] Enforce it, after a clean period in production. A crawl of every
+        sitemap URL in production on 2026-11-25 found every framework script
+        without the nonce: Next.js reads it from the request's enforced CSP
+        header first, which arrives on Vercel without one, while the local
+        suite never sent that header. Fixed by giving both request headers the
+        strict policy, with end-to-end tests for that case; the clean period
+        starts once a new crawl of production comes back without violations.
 - [ ] Public `/security/observatory` page with aggregated charts
       (Recharts), reading only tier C aggregates from the Platform:
       attempts per hour, most probed paths, top countries and networks,
