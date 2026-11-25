@@ -155,9 +155,14 @@ cleared with the showcase checklist goes in; facts come from FelpsXP Logs.
 - [x] FelpsXP Finance screens: five screens in both languages and themes,
       captured from the production web build with a fictitious household
       (the Finance repository's `seed:demo` and `screenshots:demo`).
-- [ ] Candidattus and Connexicco: the public module names from the products'
-      own sites, screenshots of the public pages, Felipe's role (sole frontend
-      at the start, frontend owner to the end, technical reference).
+- [x] Candidattus and Connexicco: the public module names from the products'
+      own sites and Felipe's role (sole frontend at the start, frontend owner
+      to the end, technical reference); both pages stay text and link only.
+      Screenshots were dropped on 2026-11-24 after a look at what is public:
+      the two sites are marketing pages Felipe did not build, with licensed
+      stock photos of real people, and the Candidattus app portal no longer
+      resolves. A capture would credit him with work that is not his, so the
+      visual evidence goes to his own projects instead.
 - [ ] FelpsXP Finance: a demo with fictitious test data (seeded household,
       accounts and transactions), screenshots of web and mobile, the
       multi-tenant isolation explained with the RLS tests as proof.
@@ -215,6 +220,10 @@ an ecosystem ADR in `felpsxp-architecture`.
 - [x] Canary routes for common scanner targets (`/wp-admin`, `/.env`,
       `/.git/config`, `/phpmyadmin`, and similar): respond with a plain 404
       and emit an anonymous `hub.probe.v1` event (ADR-0011).
+      Checked live on 2026-11-24 (v1.1.0): the WordPress paths never reach
+      the proxy, because Vercel's own firewall answers them with a 403
+      (`X-Vercel-Mitigated: deny`); so the `wordpress` category stays empty
+      while the site is on Vercel, and the other categories are counted.
 - [x] CSP violation reporting endpoint (`/api/csp-report`, both `report-to`
       and `report-uri`), logging anonymous `hub.csp.v1` events.
 - [ ] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script
