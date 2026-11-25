@@ -226,19 +226,17 @@ an ecosystem ADR in `felpsxp-architecture`.
       while the site is on Vercel, and the other categories are counted.
 - [x] CSP violation reporting endpoint (`/api/csp-report`, both `report-to`
       and `report-uri`), logging anonymous `hub.csp.v1` events.
-- [ ] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script
+- [x] Drop `'unsafe-inline'` from `script-src`. A hash for the theme script
       alone would block Next.js's per-page inline hydration payload; the
       decision is ADR-0009: per-request nonces, report-only first.
   - [x] Strict nonce policy in report-only mode; the end-to-end suite fails
         on any violation, and Zod no longer ships to the browser.
-  - [ ] Enforce it, after a clean period in production. A crawl of every
-        sitemap URL in production on 2026-11-25 found every framework script
-        without the nonce: Next.js reads it from the request's enforced CSP
-        header first, and on Vercel the response's enforced policy is copied
-        onto that request. Giving both request headers the strict policy (#119)
-        was not enough; the enforced policy of every page now carries the nonce
-        too (ADR-0009, amendment of 2026-11-25). Enforcement follows a
-        production crawl with no violations.
+  - [x] Enforce it. A crawl of every sitemap URL in production on 2026-11-25
+        found every framework script without the nonce: Next.js reads it from
+        the request's enforced CSP header, and on Vercel the response's
+        enforced policy is copied onto that request (#119, #121, ADR-0009
+        amendment). Once fixed, a new crawl of 140 page loads came back with no
+        violation, and the strict policy became the enforced one.
 - [ ] Public `/security/observatory` page with aggregated charts
       (Recharts), reading only tier C aggregates from the Platform:
       attempts per hour, most probed paths, top countries and networks,

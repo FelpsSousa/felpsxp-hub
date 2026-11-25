@@ -114,7 +114,7 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 
 | ID | Threat | Mitigation | Status |
 | --- | --- | --- | --- |
-| E1 | Cross-site scripting | React escapes by default; only two raw HTML insertions, both controlled (a constant theme script and escaped JSON-LD); CSP with `default-src 'self'`, `object-src 'none'`, `base-uri 'self'`; a strict nonce policy with `'strict-dynamic'` runs in report-only mode, and the end-to-end suite fails on any violation on any page (ADR-0009) | Implemented |
+| E1 | Cross-site scripting | React escapes by default; only two raw HTML insertions, both controlled (a constant theme script and escaped JSON-LD); every page enforces a strict CSP: a per-request nonce with `'strict-dynamic'`, no `'unsafe-inline'` and no host allowlist for scripts, plus `default-src 'self'`, `object-src 'none'` and `base-uri 'self'`; violations are reported as anonymous events, and the end-to-end suite fails on any violation on any page (ADR-0009) | Implemented |
 | E2 | Clickjacking | `frame-ancestors 'none'` and `X-Frame-Options: DENY` | Implemented |
 | E3 | Cross-site request forgery on the contact form | Server Actions accept only `POST` and reject a mismatched `Origin` (#32) | Implemented |
 | E4 | Takeover of an account that controls the Hub (GitHub, Vercel, Cloudflare, Resend, registrar) | Two-factor authentication with a hardware key or passkey on every one; API keys with minimal scope (Resend: sending only, one domain) | Owner |
@@ -124,7 +124,6 @@ Status: **Implemented** (with a reference), **Planned** (with the roadmap block 
 
 | Risk | Why it is accepted | Plan |
 | --- | --- | --- |
-| `'unsafe-inline'` in `script-src` | Required by Next.js's inline hydration payload, which differs on every page, and the theme script | Per-request nonces with `'strict-dynamic'` (ADR-0009): shipped in report-only mode with zero violations in the end-to-end suite; a production crawl on 2026-11-25 showed Vercel left the framework scripts without the nonce, fixed by putting the nonce in the enforced policy of every page, which already blocks inline scripts without it in browsers with nonce support (ADR-0009 amendment); the strict policy is enforced once a production crawl runs clean |
 | No required review before merge | Solo maintainer; GitHub does not allow approving one's own pull request | Required checks, small PRs and CodeQL compensate; enable reviews when there is a second maintainer |
 | Turnstile loads a third-party script | The cost of abuse without a bot check is higher | Limited to `https://challenges.cloudflare.com` in the CSP |
 | The 404 page renders on the client | A Next.js limitation with a root layout under `[locale]`; no security impact, the status is a real 404 with `noindex` | Revisit when `global-not-found` is stable |

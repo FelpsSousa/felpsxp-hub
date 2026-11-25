@@ -17,10 +17,9 @@ const isDev = process.env.NODE_ENV !== 'production';
 /**
  * Locale routing and the CSP of every page (ADR-0009): each request gets a
  * fresh nonce, passed on as request headers, so Next.js and the root layout
- * put it on their inline scripts. The enforced baseline carries the nonce and
- * the strict policy runs in report-only mode, with violations reported to
- * `/api/csp-report`. Paths the proxy skips get the baseline from
- * `next.config.ts`.
+ * put it on their inline scripts. The strict policy is enforced, with
+ * violations reported to `/api/csp-report`. Paths the proxy skips (files, API
+ * routes) get the baseline from `next.config.ts`; the canary 404s set it here.
  */
 export default function proxy(request: NextRequest) {
   // Canary routes (ADR-0011): a plain 404 and an anonymous event, before any
@@ -45,20 +44,18 @@ export default function proxy(request: NextRequest) {
   }
 
   const nonce = createNonce();
-  const enforced = contentSecurityPolicy(isDev, nonce);
-  const strict = strictContentSecurityPolicy(nonce, isDev);
+  const policy = strictContentSecurityPolicy(nonce, isDev);
 
   // Always overwritten, so a client cannot choose the nonce. Next.js reads the
-  // nonce for its own scripts from the request's enforced policy first, and on
-  // Vercel the response's enforced policy is copied onto that request, so both
-  // carry the same nonce (ADR-0009, amendment of 2026-11-25).
+  // nonce for its own scripts from the request's enforced policy, and on
+  // Vercel the response's enforced policy is copied onto that request, so the
+  // two are the same (ADR-0009, amendment of 2026-11-25).
   request.headers.set(NONCE_HEADER, nonce);
-  request.headers.set('content-security-policy', enforced);
-  request.headers.set('content-security-policy-report-only', strict);
+  request.headers.set('content-security-policy', policy);
+  request.headers.delete('content-security-policy-report-only');
 
   const response = handleLocale(request);
-  response.headers.set('Content-Security-Policy', enforced);
-  response.headers.set('Content-Security-Policy-Report-Only', withViolationReports(strict));
+  response.headers.set('Content-Security-Policy', withViolationReports(policy));
   response.headers.set('Reporting-Endpoints', reportingEndpoints(request.nextUrl.origin));
   return response;
 }
