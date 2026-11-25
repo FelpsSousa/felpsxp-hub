@@ -40,8 +40,13 @@ export default function proxy(request: NextRequest) {
   const nonce = createNonce();
   const policy = strictContentSecurityPolicy(nonce, process.env.NODE_ENV !== 'production');
 
-  // Always overwritten, so a client cannot choose the nonce.
+  // Always overwritten, so a client cannot choose the nonce. Next.js reads
+  // the nonce for its own scripts from the request's `content-security-policy`
+  // header first and only falls back to the report-only one, so both carry
+  // the strict policy: on Vercel the first one otherwise arrives without a
+  // nonce and every framework script is left unsigned.
   request.headers.set(NONCE_HEADER, nonce);
+  request.headers.set('content-security-policy', policy);
   request.headers.set('content-security-policy-report-only', policy);
 
   const response = handleLocale(request);
