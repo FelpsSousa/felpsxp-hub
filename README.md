@@ -47,9 +47,14 @@ Screenshots of the live site; GitHub shows the dark versions when your theme is 
 - **Content as code.** Profile, projects and legal pages are typed TypeScript validated by Zod
   schemas at build time; the types are inferred from the schemas, and a malformed record fails
   the build naming the record and field ([ADR-0004](docs/adr/0004-content-validation-and-mdx-scope.md)).
-- **Decisions before code.** Eight [Architecture Decision Records](docs/adr/README.md) so far,
-  including the decision to rebuild from scratch instead of extracting the old app's history
+- **Decisions before code.** Every decision that is costly to reverse is an
+  [Architecture Decision Record](docs/adr/README.md) written before the code, including the decision to rebuild from scratch instead of extracting the old app's history
   ([ADR-0002](docs/adr/0002-start-fresh-no-history-extraction.md)).
+- **Visual standard, credited.** Based on GitHub's open-source Primer design system, with
+  Octicons and two self-hosted retro faces as the FelpsXP signature; the standard is live at
+  [`/design`](https://felpsxp.com/design), and every third-party asset is listed with its
+  licence in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)
+  ([ADR-0012](docs/adr/0012-felpsxp-visual-standard.md)).
 
 **Security**
 

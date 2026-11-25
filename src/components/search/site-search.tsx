@@ -1,6 +1,6 @@
 'use client';
 
-import { Search } from 'lucide-react';
+import { SearchIcon } from '@primer/octicons-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useEffectEvent, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { useRouter } from '@/i18n/navigation';
@@ -122,7 +122,7 @@ export function SiteSearch() {
         title={`${t('open')} (Ctrl+K)`}
         className="rounded-md p-2 text-fg-muted hover:text-fg focus-visible:outline-2 focus-visible:outline-accent"
       >
-        <Search aria-hidden="true" className="size-5" />
+        <SearchIcon aria-hidden size={20} />
       </button>
 
       <dialog
@@ -136,7 +136,7 @@ export function SiteSearch() {
       >
         <div className="flex flex-col">
           <div className="flex items-center gap-3 border-b border-border px-4">
-            <Search aria-hidden="true" className="size-5 shrink-0 text-fg-muted" />
+            <SearchIcon aria-hidden size={20} className="shrink-0 text-fg-muted" />
             <input
               ref={inputRef}
               type="text"

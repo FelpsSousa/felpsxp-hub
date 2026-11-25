@@ -28,6 +28,9 @@ export async function SiteFooter() {
             </Link> ·{' '}
             <Link href="/accessibility" className="underline underline-offset-4 hover:text-fg">
               {t('accessibility')}
+            </Link> ·{' '}
+            <Link href="/design" className="underline underline-offset-4 hover:text-fg">
+              {t('design')}
             </Link>
           </p>
           {/* Small text, so each link gets a 24px-high box of its own to meet

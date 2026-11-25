@@ -44,7 +44,12 @@ Telas do site no ar; o GitHub mostra as versões escuras quando o seu tema é es
   [Lighthouse](docs/quality/lighthouse.md)).
 - **Conteúdo como código:** perfil, projetos e páginas legais em TypeScript validado com Zod
   no build.
-- **Decisões antes do código:** oito [ADRs](docs/adr/README.md) até agora (em inglês).
+- **Decisões antes do código:** toda decisão cara de reverter vira uma
+  [ADR](docs/adr/README.md) antes do código (em inglês).
+- **Padrão visual com créditos:** baseado no Primer, o design system de código aberto do
+  GitHub, com Octicons e duas fontes retrô hospedadas no próprio site como assinatura do
+  FelpsXP; o padrão fica ao vivo em [`/design`](https://felpsxp.com/design), e cada recurso
+  de terceiros aparece com a sua licença em [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 - **Versão visível:** versionamento semântico automatizado pelo release-please a partir dos
   Conventional Commits; o rodapé mostra a versão e o commit em produção.
 - **Modelo de ameaças STRIDE** com cada mitigação ligada ao PR ou ADR que a implementa

@@ -8,6 +8,7 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { StructuredData } from '@/components/seo/structured-data';
 import { locales, routing, type AppLocale } from '@/i18n/routing';
 import { getProfile, getSiteSettings } from '@/lib/content';
+import { pixelFont, typewriterFont } from '@/lib/fonts';
 import { NONCE_HEADER } from '@/lib/security-headers';
 import { themeInitScript } from '@/lib/theme';
 import '../globals.css';
@@ -59,7 +60,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     // suppressHydrationWarning: the inline theme script may set
     // `data-theme` on <html> before React hydrates; that attribute alone is
     // expected to differ from the server-rendered markup.
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${typewriterFont.variable} ${pixelFont.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Runs before first paint so a stored theme never flashes. Carries the
             request's nonce, so the strict CSP of ADR-0009 allows it. */}

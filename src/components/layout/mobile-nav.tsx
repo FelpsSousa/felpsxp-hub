@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu, X } from 'lucide-react';
+import { ThreeBarsIcon, XIcon } from '@primer/octicons-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useId, useRef, useState } from 'react';
 import { NavLink } from '@/components/layout/nav-link';
@@ -45,7 +45,7 @@ export function MobileNav() {
         onClick={() => setOpenedOn(open ? null : pathname)}
         className="-mr-2 rounded-md p-2 text-fg-muted hover:text-fg focus-visible:outline-2 focus-visible:outline-accent"
       >
-        {open ? <X aria-hidden size={20} /> : <Menu aria-hidden size={20} />}
+        {open ? <XIcon aria-hidden size={20} /> : <ThreeBarsIcon aria-hidden size={20} />}
       </button>
 
       <nav
