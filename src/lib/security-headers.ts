@@ -18,25 +18,16 @@ export const CSP_REPORT_GROUP = 'csp-endpoint';
 export const NONCE_HEADER = 'x-nonce';
 
 /**
- * Baseline policy, enforced on every response. 'unsafe-inline' in script-src
- * stays for browsers without nonce support: Next.js ships each page's RSC
- * hydration payload as an inline <script> that differs per page, so it cannot
- * be hashed. 'unsafe-eval' is needed only in development, for Fast Refresh's
- * eval()-wrapped chunks.
- *
- * Pages pass their request's nonce (ADR-0009, amendment of 2026-11-25). Every
- * browser with nonce support then ignores 'unsafe-inline' and runs only the
- * inline scripts that carry it. It also has to be here for Next.js to sign its
- * own scripts at all: Next.js reads the nonce from the request's enforced
- * policy first, and on Vercel the response's enforced policy is copied onto
- * that request, so a policy without the nonce left every framework script
- * unsigned in production.
+ * Baseline policy for responses that run no page scripts: files, API routes
+ * and the canary 404s, none of which pass through a nonce. Pages enforce
+ * `strictContentSecurityPolicy` instead (ADR-0009). 'unsafe-inline' and the
+ * host allowlist are kept here only so that a file opened directly, such as
+ * an SVG, behaves as before; 'unsafe-eval' is needed only in development.
  */
-export function contentSecurityPolicy(isDev: boolean, nonce?: string): string {
+export function contentSecurityPolicy(isDev: boolean): string {
   return policy(
     [
       "'self'",
-      nonce ? `'nonce-${nonce}'` : null,
       "'unsafe-inline'",
       // Cloudflare Turnstile on the contact form (ADR-0007), the only third-party origin.
       TURNSTILE_ORIGIN,
@@ -46,11 +37,11 @@ export function contentSecurityPolicy(isDev: boolean, nonce?: string): string {
 }
 
 /**
- * Strict policy (ADR-0009): only scripts carrying this request's nonce run,
- * and 'strict-dynamic' extends that trust to the scripts they load, such as
- * the Next.js chunks and Turnstile. No 'unsafe-inline' and no host allowlist.
- * Next.js reads the nonce from this header on the request and adds it to its
- * own inline scripts.
+ * Strict policy (ADR-0009), enforced on every page: only scripts carrying this
+ * request's nonce run, and 'strict-dynamic' extends that trust to the scripts
+ * they load, such as the Next.js chunks and Turnstile. No 'unsafe-inline' and
+ * no host allowlist. Next.js reads the nonce from this header on the request
+ * and adds it to its own scripts.
  */
 export function strictContentSecurityPolicy(nonce: string, isDev: boolean): string {
   return policy([`'nonce-${nonce}'`, "'strict-dynamic'"], isDev);
@@ -76,7 +67,7 @@ export function createNonce(): string {
   return btoa(String.fromCharCode(...bytes));
 }
 
-function policy(scriptSources: (string | null)[], isDev: boolean): string {
+function policy(scriptSources: string[], isDev: boolean): string {
   const scriptSrc = [...scriptSources, isDev ? "'unsafe-eval'" : null].filter(Boolean).join(' ');
 
   return [
@@ -121,9 +112,9 @@ export const permissionsPolicy = [
 export const strictTransportSecurity = 'max-age=63072000; includeSubDomains';
 
 /**
- * Headers for every response. The enforced CSP is not among them: pages get
- * theirs, with the nonce, from the proxy (`src/proxy.ts`), and everything the
- * proxy skips gets the baseline from `next.config.ts` (`PROXY_SKIPPED_SOURCE`).
+ * Headers for every response. The CSP is not among them: pages get the strict
+ * policy from the proxy (`src/proxy.ts`), and everything the proxy skips gets
+ * the baseline from `next.config.ts` (`PROXY_SKIPPED_SOURCE`).
  */
 export function securityHeaders(): Header[] {
   return [

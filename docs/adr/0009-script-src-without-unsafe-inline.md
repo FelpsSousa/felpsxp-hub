@@ -105,7 +105,7 @@ acceptable.
 
 - [x] Report-only rollout (#77).
 - [x] Reporting endpoint, logging anonymous `hub.csp.v1` events.
-- [ ] Enforcement, after a clean period in production.
+- [x] Enforcement, after a production crawl with no violation (amendment of 2026-11-25).
 - [x] Measure time to first byte before and after in the Lighthouse pass.
 - [x] Update the threat model and the code comments in `security-headers.ts` and the root
       layout, which still describe the hash plan (#77).
@@ -135,3 +135,10 @@ acceptable.
     production, in both themes and on desktop and mobile, with no violation, plus the
     end-to-end gate. Waiting for a clean period in the logs is not workable on the Hobby plan,
     which keeps runtime logs for about an hour.
+- **2026-11-25 (enforcement):** after the nonce fix reached production, a crawl of all 35
+  URLs (the sitemap plus an unknown path for the 404), in light and dark themes, on desktop
+  and mobile, with the search dialog opened on desktop and each page scrolled to the end,
+  found no CSP violation and no script error in 140 page loads. The strict policy is now the
+  enforced `Content-Security-Policy` of every page, still reporting to `/api/csp-report`, and
+  the report-only header is gone. The baseline with `'unsafe-inline'` remains only for
+  responses that run no page scripts (files, API routes, the canary 404s).

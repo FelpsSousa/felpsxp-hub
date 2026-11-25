@@ -21,6 +21,10 @@ test('production responses carry the security headers', async ({ request }) => {
   expect(csp).toContain("frame-ancestors 'none'");
   expect(csp).toContain("object-src 'none'");
   expect(csp).not.toContain('unsafe-eval');
+  const scriptSrc = csp.split('; ').find((directive) => directive.startsWith('script-src ')) ?? '';
+  expect(scriptSrc).toContain("'strict-dynamic'");
+  expect(scriptSrc).not.toContain('unsafe-inline');
+  expect(headers['content-security-policy-report-only']).toBeUndefined();
 });
 
 test('the locale cookie is Secure and SameSite=Lax', async ({ request }) => {
@@ -33,12 +37,12 @@ test('the locale cookie is Secure and SameSite=Lax', async ({ request }) => {
   expect(cookie).toMatch(/SameSite=lax/i);
 });
 
-test.describe('strict CSP in report-only mode (ADR-0009)', () => {
+test.describe('strict CSP, enforced (ADR-0009)', () => {
   test('each response gets its own nonce, and every script carries it', async ({ request }) => {
     const nonces = new Set<string>();
     for (let attempt = 0; attempt < 2; attempt++) {
       const response = await request.get('/en/projects');
-      const policy = response.headers()['content-security-policy-report-only'] ?? '';
+      const policy = response.headers()['content-security-policy'] ?? '';
       const scriptSrc = policy.split('; ').find((directive) => directive.startsWith('script-src '));
       expect(scriptSrc).toMatch(/^script-src 'nonce-[^']+' 'strict-dynamic'$/);
 
@@ -56,18 +60,17 @@ test.describe('strict CSP in report-only mode (ADR-0009)', () => {
   });
 
   // On Vercel the response's enforced policy is what Next.js reads the nonce
-  // from, so it has to carry the same nonce as the report-only one, on every
-  // page including the 404.
+  // from, so every script, on every page including the 404, carries its nonce.
   for (const path of ['/en/projects', '/no-such-page']) {
     test(`the enforced policy on ${path} carries the same nonce as every script`, async ({ request }) => {
       const response = await request.get(path);
-      const headers = response.headers();
-      const enforced = headers['content-security-policy']?.match(/'nonce-([^']+)'/)?.[1] ?? '';
-      expect(enforced).not.toBe('');
-      expect(headers['content-security-policy-report-only']).toContain(`'nonce-${enforced}'`);
+      const policy = response.headers()['content-security-policy'] ?? '';
+      expect(policy).toContain("'strict-dynamic'");
+      const nonce = policy.match(/'nonce-([^']+)'/)?.[1] ?? '';
+      expect(nonce).not.toBe('');
       const scripts = (await response.text()).match(/<script(?![^>]*application\/ld\+json)[^>]*>/g) ?? [];
       expect(scripts.length).toBeGreaterThan(1);
-      for (const script of scripts) expect(script).toContain(`nonce="${enforced}"`);
+      for (const script of scripts) expect(script).toContain(`nonce="${nonce}"`);
     });
   }
 
@@ -83,7 +86,7 @@ test.describe('strict CSP in report-only mode (ADR-0009)', () => {
     const response = await request.get('/en/projects', {
       headers: { 'x-nonce': 'attacker', 'content-security-policy-report-only': "script-src 'nonce-attacker'" },
     });
-    expect(response.headers()['content-security-policy-report-only']).not.toContain('attacker');
+    expect(response.headers()['content-security-policy']).not.toContain('attacker');
     expect(await response.text()).not.toContain('nonce="attacker"');
   });
 
@@ -97,7 +100,7 @@ test.describe('strict CSP in report-only mode (ADR-0009)', () => {
   ] as const) {
     test(`every script keeps the response nonce when the request CSP ${label}`, async ({ request }) => {
       const response = await request.get('/en/projects', { headers: { 'content-security-policy': header } });
-      const nonce = response.headers()['content-security-policy-report-only']?.match(/'nonce-([^']+)'/)?.[1] ?? '';
+      const nonce = response.headers()['content-security-policy']?.match(/'nonce-([^']+)'/)?.[1] ?? '';
       expect(nonce).not.toBe('');
       expect(nonce).not.toBe('attacker');
       const scripts = (await response.text()).match(/<script(?![^>]*application\/ld\+json)[^>]*>/g) ?? [];
@@ -145,9 +148,9 @@ test('hreflang alternates come only from the HTML, on the production domain', as
 });
 
 test.describe('CSP violation reports (ADR-0009)', () => {
-  test('the report-only policy names the report endpoint', async ({ request }) => {
+  test('the enforced policy names the report endpoint', async ({ request }) => {
     const response = await request.get('/en/projects');
-    const policy = response.headers()['content-security-policy-report-only'] ?? '';
+    const policy = response.headers()['content-security-policy'] ?? '';
     expect(policy).toContain('report-uri /api/csp-report');
     expect(policy).toContain('report-to csp-endpoint');
     expect(response.headers()['reporting-endpoints']).toMatch(

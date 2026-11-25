@@ -80,10 +80,7 @@ describe('contentSecurityPolicy', () => {
     expect(new Set(origins)).toEqual(new Set(['https://challenges.cloudflare.com']));
   });
 
-  it('carries the request nonce on pages, next to the fallback for old browsers', () => {
-    const scriptSrc = directives(contentSecurityPolicy(false, 'abc123')).get('script-src') ?? '';
-    expect(scriptSrc).toContain("'nonce-abc123'");
-    expect(scriptSrc).toContain("'unsafe-inline'");
+  it('never carries a nonce', () => {
     expect(contentSecurityPolicy(false)).not.toContain('nonce-');
   });
 
