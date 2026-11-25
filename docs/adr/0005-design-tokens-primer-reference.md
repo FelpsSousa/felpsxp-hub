@@ -117,3 +117,10 @@ control he asked for in ADR-0003's decision drivers.
 - `github.com/primer/primitives`, `src/tokens/base/color/light/light.json5`
   and `.../dark/dark.json5` (MIT license)
 - PR #11: the provisional amber accent token this ADR replaces
+
+## Amendments
+
+- **2026-11-25:** links in running text use Primer blue again (`#0969da` light, `#4493f8`
+  dark); purple stays the brand accent for the current navigation item, primary actions and
+  the brand mark. Muted state fills join the palette. Decided in
+  [ADR-0012](0012-felpsxp-visual-standard.md), which adopts the FelpsXP visual standard.

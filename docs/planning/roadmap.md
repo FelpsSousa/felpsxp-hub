@@ -300,6 +300,22 @@ clean public extraction of the observatory module.
 - [ ] GitHub profile cleanup (outside this repository): archive bootcamp
       and test repositories, pin the strongest public ones.
 
+### Visual standard and XP (ADR-0012, ADR-0013)
+
+Requested by Felipe on 2026-11-25: more colour, icons and type, in the look of
+FelpsXP Logs, beautiful but within the limits of a professional site.
+
+- [x] ADR-0012: adopt the FelpsXP visual standard; blue links, a wider column,
+      a public `/design` page, third-party assets credited.
+- [ ] ADR-0013: XP as a public rubric with a legend (Proposed).
+- [ ] Tokens, self-hosted fonts, Octicons in place of Lucide,
+      `THIRD_PARTY_NOTICES.md` and `/design` with the variations side by side.
+- [ ] Apply the chosen variations: header and footer, home, projects and
+      project pages, experience; one pull request each, captures before and
+      after, axe in both themes.
+- [ ] XP rubric in the content schema, the badge, the breakdown and the
+      legend, once ADR-0013 is accepted.
+
 ## Block 7: Closure
 
 - [ ] ADR retiring `/studio` in favour of PR-versioned content.
