@@ -38,6 +38,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     outcomes: [
       'O propósito ficou definido: CORE e observatório de todas as aplicações. O Hub passou a ser independente dela e vai mostrar só agregados anônimos do que ela observa; o Sentinel está saindo para repositório próprio',
       'Três cópias independentes do mesmo logger foram centralizadas num pacote único, coberto por testes automatizados, com uma capacidade que nenhuma das três tinha: redigir campos sensíveis antes de serializar',
+      'Revisão de segurança do próprio código, com três correções: um chamador anônimo recebia as permissões do papel que informasse (fechado e coberto por 18 testes); a identidade vinha de um cabeçalho interno sem assinatura (agora exige um segredo comparado em tempo constante); e o cookie de sessão era comparado sem verificação criptográfica (agora é assinado com HMAC e verificado em tempo constante)',
       'A API foi desenhada como contrato externo para o Finance, um produto em repositório separado que não terá acesso ao código nem ao banco da plataforma; essa integração ainda não está ligada',
     ],
     learnings: [
@@ -97,6 +98,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     outcomes: [
       'Its purpose is now settled: CORE and observatory for every application. The Hub became independent of it and will show only anonymous aggregates of what it observes; Sentinel is moving to its own repository',
       'Three independent copies of the same logger were centralized into one package, covered by automated tests, with a capability none of the three had: redacting sensitive fields before serializing',
+      'A security review of its own code, with three fixes: an anonymous caller received the permissions of whatever role it claimed (closed and covered by 18 tests); identity came from an unsigned internal header (it now requires a secret compared in constant time); and the session cookie was compared without cryptographic verification (it is now signed with HMAC and verified in constant time)',
       'The API was designed as an external contract for Finance, a product in a separate repository that will have no access to the platform’s source or database; that integration is not wired up yet',
     ],
     learnings: [
