@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/FelpsSousa/felpsxp-hub/compare/v1.1.1...v1.2.0) (2026-11-25)
+
+
+### Features
+
+* **content:** add the Platform security review to its project page ([#122](https://github.com/FelpsSousa/felpsxp-hub/issues/122)) ([65e83cc](https://github.com/FelpsSousa/felpsxp-hub/commit/65e83cc3565a8996e9e0a0bad3ddf5281d44e975))
+
+
+### Bug Fixes
+
+* **security:** put the nonce in the enforced CSP of every page ([#121](https://github.com/FelpsSousa/felpsxp-hub/issues/121)) ([f8f068f](https://github.com/FelpsSousa/felpsxp-hub/commit/f8f068ffe237511ea90f4ddc0b083707b99ee4d0))
+
 ## [1.1.1](https://github.com/FelpsSousa/felpsxp-hub/compare/v1.1.0...v1.1.1) (2026-11-25)
 
 
