@@ -307,14 +307,15 @@ FelpsXP Logs, beautiful but within the limits of a professional site.
 
 - [x] ADR-0012: adopt the FelpsXP visual standard; blue links, a wider column,
       a public `/design` page, third-party assets credited.
-- [ ] ADR-0013: XP as a public rubric with a legend (Proposed).
+- [x] ADR-0013: XP as a public rubric with a legend, in bands that do not
+      overlap (chosen after a simulation).
 - [ ] Tokens, self-hosted fonts, Octicons in place of Lucide,
       `THIRD_PARTY_NOTICES.md` and `/design` with the variations side by side.
 - [ ] Apply the chosen variations: header and footer, home, projects and
       project pages, experience; one pull request each, captures before and
       after, axe in both themes.
-- [ ] XP rubric in the content schema, the badge, the breakdown and the
-      legend, once ADR-0013 is accepted.
+- [x] XP rubric in the content schema, the badge, the breakdown and the
+      legend.
 
 ## Block 7: Closure
 

@@ -53,6 +53,7 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     startedAt: '2025-04-07',
     updatedAt: '2026-09-28',
     featured: false,
+    xpEvidence: [],
   },
   en: {
     slug: 'home-network-observability',
@@ -106,5 +107,6 @@ export const homeNetworkObservabilityProjectByLocale: Localized<Project> = {
     startedAt: '2025-04-07',
     updatedAt: '2026-09-28',
     featured: false,
+    xpEvidence: [],
   },
 };

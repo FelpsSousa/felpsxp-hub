@@ -15,6 +15,7 @@ import type {
   siteSettingsSchema,
   skillDomainSchema,
   surfaceKeySchema,
+  xpEvidenceSchema,
 } from '@/content/schemas';
 
 /**
@@ -40,6 +41,7 @@ export type ProjectMediaImage = Extract<ProjectMedia, { kind: 'image' }>;
 export type ProjectMediaVideo = Extract<ProjectMedia, { kind: 'video' }>;
 export type ProjectMediaAudio = Extract<ProjectMedia, { kind: 'audio' }>;
 export type Project = z.infer<typeof projectSchema>;
+export type XpEvidence = z.infer<typeof xpEvidenceSchema>;
 export type Profile = z.infer<typeof profileSchema>;
 export type SiteSettings = z.infer<typeof siteSettingsSchema>;
 export type LegalPage = z.infer<typeof legalPageSchema>;

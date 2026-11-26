@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ProjectCard } from '@/components/projects/project-card';
+import { XpLegend } from '@/components/projects/xp-legend';
 import { ProjectFiltersList, type FilterableCard } from '@/components/projects/project-filters';
 import type { SkillDomain } from '@/content/types';
 import { getPublicProjects } from '@/lib/content';
@@ -69,6 +70,14 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
           domainLabels={domainLabels}
         />
       </Suspense>
+
+      <section aria-labelledby="xp" className="flex flex-col gap-4 border-t border-border pt-10">
+        <h2 id="xp" className="text-xl font-semibold text-fg">
+          {t('xp.legendTitle')}
+        </h2>
+        <p className="text-fg-muted">{t('xp.legendLead')}</p>
+        <XpLegend />
+      </section>
     </div>
   );
 }

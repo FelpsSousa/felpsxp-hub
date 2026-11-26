@@ -29,7 +29,9 @@ import {
 } from '@primer/octicons-react';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { XpLegend } from '@/components/projects/xp-legend';
 import { Badge, Box, BoxRow, BoxRows, Eyebrow, ScoreCard, type Tone } from '@/components/ui/primitives';
+import { DataTable } from '@/components/ui/table';
 import type { Project, ProjectStatus } from '@/content/types';
 import { requireLocale } from '@/i18n/locale';
 import { getProfile, getPublicProjects, getSiteSettings } from '@/lib/content';
@@ -102,9 +104,6 @@ const statusIcon: Record<ProjectStatus, Icon> = {
   paused: ChecklistIcon,
   archived: ArchiveIcon,
 };
-
-/** The FelpsXP Hub under ADR-0013's proposed rubric: Applied 25 + production, public code, ADRs. */
-const PROPOSED_HUB_XP = 50;
 
 const sectionHeading = 'text-2xl font-semibold text-fg';
 
@@ -394,13 +393,13 @@ export default async function DesignPage({ params }: DesignPageProps) {
             ),
             b: (
               <span className="rounded-full bg-accent-muted px-2.5 py-1 font-pixel text-[0.625rem] text-accent">
-                {PROPOSED_HUB_XP} XP
+                {projectXp(project)} XP
               </span>
             ),
             c: (
               <span className="inline-flex items-center gap-1.5 font-pixel text-[0.625rem] text-accent">
                 <StarIcon aria-hidden size={12} />
-                {PROPOSED_HUB_XP} XP
+                {projectXp(project)} XP
               </span>
             ),
           }}
@@ -439,38 +438,13 @@ export default async function DesignPage({ params }: DesignPageProps) {
         </Choice>
       </section>
 
-      {/* XP legend (proposal) */}
+      {/* XP legend (ADR-0013) */}
       <section aria-labelledby="xp" className="flex flex-col gap-6">
         <h2 id="xp" className={sectionHeading}>
-          {t('xp.title')}
+          {tp('xp.legendTitle')}
         </h2>
-        <p className="max-w-3xl text-fg-muted">{t('xp.lead')}</p>
-        <div className="grid gap-6 lg:grid-cols-2">
-          <Table
-            caption={t('xp.title')}
-            head={[t('xp.level'), t('xp.base'), t('xp.criterion')]}
-            rows={(
-              [
-                ['foundational', 10],
-                ['applied', 25],
-                ['advanced', 50],
-                ['frontier', 80],
-              ] as const
-            ).map(([level, base]) => [tp(`filters.levels.${level}`), `${base} XP`, t(`xp.${level}`)])}
-          />
-          <Table
-            caption={t('xp.evidence')}
-            head={[t('xp.evidence'), t('xp.bonus'), t('xp.proof')]}
-            rows={(
-              [
-                ['production', 10],
-                ['publicCode', 10],
-                ['decisions', 5],
-                ['screens', 5],
-              ] as const
-            ).map(([evidence, bonus]) => [t(`xp.${evidence}`), `+${bonus}`, t(`xp.${evidence}Proof`)])}
-          />
-        </div>
+        <p className="max-w-3xl text-fg-muted">{tp('xp.legendLead')}</p>
+        <XpLegend />
       </section>
 
       {/* Credits */}
@@ -479,7 +453,7 @@ export default async function DesignPage({ params }: DesignPageProps) {
           {t('credits.title')}
         </h2>
         <p className="max-w-3xl text-fg-muted">{t('credits.lead')}</p>
-        <Table
+        <DataTable
           caption={t('credits.title')}
           head={[t('credits.asset'), t('credits.author'), t('credits.license'), t('credits.use')]}
           rows={[
@@ -659,7 +633,7 @@ function CardSample({
       </Badge>
       <Badge>{tp(`filters.levels.${project.difficulty}`)}</Badge>
       <span className="ml-auto rounded-full bg-accent-muted px-2 py-1 font-pixel text-[0.625rem] text-accent">
-        {PROPOSED_HUB_XP} XP
+        {projectXp(project)} XP
       </span>
     </>
   );
@@ -684,45 +658,6 @@ function CardSample({
       {title}
       {summary}
       {domains}
-    </div>
-  );
-}
-
-/** A plain table in the standard: head on the surface fill, rows divided. */
-function Table({
-  caption,
-  head,
-  rows,
-}: {
-  caption: string;
-  head: string[];
-  rows: React.ReactNode[][];
-}) {
-  return (
-    <div className="overflow-x-auto rounded-md border border-border">
-      <table className="w-full text-left text-sm">
-        <caption className="sr-only">{caption}</caption>
-        <thead className="bg-surface text-fg">
-          <tr>
-            {head.map((cell) => (
-              <th key={cell} scope="col" className="px-3 py-2 font-semibold">
-                {cell}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-border text-fg">
-          {rows.map((row, index) => (
-            <tr key={index}>
-              {row.map((cell, cellIndex) => (
-                <td key={cellIndex} className={`px-3 py-2 align-top ${cellIndex === 1 ? 'whitespace-nowrap tabular-nums' : ''}`}>
-                  {cell}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }

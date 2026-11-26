@@ -90,6 +90,40 @@
       "evolving": "Em evolução",
       "paused": "Pausado",
       "archived": "Arquivado"
+    },
+    "xp": {
+      "badge": "{points} XP",
+      "legendTitle": "Como o XP funciona",
+      "legendLead": "Cada projeto ganha uma base pelo nível, com critério escrito, e +5 por evidência que a própria página prova. As faixas não se sobrepõem: a evidência ordena projetos dentro de um nível, nunca acima do seguinte. É uma autoavaliação com critérios públicos, não uma certificação.",
+      "level": "Nível",
+      "base": "Base",
+      "band": "Faixa",
+      "bandRange": "{min} a {max} XP",
+      "criterion": "Critério",
+      "evidence": "Evidência",
+      "bonus": "Bônus",
+      "proof": "Como a página prova",
+      "criteria": {
+        "foundational": "Estudo ou prática com escopo guiado, um conceito por vez",
+        "applied": "Ferramenta ou produto completo, usado de verdade, com padrões conhecidos",
+        "advanced": "Sistema em produção com usuários ou dados reais e ao menos uma decisão difícil de arquitetura, segurança ou escala",
+        "frontier": "Fundação que outros sistemas consomem, ou problema sem receita pronta, que define os padrões seguidos pelos outros"
+      },
+      "kinds": {
+        "production": "Em produção",
+        "public-code": "Código público",
+        "decision-records": "Decisões registradas",
+        "screens": "Telas"
+      },
+      "proofs": {
+        "production": "Link para o produto no ar, ou uma seção da página que descreve o uso real",
+        "public-code": "Link para o repositório público",
+        "decision-records": "Link para as ADRs públicas",
+        "screens": "Ao menos uma tela na galeria"
+      },
+      "breakdownLabel": "Como esse XP foi calculado",
+      "breakdownTotal": "{points} XP no total",
+      "howItWorks": "Como o XP funciona"
     }
   },
   "contact": {
@@ -355,28 +389,6 @@
         "a": "Nome na fonte do sistema",
         "b": "Nome com o selo XP em pixel"
       }
-    },
-    "xp": {
-      "title": "Legenda de XP (proposta)",
-      "lead": "Como o XP de cada projeto seria calculado se a ADR-0013 for aceita: uma base por nível, com critério escrito, mais um bônus por evidência que a própria página prova. É uma autoavaliação com critérios públicos, não uma certificação.",
-      "level": "Nível",
-      "base": "Base",
-      "criterion": "Critério",
-      "evidence": "Evidência",
-      "bonus": "Bônus",
-      "proof": "Como a página prova",
-      "foundational": "Estudo ou prática com escopo guiado, um conceito por vez",
-      "applied": "Ferramenta ou produto completo, usado de verdade, com padrões conhecidos",
-      "advanced": "Sistema em produção com usuários ou dados reais e ao menos uma decisão difícil de arquitetura, segurança ou escala",
-      "frontier": "Fundação que outros sistemas consomem, ou problema sem receita pronta, que define os padrões seguidos pelos outros",
-      "production": "Em produção ou usado de verdade",
-      "productionProof": "Link para o produto no ar ou registro datado de uso no texto",
-      "publicCode": "Código público",
-      "publicCodeProof": "Link para o repositório público",
-      "decisions": "Decisões registradas",
-      "decisionsProof": "Link para ADRs públicas",
-      "screens": "Telas ou demonstração",
-      "screensProof": "Ao menos uma tela na galeria"
     },
     "credits": {
       "title": "Créditos e licenças",

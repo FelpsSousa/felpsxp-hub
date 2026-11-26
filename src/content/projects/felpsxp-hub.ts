@@ -68,6 +68,11 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     startedAt: '2026-04-21',
     updatedAt: '2026-11-15',
     featured: true,
+    xpEvidence: [
+      { kind: 'production', href: 'https://felpsxp.com' },
+      { kind: 'public-code', href: repositoryUrl },
+      { kind: 'decision-records', href: `${repositoryUrl}/tree/main/docs/adr` },
+    ],
     links: [{ href: repositoryUrl, label: 'Repositório no GitHub', external: true }],
   },
   en: {
@@ -135,6 +140,11 @@ export const felpsxpHubProjectByLocale: Localized<Project> = {
     startedAt: '2026-04-21',
     updatedAt: '2026-11-15',
     featured: true,
+    xpEvidence: [
+      { kind: 'production', href: 'https://felpsxp.com' },
+      { kind: 'public-code', href: repositoryUrl },
+      { kind: 'decision-records', href: `${repositoryUrl}/tree/main/docs/adr` },
+    ],
     links: [{ href: repositoryUrl, label: 'Repository on GitHub', external: true }],
   },
 };

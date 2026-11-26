@@ -54,6 +54,7 @@ export const beecrowdProblemSolvingProjectByLocale: Localized<Project> = {
     startedAt: '2026-04-01',
     updatedAt: '2026-09-28',
     featured: false,
+    xpEvidence: [{ kind: 'public-code', href: 'https://github.com/FelpsSousa/beecrowd-problem-solving' }],
     links: [
       {
         href: 'https://github.com/FelpsSousa/beecrowd-problem-solving',
@@ -110,6 +111,7 @@ export const beecrowdProblemSolvingProjectByLocale: Localized<Project> = {
     startedAt: '2026-04-01',
     updatedAt: '2026-09-28',
     featured: false,
+    xpEvidence: [{ kind: 'public-code', href: 'https://github.com/FelpsSousa/beecrowd-problem-solving' }],
     links: [
       {
         href: 'https://github.com/FelpsSousa/beecrowd-problem-solving',

@@ -53,6 +53,7 @@ export const connexiccoProjectByLocale: Localized<Project> = {
     startedAt: '2024-12-01',
     updatedAt: '2025-10-01',
     featured: false,
+    xpEvidence: [{ kind: 'production', href: 'https://www.connexicco.com/' }],
     links: [{ href: 'https://www.connexicco.com/', label: 'connexicco.com', external: true }],
   },
   en: {
@@ -101,6 +102,7 @@ export const connexiccoProjectByLocale: Localized<Project> = {
     startedAt: '2024-12-01',
     updatedAt: '2025-10-01',
     featured: false,
+    xpEvidence: [{ kind: 'production', href: 'https://www.connexicco.com/' }],
     links: [{ href: 'https://www.connexicco.com/', label: 'connexicco.com', external: true }],
   },
 };

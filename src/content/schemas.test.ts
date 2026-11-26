@@ -28,6 +28,7 @@ const validProject: Project = {
   updatedAt: '2026-11-10',
   featured: false,
   links: [{ href: 'https://github.com/FelpsSousa/felpsxp-hub', label: 'Repository', external: true }],
+  xpEvidence: [],
 };
 
 const validProfile: Profile = {
@@ -99,6 +100,44 @@ describe('projectSchema', () => {
     expect(withProject({ media: [{ kind: 'image', url: '/a.png' }] }).success).toBe(false);
     expect(withProject({ media: [{ kind: 'video', url: '/a.mp4' }] }).success).toBe(true);
     expect(withProject({ media: [{ kind: 'audio', url: '/a.mp3' }] }).success).toBe(true);
+  });
+
+  describe('XP evidence (ADR-0013)', () => {
+    it('accepts evidence with the proof its kind needs', () => {
+      const xpEvidence = [
+        { kind: 'production', href: 'https://felpsxp.com' },
+        { kind: 'public-code', href: 'https://github.com/FelpsSousa/felpsxp-hub' },
+        { kind: 'decision-records', href: 'https://github.com/FelpsSousa/felpsxp-hub/tree/main/docs/adr' },
+      ];
+      expect(withProject({ xpEvidence }).success).toBe(true);
+    });
+
+    it('proves production by a section of the page only when it has content', () => {
+      expect(withProject({ xpEvidence: [{ kind: 'production', href: '#problem' }] }).success).toBe(true);
+      expect(withProject({ xpEvidence: [{ kind: 'production', href: '#outcomes' }] }).success).toBe(false);
+      expect(
+        withProject({ outcomes: ['In daily use.'], xpEvidence: [{ kind: 'production', href: '#outcomes' }] })
+          .success,
+      ).toBe(true);
+    });
+
+    it.each([
+      ['public-code', 'https://example.com/code'],
+      ['public-code', '#solution'],
+      ['decision-records', 'https://github.com/FelpsSousa/felpsxp-hub'],
+      ['production', '#nowhere'],
+    ])('rejects %s proven by %j', (kind, href) => {
+      expect(withProject({ xpEvidence: [{ kind, href }] }).success).toBe(false);
+    });
+
+    it('counts each kind of evidence once', () => {
+      const once = { kind: 'production', href: 'https://felpsxp.com' };
+      expect(withProject({ xpEvidence: [once, once] }).success).toBe(false);
+    });
+
+    it('does not take screens as declared evidence: the gallery proves them', () => {
+      expect(withProject({ xpEvidence: [{ kind: 'screens', href: '#screens' }] }).success).toBe(false);
+    });
   });
 
   it('rejects unknown fields, so a typo cannot pass silently', () => {

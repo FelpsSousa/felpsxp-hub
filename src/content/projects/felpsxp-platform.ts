@@ -60,6 +60,7 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     startedAt: '2026-04-01',
     updatedAt: '2026-09-28',
     featured: true,
+    xpEvidence: [],
   },
   en: {
     slug: 'felpsxp-platform',
@@ -120,5 +121,6 @@ export const felpsxpPlatformProjectByLocale: Localized<Project> = {
     startedAt: '2026-04-01',
     updatedAt: '2026-09-28',
     featured: true,
+    xpEvidence: [],
   },
 };

@@ -33,6 +33,7 @@ const localeInvariantFields = [
   'startedAt',
   'updatedAt',
   'featured',
+  'xpEvidence',
 ] as const satisfies readonly (keyof Project)[];
 
 function collectStrings(value: unknown): string[] {
