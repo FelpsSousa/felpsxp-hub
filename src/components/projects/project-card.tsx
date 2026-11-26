@@ -41,7 +41,7 @@ export function ProjectCard({
         <span className="rounded-full border border-border px-2 py-0.5">{t(`status.${project.status}`)}</span>
         <span className="rounded-full border border-border px-2 py-0.5">{t(`filters.levels.${project.difficulty}`)}</span>
         <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">
-          ~{projectXp(project)} XP
+          {t('xp.badge', { points: projectXp(project) })}
         </span>
       </div>
 

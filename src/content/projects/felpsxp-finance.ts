@@ -94,6 +94,7 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     startedAt: '2026-09-12',
     updatedAt: '2026-09-28',
     featured: true,
+    xpEvidence: [{ kind: 'production', href: '#outcomes' }],
   },
   en: {
     slug: 'felpsxp-finance',
@@ -168,5 +169,6 @@ export const felpsxpFinanceProjectByLocale: Localized<Project> = {
     startedAt: '2026-09-12',
     updatedAt: '2026-09-28',
     featured: true,
+    xpEvidence: [{ kind: 'production', href: '#outcomes' }],
   },
 };

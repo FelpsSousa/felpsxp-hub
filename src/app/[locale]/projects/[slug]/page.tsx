@@ -10,7 +10,7 @@ import { ProjectScreens } from '@/components/projects/project-screens';
 import { getAdjacentProjects, getProjectBySlug, getProjectStaticParams } from '@/lib/content';
 import { coverImage, screenImages } from '@/lib/media';
 import { pageMetadata } from '@/lib/seo';
-import { domainLabel, projectDomains } from '@/lib/skill-taxonomy';
+import { domainLabel, projectDomains, projectXp, projectXpBreakdown } from '@/lib/skill-taxonomy';
 import { requireLocale } from '@/i18n/locale';
 
 type ProjectPageProps = {
@@ -113,6 +113,31 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {domainLabel(domain)}
             </span>
           ))}
+        </div>
+        {/* The XP of ADR-0013, part by part, each piece of evidence linking to its proof. */}
+        <div className="flex flex-col gap-1 text-sm text-fg-muted">
+          <p className="font-medium text-fg">
+            {t('xp.breakdownLabel')}:{' '}
+            <span className="text-accent">{t('xp.breakdownTotal', { points: projectXp(project) })}</span>
+          </p>
+          <p>
+            {projectXpBreakdown(project).map((part, index) => (
+              <span key={part.kind}>
+                {index > 0 && ' + '}
+                {part.kind === 'level' ? (
+                  `${t(`filters.levels.${part.level}`)} ${part.points}`
+                ) : (
+                  <a href={part.href} className="text-link underline underline-offset-4 hover:decoration-2">
+                    {t(`xp.kinds.${part.kind}`)} {part.points}
+                  </a>
+                )}
+              </span>
+            ))}
+            {' · '}
+            <Link href="/projects#xp" className="text-link underline underline-offset-4 hover:decoration-2">
+              {t('xp.howItWorks')}
+            </Link>
+          </p>
         </div>
       </header>
 

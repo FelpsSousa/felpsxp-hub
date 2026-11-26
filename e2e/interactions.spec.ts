@@ -62,7 +62,11 @@ test('the table of contents links to sections that keep their id in every locale
 test('project filters live in the URL and survive going back', async ({ page }) => {
   await page.goto('/projects');
   const filters = page.getByRole('region', { name: 'Filtrar projetos' });
-  const cards = page.getByRole('main').getByRole('heading', { level: 2 });
+  // Each card's title is a level-2 heading; the XP legend below the list has one too.
+  const cards = page
+    .getByRole('main')
+    .getByRole('heading', { level: 2 })
+    .filter({ hasNotText: 'Como o XP funciona' });
   const total = await cards.count();
 
   await filters.getByRole('group', { name: 'Domínio' }).getByRole('link', { name: /^AppSec/ }).click();

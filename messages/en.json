@@ -90,6 +90,40 @@
       "evolving": "Evolving",
       "paused": "Paused",
       "archived": "Archived"
+    },
+    "xp": {
+      "badge": "{points} XP",
+      "legendTitle": "How XP works",
+      "legendLead": "Each project gets a base from its level, with a written criterion, and +5 for each piece of evidence the page itself proves. The bands do not overlap: evidence ranks projects within a level, never past the next one. It is a self-assessment with public criteria, not a certification.",
+      "level": "Level",
+      "base": "Base",
+      "band": "Band",
+      "bandRange": "{min} to {max} XP",
+      "criterion": "Criterion",
+      "evidence": "Evidence",
+      "bonus": "Bonus",
+      "proof": "How the page proves it",
+      "criteria": {
+        "foundational": "Study or practice with a guided scope, one concept at a time",
+        "applied": "A complete tool or product, used for real, built on known patterns",
+        "advanced": "A system in production with real users or data, and at least one hard decision in architecture, security or scale",
+        "frontier": "A foundation other systems consume, or a problem with no ready recipe, that sets the patterns others follow"
+      },
+      "kinds": {
+        "production": "In production",
+        "public-code": "Public code",
+        "decision-records": "Written decisions",
+        "screens": "Screens"
+      },
+      "proofs": {
+        "production": "A link to the live product, or a section of the page that describes real use",
+        "public-code": "A link to the public repository",
+        "decision-records": "A link to the public ADRs",
+        "screens": "At least one screen in the gallery"
+      },
+      "breakdownLabel": "How this XP was computed",
+      "breakdownTotal": "{points} XP in total",
+      "howItWorks": "How XP works"
     }
   },
   "contact": {
@@ -355,28 +389,6 @@
         "a": "Name in the system face",
         "b": "Name with the pixel XP badge"
       }
-    },
-    "xp": {
-      "title": "XP legend (proposal)",
-      "lead": "How each project's XP would be computed if ADR-0013 is accepted: a base per level, with a written criterion, plus a bonus for each piece of evidence the page itself proves. It is a self-assessment with public criteria, not a certification.",
-      "level": "Level",
-      "base": "Base",
-      "criterion": "Criterion",
-      "evidence": "Evidence",
-      "bonus": "Bonus",
-      "proof": "How the page proves it",
-      "foundational": "Study or practice with a guided scope, one concept at a time",
-      "applied": "A complete tool or product, used for real, built on known patterns",
-      "advanced": "A system in production with real users or data, and at least one hard decision in architecture, security or scale",
-      "frontier": "A foundation other systems consume, or a problem with no ready recipe, that sets the patterns others follow",
-      "production": "In production or used for real",
-      "productionProof": "A link to the live product, or a dated statement of use in the text",
-      "publicCode": "Public source code",
-      "publicCodeProof": "A link to the public repository",
-      "decisions": "Written decisions",
-      "decisionsProof": "A link to public ADRs",
-      "screens": "Screens or a demo",
-      "screensProof": "At least one screen in the gallery"
     },
     "credits": {
       "title": "Credits and licences",

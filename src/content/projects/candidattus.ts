@@ -55,6 +55,7 @@ export const candidattusProjectByLocale: Localized<Project> = {
     startedAt: '2023-10-01',
     updatedAt: '2024-12-31',
     featured: true,
+    xpEvidence: [{ kind: 'production', href: '#outcomes' }],
     links: [{ href: 'https://candidattus.com', label: 'candidattus.com', external: true }],
   },
   en: {
@@ -104,6 +105,7 @@ export const candidattusProjectByLocale: Localized<Project> = {
     startedAt: '2023-10-01',
     updatedAt: '2024-12-31',
     featured: true,
+    xpEvidence: [{ kind: 'production', href: '#outcomes' }],
     links: [{ href: 'https://candidattus.com', label: 'candidattus.com', external: true }],
   },
 };

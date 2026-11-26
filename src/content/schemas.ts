@@ -108,6 +108,42 @@ export const projectMediaSchema = z.discriminatedUnion('kind', [
   }),
 ]);
 
+/**
+ * Evidence that earns XP (ADR-0013), declared with the link that proves it.
+ * Screens are not declared: the gallery itself is their proof, so they are
+ * derived from `media`.
+ */
+export const xpEvidenceKindSchema = z.enum(['production', 'public-code', 'decision-records']);
+
+/** A section of the project's own page, such as `#outcomes`. */
+const projectSectionAnchor = z.enum([
+  '#problem',
+  '#solution',
+  '#architecture',
+  '#challenges',
+  '#responsibilities',
+  '#outcomes',
+  '#learnings',
+]);
+
+const anchorSection = {
+  '#problem': 'problem',
+  '#solution': 'solution',
+  '#architecture': 'architectureHighlights',
+  '#challenges': 'challenges',
+  '#responsibilities': 'responsibilities',
+  '#outcomes': 'outcomes',
+  '#learnings': 'learnings',
+} as const;
+
+export const xpEvidenceSchema = z.strictObject({
+  kind: xpEvidenceKindSchema,
+  href: z.union([httpsUrl, projectSectionAnchor]),
+});
+
+const githubRepository = /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/;
+const githubAdrFolder = /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/tree\/[\w.-]+\/(?:.+\/)?adr\/?$/;
+
 export const projectSchema = z.strictObject({
   slug,
   title: text,
@@ -134,6 +170,34 @@ export const projectSchema = z.strictObject({
   updatedAt: isoDate,
   featured: z.boolean(),
   links: z.array(navigationLinkSchema).optional(),
+  xpEvidence: z.array(xpEvidenceSchema),
+}).superRefine((project, ctx) => {
+  // Each kind of evidence counts once, and each needs the proof its kind
+  // implies: the page must be able to show what the XP claims.
+  const seen = new Set<string>();
+  project.xpEvidence.forEach(({ kind, href }, index) => {
+    const path = ['xpEvidence', index, 'href'];
+    if (seen.has(kind)) {
+      ctx.addIssue({ code: 'custom', path: ['xpEvidence', index, 'kind'], message: `"${kind}" is declared twice` });
+    }
+    seen.add(kind);
+    if (kind === 'public-code' && !githubRepository.test(href)) {
+      ctx.addIssue({ code: 'custom', path, message: 'public code needs a link to a public GitHub repository' });
+    }
+    if (kind === 'decision-records' && !githubAdrFolder.test(href)) {
+      ctx.addIssue({ code: 'custom', path, message: 'decision records need a link to an ADR folder on GitHub' });
+    }
+    if (href.startsWith('#')) {
+      if (kind !== 'production') {
+        ctx.addIssue({ code: 'custom', path, message: 'only production can be proven by a section of the page' });
+      }
+      const field = anchorSection[href as keyof typeof anchorSection];
+      const content = project[field];
+      if (Array.isArray(content) ? content.length === 0 : !content) {
+        ctx.addIssue({ code: 'custom', path, message: `${href} is empty on this page` });
+      }
+    }
+  });
 });
 
 /** A legal page (privacy notice and similar): plain sections of paragraphs. */

@@ -1,6 +1,7 @@
 # ADR-0013: Project XP as a public rubric, with a legend
 
-- **Status:** Proposed
+- **Status:** Accepted (agreed by Felipe on 2026-11-26, in chat, with the bands chosen after
+  the simulation below)
 - **Date:** 2026-11-25
 - **Deciders:** Felipe Sousa (@FelpsSousa)
 - **Related:** ADR-0004 (content validation), ADR-0012 (visual standard),
@@ -34,48 +35,62 @@ badge has these gaps:
 ## Decision
 
 XP becomes a **public rubric: the level gives the base, and each piece of verifiable evidence
-adds a fixed bonus.** The domain multiplier and the tilde go away.
+adds a fixed bonus.** The domain multiplier and the tilde go away. The bases sit in **bands
+that do not overlap**, so evidence ranks projects within a level but never lifts one past the
+next level.
 
-| Level | Base | Written criterion |
+| Level | Base | Band | Written criterion |
+| --- | --- | --- | --- |
+| Foundational | 10 | 10 to 30 | Study or practice with a guided scope, one concept at a time |
+| Applied | 35 | 35 to 55 | A complete tool or product, used for real, built on known patterns |
+| Advanced | 60 | 60 to 80 | A system in production with real users or data, and at least one hard decision in architecture, security or scale |
+| Frontier | 100 | 100 to 120 | A foundation other systems consume, or a problem with no ready recipe, that sets the patterns others follow |
+
+| Evidence | Bonus | What proves it |
 | --- | --- | --- |
-| Foundational | 10 | Study or practice with a guided scope, one concept at a time |
-| Applied | 25 | A complete tool or product, used for real, built on known patterns |
-| Advanced | 50 | A system in production with real users or data, and at least one hard decision in architecture, security or scale |
-| Frontier | 80 | A foundation other systems consume, or a problem with no ready recipe, that sets the patterns others follow |
+| In production or used for real | +5 | A link to the live product, or a section of the page that describes the real use |
+| Public source code | +5 | A link to a public GitHub repository |
+| Written decisions | +5 | A link to a public ADR folder on GitHub |
+| Screens | +5 | At least one app screen in the gallery |
 
-| Evidence | Bonus | What proves it on the page |
-| --- | --- | --- |
-| In production or used for real | +10 | A link to the live product, or a dated statement of use in the project text |
-| Public source code | +10 | A link to the public repository |
-| Written decisions | +5 | A link to public ADRs |
-| Screens or a demo | +5 | At least one app screen in the gallery |
-
-The evidence is declared in each project's content (`xpEvidence`), and the content schema
-rejects a claim without its proof: `public-code` needs a repository link, `screens` needs an
-image with `presentation: 'screen'`, and so on. The total is computed at build time.
+Production, public code and written decisions are declared in each project's content
+(`xpEvidence`), each with the link that proves it, and the content schema rejects a claim
+without a matching proof: public code must link to a GitHub repository, decisions to an ADR
+folder, and a section of the page counts only for production and only when it has content.
+Screens are not declared: the gallery is their proof, so they are derived from `media`. The
+total is computed at build time from the same constants the legend prints, so the two cannot
+disagree.
 
 **Where it shows:**
 
-- **Card:** "50 XP" in the pixel face, next to the level badge.
-- **Project page:** the breakdown, for example "Advanced 50 + in production 10 + screens 5 =
-  65 XP", each part linking to its proof.
-- **Projects page:** a short "How XP works" section with the two tables above, and a link to
-  it from every badge.
-- **`/design`:** the badge and the legend live, as part of the standard.
+- **Card:** the total, such as "50 XP", next to the level badge.
+- **Project page:** the breakdown, for example "Applied 35 + In production 5 + Public code 5 +
+  Written decisions 5", each piece of evidence linking to its proof, and a link to the legend.
+- **Projects page:** a "How XP works" section with the two tables above.
+- **`/design`:** the badge and the legend, as part of the standard.
 - The legend says plainly that it is a self-assessment with public criteria, not an external
   certification.
 
-With today's content the values would be:
+### Simulation that chose the bands
 
-| Project | Today | Proposed |
+The first proposal used bases of 10, 25, 50 and 80 with bonuses of +10, +10, +5 and +5. Run on
+the real projects and on edge cases, its bands overlapped: an Applied project with every piece
+of evidence (55) outscored an Advanced one with none (50), and the Hub tied with a bare
+Advanced project. The chosen rubric keeps the bands apart, and a unit test asserts that it
+stays that way.
+
+| Project or case | First proposal | Chosen |
 | --- | --- | --- |
-| FelpsXP Platform | 15 | 80 (Frontier) |
-| FelpsXP Finance | 12 | 65 (Advanced, production, screens) |
-| Candidattus | 9 | 60 (Advanced, production) |
-| FelpsXP Hub | 6 | 50 (Applied, production, public code, ADRs) |
-| Connexicco | 4 | 35 (Applied, production) |
-| Home network observability | 6 | 25 (Applied) |
-| Beecrowd problem solving | 1 | 20 (Foundational, public code) |
+| FelpsXP Platform (Frontier, nothing public) | 80 | 100 |
+| FelpsXP Finance (Advanced, production, screens) | 65 | 70 |
+| Candidattus (Advanced, production) | 60 | 65 |
+| FelpsXP Hub (Applied, production, public code, ADRs) | 50 | 50 |
+| Connexicco (Applied, production) | 35 | 40 |
+| Home network observability (Applied) | 25 | 35 |
+| Beecrowd problem solving (Foundational, public code) | 20 | 15 |
+| Edge: Applied with every piece of evidence | 55 | 55 |
+| Edge: Advanced with no evidence | 50 | 60 |
+| Overlapping bands | three | none |
 
 ## Consequences
 
