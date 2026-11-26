@@ -23,7 +23,7 @@ const sectionClass = 'flex flex-col gap-3 print:gap-1';
 const headingClass =
   'border-b border-border pb-1 text-sm font-semibold uppercase tracking-wide text-fg-muted print:text-xs';
 const listClass = 'flex list-disc flex-col gap-1 pl-5 text-fg print:gap-0';
-const linkClass = 'text-accent underline underline-offset-4 hover:decoration-2';
+const linkClass = 'text-link underline underline-offset-4 hover:decoration-2';
 
 export default async function CvPage({ params }: CvPageProps) {
   const locale = requireLocale((await params).locale);

@@ -32,6 +32,10 @@
      face for the XP badge. Never for names, headings, body text or numbers. */
   --font-typewriter: var(--font-special-elite), 'Courier New', monospace;
   --font-pixel: var(--font-press-start), ui-monospace, monospace;
+  /* Candidates for the section labels, loaded only on /design (fonts-candidates.ts). */
+  --font-courier: var(--font-courier-prime), 'Courier New', monospace;
+  --font-space: var(--font-space-mono), ui-monospace, monospace;
+  --font-plex: var(--font-plex-mono), ui-monospace, monospace;
 }
 
 /*

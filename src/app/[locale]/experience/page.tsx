@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: ExperiencePageProps): Promise
 }
 
 const headingClass = 'text-xl font-semibold text-fg';
-const linkClass = 'text-accent underline underline-offset-4 hover:decoration-2';
+const linkClass = 'text-link underline underline-offset-4 hover:decoration-2';
 
 export default async function ExperiencePage({ params }: ExperiencePageProps) {
   const locale = requireLocale((await params).locale);

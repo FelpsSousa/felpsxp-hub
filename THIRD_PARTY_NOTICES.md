@@ -17,6 +17,9 @@ their licence files in their packages; this file covers the assets a visitor see
 | Octicons (`@primer/octicons-react`) | 19.42.0 | GitHub Inc. | MIT | interface icons |
 | Special Elite (`@fontsource/special-elite`) | 5.3.0 | Astigmatic | Apache License 2.0 | section labels |
 | Press Start 2P (`@fontsource/press-start-2p`) | 5.3.0 | CodeMan38 | SIL Open Font License 1.1 | XP badge and mark |
+| Courier Prime (`@fontsource/courier-prime`) | 5.3.0 | Quote-Unquote Apps | SIL Open Font License 1.1 | candidate for section labels, `/design` only |
+| Space Mono (`@fontsource/space-mono`) | 5.3.0 | Colophon Foundry | SIL Open Font License 1.1 | candidate for section labels, `/design` only |
+| IBM Plex Mono (`@fontsource/ibm-plex-mono`) | 5.3.0 | IBM | SIL Open Font License 1.1 | candidate for section labels, `/design` only |
 
 The fonts are served unmodified, from the Latin files of their packages.
 
@@ -187,3 +190,27 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
 ```
+
+## Candidate faces for the section labels
+
+Loaded only by `/design` until one is chosen; the others then leave, with their packages and
+these notices. All three are under the SIL Open Font License 1.1, whose full text is
+reproduced in the Press Start 2P section above.
+
+- **Courier Prime**, https://fontsource.org/fonts/courier-prime
+
+  ```text
+  Copyright 2015 The Courier Prime Project Authors (https://github.com/quoteunquoteapps/CourierPrime)
+  ```
+
+- **Space Mono**, https://fontsource.org/fonts/space-mono
+
+  ```text
+  Copyright 2016 The Space Mono Project Authors (https://github.com/googlefonts/spacemono)
+  ```
+
+- **IBM Plex Mono**, https://fontsource.org/fonts/ibm-plex-mono
+
+  ```text
+  Copyright 2017 IBM Corp. All rights reserved.
+  ```

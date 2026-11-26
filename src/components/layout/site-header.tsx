@@ -14,14 +14,25 @@ export async function SiteHeader() {
 
   return (
     <header className="relative border-b border-border print:hidden">
-      <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-6">
-        <Link
-          href="/"
-          aria-label={`${name}, ${t('site.homeLink')}`}
-          className="font-semibold text-fg hover:text-accent"
-        >
-          {name}
-        </Link>
+      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
+        <div className="flex items-center gap-2">
+          <Link
+            href="/"
+            aria-label={`${name}, ${t('site.homeLink')}`}
+            className="font-semibold text-fg hover:text-accent"
+          >
+            {name}
+          </Link>
+          {/* The FelpsXP mark (option B on /design, ADR-0012). Decorative and
+              outside the link, so the link's name still matches its text
+              (WCAG 2.5.3). */}
+          <span
+            aria-hidden="true"
+            className="rounded-sm bg-accent-muted px-1.5 py-1 font-pixel text-[0.5rem] leading-none text-accent"
+          >
+            XP
+          </span>
+        </div>
 
         <div className="flex items-center gap-4 sm:gap-6">
           <nav aria-label={t('nav.label')} className="hidden md:block">

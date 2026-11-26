@@ -340,7 +340,7 @@
     },
     "choices": {
       "title": "Being chosen",
-      "lead": "Each item shows its options rendered with the site's real components. The one marked in use is what the pages show today.",
+      "lead": "Each item shows its options rendered with the site's real components. For decided items, the option in use is what the pages show; open items have more options side by side to compare.",
       "navCurrent": {
         "title": "Current navigation item",
         "a": "Purple underline",
@@ -364,20 +364,32 @@
         "a": "Uppercase in the system face",
         "b": "Typewriter",
         "c": "Typewriter with an icon",
-        "sample": "Current focus"
+        "sample": "Current focus",
+        "d": "Courier Prime with an icon: a cleaner typewriter face",
+        "e": "Space Mono with an icon: a geometric mono with a retro feel",
+        "f": "IBM Plex Mono with an icon: an engineering mono, the most neutral",
+        "g": "System mono with an icon, no extra font",
+        "note": "The faces of options D, E and F load only on this page; the chosen one goes site-wide and the others leave."
       },
       "numbers": {
         "title": "Headline numbers",
         "a": "Purple mono",
         "b": "ScoreCard with an icon",
-        "c": "ScoreCard in the accent tone"
+        "c": "ScoreCard in the accent tone",
+        "d": "Option A's value inside the card in the accent tone",
+        "e": "Option A's value with an icon, in a neutral card",
+        "f": "Option A's value with a purple side stripe"
       },
       "xpBadge": {
         "title": "XP badge",
-        "a": "Mono with a tilde",
-        "b": "Pixel face in a purple pill",
+        "a": "Mono, as today",
+        "b": "Pixel face in a muted purple pill",
         "c": "Pixel face with a star",
-        "note": "The value shown follows ADR-0013, still a proposal."
+        "note": "All at a smaller size, matching the height of the card's other badges.",
+        "d": "Pill with a purple outline",
+        "e": "Pill with a star inside",
+        "f": "Value in the system face, XP in pixel",
+        "g": "Trophy with the pixel face"
       },
       "projectSections": {
         "title": "Project page sections",
@@ -401,7 +413,10 @@
       "octiconsUse": "Icons",
       "specialEliteUse": "Section labels",
       "pressStartUse": "XP badge and mark",
-      "notices": "The full licence notices live in the repository, in THIRD_PARTY_NOTICES.md."
-    }
+      "notices": "The full licence notices live in the repository, in THIRD_PARTY_NOTICES.md.",
+      "candidateUse": "Candidate for section labels, on this page only"
+    },
+    "decided": "Decided",
+    "open": "Open"
   }
 }

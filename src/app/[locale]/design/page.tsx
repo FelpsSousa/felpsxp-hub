@@ -26,6 +26,7 @@ import {
   StarIcon,
   SunIcon,
   ToolsIcon,
+  TrophyIcon,
 } from '@primer/octicons-react';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -35,7 +36,8 @@ import { DataTable } from '@/components/ui/table';
 import type { Project, ProjectStatus } from '@/content/types';
 import { requireLocale } from '@/i18n/locale';
 import { getProfile, getPublicProjects, getSiteSettings } from '@/lib/content';
-import { designChoices, type DesignItem } from '@/lib/design-choices';
+import { designChoices, type DesignItem, type OptionLetter } from '@/lib/design-choices';
+import { courierPrimeFont, plexMonoFont, spaceMonoFont } from '@/lib/fonts-candidates';
 import { pageMetadata } from '@/lib/seo';
 import { domainLabel, projectDomains, projectXp } from '@/lib/skill-taxonomy';
 
@@ -107,6 +109,9 @@ const statusIcon: Record<ProjectStatus, Icon> = {
 
 const sectionHeading = 'text-2xl font-semibold text-fg';
 
+/** The pixel face at the height of the other badges (Felipe, 2026-11-26). */
+const pixelBadge = 'py-1 font-pixel text-[0.5625rem] leading-none text-accent';
+
 export default async function DesignPage({ params }: DesignPageProps) {
   const locale = requireLocale((await params).locale);
   setRequestLocale(locale);
@@ -120,9 +125,12 @@ export default async function DesignPage({ params }: DesignPageProps) {
   const { repositoryUrl } = getSiteSettings();
   const projects = getPublicProjects(locale);
   const project = projects.find(({ slug }) => slug === 'felpsxp-hub') ?? projects[0];
+  const xp = projectXp(project);
 
   return (
-    <article className="mx-auto flex max-w-5xl flex-col gap-16 px-6 py-20">
+    <article
+      className={`mx-auto flex max-w-5xl flex-col gap-16 px-6 py-20 ${courierPrimeFont.variable} ${spaceMonoFont.variable} ${plexMonoFont.variable}`}
+    >
       <header className="flex max-w-3xl flex-col gap-4">
         <Eyebrow icon={PaintbrushIcon}>FelpsXP</Eyebrow>
         <h1 className="text-3xl font-semibold text-fg">{t('title')}</h1>
@@ -345,15 +353,19 @@ export default async function DesignPage({ params }: DesignPageProps) {
           }}
         </Choice>
 
-        <Choice item="sectionLabel" t={t}>
+        <Choice item="sectionLabel" t={t} note={t('choices.sectionLabel.note')}>
           {{
             a: (
               <p className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
                 {t('choices.sectionLabel.sample')}
               </p>
             ),
-            b: <Eyebrow>{t('choices.sectionLabel.sample')}</Eyebrow>,
-            c: <Eyebrow icon={GoalIcon}>{t('choices.sectionLabel.sample')}</Eyebrow>,
+            b: <LabelSample font="font-typewriter" text={t('choices.sectionLabel.sample')} />,
+            c: <LabelSample font="font-typewriter" icon={GoalIcon} text={t('choices.sectionLabel.sample')} />,
+            d: <LabelSample font="font-courier" icon={GoalIcon} text={t('choices.sectionLabel.sample')} />,
+            e: <LabelSample font="font-space" icon={GoalIcon} text={t('choices.sectionLabel.sample')} />,
+            f: <LabelSample font="font-plex" icon={GoalIcon} text={t('choices.sectionLabel.sample')} />,
+            g: <LabelSample font="font-mono" icon={GoalIcon} text={t('choices.sectionLabel.sample')} />,
           }}
         </Choice>
 
@@ -381,6 +393,32 @@ export default async function DesignPage({ params }: DesignPageProps) {
                 />
               </div>
             ),
+            d: (
+              <div className="flex w-full flex-col gap-1 rounded-md border border-accent/50 bg-accent-muted p-4">
+                <p className="flex items-center gap-2 text-xs font-medium text-accent">
+                  <CodeIcon aria-hidden size={16} />
+                  {th('statsLabel')}
+                </p>
+                <p className="font-mono text-2xl font-semibold text-accent">{stat.value}</p>
+                <p className="text-sm text-fg-muted">{stat.label}</p>
+              </div>
+            ),
+            e: (
+              <div className="flex w-full flex-col gap-1 rounded-md border border-border p-4">
+                <p className="flex items-center gap-2 text-xs font-medium text-fg-muted">
+                  <CodeIcon aria-hidden size={16} />
+                  {th('statsLabel')}
+                </p>
+                <p className="font-mono text-2xl font-semibold text-accent">{stat.value}</p>
+                <p className="text-sm text-fg-muted">{stat.label}</p>
+              </div>
+            ),
+            f: (
+              <div className="w-full rounded-md border border-l-4 border-border border-l-accent p-4">
+                <p className="font-mono text-2xl font-semibold text-accent">{stat.value}</p>
+                <p className="mt-1 text-sm text-fg-muted">{stat.label}</p>
+              </div>
+            ),
           }}
         </Choice>
 
@@ -388,18 +426,33 @@ export default async function DesignPage({ params }: DesignPageProps) {
           {{
             a: (
               <span className="rounded-full border border-accent/40 px-2 py-0.5 font-mono text-xs text-accent">
-                ~{projectXp(project)} XP
+                {xp} XP
               </span>
             ),
-            b: (
-              <span className="rounded-full bg-accent-muted px-2.5 py-1 font-pixel text-[0.625rem] text-accent">
-                {projectXp(project)} XP
-              </span>
-            ),
+            b: <span className={`rounded-full bg-accent-muted px-2 ${pixelBadge}`}>{xp} XP</span>,
             c: (
-              <span className="inline-flex items-center gap-1.5 font-pixel text-[0.625rem] text-accent">
+              <span className={`inline-flex items-center gap-1.5 ${pixelBadge}`}>
                 <StarIcon aria-hidden size={12} />
-                {projectXp(project)} XP
+                {xp} XP
+              </span>
+            ),
+            d: <span className={`rounded-full border border-accent/50 px-2 ${pixelBadge}`}>{xp} XP</span>,
+            e: (
+              <span className={`inline-flex items-center gap-1 rounded-full bg-accent-muted px-2 ${pixelBadge}`}>
+                <StarIcon aria-hidden size={12} />
+                {xp} XP
+              </span>
+            ),
+            f: (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-muted px-2 py-0.5 text-accent">
+                <span className="text-xs font-semibold tabular-nums">{xp}</span>
+                <span className="font-pixel text-[0.5rem] leading-none">XP</span>
+              </span>
+            ),
+            g: (
+              <span className={`inline-flex items-center gap-1.5 ${pixelBadge}`}>
+                <TrophyIcon aria-hidden size={12} />
+                {xp} XP
               </span>
             ),
           }}
@@ -497,6 +550,36 @@ export default async function DesignPage({ params }: DesignPageProps) {
               </a>,
               t('credits.pressStartUse'),
             ],
+            [
+              <a key="cp" href="https://fontsource.org/fonts/courier-prime" className="text-link underline underline-offset-4">
+                Courier Prime
+              </a>,
+              'Quote-Unquote Apps',
+              <a key="ofl-cp" href="https://openfontlicense.org" className="text-link underline underline-offset-4">
+                SIL OFL 1.1
+              </a>,
+              t('credits.candidateUse'),
+            ],
+            [
+              <a key="sm" href="https://fontsource.org/fonts/space-mono" className="text-link underline underline-offset-4">
+                Space Mono
+              </a>,
+              'Colophon Foundry',
+              <a key="ofl-sm" href="https://openfontlicense.org" className="text-link underline underline-offset-4">
+                SIL OFL 1.1
+              </a>,
+              t('credits.candidateUse'),
+            ],
+            [
+              <a key="pm" href="https://fontsource.org/fonts/ibm-plex-mono" className="text-link underline underline-offset-4">
+                IBM Plex Mono
+              </a>,
+              'IBM',
+              <a key="ofl-pm" href="https://openfontlicense.org" className="text-link underline underline-offset-4">
+                SIL OFL 1.1
+              </a>,
+              t('credits.candidateUse'),
+            ],
           ]}
         />
         <p className="text-sm text-fg-muted">
@@ -515,7 +598,7 @@ export default async function DesignPage({ params }: DesignPageProps) {
 type Translate = Awaited<ReturnType<typeof getTranslations<'design'>>>;
 type ProjectsTranslate = Awaited<ReturnType<typeof getTranslations<'projects'>>>;
 
-/** One item being chosen: its options side by side, the one in use marked. */
+/** One item of the standard: its options side by side, the one in use marked. */
 function Choice({
   item,
   t,
@@ -527,14 +610,25 @@ function Choice({
   t: Translate;
   note?: string;
   wide?: boolean;
-  children: Partial<Record<'a' | 'b' | 'c', React.ReactNode>>;
+  children: Partial<Record<OptionLetter, React.ReactNode>>;
 }) {
-  const options = Object.entries(children) as ['a' | 'b' | 'c', React.ReactNode][];
-  const inUse = designChoices[item];
+  const options = Object.entries(children) as [OptionLetter, React.ReactNode][];
+  const { inUse, decided } = designChoices[item];
 
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="text-lg font-semibold text-fg">{t(`choices.${item}.title`)}</h3>
+      <div className="flex flex-wrap items-center gap-2">
+        <h3 className="text-lg font-semibold text-fg">{t(`choices.${item}.title`)}</h3>
+        {decided ? (
+          <Badge tone="success" filled icon={CheckCircleIcon}>
+            {t('decided')}
+          </Badge>
+        ) : (
+          <Badge tone="attention" filled icon={ToolsIcon}>
+            {t('open')}
+          </Badge>
+        )}
+      </div>
       {note && <p className="text-sm text-fg-muted">{note}</p>}
       <ul className={`grid gap-4 ${wide ? 'lg:grid-cols-3' : 'sm:grid-cols-2 lg:grid-cols-3'}`}>
         {options.map(([letter, sample]) => (
@@ -560,6 +654,16 @@ function Choice({
         ))}
       </ul>
     </div>
+  );
+}
+
+/** A section label sample in one face, with an optional icon. */
+function LabelSample({ font, icon: IconComponent, text }: { font: string; icon?: Icon; text: string }) {
+  return (
+    <p className={`flex items-center gap-2 text-sm uppercase tracking-wide text-fg-muted ${font}`}>
+      {IconComponent && <IconComponent aria-hidden size={16} />}
+      {text}
+    </p>
   );
 }
 
@@ -632,7 +736,7 @@ function CardSample({
         {tp(`status.${project.status}`)}
       </Badge>
       <Badge>{tp(`filters.levels.${project.difficulty}`)}</Badge>
-      <span className="ml-auto rounded-full bg-accent-muted px-2 py-1 font-pixel text-[0.625rem] text-accent">
+      <span className={`ml-auto rounded-full bg-accent-muted px-2 ${pixelBadge}`}>
         {projectXp(project)} XP
       </span>
     </>

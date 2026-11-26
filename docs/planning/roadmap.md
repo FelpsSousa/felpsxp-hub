@@ -312,8 +312,8 @@ FelpsXP Logs, beautiful but within the limits of a professional site.
 - [ ] Tokens, self-hosted fonts, Octicons in place of Lucide,
       `THIRD_PARTY_NOTICES.md` and `/design` with the variations side by side.
 - [ ] Apply the chosen variations: header and footer, home, projects and
-      project pages, experience; one pull request each, captures before and
-      after, axe in both themes.
+      project pages done (2026-11-26); experience and the three items still
+      open on `/design` (section label face, headline numbers, XP badge) to go.
 - [x] XP rubric in the content schema, the badge, the breakdown and the
       legend.
 

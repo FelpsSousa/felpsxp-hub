@@ -47,8 +47,8 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
   ) as Record<SkillDomain, string>;
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-20">
-      <header className="flex flex-col gap-2">
+    <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20">
+      <header className="flex max-w-3xl flex-col gap-2">
         <h1 className="text-3xl font-semibold text-fg">{t('title')}</h1>
         <p className="text-fg">{t('lede')}</p>
       </header>
@@ -57,7 +57,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
           stays static. Without JavaScript, the fallback lists every project. */}
       <Suspense
         fallback={
-          <div className="flex flex-col gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             {items.map((item) => (
               <div key={item.slug}>{item.card}</div>
             ))}
