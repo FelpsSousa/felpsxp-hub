@@ -50,7 +50,7 @@ export async function LegalPageView({
         {contactLabel}{' '}
         <a
           href={`mailto:${contactEmail}`}
-          className="text-accent underline underline-offset-4 hover:decoration-2"
+          className="text-link underline underline-offset-4 hover:decoration-2"
         >
           {contactEmail}
         </a>

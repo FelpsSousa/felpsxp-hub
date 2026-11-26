@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import { GoalIcon, GraphIcon, StarIcon } from '@primer/octicons-react';
 import { ProjectCard } from '@/components/projects/project-card';
+import { Eyebrow } from '@/components/ui/primitives';
 import { Link } from '@/i18n/navigation';
 import { getFeaturedProjects, getProfile, getSiteSettings } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
@@ -45,15 +47,15 @@ function HomeContent({
   const t = useTranslations('home');
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-12 px-6 py-20">
-      <header className="flex flex-col gap-3">
+    <div className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-20">
+      <header className="flex max-w-3xl flex-col gap-3">
         <h1 className="text-4xl font-semibold text-fg">{profile.displayName}</h1>
         <p className="text-lg text-fg">{profile.title}</p>
         <p className="text-sm text-fg-muted">{profile.location}</p>
         <p className="mt-2 text-fg">{profile.shortBio}</p>
       </header>
 
-      <section className="flex flex-col gap-4">
+      <section className="flex max-w-3xl flex-col gap-4">
         {profile.summaryParagraphs.map((paragraph) => (
           <p key={paragraph} className="text-fg">
             {paragraph}
@@ -61,10 +63,10 @@ function HomeContent({
         ))}
       </section>
 
-      <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
+      <section className="flex max-w-3xl flex-col gap-3">
+        <Eyebrow as="h2" icon={GoalIcon}>
           {t('focusLabel')}
-        </h2>
+        </Eyebrow>
         <ul className="flex flex-col gap-2">
           {profile.currentFocus.map((item) => (
             <li key={item} className="text-fg">
@@ -75,9 +77,9 @@ function HomeContent({
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
+        <Eyebrow as="h2" icon={GraphIcon}>
           {t('statsLabel')}
-        </h2>
+        </Eyebrow>
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {profile.highlightStats.map((stat) => (
             <div key={stat.label} className="rounded-lg border border-border p-4">
@@ -89,17 +91,17 @@ function HomeContent({
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-fg-muted">
+        <Eyebrow as="h2" icon={StarIcon}>
           {t('featuredLabel')}
-        </h2>
-        <div className="flex flex-col gap-4">
+        </Eyebrow>
+        <div className="grid gap-4 md:grid-cols-2">
           {featured.map((project) => (
             <ProjectCard key={project.slug} project={project} headingLevel="h3" />
           ))}
         </div>
         <Link
           href="/projects"
-          className="w-fit text-accent underline underline-offset-4 hover:decoration-2"
+          className="w-fit text-link underline underline-offset-4 hover:decoration-2"
         >
           {t('allProjects')}
         </Link>
@@ -114,7 +116,7 @@ function HomeContent({
         >
           {t('ctaButton')}
         </Link>
-        <Link href="/cv" className="w-fit text-accent underline underline-offset-4 hover:decoration-2">
+        <Link href="/cv" className="w-fit text-link underline underline-offset-4 hover:decoration-2">
           {t('ctaCv')}
         </Link>
       </section>

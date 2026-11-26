@@ -340,7 +340,7 @@
     },
     "choices": {
       "title": "Em escolha",
-      "lead": "Cada item mostra as opções renderizadas com os componentes reais do site. A marcada como em uso é a que as páginas mostram hoje.",
+      "lead": "Cada item mostra as opções renderizadas com os componentes reais do site. Nos decididos, a opção em uso é a que as páginas mostram; nos em aberto, há mais opções lado a lado para comparar.",
       "navCurrent": {
         "title": "Item atual da navegação",
         "a": "Sublinhado roxo",
@@ -364,20 +364,32 @@
         "a": "Caixa-alta na fonte do sistema",
         "b": "Máquina de escrever",
         "c": "Máquina de escrever com ícone",
-        "sample": "Foco atual"
+        "sample": "Foco atual",
+        "d": "Courier Prime com ícone: máquina de escrever mais limpa",
+        "e": "Space Mono com ícone: mono geométrica com ar retrô",
+        "f": "IBM Plex Mono com ícone: mono de engenharia, a mais neutra",
+        "g": "Mono do sistema com ícone, sem fonte extra",
+        "note": "As fontes das opções D, E e F só carregam nesta página; a escolhida passa a valer no site e as outras saem."
       },
       "numbers": {
         "title": "Números em destaque",
         "a": "Mono roxo",
         "b": "ScoreCard com ícone",
-        "c": "ScoreCard no tom de destaque"
+        "c": "ScoreCard no tom de destaque",
+        "d": "Valor do A dentro do card no tom de destaque",
+        "e": "Valor do A com ícone, em card neutro",
+        "f": "Valor do A com faixa lateral roxa"
       },
       "xpBadge": {
         "title": "Selo de XP",
-        "a": "Mono com til",
-        "b": "Fonte pixel em pílula roxa",
+        "a": "Mono, como hoje",
+        "b": "Fonte pixel em pílula roxa suave",
         "c": "Fonte pixel com estrela",
-        "note": "O valor mostrado segue a ADR-0013, ainda em proposta."
+        "note": "Todas em tamanho menor, na altura dos outros selos do card.",
+        "d": "Pílula com contorno roxo",
+        "e": "Pílula com estrela dentro",
+        "f": "Valor na fonte do sistema e XP em pixel",
+        "g": "Troféu com fonte pixel"
       },
       "projectSections": {
         "title": "Seções da página de projeto",
@@ -401,7 +413,10 @@
       "octiconsUse": "Ícones",
       "specialEliteUse": "Rótulos de seção",
       "pressStartUse": "Selo de XP e marca",
-      "notices": "Os avisos completos de licença ficam no repositório, em THIRD_PARTY_NOTICES.md."
-    }
+      "notices": "Os avisos completos de licença ficam no repositório, em THIRD_PARTY_NOTICES.md.",
+      "candidateUse": "Candidata para os rótulos de seção, só nesta página"
+    },
+    "decided": "Decidido",
+    "open": "Em aberto"
   }
 }

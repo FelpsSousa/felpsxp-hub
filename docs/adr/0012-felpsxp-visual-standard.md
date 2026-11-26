@@ -87,9 +87,10 @@ Rules that follow from the licences and from GitHub's trademarks:
 
 **Follow-ups**
 
-- [ ] Tokens, fonts, Octicons, credits and the `/design` page with the variations.
+- [x] Tokens, fonts, Octicons, credits and the `/design` page with the variations (#127).
 - [ ] Apply the chosen variations to the header, home, projects, project pages and
-      experience, one pull request each, with captures before and after.
+      experience, with captures before and after. Header, home, projects and project pages
+      done on 2026-11-26; experience and the three open items still to go.
 
 ## Alternatives considered
 
@@ -99,3 +100,15 @@ Rules that follow from the licences and from GitHub's trademarks:
   control of the frontend, and far more CSS than the Hub uses.
 - **Load the fonts from Google Fonts.** Rejected: a request to another origin for every
   visitor, and a CSP exception.
+
+## Amendments
+
+- **2026-11-26:** Felipe's choices on `/design`. Decided: the current navigation item keeps
+  the purple underline (A); status badges on a muted fill in their tone, with an icon (C);
+  project cards with a side stripe in the status tone and the badges on top (C), the XP badge
+  smaller so it matches the other badges; project page sections as boxes with an icon in the
+  header (B); the pixel XP mark next to the name in the header (B). Links in running text are
+  blue, and listing pages use the wider column with project cards in two columns. Still open,
+  with more options on `/design`: the section label face (the typewriter with an icon is in use
+  for now; Courier Prime, Space Mono and IBM Plex Mono are candidates, loaded only on
+  `/design`, credited, and removed once one is chosen), the headline numbers and the XP badge.

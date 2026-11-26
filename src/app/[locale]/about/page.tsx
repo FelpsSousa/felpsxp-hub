@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
 }
 
 const headingClass = 'text-xl font-semibold text-fg';
-const linkClass = 'text-accent underline underline-offset-4 hover:decoration-2';
+const linkClass = 'text-link underline underline-offset-4 hover:decoration-2';
 
 export default async function AboutPage({ params }: AboutPageProps) {
   const locale = requireLocale((await params).locale);

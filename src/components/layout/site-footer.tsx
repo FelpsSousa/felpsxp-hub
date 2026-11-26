@@ -12,7 +12,7 @@ export async function SiteFooter() {
 
   return (
     <footer className="border-t border-border print:hidden">
-      <div className="mx-auto flex max-w-3xl flex-col gap-4 px-6 py-8 text-sm text-fg-muted sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-8 text-sm text-fg-muted sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-2">
           <p>
             © {year} {name} ·{' '}

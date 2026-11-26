@@ -8,9 +8,13 @@ test('single-key shortcuts open the search and navigate, but never while typing'
   await page.goto('/');
   await expect(page.getByRole('button', { name: 'Atalhos de teclado' })).toBeVisible();
 
-  await page.keyboard.press('/');
+  // The shortcut listener is attached on hydration, which can land after the
+  // first key press; pressing again is safe because `/` only opens the search.
   const search = page.getByRole('dialog', { name: 'Buscar no site' });
-  await expect(search).toBeVisible();
+  await expect(async () => {
+    await page.keyboard.press('/');
+    await expect(search).toBeVisible({ timeout: 1_000 });
+  }).toPass();
   await page.keyboard.press('Escape');
   await expect(search).toBeHidden();
 

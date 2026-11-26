@@ -140,7 +140,7 @@ export function ProjectFiltersList({
       {shown.length === 0 ? (
         <p className="text-fg">{t('empty')}</p>
       ) : (
-        <div className="flex flex-col gap-6">
+        <div className="grid gap-6 md:grid-cols-2">
           {shown.map((item) => (
             <div key={item.slug}>{item.card}</div>
           ))}
